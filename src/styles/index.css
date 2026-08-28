@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f4f6f8] text-slate-800 font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+/* Custom light scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #19277c;
+}
+
+/* Animation utilities */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-infinite {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+/* Clean light card styles */
+.light-card {
+  @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #101744 0%, #19277c 100%);
+}
+
+.cyan-gradient {
+  background: linear-gradient(135deg, #00b4d8 0%, #47c7f1 100%);
+}
