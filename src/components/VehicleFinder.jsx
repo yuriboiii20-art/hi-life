@@ -10,7 +10,7 @@ export default function VehicleFinder({
   const [selectedBrandId, setSelectedBrandId] = useState('');
   const [selectedModelId, setSelectedModelId] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
-  const [selectedCoverTypeId, setSelectedCoverTypeId] = useState(initialCoverTypeId || 'premium-waterproof');
+  const [selectedCoverTypeId, setSelectedCoverTypeId] = useState(initialCoverTypeId || '');
   const [validationError, setValidationError] = useState('');
 
   // Handle external cover type pre-selection
@@ -52,7 +52,7 @@ export default function VehicleFinder({
     setSelectedBrandId('');
     setSelectedModelId('');
     setSelectedYear('');
-    setSelectedCoverTypeId('premium-waterproof');
+    setSelectedCoverTypeId('');
     setValidationError('');
   };
 
@@ -221,7 +221,9 @@ export default function VehicleFinder({
                 value={selectedCoverTypeId}
                 onChange={handleCoverTypeChange}
                 className="w-full bg-stone-50 hover:bg-stone-100/80 text-stone-900 text-xs sm:text-sm font-medium rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 transition-all cursor-pointer truncate"
+                required
               >
+                <option value="" disabled>Select Cover Grade</option>
                 {COVER_TYPES.map((cov) => (
                   <option key={cov.id} value={cov.id}>
                     {cov.name} (from ₹{cov.basePrice})

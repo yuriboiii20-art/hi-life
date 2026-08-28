@@ -2,24 +2,12 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import VehicleFinder from '../components/VehicleFinder';
 import ProductResult from '../components/ProductResult';
-import ProductTypesSection from '../components/ProductTypesSection';
 import Testimonials from '../components/Testimonials';
-import ProductDetailModal from '../components/ProductDetailModal';
 import QuickOrderModal from '../components/QuickOrderModal';
 
 export default function Home() {
   const [matchingResult, setMatchingResult] = useState(null);
-  const [preSelectedCoverId, setPreSelectedCoverId] = useState(null);
-  const [detailModalCover, setDetailModalCover] = useState(null);
   const [orderModalResult, setOrderModalResult] = useState(null);
-
-  const handleSelectCoverFromCards = (coverId) => {
-    setPreSelectedCoverId(coverId);
-    const finderEl = document.getElementById('vehicle-finder');
-    if (finderEl) {
-      finderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   const handleSelectResult = (result) => {
     setMatchingResult(result);
@@ -50,12 +38,11 @@ export default function Home() {
         }}
       />
 
-      {/* 2. Vehicle Cover Finder & Matching Product Result */}
+      {/* 2. Vehicle Cover Finder & Matching Product Result (Only shown when searched) */}
       <section className="py-8 sm:py-12 bg-[#fafaf9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <VehicleFinder
             onSelectResult={handleSelectResult}
-            initialCoverTypeId={preSelectedCoverId}
           />
 
           {matchingResult && (
@@ -68,27 +55,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Product Types (4 Cover tiers) */}
-      <ProductTypesSection
-        onSelectCover={handleSelectCoverFromCards}
-        onViewDetails={(cover) => setDetailModalCover(cover)}
-      />
-
-      {/* 4. Customer Reviews */}
+      {/* 3. Customer Reviews */}
       <Testimonials />
 
-      {/* Modals */}
-      {detailModalCover && (
-        <ProductDetailModal
-          cover={detailModalCover}
-          onClose={() => setDetailModalCover(null)}
-          onSelectForFinder={(coverId) => {
-            setDetailModalCover(null);
-            handleSelectCoverFromCards(coverId);
-          }}
-        />
-      )}
-
+      {/* Quick Order Modal */}
       {orderModalResult && (
         <QuickOrderModal
           result={orderModalResult}
