@@ -48,86 +48,139 @@ export default function About() {
         </div>
       </section>
 
-      {/* Brand Philosophy */}
+      {/* Core Features & ULY Coated Fabric Specification */}
       <section className="py-16 sm:py-20 bg-white border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-black uppercase tracking-wider text-black">
-                Material & Fitting Philosophy
-              </span>
+            {/* Left 6 Cols: Core Features of Our Product */}
+            <div className="lg:col-span-6 space-y-6">
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-black">
+                  Product Architecture
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mt-1">
+                  Core Features of Our Product
+                </h2>
+                <p className="text-sm text-neutral-600 mt-2 font-normal">
+                  Every Hi-Life car cover is precision-crafted with six essential protection standards for all-weather durability and vehicle safety.
+                </p>
+              </div>
 
-              <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight">
-                Why Standard Universal Covers Fail
-              </h2>
-
-              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
-                Most generic car covers on the market use flimsy 50–70 GSM synthetic sheeting, single-stitched seams that split during light breezes, and loose baggy cuts that balloon in the wind — causing fine dust to rub against car paint and create micro-swirls.
-              </p>
-
-              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
-                At Hi-Life, we approach car protection as an engineering discipline. We build our covers using high-density Oxford weaves ranging from 130 GSM to 310 GSM, reinforced with heat-sealed ultrasonic waterproof seams, soft non-abrasive inner cotton fleeces, and vehicle-specific 3D contours tailored to mirror and antenna geometry.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex items-start gap-3">
-                  <Layers className="w-5 h-5 text-black shrink-0 mt-0.5" />
+              <div className="space-y-3">
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    1
+                  </div>
                   <div>
-                    <h4 className="text-xs font-bold text-black">Dense Woven Matrix</h4>
-                    <p className="text-[11px] text-neutral-500 mt-0.5 font-normal">High tear & puncture resistance</p>
+                    <h3 className="text-base font-bold text-black">UV Resistant</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Blocks harsh solar radiation and protects clear coat & car paint from fading.</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex items-start gap-3">
-                  <Droplets className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    2
+                  </div>
                   <div>
-                    <h4 className="text-xs font-bold text-black">TPU Hydrostatic Film</h4>
-                    <p className="text-[11px] text-neutral-500 mt-0.5 font-normal">100% leakproof monsoonal shield</p>
+                    <h3 className="text-base font-bold text-black">100% Waterproof and Leakproof</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Advanced hydrostatic barrier keeps heavy torrential monsoon rains completely out.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Side Mirror Pockets</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Dedicated dual ORVM mirror slots ensure an exact tailored fit without fabric tension.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    4
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Center Belt Below the Car to Lock It Safe</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Heavy-duty underbody buckle prevents cover blow-off during intense windy storms.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    5
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Front and Back Elastic</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Reinforced dual-end elastic hems grip the front and rear bumpers securely.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-4 hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-black text-sm shrink-0">
+                    6
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Covers Antina</h3>
+                    <p className="text-xs text-neutral-600 mt-0.5 font-normal">Designed to comfortably accommodate and protect vehicle roof antennas.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 3-Layer Architecture Box */}
-            <div className="lg:col-span-6">
-              <div className="rounded-3xl p-7 bg-neutral-50 border border-neutral-200 shadow-xl space-y-5">
-                <h3 className="text-xl font-black text-black flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-black" />
-                  <span>The Hi-Life 3-Layer Architecture</span>
+            {/* Right 6 Cols: ULY Coated Fabric Specification */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="rounded-3xl p-7 sm:p-9 bg-black text-white shadow-2xl space-y-6 border border-neutral-800">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Advanced Material Technology</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                  ULY Coated Fabric Engineering
                 </h3>
 
-                <div className="space-y-3.5">
-                  <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-black uppercase">Layer 1: Exterior Shield</span>
-                      <span className="text-neutral-500 font-semibold">UPF 50+ UV / Oxford</span>
-                    </div>
-                    <p className="text-xs text-neutral-600 font-normal">
-                      High-density hydrophobic Oxford exterior that reflects harsh ultraviolet radiation and repels torrential water droplets.
-                    </p>
+                <div className="p-5 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
+                  <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal">
+                    ULY coated fabric is a high-performance textile treated with an advanced Ultra Laminated Polyurethane (ULY) resin coating on base materials like polyester or nylon. It offers exceptional waterproofing, tear strength, and abrasion resistance while remaining lighter and more flexible than standard PVC-coated materials. The base fabric is polyester.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                  <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-neutral-400 block mb-1">
+                      Base Material
+                    </span>
+                    <p className="text-base font-black text-white">100% Polyester</p>
+                    <p className="text-xs text-neutral-400 mt-1 font-normal">High tensile strength and tear resistance</p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-black uppercase">Layer 2: Hydrostatic Membrane</span>
-                      <span className="text-neutral-500 font-semibold">100% Leakproof Film</span>
-                    </div>
-                    <p className="text-xs text-neutral-600 font-normal">
-                      Microporous TPU barrier that stops standing rain and bird acid while allowing trapped interior heat condensation to breathe outwards.
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-black uppercase">Layer 3: Soft Cotton Lining</span>
-                      <span className="text-neutral-500 font-semibold">Zero Swirl Shield</span>
-                    </div>
-                    <p className="text-xs text-neutral-600 font-normal">
-                      Ultra-soft spun cotton fleece cushions clear coats, ceramic coatings, and high-gloss paint finishes from abrasion.
-                    </p>
+                  <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-neutral-400 block mb-1">
+                      Resin Coating
+                    </span>
+                    <p className="text-base font-black text-white">Ultra Laminated Polyurethane</p>
+                    <p className="text-xs text-neutral-400 mt-1 font-normal">Flexible, lightweight, and waterproof</p>
                   </div>
                 </div>
+
+                <div className="space-y-2.5 pt-2 border-t border-neutral-800">
+                  <div className="flex items-center gap-2.5 text-xs text-neutral-300">
+                    <CheckCircle2 className="w-4 h-4 text-white shrink-0" />
+                    <span>Lighter and more flexible than standard PVC-coated materials</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-neutral-300">
+                    <CheckCircle2 className="w-4 h-4 text-white shrink-0" />
+                    <span>Extreme hydrostatic water resistance & zero capillary leakage</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-neutral-300">
+                    <CheckCircle2 className="w-4 h-4 text-white shrink-0" />
+                    <span>High abrasion and tear resistance for long outdoor lifespans</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
