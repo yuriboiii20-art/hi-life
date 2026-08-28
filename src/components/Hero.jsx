@@ -1,22 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ShieldCheck, 
-  Droplets, 
-  Sun, 
-  Wind, 
-  Sparkles, 
-  ArrowRight, 
   Shield, 
-  RotateCcw,
-  CheckCircle2,
+  ArrowRight, 
+  ChevronLeft, 
+  ChevronRight,
   Waves,
-  Snowflake
+  Snowflake,
+  RotateCcw
 } from 'lucide-react';
-import { BUSINESS_CONFIG } from '../config/business';
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1800&q=85",
+    tag: "100% Waterproof & Leakproof",
+    badge: "Hydrostatic Defense",
+    title: "ALL-WEATHER ARMOR",
+    subtitle: "Custom-fit protective car covers engineered with military-grade 300D Oxford fabric, scratch-free inner fleece, and storm-proof centre lock buckles."
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1800&q=85",
+    tag: "Laser-Cut 3D Contoured Fit",
+    badge: "SUV & Sedan Fitment",
+    title: "PRECISION FIT FOR EVERY CAR",
+    subtitle: "Custom-tailored for 50+ Indian vehicle models with dedicated side-mirror pockets, antenna covers, and snug front-rear elastic."
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1800&q=85",
+    tag: "UV & Solar Heat Defense",
+    badge: "Ceramic Paint Safe",
+    title: "PAINT PROTECTION STANDARD",
+    subtitle: "Soft spun-cotton fleece lining prevents clear-coat scratches while high-density ULY coating reflects damaging ultraviolet radiation."
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85",
+    tag: "Storm-Lock Wind Buckle",
+    badge: "Heavy-Duty Security",
+    title: "BUILT FOR EXTREME WEATHER",
+    subtitle: "Underbody centre locking strap and reinforced double-stitched seams ensure complete stability in turbulent monsoon winds."
+  }
+];
 
 export default function Hero({ onFindCoverClick }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // Auto-slide every 3.5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      handleNext();
+    }
+    if (touchStartX.current - touchEndX.current < -50) {
+      handlePrev();
+    }
+  };
 
   const scrollToFinder = () => {
     if (onFindCoverClick) {
@@ -29,156 +98,139 @@ export default function Hero({ onFindCoverClick }) {
     }
   };
 
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#ffffff] via-[#f7f5f0] to-[#ede9e1] text-stone-900 border-b border-stone-200">
-      
-      {/* Background Subtle Minimalist Pattern */}
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#78716c_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
+  const activeSlide = HERO_SLIDES[currentSlide];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          {/* Left Column: Headline & Feature Badges */}
-          <div className="lg:col-span-7 space-y-6">
+  return (
+    <section 
+      className="relative w-full overflow-hidden bg-stone-950 font-sans select-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Slide Image Backgrounds with Smooth Fade */}
+      <div className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center">
+        
+        {HERO_SLIDES.map((slide, idx) => {
+          const isActive = idx === currentSlide;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover object-center"
+                loading={idx === 0 ? 'eager' : 'lazy'}
+              />
+              {/* Dark Gradient Overlay for Maximum Text Contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/75 to-stone-950/40 lg:bg-gradient-to-r lg:from-stone-950/95 lg:via-stone-950/75 lg:to-stone-950/20" />
+            </div>
+          );
+        })}
+
+        {/* Foreground Overlaid Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+          <div className="max-w-2xl space-y-5 sm:space-y-6 text-white">
             
-            {/* Brand Mark */}
-            <div className="inline-flex items-center gap-2">
-              <span className="h-[2px] w-6 bg-amber-600 rounded-full"></span>
-              <span className="text-xs font-black uppercase tracking-widest text-stone-500">
-                HI-LIFE AUTOMOTIVE
-              </span>
+            {/* Top Brand Label & Tag */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span>HI-LIFE AUTOMOTIVE</span>
+              </div>
+
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-stone-950 text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-sm">
+                <Shield className="w-3.5 h-3.5 fill-stone-950" />
+                <span>{activeSlide.tag}</span>
+              </div>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-stone-950 leading-none">
-              ALL-WEATHER <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-950 via-stone-800 to-amber-700">
-                ARMOR
-              </span>
+            {/* Overlaid Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-tight sm:leading-none drop-shadow-md">
+              {activeSlide.title}
             </h1>
 
-            {/* 100% Weatherproof Shield Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-50 border border-amber-200/80 text-xs sm:text-sm font-bold text-amber-900 shadow-sm">
-              <div className="w-6 h-6 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center">
-                <Shield className="w-3.5 h-3.5 fill-stone-950 text-stone-950" />
-              </div>
-              <span className="tracking-wide">100% Weatherproof & Leakproof Protection</span>
-            </div>
-
-            {/* Supporting Text */}
-            <p className="text-sm sm:text-base text-stone-600 max-w-xl font-normal leading-relaxed">
-              Custom-fit protective car covers engineered with military-grade 300D Oxford fabric, scratch-free inner fleece, and storm-proof centre lock buckles.
+            {/* Overlaid Description */}
+            <p className="text-xs sm:text-base text-stone-200 font-normal leading-relaxed max-w-xl drop-shadow-sm">
+              {activeSlide.subtitle}
             </p>
 
-            {/* 3 Circular Feature Badges */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
-              
-              {/* Badge 1 */}
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200/90 flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:border-stone-900 group-hover:shadow-md transition-all">
-                  <Waves className="w-6 h-6 text-stone-900" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-tight text-stone-700 mt-1.5 leading-tight">
-                  SAND &<br />WATERPROOF
-                </span>
+            {/* Micro Feature Indicators */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-stone-200 text-xs">
+                <Waves className="w-4 h-4 text-amber-400" />
+                <span className="font-semibold">Waterproof & Dust Proof</span>
               </div>
-
-              {/* Badge 2 */}
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200/90 flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:border-stone-900 group-hover:shadow-md transition-all">
-                  <Snowflake className="w-6 h-6 text-stone-900" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-tight text-stone-700 mt-1.5 leading-tight">
-                  SNOW & MUD<br />PROOF
-                </span>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-stone-200 text-xs">
+                <Snowflake className="w-4 h-4 text-amber-400" />
+                <span className="font-semibold">UV & Heat Block</span>
               </div>
-
-              {/* Badge 3 */}
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200/90 flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:border-stone-900 group-hover:shadow-md transition-all">
-                  <RotateCcw className="w-6 h-6 text-stone-900" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-tight text-stone-700 mt-1.5 leading-tight">
-                  EASY 2-MIN<br />RINSE & FIT
-                </span>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-stone-200 text-xs">
+                <RotateCcw className="w-4 h-4 text-amber-400" />
+                <span className="font-semibold">Quick 2-Min Fit</span>
               </div>
-
             </div>
 
-            {/* Primary Call-To-Action Button */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
+            {/* CTA Buttons */}
+            <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center gap-3">
               <button
                 onClick={scrollToFinder}
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-sm sm:text-base uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                type="button"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-stone-100 text-stone-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>SHOP ALL-WEATHER COVERS</span>
+                <span>Find Your Car Cover</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <Link
                 to="/products"
-                className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white hover:bg-stone-50 text-stone-900 font-bold text-sm text-center border border-stone-300 shadow-sm transition-all"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm text-center border border-white/20 backdrop-blur-md transition-all"
               >
-                Explore Specifications
+                View Cover Catalogue
               </Link>
             </div>
 
           </div>
-
-          {/* Right Column: High-Impact Vehicle Visual Showcase */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl p-6 sm:p-7 bg-white border border-stone-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden group">
-              
-              {/* Product Cover Visual Preview */}
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-50 flex items-center justify-center border border-stone-200/80 p-6">
-                <img
-                  src="/logo.png"
-                  alt="Hi-Life All-Weather Automotive Protective Car Cover"
-                  className="w-full h-auto object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-105"
-                />
-
-                {/* Floating Assurance Badges */}
-                <div className="absolute top-3 left-3 bg-stone-900/90 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-bold text-white flex items-center gap-1.5 shadow-sm">
-                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-                  <span>3-Year Warranty</span>
-                </div>
-
-                <div className="absolute bottom-3 right-3 bg-amber-500 text-stone-950 px-3 py-1 rounded-xl font-bold text-[11px] uppercase tracking-wider shadow-sm">
-                  Laser Cut 3D Fit
-                </div>
-              </div>
-
-              {/* 3 Quick Features underneath visual */}
-              <div className="grid grid-cols-3 gap-2 mt-4 text-center">
-                <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200">
-                  <p className="text-stone-900 text-xs font-extrabold">100%</p>
-                  <p className="text-[10px] text-stone-500 font-medium">Waterproof</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200">
-                  <p className="text-stone-900 text-xs font-extrabold">UPF 50+</p>
-                  <p className="text-[10px] text-stone-500 font-medium">UV Deflect</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200">
-                  <p className="text-stone-900 text-xs font-extrabold">Spun Fleece</p>
-                  <p className="text-[10px] text-stone-500 font-medium">No Scratches</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
-        {/* Carousel indicator dots at bottom */}
-        <div className="flex items-center justify-center gap-2 pt-8">
-          {[0, 1, 2, 3, 4].map((dot) => (
+        {/* Previous Slide Arrow */}
+        <button
+          type="button"
+          onClick={handlePrev}
+          aria-label="Previous Slide"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        {/* Next Slide Arrow */}
+        <button
+          type="button"
+          onClick={handleNext}
+          aria-label="Next Slide"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        {/* Slide Indicator Dots */}
+        <div className="absolute bottom-5 sm:bottom-8 right-6 sm:right-12 z-20 flex items-center gap-2">
+          {HERO_SLIDES.map((_, idx) => (
             <button
-              key={dot}
-              onClick={() => setCurrentSlide(dot)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                currentSlide === dot ? 'bg-stone-900 w-6' : 'bg-stone-300'
+              key={idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`transition-all rounded-full h-2 cursor-pointer ${
+                idx === currentSlide
+                  ? 'w-8 bg-amber-400'
+                  : 'w-2 bg-white/40 hover:bg-white/70'
               }`}
-              aria-label={`Slide ${dot + 1}`}
             />
           ))}
         </div>

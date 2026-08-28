@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
-import AutoImageSlider from '../components/AutoImageSlider';
 import VehicleFinder from '../components/VehicleFinder';
 import ProductResult from '../components/ProductResult';
-import FeatureGrid from '../components/FeatureGrid';
 import ProductTypesSection from '../components/ProductTypesSection';
+import FeatureGrid from '../components/FeatureGrid';
 import OfferSection from '../components/OfferSection';
-import GalleryPreview from '../components/GalleryPreview';
 import Testimonials from '../components/Testimonials';
-import FinalCTA from '../components/FinalCTA';
 import ProductDetailModal from '../components/ProductDetailModal';
 import QuickOrderModal from '../components/QuickOrderModal';
 
@@ -47,7 +44,7 @@ export default function Home() {
   return (
     <div className="bg-[#fafaf9] text-stone-900 font-sans overflow-x-hidden">
       
-      {/* 1. Hero Section */}
+      {/* 1. Hero Slider with Overlaid Text */}
       <Hero
         onFindCoverClick={() => {
           const el = document.getElementById('vehicle-finder');
@@ -55,11 +52,8 @@ export default function Home() {
         }}
       />
 
-      {/* 2. Automated Image Slider */}
-      <AutoImageSlider />
-
-      {/* 3. Vehicle Cover Finder & Matching Product Result */}
-      <section className="py-6 sm:py-10 bg-[#fafaf9]">
+      {/* 2. Vehicle Cover Finder & Matching Product Result */}
+      <section className="py-8 sm:py-12 bg-[#fafaf9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <VehicleFinder
             onSelectResult={handleSelectResult}
@@ -76,31 +70,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Product Types (4 Cover tiers) */}
+      {/* 3. Product Types (4 Cover tiers) */}
       <ProductTypesSection
         onSelectCover={handleSelectCoverFromCards}
         onViewDetails={(cover) => setDetailModalCover(cover)}
       />
 
-      {/* 5. Core Product Features (6 Exact features) */}
+      {/* 4. Core Product Features (6 Exact features) */}
       <FeatureGrid />
 
-      {/* 6. Promotional Offers & Coupons */}
+      {/* 5. Promotional Offers & Coupons */}
       <OfferSection />
 
-      {/* 7. Fitment Gallery Preview */}
-      <GalleryPreview limit={6} showViewAll={true} />
-
-      {/* 8. Customer Reviews */}
+      {/* 6. Customer Reviews */}
       <Testimonials />
-
-      {/* 9. Final Call To Action */}
-      <FinalCTA
-        onFindCoverClick={() => {
-          const el = document.getElementById('vehicle-finder');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
 
       {/* Modals */}
       {detailModalCover && (

@@ -13,7 +13,6 @@ import {
   Compass 
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
-import FinalCTA from '../components/FinalCTA';
 
 export default function About() {
   return (
@@ -235,9 +234,6 @@ export default function About() {
 
         </div>
       </section>
-
-      {/* Final CTA */}
-      <FinalCTA />
 
     </div>
   );
