@@ -65,17 +65,17 @@ export default function QuickOrderModal({ result, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-sans"
+      className="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-sans"
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-2xl rounded-3xl bg-white border border-neutral-200 shadow-2xl p-6 sm:p-8 my-8 text-left max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-2xl rounded-3xl bg-white border border-stone-200/90 shadow-2xl p-6 sm:p-8 my-8 text-left max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-black transition-colors focus:outline-none"
+          className="absolute top-4 right-4 p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 transition-colors focus:outline-none cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -84,36 +84,36 @@ export default function QuickOrderModal({ result, onClose }) {
         {!isSuccess ? (
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="p-1.5 rounded-lg bg-black text-white">
+              <span className="p-2 rounded-xl bg-stone-900 text-amber-400 shadow-sm">
                 <ShoppingBag className="w-4 h-4" />
               </span>
-              <span className="text-xs font-black uppercase tracking-wider text-black">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-700">
                 Express Tailoring Order Request
               </span>
             </div>
 
-            <h2 className="text-2xl font-black text-black">
+            <h2 className="text-2xl font-black text-stone-950">
               Order Custom-Fitted Car Cover
             </h2>
 
             {/* Vehicle & Cover Summary */}
-            <div className="mt-4 p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-4 p-5 rounded-2xl bg-stone-50 border border-stone-200/90 flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-xs text-neutral-500 uppercase font-semibold">Selected Vehicle</p>
-                <p className="text-base font-bold text-black">
-                  {brand} {model} <span className="text-neutral-600">({year})</span>
+                <p className="text-xs text-stone-500 uppercase font-semibold">Selected Vehicle</p>
+                <p className="text-base font-bold text-stone-950">
+                  {brand} {model} <span className="text-stone-600 font-normal">({year})</span>
                 </p>
-                <p className="text-xs text-black font-bold mt-0.5">
+                <p className="text-xs text-amber-700 font-bold mt-0.5">
                   {coverType.name}
                 </p>
               </div>
 
               <div className="text-right">
-                <p className="text-xs text-neutral-500 uppercase font-semibold">Total Payable</p>
-                <p className="text-2xl font-black text-black">
+                <p className="text-xs text-stone-500 uppercase font-semibold">Total Payable</p>
+                <p className="text-2xl font-black text-stone-950">
                   ₹{calculatedPrice}
                 </p>
-                <span className="text-[11px] text-black font-bold">
+                <span className="text-[11px] text-emerald-700 font-bold">
                   Free Express Shipping Included
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function QuickOrderModal({ result, onClose }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
                 <div className="space-y-1.5">
-                  <label htmlFor="order-name" className="font-bold text-black uppercase tracking-wider block">
+                  <label htmlFor="order-name" className="font-bold text-stone-900 uppercase tracking-wider block">
                     Full Name *
                   </label>
                   <input
@@ -135,12 +135,12 @@ export default function QuickOrderModal({ result, onClose }) {
                     onChange={handleChange}
                     placeholder="e.g. Ankit Sharma"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-xl px-4 py-3 bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="order-phone" className="font-bold text-black uppercase tracking-wider block">
+                  <label htmlFor="order-phone" className="font-bold text-stone-900 uppercase tracking-wider block">
                     Phone Number (for Courier & WhatsApp) *
                   </label>
                   <input
@@ -153,14 +153,14 @@ export default function QuickOrderModal({ result, onClose }) {
                     pattern="[0-9]{10}"
                     title="Please enter 10 digit mobile number"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-xl px-4 py-3 bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
 
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="order-address" className="font-bold text-black uppercase tracking-wider block">
+                <label htmlFor="order-address" className="font-bold text-stone-900 uppercase tracking-wider block">
                   Delivery Address *
                 </label>
                 <textarea
@@ -171,13 +171,13 @@ export default function QuickOrderModal({ result, onClose }) {
                   rows={2}
                   placeholder="House/Flat No, Street, Landmark, Area"
                   required
-                  className="w-full text-xs sm:text-sm rounded-xl px-4 py-3 bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full text-xs sm:text-sm rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="order-pincode" className="font-bold text-black uppercase tracking-wider block">
+                  <label htmlFor="order-pincode" className="font-bold text-stone-900 uppercase tracking-wider block">
                     Pincode *
                   </label>
                   <input
@@ -189,12 +189,12 @@ export default function QuickOrderModal({ result, onClose }) {
                     placeholder="6-digit Pincode"
                     pattern="[0-9]{6}"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-xl px-4 py-3 bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="order-city" className="font-bold text-black uppercase tracking-wider block">
+                  <label htmlFor="order-city" className="font-bold text-stone-900 uppercase tracking-wider block">
                     City / State *
                   </label>
                   <input
@@ -205,21 +205,21 @@ export default function QuickOrderModal({ result, onClose }) {
                     onChange={handleChange}
                     placeholder="e.g. Bengaluru, Karnataka"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-xl px-4 py-3 bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
               </div>
 
               {/* Payment Method */}
               <div className="pt-2">
-                <label className="font-bold text-black uppercase tracking-wider block mb-2">
+                <label className="font-bold text-stone-900 uppercase tracking-wider block mb-2">
                   Payment Mode
                 </label>
                 <div className="grid grid-cols-2 gap-3">
-                  <label className={`p-3.5 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
+                  <label className={`p-4 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
                     formData.paymentMethod === 'cod'
-                      ? 'bg-black text-white border-black shadow-md ring-1 ring-black'
-                      : 'bg-neutral-50 border-neutral-200 text-neutral-700'
+                      ? 'bg-stone-950 text-white border-stone-950 shadow-md ring-1 ring-stone-950'
+                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:border-stone-300'
                   }`}>
                     <input
                       type="radio"
@@ -227,21 +227,21 @@ export default function QuickOrderModal({ result, onClose }) {
                       value="cod"
                       checked={formData.paymentMethod === 'cod'}
                       onChange={handleChange}
-                      className="text-black focus:ring-black"
+                      className="text-stone-950 focus:ring-stone-950"
                     />
                     <div className="text-left">
-                      <p className={`text-xs font-bold flex items-center gap-1 ${formData.paymentMethod === 'cod' ? 'text-white' : 'text-black'}`}>
+                      <p className={`text-xs font-bold flex items-center gap-1.5 ${formData.paymentMethod === 'cod' ? 'text-white' : 'text-stone-950'}`}>
                         <Banknote className="w-3.5 h-3.5" />
                         <span>Cash on Delivery</span>
                       </p>
-                      <p className={`text-[10px] ${formData.paymentMethod === 'cod' ? 'text-neutral-300' : 'text-neutral-500'}`}>Pay upon delivery</p>
+                      <p className={`text-[10px] ${formData.paymentMethod === 'cod' ? 'text-stone-300' : 'text-stone-500'}`}>Pay upon delivery</p>
                     </div>
                   </label>
 
-                  <label className={`p-3.5 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
+                  <label className={`p-4 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
                     formData.paymentMethod === 'upi'
-                      ? 'bg-black text-white border-black shadow-md ring-1 ring-black'
-                      : 'bg-neutral-50 border-neutral-200 text-neutral-700'
+                      ? 'bg-stone-950 text-white border-stone-950 shadow-md ring-1 ring-stone-950'
+                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:border-stone-300'
                   }`}>
                     <input
                       type="radio"
@@ -249,14 +249,14 @@ export default function QuickOrderModal({ result, onClose }) {
                       value="upi"
                       checked={formData.paymentMethod === 'upi'}
                       onChange={handleChange}
-                      className="text-black focus:ring-black"
+                      className="text-stone-950 focus:ring-stone-950"
                     />
                     <div className="text-left">
-                      <p className={`text-xs font-bold flex items-center gap-1 ${formData.paymentMethod === 'upi' ? 'text-white' : 'text-black'}`}>
+                      <p className={`text-xs font-bold flex items-center gap-1.5 ${formData.paymentMethod === 'upi' ? 'text-white' : 'text-stone-950'}`}>
                         <CreditCard className="w-3.5 h-3.5" />
                         <span>Prepaid UPI / Card</span>
                       </p>
-                      <p className={`text-[10px] ${formData.paymentMethod === 'upi' ? 'text-neutral-300' : 'text-neutral-500'}`}>Fast-track dispatch</p>
+                      <p className={`text-[10px] ${formData.paymentMethod === 'upi' ? 'text-stone-300' : 'text-stone-500'}`}>Fast-track dispatch</p>
                     </div>
                   </label>
                 </div>
@@ -267,7 +267,7 @@ export default function QuickOrderModal({ result, onClose }) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-xl bg-black hover:bg-neutral-800 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Submitting Order Request...</span>
@@ -284,38 +284,38 @@ export default function QuickOrderModal({ result, onClose }) {
         ) : (
           /* Success Screen */
           <div className="text-center py-6 space-y-5">
-            <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center mx-auto shadow-md">
-              <CheckCircle2 className="w-10 h-10" />
+            <div className="w-16 h-16 rounded-3xl bg-stone-900 text-white flex items-center justify-center mx-auto shadow-md">
+              <CheckCircle2 className="w-10 h-10 text-amber-400" />
             </div>
 
             <div>
-              <span className="text-xs uppercase tracking-wider font-black text-black">
+              <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
                 Order Request Received
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-black mt-1">
+              <h3 className="text-2xl sm:text-3xl font-black text-stone-950 mt-1">
                 Thank You, {formData.customerName}!
               </h3>
-              <p className="text-sm text-neutral-600 mt-1">
-                Your custom cover order reference is <span className="font-mono font-bold text-black bg-neutral-100 px-2 py-0.5 rounded border border-neutral-300">{orderNumber}</span>.
+              <p className="text-sm text-stone-600 mt-1">
+                Your custom cover order reference is <span className="font-mono font-bold text-stone-950 bg-stone-100 px-2.5 py-0.5 rounded-lg border border-stone-300">{orderNumber}</span>.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 text-xs text-left text-neutral-700 space-y-1.5 max-w-md mx-auto">
+            <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/90 text-xs text-left text-stone-700 space-y-2 max-w-md mx-auto">
               <div className="flex justify-between">
                 <span>Vehicle:</span>
-                <span className="font-bold text-black">{brand} {model} ({year})</span>
+                <span className="font-bold text-stone-950">{brand} {model} ({year})</span>
               </div>
               <div className="flex justify-between">
                 <span>Cover Type:</span>
-                <span className="font-bold text-black">{coverType.name}</span>
+                <span className="font-bold text-stone-950">{coverType.name}</span>
               </div>
               <div className="flex justify-between">
                 <span>Total Amount:</span>
-                <span className="font-bold text-black">₹{calculatedPrice}</span>
+                <span className="font-bold text-stone-950">₹{calculatedPrice}</span>
               </div>
               <div className="flex justify-between">
                 <span>Delivery:</span>
-                <span className="font-bold text-black">{formData.city} - {formData.pincode}</span>
+                <span className="font-bold text-stone-950">{formData.city} - {formData.pincode}</span>
               </div>
             </div>
 
@@ -324,7 +324,7 @@ export default function QuickOrderModal({ result, onClose }) {
                 href={getWhatsAppOrderConfirmationUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-black text-xs flex items-center justify-center gap-2 shadow"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
                 <span>Confirm on WhatsApp</span>
@@ -333,7 +333,7 @@ export default function QuickOrderModal({ result, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-black font-bold text-xs border border-neutral-300"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs border border-stone-300 cursor-pointer"
               >
                 Done
               </button>

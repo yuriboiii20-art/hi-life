@@ -30,61 +30,61 @@ export default function AnnouncementBar() {
   return (
     <div className="w-full relative z-40">
       
-      {/* 1. Top High-Contrast Countdown Strip */}
-      <div className="bg-white text-black py-2 px-4 font-sans text-xs font-bold border-b border-neutral-200">
+      {/* 1. Top Nordic Minimalist Countdown Strip */}
+      <div className="bg-[#1c1917] text-stone-200 py-2 px-4 font-sans text-xs font-semibold border-b border-stone-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-center">
           
-          <div className="flex items-center gap-1.5 uppercase tracking-wider text-xs sm:text-sm font-black text-black">
+          <div className="flex items-center gap-1.5 uppercase tracking-wider text-xs sm:text-sm font-black text-white">
             <span>MONSOON PROTECTION SALE</span>
-            <span className="text-[11px] font-bold text-neutral-500">ENDS IN:</span>
+            <span className="text-[11px] font-bold text-amber-400">ENDS IN:</span>
           </div>
 
           {/* Countdown Boxes */}
-          <div className="flex items-center gap-1.5 font-mono text-xs font-black text-black">
+          <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-stone-100">
             <div className="flex items-center gap-0.5">
-              <span className="bg-neutral-100 border border-neutral-300 px-2 py-0.5 rounded-md shadow-sm text-xs text-black font-black">
+              <span className="bg-stone-800/90 border border-stone-700 px-2 py-0.5 rounded-md shadow-sm text-xs text-stone-100 font-bold">
                 {formatNumber(timeLeft.days)}
               </span>
-              <span className="text-[10px] text-neutral-600 font-sans font-bold">Days</span>
+              <span className="text-[10px] text-stone-400 font-sans font-medium">Days</span>
             </div>
-            <span className="text-neutral-400 font-bold">:</span>
+            <span className="text-stone-500 font-bold">:</span>
 
             <div className="flex items-center gap-0.5">
-              <span className="bg-neutral-100 border border-neutral-300 px-2 py-0.5 rounded-md shadow-sm text-xs text-black font-black">
+              <span className="bg-stone-800/90 border border-stone-700 px-2 py-0.5 rounded-md shadow-sm text-xs text-stone-100 font-bold">
                 {formatNumber(timeLeft.hours)}
               </span>
-              <span className="text-[10px] text-neutral-600 font-sans font-bold">Hours</span>
+              <span className="text-[10px] text-stone-400 font-sans font-medium">Hours</span>
             </div>
-            <span className="text-neutral-400 font-bold">:</span>
+            <span className="text-stone-500 font-bold">:</span>
 
             <div className="flex items-center gap-0.5">
-              <span className="bg-neutral-100 border border-neutral-300 px-2 py-0.5 rounded-md shadow-sm text-xs text-black font-black">
+              <span className="bg-stone-800/90 border border-stone-700 px-2 py-0.5 rounded-md shadow-sm text-xs text-stone-100 font-bold">
                 {formatNumber(timeLeft.minutes)}
               </span>
-              <span className="text-[10px] text-neutral-600 font-sans font-bold">Mins</span>
+              <span className="text-[10px] text-stone-400 font-sans font-medium">Mins</span>
             </div>
-            <span className="text-neutral-400 font-bold">:</span>
+            <span className="text-stone-500 font-bold">:</span>
 
             <div className="flex items-center gap-0.5">
-              <span className="bg-neutral-100 border border-neutral-300 px-2 py-0.5 rounded-md shadow-sm text-xs text-black font-black">
+              <span className="bg-stone-800/90 border border-stone-700 px-2 py-0.5 rounded-md shadow-sm text-xs text-stone-100 font-bold">
                 {formatNumber(timeLeft.seconds)}
               </span>
-              <span className="text-[10px] text-neutral-600 font-sans font-bold">Secs</span>
+              <span className="text-[10px] text-stone-400 font-sans font-medium">Secs</span>
             </div>
           </div>
 
           {/* Hurry Badge */}
-          <span className="inline-flex items-center gap-1 bg-black text-white text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full shadow-sm">
-            <Zap className="w-2.5 h-2.5 fill-white text-white" />
+          <span className="inline-flex items-center gap-1 bg-amber-500 text-stone-950 text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full shadow-sm">
+            <Zap className="w-2.5 h-2.5 fill-stone-950 text-stone-950" />
             <span>HURRY!</span>
           </span>
 
         </div>
       </div>
 
-      {/* 2. High-Contrast Scrolling Notice Strip */}
-      <div className="bg-[#f1f5f9] text-black py-1.5 text-xs font-bold overflow-hidden relative border-b border-neutral-200">
-        <div className="animate-marquee-infinite text-[11px] sm:text-xs tracking-wide text-neutral-900 font-bold">
+      {/* 2. Warm Stone Notice Marquee */}
+      <div className="bg-[#f5f5f4] text-stone-700 py-1.5 text-xs font-semibold overflow-hidden relative border-b border-stone-200/80">
+        <div className="animate-marquee-infinite text-[11px] sm:text-xs tracking-wide font-semibold text-stone-800">
           <span className="mx-4">{marqueeText}</span>
           <span className="mx-4">{marqueeText}</span>
         </div>

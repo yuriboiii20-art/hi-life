@@ -4,31 +4,31 @@
 
 @layer base {
   body {
-    @apply bg-[#f8fafc] text-neutral-800 font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white;
+    @apply bg-[#fafaf9] text-stone-800 font-sans antialiased overflow-x-hidden selection:bg-stone-900 selection:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-black;
+    @apply font-display tracking-tight text-stone-900;
   }
 }
 
-/* Custom light scrollbar */
+/* Custom warm stone scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f5f5f4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
+  background: #d6d3d1;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+  background: #78716c;
 }
 
 /* Animation utilities */
@@ -47,15 +47,20 @@
   animation-play-state: paused;
 }
 
-/* Clean light card styles */
+/* Nordic minimal card styles */
+.nordic-card {
+  @apply bg-white rounded-3xl border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] hover:shadow-[0_12px_32px_-4px_rgba(28,25,23,0.09)] hover:border-stone-400 transition-all duration-300;
+}
+
 .light-card {
-  @apply bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md hover:border-neutral-400 transition-all duration-200;
+  @apply bg-white rounded-2xl border border-stone-200/90 shadow-sm hover:shadow-md hover:border-stone-300 transition-all duration-200;
 }
 
-.navy-gradient {
-  background: linear-gradient(135deg, #0a0a0a 0%, #171717 100%);
+.warm-hero-gradient {
+  background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f7f5f0 60%, #eeebe4 100%);
 }
 
-.cyan-gradient {
-  background: linear-gradient(135deg, #262626 0%, #000000 100%);
+.charcoal-gradient {
+  background: linear-gradient(145deg, #1c1917 0%, #0c0a09 100%);
 }
+

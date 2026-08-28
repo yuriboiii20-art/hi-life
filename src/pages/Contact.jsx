@@ -39,12 +39,12 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-[#f8fafc] text-neutral-800 font-sans min-h-screen">
+    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
       {/* Header Banner */}
-      <section className="relative py-14 lg:py-18 bg-black text-white border-b border-neutral-800 text-center">
+      <section className="relative py-14 lg:py-20 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 text-white border-b border-stone-800 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
             <PhoneCall className="w-3.5 h-3.5" />
             <span>Customer Assistance</span>
           </div>
@@ -53,54 +53,54 @@ export default function Contact() {
             Contact Hi-Life Support
           </h1>
 
-          <p className="text-sm sm:text-base text-neutral-300 mt-2 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-stone-300 mt-2 leading-relaxed font-normal">
             Need custom fitting advice, delivery assistance, or order status? Reach out via form or instant WhatsApp.
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-12 sm:py-16 bg-[#f8fafc] border-b border-neutral-200">
+      <section className="py-12 sm:py-16 bg-[#fafaf9] border-b border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ContactForm />
         </div>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-14 sm:py-18 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-2 mb-8">
-            <span className="text-xs font-black uppercase tracking-wider text-black flex items-center justify-center gap-1.5">
-              <HelpCircle className="w-4 h-4" />
+          <div className="text-center space-y-2 mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center justify-center gap-1.5">
+              <HelpCircle className="w-4 h-4 text-amber-600" />
               <span>Common Inquiries</span>
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-black">
+            <h2 className="text-2xl sm:text-3xl font-black text-stone-950">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {faqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-neutral-50 border border-neutral-200 overflow-hidden transition-all"
+                  className="rounded-3xl bg-stone-50 border border-stone-200/90 overflow-hidden transition-all shadow-[0_2px_10px_-2px_rgba(28,25,23,0.03)]"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-black hover:text-neutral-600 transition-colors"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-stone-900 hover:text-stone-950 transition-colors cursor-pointer"
                   >
-                    <span className="text-sm sm:text-base">{faq.question}</span>
-                    <ChevronDown className={`w-5 h-5 text-black shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-black' : ''
+                    <span className="text-sm sm:text-base font-bold">{faq.question}</span>
+                    <ChevronDown className={`w-5 h-5 text-stone-700 shrink-0 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-stone-950' : ''
                     }`} />
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-neutral-600 border-t border-neutral-200 pt-3 leading-relaxed font-normal">
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-stone-600 border-t border-stone-200 pt-3.5 leading-relaxed font-normal">
                       {faq.answer}
                     </div>
                   )}
