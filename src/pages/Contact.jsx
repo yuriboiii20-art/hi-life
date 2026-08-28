@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { 
   PhoneCall, 
   HelpCircle, 
-  ChevronDown, 
-  ShieldCheck, 
-  MessageCircle, 
-  Truck, 
-  Clock, 
-  RotateCcw 
+  ChevronDown 
 } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import { BUSINESS_CONFIG } from '../config/business';
@@ -41,66 +36,66 @@ export default function Contact() {
   return (
     <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
-      {/* Header Banner */}
-      <section className="relative py-14 lg:py-20 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 text-white border-b border-stone-800 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
-            <PhoneCall className="w-3.5 h-3.5" />
+      {/* Compact Header Banner */}
+      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-stone-200 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+            <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
             <span>Customer Assistance</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
             Contact Hi-Life Support
           </h1>
 
-          <p className="text-sm sm:text-base text-stone-300 mt-2 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm text-stone-300 mt-2 max-w-xl mx-auto leading-relaxed font-normal">
             Need custom fitting advice, delivery assistance, or order status? Reach out via form or instant WhatsApp.
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-12 sm:py-16 bg-[#fafaf9] border-b border-stone-200/90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-10 bg-[#fafaf9] border-b border-stone-200/90">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <ContactForm />
         </div>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-14 sm:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           
-          <div className="text-center space-y-2 mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center justify-center gap-1.5">
-              <HelpCircle className="w-4 h-4 text-amber-600" />
+          <div className="text-center space-y-1 mb-6">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center justify-center gap-1">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-600" />
               <span>Common Inquiries</span>
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-stone-950">
+            <h2 className="text-xl sm:text-2xl font-black text-stone-950">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="space-y-3.5">
+          <div className="space-y-2">
             {faqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div
                   key={idx}
-                  className="rounded-3xl bg-stone-50 border border-stone-200/90 overflow-hidden transition-all shadow-[0_2px_10px_-2px_rgba(28,25,23,0.03)]"
+                  className="rounded-xl bg-stone-50 border border-stone-200/90 overflow-hidden transition-all"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-stone-900 hover:text-stone-950 transition-colors cursor-pointer"
+                    className="w-full p-3.5 text-left flex items-center justify-between gap-3 font-bold text-stone-900 hover:text-stone-950 transition-colors cursor-pointer text-xs sm:text-sm"
                   >
-                    <span className="text-sm sm:text-base font-bold">{faq.question}</span>
-                    <ChevronDown className={`w-5 h-5 text-stone-700 shrink-0 transition-transform duration-200 ${
+                    <span>{faq.question}</span>
+                    <ChevronDown className={`w-4 h-4 text-stone-600 shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180 text-stone-950' : ''
                     }`} />
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-stone-600 border-t border-stone-200 pt-3.5 leading-relaxed font-normal">
+                    <div className="px-3.5 pb-3.5 text-xs text-stone-600 font-normal leading-relaxed border-t border-stone-100 pt-2.5">
                       {faq.answer}
                     </div>
                   )}

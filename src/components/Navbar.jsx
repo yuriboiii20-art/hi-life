@@ -298,68 +298,134 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 3. Mobile Drawer Menu */}
+      {/* 3. Mobile Left Slide-out Drawer with Background Blur */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-stone-200 px-4 py-4 space-y-3 text-sm shadow-xl font-medium">
-          <div className="flex items-center gap-3 pb-3 border-b border-stone-100">
-            <img src="/logo.png" alt="Hi-Life Logo" className="h-11 w-auto object-contain" />
-          </div>
+        <div className="fixed inset-0 z-50 md:hidden">
+          
+          {/* Blurred Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
 
-          {/* Mobile Links */}
-          <Link to="/" className="block py-2 text-stone-800 font-bold uppercase tracking-wide border-b border-stone-100">
-            HOME
-          </Link>
-          <Link to="/about" className="block py-2 text-stone-800 font-bold uppercase tracking-wide border-b border-stone-100">
-            About Us
-          </Link>
-
-          {/* Mobile Products Menu */}
-          <div className="py-2 border-b border-stone-100 space-y-1.5">
-            <Link 
-              to="/products" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-stone-900 uppercase tracking-wide py-1"
-            >
-              Products
-            </Link>
-            <div className="pl-3 space-y-1 text-xs text-stone-700">
-              {COVER_TYPES.map((cov) => (
-                <Link
-                  key={cov.id}
-                  to={`/products?category=${cov.id}`}
+          {/* Left-Side Partial Drawer (Covers ~70% screen on mobile) */}
+          <div 
+            className="fixed inset-y-0 left-0 z-50 w-[75%] max-w-xs bg-white shadow-2xl flex flex-col justify-between p-4 overflow-y-auto transform transition-transform duration-300 animate-slideInLeft"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              {/* Drawer Header with Single Clean Logo & Close button */}
+              <div className="flex items-center justify-between pb-3 mb-2 border-b border-stone-100">
+                <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain" />
+                <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-1.5 text-stone-700 hover:text-stone-950 font-medium"
+                  type="button"
+                  aria-label="Close menu"
+                  className="p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 transition-colors cursor-pointer"
                 >
-                  <span>{cov.name}</span>
-                  <span className="text-[11px] font-bold text-stone-900">₹{cov.basePrice}</span>
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="space-y-1 py-1 font-medium text-xs">
+                
+                <Link 
+                  to="/" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Home
                 </Link>
-              ))}
-              <button
-                onClick={handleFinderScroll}
-                className="w-full text-left py-2 mt-1 text-xs font-bold text-stone-900 underline"
-              >
-                Match Your Car Model →
-              </button>
+
+                <Link 
+                  to="/about" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/about' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  About Us
+                </Link>
+
+                {/* Products Section */}
+                <div className="py-1 border-y border-stone-100 my-1 space-y-1">
+                  <div className="flex items-center justify-between px-2.5 py-1.5">
+                    <span className="font-bold text-stone-900 uppercase tracking-wider">
+                      Products
+                    </span>
+                    <Link 
+                      to="/products"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-[11px] font-bold text-stone-500 hover:text-stone-950 underline"
+                    >
+                      All
+                    </Link>
+                  </div>
+                  
+                  <div className="space-y-0.5 pl-2">
+                    {COVER_TYPES.map((cov) => (
+                      <Link
+                        key={cov.id}
+                        to={`/products?category=${cov.id}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center justify-between py-1 px-2 rounded-lg text-stone-700 hover:bg-stone-100 text-[11px] font-medium transition-colors"
+                      >
+                        <span className="truncate">{cov.name}</span>
+                        <span className="font-bold text-stone-900 ml-1">₹{cov.basePrice}</span>
+                      </Link>
+                    ))}
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleFinderScroll();
+                      }}
+                      className="w-full text-left py-1.5 px-2 mt-0.5 text-[11px] font-bold text-amber-800 hover:underline"
+                    >
+                      Match Car Model →
+                    </button>
+                  </div>
+                </div>
+
+                <Link 
+                  to="/gallery" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/gallery' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Gallery
+                </Link>
+
+                <Link 
+                  to="/contact" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/contact' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Contact
+                </Link>
+
+              </nav>
             </div>
-          </div>
 
-          <Link to="/gallery" className="block py-2 text-stone-800 font-bold uppercase tracking-wide border-b border-stone-100">
-            Gallery
-          </Link>
-          <Link to="/contact" className="block py-2 text-stone-800 font-bold uppercase tracking-wide border-b border-stone-100">
-            Contact
-          </Link>
+            {/* Bottom Actions */}
+            <div className="pt-3 border-t border-stone-100 space-y-2">
+              <a
+                href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-3 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25d366]" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
 
-          <div className="pt-2 flex flex-col gap-2">
-            <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
-            >
-              <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
-              <span>Chat on WhatsApp</span>
-            </a>
           </div>
         </div>
       )}

@@ -82,13 +82,13 @@ export default function Products() {
     <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
       {/* Header Banner - Clean & Minimal */}
-      <section className="relative py-12 lg:py-16 bg-stone-950 text-white border-b border-stone-800 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-2">
+      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">
             Hi-Life Catalogue
           </span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
             Protective Car Covers
           </h1>
 

@@ -60,6 +60,19 @@
   background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f7f5f0 60%, #eeebe4 100%);
 }
 
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .charcoal-gradient {
   background: linear-gradient(145deg, #1c1917 0%, #0c0a09 100%);
 }
