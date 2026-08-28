@@ -75,17 +75,19 @@ export default function Footer() {
           
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="flex flex-col gap-0.5 mr-1 text-[#47c7f1]">
-                <span className="h-[2px] w-4 bg-[#47c7f1] rounded-full"></span>
-                <span className="h-[2px] w-6 bg-white rounded-full"></span>
-                <span className="h-[2px] w-3 bg-[#f97316] rounded-full"></span>
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="bg-white/95 p-1.5 rounded-xl shadow-md border border-white/20 flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
+                <img 
+                  src="/logo.png" 
+                  alt="Hi-Life Logo" 
+                  className="h-10 sm:h-12 w-auto object-contain"
+                />
               </div>
               <div>
-                <span className="font-display text-2xl font-black italic tracking-tighter text-white uppercase">
+                <span className="font-display text-2xl font-black italic tracking-tighter text-white uppercase block leading-none">
                   HI<span className="text-[#47c7f1]">-</span>LIFE
                 </span>
-                <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 block -mt-1">
+                <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 block mt-1">
                   Protective Car Covers
                 </span>
               </div>
