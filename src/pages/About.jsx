@@ -21,7 +21,15 @@ export default function About() {
       
       {/* Hero Banner */}
       <section className="relative py-16 lg:py-24 bg-gradient-to-r from-[#101744] via-[#19277c] to-[#16215b] text-white border-b border-[#243599] text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl flex flex-col items-center">
+          <div className="mb-6 bg-white/95 p-3 rounded-2xl shadow-xl border border-white/20 inline-block">
+            <img 
+              src="/logo.png" 
+              alt="Hi-Life Official Brand Logo" 
+              className="h-20 sm:h-24 w-auto object-contain"
+            />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#47c7f1] text-xs font-extrabold uppercase tracking-wider mb-4">
             <Shield className="w-3.5 h-3.5" />
             <span>Our Brand Purpose</span>

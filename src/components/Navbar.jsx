@@ -58,23 +58,22 @@ export default function Navbar() {
       <div className="bg-[#19277c] text-white py-3.5 px-4 sm:px-6 lg:px-8 border-b border-[#243599]">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
-          {/* Brand Logo / Wordmark with Speed Wing */}
-          <Link to="/" className="flex items-center gap-2 group shrink-0 focus:outline-none">
-            <div className="relative flex items-center">
-              {/* Dynamic Speed Lines */}
-              <div className="flex flex-col gap-0.5 mr-1 text-[#47c7f1]">
-                <span className="h-[2px] w-4 bg-[#47c7f1] rounded-full transform -skew-x-12"></span>
-                <span className="h-[2.5px] w-6 bg-white rounded-full transform -skew-x-12"></span>
-                <span className="h-[2px] w-3 bg-[#f97316] rounded-full transform -skew-x-12"></span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-2xl sm:text-3xl font-black italic tracking-tighter text-white uppercase leading-none">
-                  HI<span className="text-[#47c7f1]">-</span>LIFE
-                </span>
-                <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 -mt-0.5">
-                  Car Covers
-                </span>
-              </div>
+          {/* Brand Logo / Wordmark with Official Hi-Life Logo */}
+          <Link to="/" className="flex items-center gap-2.5 group shrink-0 focus:outline-none">
+            <div className="bg-white/95 rounded-lg p-1 sm:p-1.5 shadow-sm border border-white/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <img 
+                src="/logo.png" 
+                alt="Hi-Life Car Covers Logo" 
+                className="h-8 sm:h-10 w-auto object-contain"
+              />
+            </div>
+            <div className="hidden min-[400px]:flex flex-col">
+              <span className="font-display text-xl sm:text-2xl font-black italic tracking-tighter text-white uppercase leading-none">
+                HI<span className="text-[#47c7f1]">-</span>LIFE
+              </span>
+              <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 -mt-0.5">
+                Car Covers
+              </span>
             </div>
           </Link>
 
@@ -292,6 +291,17 @@ export default function Navbar() {
       {/* 3. Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 text-sm shadow-xl font-medium">
+          <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain bg-slate-50 p-1 rounded-lg border border-slate-200" />
+            <div>
+              <span className="font-display text-lg font-black italic text-[#19277c] block leading-none">
+                HI-LIFE
+              </span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                Automotive Covers
+              </span>
+            </div>
+          </div>
           <Link to="/" className="block py-2 text-slate-800 border-b border-slate-100">
             Home
           </Link>

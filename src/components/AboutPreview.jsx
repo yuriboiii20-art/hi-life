@@ -74,11 +74,16 @@ export default function AboutPreview() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#19277c] text-white">
-                <p className="text-[10px] uppercase tracking-widest text-[#47c7f1] font-extrabold">
-                  Brand Creed
-                </p>
-                <p className="text-xl font-black text-white mt-1">
+              <div className="p-5 rounded-xl bg-[#19277c] text-white">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <span className="text-[10px] uppercase tracking-widest text-[#47c7f1] font-extrabold">
+                    Brand Creed
+                  </span>
+                  <div className="bg-white/95 p-1 rounded-lg">
+                    <img src="/logo.png" alt="Hi-Life Logo" className="h-7 w-auto object-contain" />
+                  </div>
+                </div>
+                <p className="text-xl font-black text-white">
                   “{BUSINESS_CONFIG.tagline}”
                 </p>
                 <p className="text-xs text-slate-200 mt-2 leading-relaxed font-normal">
