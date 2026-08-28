@@ -3,8 +3,6 @@ import Hero from '../components/Hero';
 import VehicleFinder from '../components/VehicleFinder';
 import ProductResult from '../components/ProductResult';
 import ProductTypesSection from '../components/ProductTypesSection';
-import FeatureGrid from '../components/FeatureGrid';
-import OfferSection from '../components/OfferSection';
 import Testimonials from '../components/Testimonials';
 import ProductDetailModal from '../components/ProductDetailModal';
 import QuickOrderModal from '../components/QuickOrderModal';
@@ -76,13 +74,7 @@ export default function Home() {
         onViewDetails={(cover) => setDetailModalCover(cover)}
       />
 
-      {/* 4. Core Product Features (6 Exact features) */}
-      <FeatureGrid />
-
-      {/* 5. Promotional Offers & Coupons */}
-      <OfferSection />
-
-      {/* 6. Customer Reviews */}
+      {/* 4. Customer Reviews */}
       <Testimonials />
 
       {/* Modals */}

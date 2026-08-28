@@ -341,17 +341,9 @@ export default function Navbar() {
                       </div>
 
                       {/* Step 5: Offers */}
-                      <a 
-                        href="#offers-section"
-                        onClick={(e) => {
-                          setActiveDropdown(null);
-                          if (location.pathname === '/') {
-                            e.preventDefault();
-                            document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
-                          } else {
-                            navigate('/#offers-section');
-                          }
-                        }}
+                      <Link 
+                        to="/products"
+                        onClick={() => setActiveDropdown(null)}
                         className="p-2.5 rounded-2xl bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 cursor-pointer transition-all flex items-center justify-between group shadow-sm"
                       >
                         <div className="flex items-center gap-3">
@@ -369,14 +361,14 @@ export default function Navbar() {
                               </span>
                             </div>
                             <p className="text-[11px] text-stone-600 font-medium">
-                              Instant coupon savings: Use FESTIVE500 & HILIFE300 at checkout
+                              Instant coupon savings and seasonal discounts applied on all orders
                             </p>
                           </div>
                         </div>
                         <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-200 text-amber-900 px-2 py-0.5 rounded-md font-black">
                           Step 5
                         </span>
-                      </a>
+                      </Link>
 
                     </div>
 
@@ -474,22 +466,14 @@ export default function Navbar() {
                 <span>➡️</span>
                 <span>select cover types</span>
               </Link>
-              <a 
-                href="#offers-section"
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  if (location.pathname === '/') {
-                    e.preventDefault();
-                    document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    navigate('/#offers-section');
-                  }
-                }}
+              <Link 
+                to="/products"
+                onClick={() => setMobileMenuOpen(false)}
                 className="block py-1.5 px-2.5 rounded-xl bg-amber-50 text-amber-900 font-bold flex items-center gap-2"
               >
                 <span>➡️</span>
                 <span>offers</span>
-              </a>
+              </Link>
             </div>
           </div>
 
