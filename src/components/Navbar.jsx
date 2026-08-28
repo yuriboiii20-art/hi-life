@@ -13,7 +13,8 @@ import {
   Percent, 
   Car, 
   HelpCircle,
-  Truck
+  Truck,
+  ArrowRight
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { CAR_BRANDS } from '../data/vehicles';
@@ -52,89 +53,81 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 shadow-md font-sans">
+    <header className="sticky top-0 z-50 shadow-sm font-sans bg-white">
       
-      {/* 1. Main Header (Deep Navy Blue #19277c matching Reference Screenshot) */}
-      <div className="bg-[#19277c] text-white py-3.5 px-4 sm:px-6 lg:px-8 border-b border-[#243599]">
+      {/* 1. Main Header (Nordic Minimalist Crisp White) */}
+      <div className="bg-white text-stone-900 py-3 px-4 sm:px-6 lg:px-8 border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
-          {/* Brand Logo / Wordmark with Official Hi-Life Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0 focus:outline-none">
-            <div className="bg-white/95 rounded-lg p-1 sm:p-1.5 shadow-sm border border-white/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
-              <img 
-                src="/logo.png" 
-                alt="Hi-Life Car Covers Logo" 
-                className="h-8 sm:h-10 w-auto object-contain"
-              />
-            </div>
-            <div className="hidden min-[400px]:flex flex-col">
-              <span className="font-display text-xl sm:text-2xl font-black italic tracking-tighter text-white uppercase leading-none">
-                HI<span className="text-[#47c7f1]">-</span>LIFE
-              </span>
-              <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 -mt-0.5">
-                Car Covers
-              </span>
-            </div>
+          {/* Brand Logo with Official Hi-Life Logo */}
+          <Link to="/" className="flex items-center group shrink-0 focus:outline-none py-0.5">
+            <img 
+              src="/logo.png" 
+              alt="Hi-Life Automotive Car Covers" 
+              className="h-11 sm:h-12 md:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            />
           </Link>
 
-          {/* Central Search Bar (White Bar + Cyan Search Button) */}
+          {/* Central Search Bar (Warm Stone Input + Charcoal Button) */}
           <form 
             onSubmit={handleSearchSubmit} 
-            className="hidden md:flex flex-1 max-w-2xl mx-4 items-center rounded-lg overflow-hidden bg-white shadow-sm"
+            className="hidden md:flex flex-1 max-w-2xl mx-4 items-center rounded-2xl overflow-hidden bg-stone-50 shadow-sm border border-stone-300 focus-within:border-stone-800 transition-colors"
           >
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by car model (e.g. Swift, Nexon, Creta) or cover type..."
-              className="w-full px-4 py-2.5 text-sm text-slate-800 focus:outline-none placeholder:text-slate-400"
+              className="w-full px-4 py-2.5 text-sm bg-transparent text-stone-900 focus:outline-none placeholder:text-stone-400 font-medium"
             />
             <button
               type="submit"
-              className="bg-[#47c7f1] hover:bg-[#38b9e4] text-[#0f174a] px-5 py-2.5 flex items-center justify-center transition-colors shrink-0"
+              className="bg-stone-900 hover:bg-black text-white px-5 py-2.5 flex items-center justify-center transition-colors shrink-0"
               aria-label="Search"
             >
-              <Search className="w-5 h-5 stroke-[2.5]" />
+              <Search className="w-4 h-4 stroke-[2.5]" />
             </button>
           </form>
 
-          {/* Right User Actions: Account & Cart */}
-          <div className="flex items-center gap-3 sm:gap-5 shrink-0">
+          {/* Right User Actions: Support & Cart */}
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             
-            {/* Account / Support */}
+            {/* Help Desk */}
             <Link
               to="/contact"
-              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-slate-200 hover:text-white transition-colors"
+              className="hidden lg:flex items-center gap-2 text-xs font-semibold text-stone-600 hover:text-stone-950 transition-colors"
             >
-              <User className="w-5 h-5 text-[#47c7f1]" />
+              <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800">
+                <User className="w-4 h-4" />
+              </div>
               <div className="text-left leading-tight hidden xl:block">
-                <p className="text-[10px] text-slate-300">Support</p>
-                <p className="font-bold text-white">Help Desk</p>
+                <p className="text-[10px] text-stone-400 font-medium">Support</p>
+                <p className="font-bold text-stone-900">Help Desk</p>
               </div>
             </Link>
 
-            {/* Shopping Cart Pill */}
+            {/* Shopping Cart Button */}
             <button
               onClick={handleFinderScroll}
-              className="flex items-center gap-2 text-white hover:text-[#47c7f1] transition-colors p-1.5 focus:outline-none"
+              className="flex items-center gap-2 text-stone-800 hover:text-stone-950 transition-colors p-2 rounded-xl hover:bg-stone-100 focus:outline-none"
               title="Cart & Vehicle Matcher"
             >
               <div className="relative">
-                <ShoppingBag className="w-6 h-6 text-white" />
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#f97316] text-white text-[10px] font-black flex items-center justify-center">
+                <ShoppingBag className="w-5 h-5 text-stone-800" />
+                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-amber-500 text-stone-950 text-[10px] font-black flex items-center justify-center shadow-sm">
                   0
                 </span>
               </div>
-              <span className="text-sm font-bold hidden sm:inline">Cart</span>
+              <span className="text-xs font-bold hidden sm:inline text-stone-800">Cart</span>
             </button>
 
-            {/* Mobile Hamburger Menu Toggle */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus:outline-none"
+              className="md:hidden p-2 rounded-xl bg-stone-100 text-stone-900 hover:bg-stone-200 border border-stone-200 focus:outline-none"
               aria-label="Toggle navigation"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
           </div>
@@ -142,17 +135,17 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Search Bar */}
-        <form onSubmit={handleSearchSubmit} className="mt-3 flex md:hidden w-full rounded-lg overflow-hidden bg-white shadow-sm">
+        <form onSubmit={handleSearchSubmit} className="mt-3 flex md:hidden w-full rounded-xl overflow-hidden bg-stone-50 shadow-sm border border-stone-300">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search car model (e.g. Swift, Nexon, Creta)..."
-            className="w-full px-3 py-2 text-xs text-slate-800 focus:outline-none"
+            className="w-full px-3.5 py-2 text-xs text-stone-900 bg-transparent focus:outline-none"
           />
           <button
             type="submit"
-            className="bg-[#47c7f1] text-[#0f174a] px-3.5 py-2 flex items-center justify-center"
+            className="bg-stone-900 text-white px-4 py-2 flex items-center justify-center"
           >
             <Search className="w-4 h-4 stroke-[2.5]" />
           </button>
@@ -160,116 +153,133 @@ export default function Navbar() {
 
       </div>
 
-      {/* 2. Sub-Navigation Bar (Pure White Background matching Reference Screenshot) */}
-      <div className="bg-white text-slate-700 border-b border-slate-200 hidden md:block">
+      {/* 2. Sub-Navigation Bar (Warm Stone Alabaster Strip) */}
+      <div className="bg-[#fafaf9] text-stone-800 border-b border-stone-200/80 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between text-xs font-semibold tracking-wide">
             
             {/* Left Nav Links */}
-            <nav className="flex items-center space-x-1 lg:space-x-2 py-2.5">
+            <nav className="flex items-center space-x-1 py-2">
               
-              <Link to="/" className="px-3 py-1.5 rounded hover:text-[#19277c] hover:bg-slate-50 transition-colors">
-                Home
-              </Link>
-
-              {/* Shop by Category Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('category')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors">
-                  <span>Shop by Category</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-                </button>
-
-                {activeDropdown === 'category' && (
-                  <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-fadeIn">
-                    {COVER_TYPES.map((cov) => (
-                      <Link
-                        key={cov.id}
-                        to={`/products?category=${cov.id}`}
-                        className="block px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 hover:text-[#19277c]"
-                      >
-                        <p className="font-bold">{cov.name}</p>
-                        <p className="text-[10px] text-slate-400">{cov.tagline}</p>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Shop by Brand Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('brand')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors">
-                  <span>Shop by Brand</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-                </button>
-
-                {activeDropdown === 'brand' && (
-                  <div className="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-200 p-3 grid grid-cols-2 gap-1 z-50 animate-fadeIn">
-                    {CAR_BRANDS.slice(0, 10).map((b) => (
-                      <Link
-                        key={b.id}
-                        to={`/products?brand=${b.id}`}
-                        className="p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-50 hover:text-[#19277c] font-medium"
-                      >
-                        {b.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Shop by Vehicle Selector */}
-              <button
-                onClick={handleFinderScroll}
-                className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors"
-              >
-                <Car className="w-3.5 h-3.5 text-[#19277c]" />
-                <span>Shop by Vehicle</span>
-              </button>
-
-              {/* Best Sellers (Orange / Coral Pill Badge) */}
+              {/* HOME */}
               <Link 
-                to="/products?filter=bestsellers" 
-                className="px-3 py-1 rounded-md bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold flex items-center gap-1 shadow-sm transition-colors"
+                to="/" 
+                className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all ${
+                  location.pathname === '/' 
+                    ? 'text-white bg-stone-900 font-extrabold shadow-sm' 
+                    : 'text-stone-700 hover:text-stone-950 hover:bg-stone-200/60'
+                }`}
               >
-                <Flame className="w-3.5 h-3.5" />
-                <span>Best Sellers</span>
+                HOME
               </Link>
 
-              <Link to="/about" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
-                Information
+              {/* About Us */}
+              <Link 
+                to="/about" 
+                className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all ${
+                  location.pathname === '/about' 
+                    ? 'text-white bg-stone-900 font-extrabold shadow-sm' 
+                    : 'text-stone-700 hover:text-stone-950 hover:bg-stone-200/60'
+                }`}
+              >
+                About Us
               </Link>
 
-              <Link to="/gallery" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
+              {/* Products (Hover Dropdown) */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('products')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  to="/products"
+                  className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all ${
+                    location.pathname.startsWith('/products') 
+                      ? 'text-white bg-stone-900 font-extrabold shadow-sm' 
+                      : 'text-stone-700 hover:text-stone-950 hover:bg-stone-200/60'
+                  }`}
+                >
+                  <span>Products</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-stone-950' : 'text-stone-400'}`} />
+                </Link>
+
+                {/* Sleek Minimalist Products Dropdown */}
+                {activeDropdown === 'products' && (
+                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-stone-200/90 p-3 z-50 animate-fadeIn">
+                    
+                    <div className="px-2 py-1.5 border-b border-stone-100 mb-1.5 flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                        Cover Grades
+                      </span>
+                      <Link 
+                        to="/products"
+                        onClick={() => setActiveDropdown(null)}
+                        className="text-[11px] font-bold text-stone-900 hover:text-amber-700 underline"
+                      >
+                        All Covers
+                      </Link>
+                    </div>
+
+                    <div className="space-y-1">
+                      {COVER_TYPES.map((cov) => (
+                        <Link
+                          key={cov.id}
+                          to={`/products?category=${cov.id}`}
+                          onClick={() => setActiveDropdown(null)}
+                          className="flex items-center justify-between p-2 rounded-xl hover:bg-stone-100 transition-colors text-xs font-semibold text-stone-900 group"
+                        >
+                          <div>
+                            <p className="font-bold text-stone-950 group-hover:text-amber-800 transition-colors">
+                              {cov.name}
+                            </p>
+                            <p className="text-[10px] text-stone-500 font-normal">
+                              {cov.tagline.split('&')[0]}
+                            </p>
+                          </div>
+                          <span className="text-xs font-black text-stone-950 bg-stone-100 group-hover:bg-stone-200 px-2 py-0.5 rounded-lg shrink-0">
+                            ₹{cov.basePrice}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+
+                    <div className="pt-2 mt-2 border-t border-stone-100">
+                      <button
+                        onClick={handleFinderScroll}
+                        type="button"
+                        className="w-full py-2 px-3 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold text-center transition-all cursor-pointer"
+                      >
+                        Match Your Car Model
+                      </button>
+                    </div>
+
+                  </div>
+                )}
+              </div>
+
+              {/* Gallery */}
+              <Link 
+                to="/gallery" 
+                className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all ${
+                  location.pathname === '/gallery' 
+                    ? 'text-white bg-stone-900 font-extrabold shadow-sm' 
+                    : 'text-stone-700 hover:text-stone-950 hover:bg-stone-200/60'
+                }`}
+              >
                 Gallery
               </Link>
 
-              <Link to="/contact" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
-                Contact Us
-              </Link>
-
-              {/* Deals (Red Pill Badge) */}
-              <a
-                href="#offers-section"
-                onClick={(e) => {
-                  if (location.pathname === '/') {
-                    e.preventDefault();
-                    document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="px-3 py-1 rounded-md bg-[#dc2626] hover:bg-[#b91c1c] text-white font-bold flex items-center gap-1 shadow-sm transition-colors"
+              {/* Contact */}
+              <Link 
+                to="/contact" 
+                className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all ${
+                  location.pathname === '/contact' 
+                    ? 'text-white bg-stone-900 font-extrabold shadow-sm' 
+                    : 'text-stone-700 hover:text-stone-950 hover:bg-stone-200/60'
+                }`}
               >
-                <Percent className="w-3 h-3" />
-                <span>Deals</span>
-                <ChevronDown className="w-3 h-3" />
-              </a>
+                Contact
+              </Link>
 
             </nav>
 
@@ -278,60 +288,144 @@ export default function Navbar() {
               href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#25d366] hover:text-[#1ebd59] font-bold py-1 px-2 rounded hover:bg-emerald-50 transition-colors"
+              className="flex items-center gap-2 text-stone-800 hover:bg-stone-900 hover:text-white border border-stone-300 hover:border-stone-900 font-bold py-1.5 px-3.5 rounded-xl transition-all shadow-sm"
             >
-              <MessageCircle className="w-4 h-4 fill-[#25d366] text-white" />
-              <span>WhatsApp Chat</span>
+              <MessageCircle className="w-4 h-4 fill-emerald-600 text-white" />
+              <span>WhatsApp Support</span>
             </a>
 
           </div>
         </div>
       </div>
 
-      {/* 3. Mobile Drawer Menu */}
+      {/* 3. Mobile Left Slide-out Drawer with Background Blur */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 text-sm shadow-xl font-medium">
-          <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-            <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain bg-slate-50 p-1 rounded-lg border border-slate-200" />
-            <div>
-              <span className="font-display text-lg font-black italic text-[#19277c] block leading-none">
-                HI-LIFE
-              </span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                Automotive Covers
-              </span>
-            </div>
-          </div>
-          <Link to="/" className="block py-2 text-slate-800 border-b border-slate-100">
-            Home
-          </Link>
-          <button onClick={handleFinderScroll} className="w-full text-left py-2 text-[#19277c] font-bold flex items-center justify-between border-b border-slate-100">
-            <span>Find by Car Model</span>
-            <Car className="w-4 h-4" />
-          </button>
-          <Link to="/products" className="block py-2 text-slate-800 border-b border-slate-100">
-            Shop All Covers
-          </Link>
-          <Link to="/about" className="block py-2 text-slate-800 border-b border-slate-100">
-            About Hi-Life
-          </Link>
-          <Link to="/gallery" className="block py-2 text-slate-800 border-b border-slate-100">
-            Fitment Gallery
-          </Link>
-          <Link to="/contact" className="block py-2 text-slate-800 border-b border-slate-100">
-            Contact & Support
-          </Link>
+        <div className="fixed inset-0 z-50 md:hidden">
+          
+          {/* Blurred Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
 
-          <div className="pt-2 flex flex-col gap-2">
-            <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-lg bg-[#25d366] text-white font-bold text-xs flex items-center justify-center gap-2 shadow"
-            >
-              <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
-              <span>Chat on WhatsApp</span>
-            </a>
+          {/* Left-Side Partial Drawer (Covers ~70% screen on mobile) */}
+          <div 
+            className="fixed inset-y-0 left-0 z-50 w-[75%] max-w-xs bg-white shadow-2xl flex flex-col justify-between p-4 overflow-y-auto transform transition-transform duration-300 animate-slideInLeft"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              {/* Drawer Header with Single Clean Logo & Close button */}
+              <div className="flex items-center justify-between pb-3 mb-2 border-b border-stone-100">
+                <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain" />
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  type="button"
+                  aria-label="Close menu"
+                  className="p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="space-y-1 py-1 font-medium text-xs">
+                
+                <Link 
+                  to="/" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Home
+                </Link>
+
+                <Link 
+                  to="/about" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/about' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  About Us
+                </Link>
+
+                {/* Products Section */}
+                <div className="py-1 border-y border-stone-100 my-1 space-y-1">
+                  <div className="flex items-center justify-between px-2.5 py-1.5">
+                    <span className="font-bold text-stone-900 uppercase tracking-wider">
+                      Products
+                    </span>
+                    <Link 
+                      to="/products"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-[11px] font-bold text-stone-500 hover:text-stone-950 underline"
+                    >
+                      All
+                    </Link>
+                  </div>
+                  
+                  <div className="space-y-0.5 pl-2">
+                    {COVER_TYPES.map((cov) => (
+                      <Link
+                        key={cov.id}
+                        to={`/products?category=${cov.id}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center justify-between py-1 px-2 rounded-lg text-stone-700 hover:bg-stone-100 text-[11px] font-medium transition-colors"
+                      >
+                        <span className="truncate">{cov.name}</span>
+                        <span className="font-bold text-stone-900 ml-1">₹{cov.basePrice}</span>
+                      </Link>
+                    ))}
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleFinderScroll();
+                      }}
+                      className="w-full text-left py-1.5 px-2 mt-0.5 text-[11px] font-bold text-amber-800 hover:underline"
+                    >
+                      Match Car Model →
+                    </button>
+                  </div>
+                </div>
+
+                <Link 
+                  to="/gallery" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/gallery' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Gallery
+                </Link>
+
+                <Link 
+                  to="/contact" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-2.5 rounded-xl font-bold uppercase tracking-wider transition-colors ${
+                    location.pathname === '/contact' ? 'bg-stone-900 text-white' : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  Contact
+                </Link>
+
+              </nav>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="pt-3 border-t border-stone-100 space-y-2">
+              <a
+                href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-3 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25d366]" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+
           </div>
         </div>
       )}

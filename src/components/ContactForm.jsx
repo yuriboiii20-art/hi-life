@@ -74,67 +74,67 @@ export default function ContactForm() {
       {/* Left 5 Cols: Business Info & Support */}
       <div className="lg:col-span-5 space-y-6">
         
-        <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-md space-y-5">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] space-y-6">
           <div>
-            <span className="text-xs uppercase tracking-wider font-extrabold text-[#19277c]">
+            <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
               Get in Touch
             </span>
-            <h3 className="text-2xl font-black text-slate-900 mt-1">
+            <h3 className="text-2xl font-black text-stone-950 mt-1">
               Hi-Life Customer Support
             </h3>
-            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed font-normal">
+            <p className="text-xs text-stone-600 mt-1.5 leading-relaxed font-normal">
               Have questions about vehicle sizing, custom measurements, or bulk orders? Our team is available 6 days a week.
             </p>
           </div>
 
-          <div className="space-y-3 text-xs text-slate-700">
+          <div className="space-y-3 text-xs text-stone-700">
             {/* Phone */}
-            <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="p-2 rounded-lg bg-blue-100 text-[#19277c] shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
                 <Phone className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-bold text-slate-900">Call Support</p>
-                <a href={`tel:${BUSINESS_CONFIG.phone}`} className="text-slate-600 hover:text-[#19277c] font-semibold">
+                <p className="font-bold text-stone-950">Call Support</p>
+                <a href={`tel:${BUSINESS_CONFIG.phone}`} className="text-stone-600 hover:text-stone-950 font-semibold">
                   {BUSINESS_CONFIG.displayPhone}
                 </a>
               </div>
             </div>
 
             {/* Email */}
-            <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="p-2 rounded-lg bg-blue-100 text-[#19277c] shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
                 <Mail className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-bold text-slate-900">Email Enquiries</p>
-                <a href={`mailto:${BUSINESS_CONFIG.email}`} className="text-slate-600 hover:text-[#19277c] font-semibold">
+                <p className="font-bold text-stone-950">Email Enquiries</p>
+                <a href={`mailto:${BUSINESS_CONFIG.email}`} className="text-stone-600 hover:text-stone-950 font-semibold">
                   {BUSINESS_CONFIG.email}
                 </a>
               </div>
             </div>
 
             {/* Address */}
-            <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="p-2 rounded-lg bg-blue-100 text-[#19277c] shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-bold text-slate-900">Office & Dispatch Hub</p>
-                <p className="text-slate-600 leading-relaxed text-[11px] font-normal">
+                <p className="font-bold text-stone-950">Office & Dispatch Hub</p>
+                <p className="text-stone-600 leading-relaxed text-[11px] font-normal">
                   {BUSINESS_CONFIG.address.fullAddress}
                 </p>
               </div>
             </div>
 
             {/* Hours */}
-            <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="p-2 rounded-lg bg-blue-100 text-[#19277c] shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-bold text-slate-900">Operational Hours</p>
-                <p className="text-slate-600 text-[11px] font-normal">{BUSINESS_CONFIG.businessHours}</p>
+                <p className="font-bold text-stone-950">Operational Hours</p>
+                <p className="text-stone-600 text-[11px] font-normal">{BUSINESS_CONFIG.businessHours}</p>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function ContactForm() {
             <button
               type="button"
               onClick={handleWhatsAppDirect}
-              className="w-full py-3.5 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow transition-all hover:scale-[1.01]"
+              className="w-full py-4 rounded-2xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-all hover:scale-[1.01] cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
               <span>Chat Directly on WhatsApp</span>
@@ -154,21 +154,21 @@ export default function ContactForm() {
         </div>
 
         {/* Map Placeholder Card */}
-        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+        <div className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] space-y-3">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-900 flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#19277c]" />
+            <span className="font-bold text-stone-950 flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-stone-900" />
               <span>Location Map</span>
             </span>
-            <span className="text-[10px] text-slate-500 uppercase font-semibold">Dispatch Center</span>
+            <span className="text-[10px] text-stone-500 uppercase font-semibold">Dispatch Center</span>
           </div>
 
-          <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-4 text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-100 text-[#19277c] flex items-center justify-center mb-1.5 animate-pulse">
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-stone-50 border border-stone-200 flex flex-col items-center justify-center p-4 text-center">
+            <div className="w-10 h-10 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center mb-1.5 animate-pulse shadow-sm">
               <MapPin className="w-5 h-5" />
             </div>
-            <p className="text-xs font-bold text-slate-900">{BUSINESS_CONFIG.address.city}, {BUSINESS_CONFIG.address.country}</p>
-            <p className="text-[10px] text-slate-500 mt-0.5 font-normal">Central Logistics Hub • Pan-India Courier Dispatches</p>
+            <p className="text-xs font-bold text-stone-950">{BUSINESS_CONFIG.address.city}, {BUSINESS_CONFIG.address.country}</p>
+            <p className="text-[10px] text-stone-500 mt-0.5 font-normal">Central Logistics Hub • Pan-India Courier Dispatches</p>
           </div>
         </div>
 
@@ -176,25 +176,25 @@ export default function ContactForm() {
 
       {/* Right 7 Cols: Enquiry Form */}
       <div className="lg:col-span-7">
-        <div className="p-6 sm:p-8 lg:p-9 rounded-2xl bg-white border border-slate-200 shadow-md relative">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] relative">
           
-          <span className="text-xs uppercase tracking-wider font-extrabold text-[#19277c]">
+          <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
             Enquiry & Custom Sizing Form
           </span>
-          <h3 className="text-2xl font-black text-slate-900 mt-1">
+          <h3 className="text-2xl font-black text-stone-950 mt-1">
             Send Us a Message
           </h3>
-          <p className="text-xs text-slate-600 mt-1 mb-6 font-normal">
+          <p className="text-xs text-stone-600 mt-1 mb-6 font-normal leading-relaxed">
             Fill out your details and vehicle specification below. We typically respond within 30–60 minutes during business hours.
           </p>
 
           {isSuccess ? (
             <div className="text-center py-10 space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-300 flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-3xl bg-stone-900 text-white flex items-center justify-center mx-auto shadow-md">
+                <CheckCircle2 className="w-8 h-8 text-amber-400" />
               </div>
-              <h4 className="text-2xl font-black text-slate-900">Message Received!</h4>
-              <p className="text-sm text-slate-600 max-w-md mx-auto font-normal">
+              <h4 className="text-2xl font-black text-stone-950">Message Received!</h4>
+              <p className="text-sm text-stone-600 max-w-md mx-auto font-normal">
                 Thank you, {formData.name}. Our car cover specialist has received your enquiry for {formData.brand ? `${formData.brand} ${formData.model}` : 'your vehicle'} and will contact you promptly.
               </p>
               <div className="pt-4">
@@ -213,87 +213,90 @@ export default function ContactForm() {
                       message: ''
                     });
                   }}
-                  className="px-6 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-300"
+                  className="px-6 py-3.5 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs shadow-sm cursor-pointer"
                 >
                   Send Another Enquiry
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               
               {errorMessage && (
-                <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                   <span>{errorMessage}</span>
                 </div>
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label htmlFor="contact-name" className="font-bold text-stone-900 uppercase tracking-wider block">
                     Your Name *
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Full Name"
+                    placeholder="e.g. Rahul Sharma"
                     required
-                    className="w-full bg-white text-slate-900 text-xs rounded-lg px-3.5 py-2.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-1">
-                    Phone Number *
+                <div className="space-y-1.5">
+                  <label htmlFor="contact-phone" className="font-bold text-stone-900 uppercase tracking-wider block">
+                    Phone / WhatsApp Number *
                   </label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="10-digit Phone"
-                    pattern="[0-9]{10}"
+                    placeholder="e.g. 9876543210"
                     required
-                    className="w-full bg-white text-slate-900 text-xs rounded-lg px-3.5 py-2.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="name@email.com"
-                    required
-                    className="w-full bg-white text-slate-900 text-xs rounded-lg px-3.5 py-2.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                   />
                 </div>
               </div>
 
-              {/* Vehicle Sub-section */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                  <Car className="w-3.5 h-3.5 text-[#19277c]" />
-                  <span>Vehicle Specifics (Optional)</span>
+              <div className="space-y-1.5">
+                <label htmlFor="contact-email" className="font-bold text-stone-900 uppercase tracking-wider block">
+                  Email Address *
+                </label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="e.g. rahul@example.com"
+                  required
+                  className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                />
+              </div>
+
+              <div className="pt-2 border-t border-stone-200">
+                <p className="font-bold text-stone-900 uppercase tracking-wider mb-2">
+                  Vehicle Specifications (Optional for Quick Fit Verification):
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[11px] text-slate-500 font-semibold mb-1">Car Brand</label>
+                    <label htmlFor="contact-brand" className="text-[11px] font-semibold text-stone-600 block mb-1">
+                      Car Brand
+                    </label>
                     <select
+                      id="contact-brand"
                       name="brand"
                       value={formData.brand}
                       onChange={handleChange}
-                      className="w-full bg-white text-slate-900 text-xs rounded-lg px-2.5 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                      className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
                     >
-                      <option value="">Select Brand</option>
+                      <option value="">-- Select Brand --</option>
                       {CAR_BRANDS.map((b) => (
                         <option key={b.id} value={b.name}>{b.name}</option>
                       ))}
@@ -301,15 +304,20 @@ export default function ContactForm() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] text-slate-500 font-semibold mb-1">Car Model</label>
+                    <label htmlFor="contact-model" className="text-[11px] font-semibold text-stone-600 block mb-1">
+                      Model
+                    </label>
                     <select
+                      id="contact-model"
                       name="model"
                       value={formData.model}
                       onChange={handleChange}
                       disabled={!formData.brand}
-                      className="w-full bg-white text-slate-900 text-xs rounded-lg px-2.5 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c] disabled:opacity-50"
+                      className={`w-full text-xs font-semibold rounded-2xl px-3.5 py-3 border transition-all ${
+                        !formData.brand ? 'bg-stone-100 text-stone-400 border-stone-200 cursor-not-allowed' : 'bg-stone-50 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer'
+                      }`}
                     >
-                      <option value="">Select Model</option>
+                      <option value="">{!formData.brand ? 'Select Brand first' : '-- Select Model --'}</option>
                       {availableModels.map((m) => (
                         <option key={m.id} value={m.name}>{m.name}</option>
                       ))}
@@ -317,75 +325,72 @@ export default function ContactForm() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] text-slate-500 font-semibold mb-1">Mfg. Year</label>
+                    <label htmlFor="contact-year" className="text-[11px] font-semibold text-stone-600 block mb-1">
+                      Year
+                    </label>
                     <select
+                      id="contact-year"
                       name="year"
                       value={formData.year}
                       onChange={handleChange}
-                      className="w-full bg-white text-slate-900 text-xs rounded-lg px-2.5 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                      className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
                     >
-                      <option value="">Select Year</option>
+                      <option value="">-- Select Year --</option>
                       {MANUFACTURING_YEARS.map((yr) => (
                         <option key={yr} value={yr}>{yr}</option>
                       ))}
                     </select>
                   </div>
                 </div>
-
-                <div>
-                  <label className="block text-[11px] text-slate-500 font-semibold mb-1">Preferred Cover Type</label>
-                  <select
-                    name="coverType"
-                    value={formData.coverType}
-                    onChange={handleChange}
-                    className="w-full bg-white text-slate-900 text-xs rounded-lg px-2.5 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
-                  >
-                    <option value="">Any / Suggest Best Fit</option>
-                    {COVER_TYPES.map((c) => (
-                      <option key={c.id} value={c.name}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold uppercase text-slate-700 mb-1">
-                  Message / Special Fitting Requirements
+              <div className="space-y-1.5">
+                <label htmlFor="contact-cover-type" className="text-[11px] font-semibold text-stone-600 block">
+                  Preferred Cover Grade
+                </label>
+                <select
+                  id="contact-cover-type"
+                  name="coverType"
+                  value={formData.coverType}
+                  onChange={handleChange}
+                  className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
+                >
+                  <option value="">-- Not Sure / Recommend Best Option --</option>
+                  {COVER_TYPES.map((c) => (
+                    <option key={c.id} value={c.name}>{c.name} (from ₹{c.basePrice})</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="contact-message" className="font-bold text-stone-900 uppercase tracking-wider block">
+                  Your Enquiry / Message
                 </label>
                 <textarea
+                  id="contact-message"
+                  rows={3}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="3"
-                  placeholder="Mention if you have aftermarket roof carriers, spoilers, bull bars, or specific parking concerns."
-                  className="w-full bg-white text-slate-900 text-xs rounded-lg px-3.5 py-2.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                  placeholder="Ask about custom fitting, bulk discounts, color options, or accessories..."
+                  className="w-full text-xs sm:text-sm rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                 />
               </div>
 
-              {/* Submit Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:flex-1 py-3.5 rounded-xl bg-[#19277c] hover:bg-[#16215b] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow hover:scale-[1.01] active:scale-[0.99] transition-all"
+                  className="w-full py-4 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Submitting Enquiry...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Form Enquiry</span>
+                      <span>Submit Fitment Enquiry</span>
                     </>
                   )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleWhatsAppDirect}
-                  className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
-                  <span>Quick WhatsApp</span>
                 </button>
               </div>
 

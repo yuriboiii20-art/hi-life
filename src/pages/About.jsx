@@ -1,131 +1,149 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { 
   Shield, 
   Layers, 
-  Droplets, 
-  Sun, 
-  CheckCircle2, 
-  ArrowRight, 
-  Sparkles, 
-  HeartHandshake, 
   Target, 
-  Compass 
+  HeartHandshake, 
+  CheckCircle2 
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
-import FinalCTA from '../components/FinalCTA';
 
 export default function About() {
   return (
-    <div className="bg-[#f4f6f8] text-slate-800 font-sans min-h-screen">
+    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
-      {/* Hero Banner */}
-      <section className="relative py-16 lg:py-24 bg-gradient-to-r from-[#101744] via-[#19277c] to-[#16215b] text-white border-b border-[#243599] text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl flex flex-col items-center">
-          <div className="mb-6 bg-white/95 p-3 rounded-2xl shadow-xl border border-white/20 inline-block">
-            <img 
-              src="/logo.png" 
-              alt="Hi-Life Official Brand Logo" 
-              className="h-20 sm:h-24 w-auto object-contain"
-            />
+      {/* Compact Hero Banner */}
+      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-stone-200 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+            <Shield className="w-3.5 h-3.5 text-amber-400" />
+            <span>Hi-Life Brand Standard</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#47c7f1] text-xs font-extrabold uppercase tracking-wider mb-4">
-            <Shield className="w-3.5 h-3.5" />
-            <span>Our Brand Purpose</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight">
-            Stronger Fabric.<br />
-            <span className="text-[#47c7f1]">
-              Stronger Trust.
-            </span>
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Engineered for Indian Climate & Road Conditions
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-200 mt-4 leading-relaxed font-normal">
-            Hi-Life was founded on a straightforward mission: to engineer dependable, precision-tailored automotive covers that protect vehicles against extreme Indian weather without compromise.
+          <p className="text-xs sm:text-sm text-stone-300 mt-2 max-w-2xl leading-relaxed font-normal">
+            Custom-fit automotive covers crafted with military-grade coatings, paint-safe fleece, and storm-proof underbody anchors.
           </p>
         </div>
       </section>
 
-      {/* Brand Philosophy */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      {/* Core Features of Our Product */}
+      <section className="py-8 sm:py-12 bg-white border-b border-stone-200/90">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-[#19277c]">
-                Material & Fitting Philosophy
-              </span>
+            {/* Left 6 Cols: Core Features */}
+            <div className="lg:col-span-6 space-y-4">
+              <div>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700">
+                  Standard Specifications
+                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-stone-950 leading-tight mt-0.5">
+                  Core Features of Our Product
+                </h2>
+                <p className="text-xs text-stone-500 mt-1 font-normal">
+                  Six foundational engineering standards in every Hi-Life cover:
+                </p>
+              </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-                Why Standard Universal Covers Fail
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                Most generic car covers on the market use flimsy 50–70 GSM synthetic sheeting, single-stitched seams that split during light breezes, and loose baggy cuts that balloon in the wind — causing fine dust to rub against car paint and create micro-swirls.
-              </p>
-
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                At Hi-Life, we approach car protection as an engineering discipline. We build our covers using high-density Oxford weaves ranging from 130 GSM to 310 GSM, reinforced with heat-sealed ultrasonic waterproof seams, soft non-abrasive inner cotton fleeces, and vehicle-specific 3D contours tailored to mirror and antenna geometry.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <Layers className="w-5 h-5 text-[#19277c] shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    1
+                  </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900">Dense Woven Matrix</h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">High tear & puncture resistance</p>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">UV resistant</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">Halts ultraviolet radiation and shields car paint from solar degradation.</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <Droplets className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    2
+                  </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900">TPU Hydrostatic Film</h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">100% leakproof monsoonal shield</p>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">100% waterproof and leakproof</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">High hydrostatic barrier blocks torrential monsoonal downpours.</p>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Side mirror pockets</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">Custom-tailored ORVM pockets ensure a glove-like fit without seam stress.</p>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    4
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Center belt below the car to lock it safe</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">Underbody quick-release lock buckle secures against strong windstorms.</p>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    5
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Front and back elastic</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">High-tension elastic hem hugs bumper curves tightly.</p>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                    6
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Covers antina</h3>
+                    <p className="text-[11px] text-stone-500 font-normal">Dedicated contour accommodation for whip and shark-fin antennas.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 3-Layer Architecture Box */}
-            <div className="lg:col-span-6">
-              <div className="rounded-2xl p-7 bg-[#f8fafc] border border-slate-200 shadow-md space-y-5">
-                <h3 className="text-xl font-bold text-[#19277c] flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-[#f97316]" />
-                  <span>The Hi-Life 3-Layer Architecture</span>
-                </h3>
+            {/* Right 6 Cols: ULY Coated Fabric Specification */}
+            <div className="lg:col-span-6 space-y-4">
+              <div>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700">
+                  Material Science
+                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-stone-950 leading-tight mt-0.5">
+                  ULY Coated Textile Technology
+                </h2>
+                <p className="text-xs text-stone-500 mt-1 font-normal">
+                  Advanced polymer lamination engineered for maximum durability:
+                </p>
+              </div>
 
-                <div className="space-y-3.5">
-                  <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-[#19277c] uppercase">Layer 1: Exterior Shield</span>
-                      <span className="text-slate-500 font-semibold">UPF 50+ UV / Oxford</span>
-                    </div>
-                    <p className="text-xs text-slate-600 font-normal">
-                      High-density hydrophobic Oxford exterior that reflects harsh ultraviolet radiation and repels torrential water droplets.
-                    </p>
+              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/90 space-y-3">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal">
+                  ULY coated fabric is a high-performance textile treated with an advanced Ultra Laminated Polyurethane (ULY) resin coating on base materials like polyester or nylon. It offers exceptional waterproofing, tear strength, and abrasion resistance while remaining lighter and more flexible than standard PVC-coated materials.
+                </p>
+
+                <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium">
+                  <span className="font-bold text-amber-900 uppercase tracking-wider text-[10px] block mb-0.5">Base Material Note</span>
+                  The base fabric is 100% heavy-gauge polyester, ensuring zero fabric stiffness in low temperatures and total tear resilience against outdoor scratches.
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
+                  <div className="p-2.5 rounded-lg bg-white border border-stone-200">
+                    <p className="text-[10px] text-stone-400 font-semibold uppercase">Tear Resistance</p>
+                    <p className="font-bold text-stone-950 mt-0.5">Ripstop Oxford</p>
                   </div>
-
-                  <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-blue-700 uppercase">Layer 2: Hydrostatic Membrane</span>
-                      <span className="text-slate-500 font-semibold">100% Leakproof Film</span>
-                    </div>
-                    <p className="text-xs text-slate-600 font-normal">
-                      Microporous TPU barrier that stops standing rain and bird acid while allowing trapped interior heat condensation to breathe outwards.
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-bold text-emerald-700 uppercase">Layer 3: Soft Cotton Lining</span>
-                      <span className="text-slate-500 font-semibold">Zero Swirl Shield</span>
-                    </div>
-                    <p className="text-xs text-slate-600 font-normal">
-                      Ultra-soft spun cotton fleece cushions clear coats, ceramic coatings, and high-gloss paint finishes from abrasion.
-                    </p>
+                  <div className="p-2.5 rounded-lg bg-white border border-stone-200">
+                    <p className="text-[10px] text-stone-400 font-semibold uppercase">Inner Lining</p>
+                    <p className="font-bold text-stone-950 mt-0.5">Soft Cotton Fleece</p>
                   </div>
                 </div>
               </div>
@@ -135,56 +153,36 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 sm:py-20 bg-[#f4f6f8] border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#19277c]">
-              Guiding Principles
-            </span>
-            <h2 className="text-3xl font-extrabold text-slate-900">
-              What Drives Every Hi-Life Cover
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2.5">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#19277c] flex items-center justify-center">
-                <Target className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900">Zero Compromise on Sizing</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                We do not sell 'one-size-fits-all'. Every cover pattern is calibrated to the specific length, width, height, and side mirror positions of Indian vehicle models.
+      {/* Brand Values Grid */}
+      <section className="py-8 sm:py-12 bg-[#fafaf9]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
+              <Target className="w-5 h-5 text-stone-900" />
+              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Zero Compromise Sizing</h3>
+              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
+                Calibrated to exact vehicle dimensions for 50+ models across hatchbacks, sedans, and SUVs.
               </p>
             </div>
 
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2.5">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#19277c] flex items-center justify-center">
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900">Durable Hardware & Fasteners</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                From high-tension front-rear elastic bands to heavy underbody centre buckles, our fasteners are engineered to keep covers anchored during sudden stormy gusts.
+            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
+              <Shield className="w-5 h-5 text-stone-900" />
+              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Storm-Proof Hardware</h3>
+              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
+                Heavy-duty underbody snap buckle belts and reinforced dual-end elastics resist high winds.
               </p>
             </div>
 
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2.5">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-                <HeartHandshake className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900">Transparent Customer Support</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Direct WhatsApp consultation with real automotive fitting specialists ensures you get the exact right cover size before your order leaves our hub.
+            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
+              <HeartHandshake className="w-5 h-5 text-stone-900" />
+              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Direct Consultation</h3>
+              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
+                Direct WhatsApp consultation with automotive fitting specialists before dispatch.
               </p>
             </div>
           </div>
-
         </div>
       </section>
-
-      {/* Final CTA */}
-      <FinalCTA />
 
     </div>
   );

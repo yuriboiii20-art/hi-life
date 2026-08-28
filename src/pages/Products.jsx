@@ -79,36 +79,28 @@ export default function Products() {
   };
 
   return (
-    <div className="bg-[#f4f6f8] text-slate-800 font-sans min-h-screen">
+    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
-      {/* Header Banner */}
-      <section className="relative py-14 lg:py-18 bg-gradient-to-r from-[#101744] via-[#19277c] to-[#16215b] text-white border-b border-[#243599] text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#47c7f1] text-xs font-extrabold uppercase tracking-wider mb-3">
-            <Shield className="w-3.5 h-3.5" />
-            <span>Complete Catalogue</span>
-          </div>
+      {/* Header Banner - Clean & Minimal */}
+      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">
+            Hi-Life Catalogue
+          </span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-            Hi-Life Protective Cover Range
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Protective Car Covers
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-200 mt-2 leading-relaxed font-normal">
-            Select your preferred cover tier or use our custom vehicle matcher below to find precision dimensions for your car.
+          <p className="text-xs sm:text-sm text-stone-300 mt-2 font-normal">
+            Choose your cover tier or enter your vehicle details below for custom dimensions.
           </p>
         </div>
       </section>
 
       {/* Embedded Vehicle Matcher Section */}
-      <section id="products-finder-widget" className="py-10 bg-[#f4f6f8] border-b border-slate-200">
+      <section id="products-finder-widget" className="py-6 sm:py-10 bg-[#fafaf9] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-5">
-            <h2 className="text-lg sm:text-xl font-extrabold text-[#19277c] flex items-center gap-2">
-              <Car className="w-5 h-5" />
-              <span>Step 1: Check Exact Fitment for Your Vehicle</span>
-            </h2>
-          </div>
-
           <VehicleFinder
             onSelectResult={handleSelectResult}
             initialCoverTypeId={finderCoverTypeId}
@@ -116,7 +108,7 @@ export default function Products() {
           />
 
           {matchingResult && (
-            <div id="products-match-result">
+            <div id="products-match-result" className="mt-6">
               <ProductResult
                 result={matchingResult}
                 onReset={() => setMatchingResult(null)}
@@ -128,44 +120,43 @@ export default function Products() {
       </section>
 
       {/* Catalogue Filter & Grid Section */}
-      <section className="py-12 sm:py-16 bg-white">
+      <section className="py-10 sm:py-14 bg-white border-b border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Controls Bar */}
-          <div className="space-y-4 pb-8 border-b border-slate-200">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Controls Bar - Pure Typography, No Icons */}
+          <div className="space-y-4 pb-6 border-b border-stone-200">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
               
-              {/* Search input */}
-              <div className="relative w-full md:max-w-md">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              {/* Search input (No icons) */}
+              <div className="relative w-full sm:max-w-md">
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by cover name, waterproof, UV, fabric..."
-                  className="w-full bg-slate-50 text-slate-900 text-xs sm:text-sm rounded-xl pl-10 pr-4 py-2.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                  placeholder="Search covers by name, waterproof, fabric..."
+                  className="w-full bg-stone-50 text-stone-900 text-xs sm:text-sm rounded-xl px-4 py-3 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-900"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-500 hover:text-stone-950 font-bold cursor-pointer"
                   >
                     Clear
                   </button>
                 )}
               </div>
 
-              {/* Sorting Selector */}
-              <div className="flex items-center gap-2 w-full md:w-auto justify-end">
-                <span className="text-xs text-slate-600 font-semibold flex items-center gap-1">
-                  <ArrowUpDown className="w-3.5 h-3.5" /> Sort:
+              {/* Sorting Selector (No icons) */}
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <span className="text-xs text-stone-600 font-semibold">
+                  Sort:
                 </span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-white text-slate-800 text-xs font-semibold rounded-lg px-3 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c]"
+                  className="bg-stone-50 text-stone-900 text-xs font-semibold rounded-xl px-3.5 py-2.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
                 >
-                  <option value="featured">Featured Popular</option>
+                  <option value="featured">Featured</option>
                   <option value="price-low">Price: Low to High</option>
                   <option value="price-high">Price: High to Low</option>
                   <option value="rating">Highest Rated</option>
@@ -174,19 +165,15 @@ export default function Products() {
 
             </div>
 
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="text-xs text-slate-600 font-bold mr-1 flex items-center gap-1">
-                <Filter className="w-3.5 h-3.5" /> Filter Type:
-              </span>
-              
+            {/* Category Filter Pills (No icons) */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
               <button
                 type="button"
                 onClick={() => setSelectedFilter('all')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   selectedFilter === 'all'
-                    ? 'bg-[#19277c] text-white shadow-sm'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
+                    ? 'bg-stone-950 text-white'
+                    : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
                 }`}
               >
                 All Covers ({COVER_TYPES.length})
@@ -197,10 +184,10 @@ export default function Products() {
                   key={cov.id}
                   type="button"
                   onClick={() => setSelectedFilter(cov.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     selectedFilter === cov.id
-                      ? 'bg-[#19277c] text-white shadow-sm'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
+                      ? 'bg-stone-950 text-white'
+                      : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
                   }`}
                 >
                   {cov.name}
@@ -211,7 +198,7 @@ export default function Products() {
           </div>
 
           {/* Product Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-8">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((cover) => (
                 <ProductCard
@@ -222,16 +209,16 @@ export default function Products() {
                 />
               ))
             ) : (
-              <div className="col-span-full py-16 text-center text-slate-500 space-y-3">
-                <p className="text-base">No cover types match your search query: "{searchQuery}"</p>
+              <div className="col-span-full py-12 text-center text-stone-500 space-y-3">
+                <p className="text-sm">No cover types match "{searchQuery}"</p>
                 <button
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedFilter('all');
                   }}
-                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold border border-slate-300"
+                  className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs font-bold border border-stone-300 cursor-pointer"
                 >
-                  Reset All Filters
+                  Reset Filters
                 </button>
               </div>
             )}

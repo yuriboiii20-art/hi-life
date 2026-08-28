@@ -1,19 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Car, 
-  Calendar, 
-  Shield, 
-  Sparkles, 
-  ArrowRight, 
-  RotateCcw, 
-  CheckCircle2, 
-  Info,
-  ChevronRight,
-  AlertCircle
-} from 'lucide-react';
-import { CAR_BRANDS, MANUFACTURING_YEARS } from '../data/vehicles';
+import { CAR_BRANDS, MANUFACTURING_YEARS, getVehicleModelImage } from '../data/vehicles';
 import { COVER_TYPES, calculateDynamicPrice } from '../data/products';
-import { BUSINESS_CONFIG } from '../config/business';
 
 export default function VehicleFinder({ 
   onSelectResult, 
@@ -24,7 +11,6 @@ export default function VehicleFinder({
   const [selectedModelId, setSelectedModelId] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedCoverTypeId, setSelectedCoverTypeId] = useState(initialCoverTypeId || '');
-  const [hasSubmitted, setHasSubmitted] = useState(false);
   const [validationError, setValidationError] = useState('');
 
   // Handle external cover type pre-selection
@@ -34,62 +20,39 @@ export default function VehicleFinder({
     }
   }, [initialCoverTypeId]);
 
-  // Derived objects
   const selectedBrand = CAR_BRANDS.find((b) => b.id === selectedBrandId) || null;
   const availableModels = selectedBrand ? selectedBrand.models : [];
   const selectedModel = availableModels.find((m) => m.id === selectedModelId) || null;
   const selectedCoverType = COVER_TYPES.find((c) => c.id === selectedCoverTypeId) || null;
 
-  // Step 1: Handle Brand Change -> Resets Model, Year, Cover Type
   const handleBrandChange = (e) => {
-    const brandId = e.target.value;
-    setSelectedBrandId(brandId);
+    setSelectedBrandId(e.target.value);
     setSelectedModelId('');
     setSelectedYear('');
-    if (!initialCoverTypeId) {
-      setSelectedCoverTypeId('');
-    }
-    setHasSubmitted(false);
     setValidationError('');
   };
 
-  // Step 2: Handle Model Change -> Resets Year, Cover Type
   const handleModelChange = (e) => {
-    const modelId = e.target.value;
-    setSelectedModelId(modelId);
+    setSelectedModelId(e.target.value);
     setSelectedYear('');
-    if (!initialCoverTypeId) {
-      setSelectedCoverTypeId('');
-    }
-    setHasSubmitted(false);
     setValidationError('');
   };
 
-  // Step 3: Handle Year Change
   const handleYearChange = (e) => {
     setSelectedYear(e.target.value);
-    setHasSubmitted(false);
     setValidationError('');
   };
 
-  // Step 4: Handle Cover Type Change
-  const handleCoverTypeChange = (coverId) => {
-    if (!selectedYear) {
-      setValidationError('Please select the manufacturing year first.');
-      return;
-    }
-    setSelectedCoverTypeId(coverId);
-    setHasSubmitted(false);
+  const handleCoverTypeChange = (e) => {
+    setSelectedCoverTypeId(e.target.value);
     setValidationError('');
   };
 
-  // Reset entire flow
   const handleReset = () => {
     setSelectedBrandId('');
     setSelectedModelId('');
     setSelectedYear('');
     setSelectedCoverTypeId('');
-    setHasSubmitted(false);
     setValidationError('');
   };
 
@@ -100,16 +63,14 @@ export default function VehicleFinder({
     selectedCoverTypeId
   );
 
-  // Submit / View Result
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormComplete) {
-      setValidationError('Please complete all 4 selection steps above to view the custom-fit cover.');
+      setValidationError('Please select your Brand, Model, and Year.');
       return;
     }
 
     setValidationError('');
-    setHasSubmitted(true);
 
     const priceInfo = calculateDynamicPrice(
       selectedCoverType.basePrice,
@@ -117,12 +78,15 @@ export default function VehicleFinder({
       selectedModel?.bodyType
     );
 
+    const modelImg = selectedModel?.image || getVehicleModelImage(selectedBrand.id, selectedModel.id, selectedModel.bodyType);
+
     const resultPayload = {
       brand: selectedBrand.name,
       brandId: selectedBrand.id,
       model: selectedModel.name,
       modelId: selectedModel.id,
       bodyType: selectedModel.bodyType,
+      modelImage: modelImg,
       year: selectedYear,
       coverType: selectedCoverType,
       calculatedPrice: priceInfo.price,
@@ -137,352 +101,169 @@ export default function VehicleFinder({
   };
 
   return (
-    <div id="vehicle-finder" className="scroll-mt-24">
-      <div className={`rounded-2xl border border-slate-200 bg-white shadow-md p-6 sm:p-8 lg:p-10 relative overflow-hidden ${
-        compactMode ? 'p-4 sm:p-6' : ''
+    <div id="vehicle-finder" className="scroll-mt-20 w-full">
+      <div className={`rounded-2xl border border-stone-200/90 bg-white p-4 sm:p-6 lg:p-7 shadow-xs ${
+        compactMode ? 'p-3.5 sm:p-5' : ''
       }`}>
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
+        {/* Compact Header */}
+        <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-stone-100">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eef2ff] border border-[#c7d2fe] text-[#19277c] text-xs font-bold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#f97316]" />
-              <span>Smart Vehicle Matcher</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#19277c] tracking-tight">
-              Find the Perfect Cover for Your Car
+            <h2 className="text-base sm:text-lg font-black text-stone-950 tracking-tight">
+              Select Your Vehicle
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl font-normal">
-              Select your vehicle details below to view guaranteed 3D laser dimensions, fabric specifications, and active offers.
+            <p className="text-[11px] sm:text-xs text-stone-500">
+              Instant custom dimensions & verified cover fitment
             </p>
           </div>
 
-          {(selectedBrandId || selectedModelId || selectedYear || selectedCoverTypeId) && (
+          {(selectedBrandId || selectedModelId || selectedYear) && (
             <button
               onClick={handleReset}
               type="button"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-red-600 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-red-50 border border-slate-200 transition-colors self-start md:self-auto"
+              className="text-[11px] font-semibold text-stone-500 hover:text-stone-950 underline cursor-pointer"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset Selections</span>
+              Reset
             </button>
           )}
         </div>
 
-        {/* Selection Steps Progress Indicator */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 py-6 text-xs font-medium">
+        {/* Compact Form */}
+        <form onSubmit={handleSubmit} className="space-y-3">
           
-          <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-            selectedBrandId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-              : 'bg-slate-50 border-slate-200 text-slate-700'
-          }`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedBrandId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
-            }`}>
-              {selectedBrandId ? '✓' : '1'}
-            </span>
-            <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 1</p>
-              <p className="font-bold truncate">{selectedBrand ? selectedBrand.name : 'Car Brand'}</p>
-            </div>
-          </div>
-
-          <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-            selectedModelId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-              : selectedBrandId 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
-          }`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedModelId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
-            }`}>
-              {selectedModelId ? '✓' : '2'}
-            </span>
-            <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 2</p>
-              <p className="font-bold truncate">{selectedModel ? selectedModel.name : 'Car Model'}</p>
-            </div>
-          </div>
-
-          <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-            selectedYear 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-              : selectedModelId 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
-          }`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedYear ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
-            }`}>
-              {selectedYear ? '✓' : '3'}
-            </span>
-            <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 3</p>
-              <p className="font-bold truncate">{selectedYear ? `Year ${selectedYear}` : 'Mfg. Year'}</p>
-            </div>
-          </div>
-
-          <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-            selectedCoverTypeId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-              : selectedYear 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
-          }`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedCoverTypeId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
-            }`}>
-              {selectedCoverTypeId ? '✓' : '4'}
-            </span>
-            <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 4</p>
-              <p className="font-bold truncate">{selectedCoverType ? selectedCoverType.name : 'Cover Type'}</p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Guided Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          
-          {/* 3 Dropdowns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          {/* Selectors Grid: 2x2 on Mobile, 4 columns on Desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
             
-            {/* Step 1: Brand */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-brand-select" className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-700">
-                <span className="flex items-center gap-1.5">
-                  <Car className="w-4 h-4 text-[#19277c]" />
-                  <span>1. Car Brand *</span>
-                </span>
-                <span className="text-[11px] text-slate-500 font-normal">12+ Indian Brands</span>
+            {/* 1. Brand */}
+            <div className="space-y-1">
+              <label htmlFor="car-brand-select" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block truncate">
+                1. Brand
               </label>
-              
-              <div className="relative">
-                <select
-                  id="car-brand-select"
-                  value={selectedBrandId}
-                  onChange={handleBrandChange}
-                  className="w-full bg-white text-slate-800 text-sm font-semibold rounded-xl px-4 py-3.5 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c] focus:border-[#19277c] transition-all cursor-pointer appearance-none shadow-sm"
-                  required
-                >
-                  <option value="" disabled className="text-slate-400">
-                    -- Select Car Brand --
+              <select
+                id="car-brand-select"
+                value={selectedBrandId}
+                onChange={handleBrandChange}
+                className="w-full bg-stone-50 hover:bg-stone-100/80 text-stone-900 text-xs sm:text-sm font-medium rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 transition-all cursor-pointer truncate"
+                required
+              >
+                <option value="" disabled>Select Brand</option>
+                {CAR_BRANDS.map((brand) => (
+                  <option key={brand.id} value={brand.id}>
+                    {brand.name}
                   </option>
-                  {CAR_BRANDS.map((brand) => (
-                    <option key={brand.id} value={brand.id} className="text-slate-800">
-                      {brand.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                  <ChevronRight className="w-4 h-4 rotate-90" />
-                </div>
-              </div>
+                ))}
+              </select>
             </div>
 
-            {/* Step 2: Model */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-model-select" className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-700">
-                <span className="flex items-center gap-1.5">
-                  <Car className="w-4 h-4 text-[#19277c]" />
-                  <span>2. Car Model *</span>
-                </span>
-                {selectedBrand && (
-                  <span className="text-[11px] text-slate-500 font-normal">
-                    {availableModels.length} Models
-                  </span>
-                )}
+            {/* 2. Model */}
+            <div className="space-y-1">
+              <label htmlFor="car-model-select" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block truncate">
+                2. Model
               </label>
-              
-              <div className="relative">
-                <select
-                  id="car-model-select"
-                  value={selectedModelId}
-                  onChange={handleModelChange}
-                  disabled={!selectedBrandId}
-                  className={`w-full text-sm font-semibold rounded-xl px-4 py-3.5 border transition-all appearance-none shadow-sm ${
-                    !selectedBrandId
-                      ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
-                      : 'bg-white text-slate-800 border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c] focus:border-[#19277c] cursor-pointer'
-                  }`}
-                  required
-                >
-                  <option value="" disabled className="text-slate-400">
-                    {!selectedBrandId ? '← First select car brand' : '-- Select Car Model --'}
+              <select
+                id="car-model-select"
+                value={selectedModelId}
+                onChange={handleModelChange}
+                disabled={!selectedBrandId}
+                className={`w-full text-xs sm:text-sm font-medium rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 border transition-all truncate ${
+                  !selectedBrandId
+                    ? 'bg-stone-100 border-stone-200 text-stone-400 cursor-not-allowed'
+                    : 'bg-stone-50 hover:bg-stone-100/80 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer'
+                }`}
+                required
+              >
+                <option value="" disabled>
+                  {!selectedBrandId ? 'Select Brand' : 'Select Model'}
+                </option>
+                {availableModels.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.name}
                   </option>
-                  {availableModels.map((model) => (
-                    <option key={model.id} value={model.id} className="text-slate-800">
-                      {model.name} ({model.bodyType})
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                  <ChevronRight className="w-4 h-4 rotate-90" />
-                </div>
-              </div>
+                ))}
+              </select>
             </div>
 
-            {/* Step 3: Year */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-year-select" className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-700">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4 text-[#19277c]" />
-                  <span>3. Manufacturing Year *</span>
-                </span>
-                <span className="text-[11px] text-slate-500 font-normal">2005 – 2026</span>
+            {/* 3. Year */}
+            <div className="space-y-1">
+              <label htmlFor="car-year-select" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block truncate">
+                3. Year
               </label>
-              
-              <div className="relative">
-                <select
-                  id="car-year-select"
-                  value={selectedYear}
-                  onChange={handleYearChange}
-                  disabled={!selectedModelId}
-                  className={`w-full text-sm font-semibold rounded-xl px-4 py-3.5 border transition-all appearance-none shadow-sm ${
-                    !selectedModelId
-                      ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
-                      : 'bg-white text-slate-800 border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#19277c] focus:border-[#19277c] cursor-pointer'
-                  }`}
-                  required
-                >
-                  <option value="" disabled className="text-slate-400">
-                    {!selectedModelId ? '← First select car model' : '-- Select Manufacturing Year --'}
+              <select
+                id="car-year-select"
+                value={selectedYear}
+                onChange={handleYearChange}
+                disabled={!selectedModelId}
+                className={`w-full text-xs sm:text-sm font-medium rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 border transition-all truncate ${
+                  !selectedModelId
+                    ? 'bg-stone-100 border-stone-200 text-stone-400 cursor-not-allowed'
+                    : 'bg-stone-50 hover:bg-stone-100/80 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer'
+                }`}
+                required
+              >
+                <option value="" disabled>
+                  {!selectedModelId ? 'Select Model' : 'Select Year'}
+                </option>
+                {MANUFACTURING_YEARS.map((yr) => (
+                  <option key={yr} value={yr}>
+                    {yr}
                   </option>
-                  {MANUFACTURING_YEARS.map((yr) => (
-                    <option key={yr} value={yr} className="text-slate-800">
-                      {yr}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                  <ChevronRight className="w-4 h-4 rotate-90" />
-                </div>
-              </div>
+                ))}
+              </select>
             </div>
 
-          </div>
-
-          {/* Step 4: Cover Types Cards */}
-          <div className="space-y-3 pt-2">
-            <div className="flex items-center justify-between">
-              <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-700">
-                <Shield className="w-4 h-4 text-[#19277c]" />
-                <span>4. Choose Cover Fabric & Protection Level *</span>
+            {/* 4. Cover Grade Selector (Compact Dropdown) */}
+            <div className="space-y-1">
+              <label htmlFor="cover-grade-select" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block truncate">
+                4. Cover Grade
               </label>
-              {!selectedYear && (
-                <span className="text-xs text-slate-500 flex items-center gap-1">
-                  <Info className="w-3.5 h-3.5 text-[#ea580c]" /> Select brand, model & year above
-                </span>
-              )}
+              <select
+                id="cover-grade-select"
+                value={selectedCoverTypeId}
+                onChange={handleCoverTypeChange}
+                className="w-full bg-stone-50 hover:bg-stone-100/80 text-stone-900 text-xs sm:text-sm font-medium rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 transition-all cursor-pointer truncate"
+                required
+              >
+                <option value="" disabled>Select Cover Grade</option>
+                {COVER_TYPES.map((cov) => (
+                  <option key={cov.id} value={cov.id}>
+                    {cov.name} (from ₹{cov.basePrice})
+                  </option>
+                ))}
+              </select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {COVER_TYPES.map((cover) => {
-                const isSelected = selectedCoverTypeId === cover.id;
-                const isLocked = !selectedYear;
-                
-                const dynamicP = selectedModel 
-                  ? calculateDynamicPrice(cover.basePrice, cover.originalPrice, selectedModel.bodyType)
-                  : { price: cover.basePrice, originalPrice: cover.originalPrice };
-
-                return (
-                  <button
-                    key={cover.id}
-                    type="button"
-                    disabled={isLocked}
-                    onClick={() => handleCoverTypeChange(cover.id)}
-                    className={`relative p-4 rounded-xl border text-left transition-all flex flex-col justify-between ${
-                      isLocked
-                        ? 'bg-slate-100 border-slate-200 opacity-60 cursor-not-allowed'
-                        : isSelected
-                          ? 'bg-[#eff6ff] border-[#19277c] shadow-md ring-2 ring-[#19277c]'
-                          : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-slate-300'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${cover.badgeColor}`}>
-                        {cover.badge}
-                      </span>
-                      {isSelected && (
-                        <span className="w-5 h-5 rounded-full bg-[#19277c] text-white flex items-center justify-center">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                        </span>
-                      )}
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900 leading-snug">
-                        {cover.name}
-                      </h4>
-                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
-                        {cover.tagline}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
-                      <div>
-                        <span className="text-xs text-slate-400 line-through mr-1.5">
-                          ₹{dynamicP.originalPrice}
-                        </span>
-                        <span className="text-base font-extrabold text-[#19277c]">
-                          ₹{dynamicP.price}
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
-                        Save {cover.discountPercent}%
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           {/* Validation Error */}
           {validationError && (
-            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-              <span>{validationError}</span>
+            <div className="p-2 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs">
+              {validationError}
             </div>
           )}
 
-          {/* Step 5: Summary & Submit */}
-          <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            
-            <div className="text-xs text-slate-600 w-full sm:w-auto">
-              <span className="font-bold text-slate-700 uppercase tracking-wider mr-2">
-                Your Selection:
-              </span>
+          {/* Action Row */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+            <div className="text-[11px] text-stone-500 w-full sm:w-auto truncate">
               {isFormComplete ? (
-                <span className="text-slate-900 font-bold bg-slate-100 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 border border-slate-300">
-                  <span>{selectedBrand.name} {selectedModel.name}</span>
-                  <span className="text-[#19277c]">({selectedYear})</span>
-                  <span>•</span>
-                  <span className="text-emerald-700">{selectedCoverType.name}</span>
+                <span className="text-stone-900 font-semibold">
+                  {selectedBrand.name} {selectedModel.name} ({selectedYear}) — {selectedCoverType.name}
                 </span>
               ) : (
-                <span className="text-slate-500 italic">
-                  Select brand, model, year, and cover type above.
-                </span>
+                <span>Select Brand, Model, Year & Cover Grade above.</span>
               )}
             </div>
 
             <button
               type="submit"
               disabled={!isFormComplete}
-              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all shadow-md ${
+              className={`w-full sm:w-auto px-5 py-2.5 sm:py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs shrink-0 ${
                 isFormComplete
-                  ? 'bg-[#19277c] hover:bg-[#16215b] text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer'
-                  : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
+                  ? 'bg-stone-950 hover:bg-black text-white cursor-pointer active:scale-[0.99]'
+                  : 'bg-stone-200 text-stone-400 cursor-not-allowed'
               }`}
             >
-              <span>View Cover & Available Offers</span>
-              <ArrowRight className="w-4 h-4" />
+              Check Fit & Price
             </button>
-
           </div>
 
         </form>
