@@ -30,10 +30,10 @@ export default function Hero({ onFindCoverClick }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#0d1438] via-[#16215b] to-[#101744] text-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#171717] text-white border-b border-neutral-800">
       
-      {/* Background Graphic Pattern / Weather Elements */}
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#47c7f1_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      {/* Background Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -41,75 +41,75 @@ export default function Hero({ onFindCoverClick }) {
           {/* Left Column: Bold Headline & Feature Badges */}
           <div className="lg:col-span-7 space-y-5">
             
-            {/* Speed Brand Mark */}
+            {/* Brand Mark */}
             <div className="inline-flex items-center gap-2">
-              <span className="h-[2px] w-6 bg-[#47c7f1] rounded-full"></span>
-              <span className="text-xs font-black uppercase tracking-widest text-[#47c7f1]">
+              <span className="h-[2px] w-6 bg-white rounded-full"></span>
+              <span className="text-xs font-black uppercase tracking-widest text-neutral-300">
                 HI-LIFE AUTOMOTIVE
               </span>
             </div>
 
-            {/* Main Headline (Matching "ALL-WEATHER ARMOR" in screenshot) */}
+            {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-none">
               ALL-WEATHER <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#47c7f1]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
                 ARMOR
               </span>
             </h1>
 
-            {/* 100% Weatherproof Shield Pill (Matching screenshot pill) */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/50 border border-white/20 backdrop-blur-md text-sm font-extrabold text-white shadow-lg">
-              <div className="w-6 h-6 rounded-full bg-white text-[#19277c] flex items-center justify-center">
-                <Shield className="w-4 h-4 fill-[#19277c]" />
+            {/* 100% Weatherproof Shield Pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-neutral-700 text-sm font-extrabold text-white shadow-lg">
+              <div className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center">
+                <Shield className="w-4 h-4 fill-black" />
               </div>
               <span className="tracking-wide">100% Weatherproof & Leakproof</span>
             </div>
 
             {/* Supporting Text */}
-            <p className="text-sm sm:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-300 max-w-xl font-normal leading-relaxed">
               Custom-fit protective car covers engineered with military-grade 300D Oxford fabric, scratch-free inner fleece, and storm-proof centre lock buckles.
             </p>
 
-            {/* 3 Circular Feature Badges (Matching reference screenshot exactly) */}
+            {/* 3 Circular Feature Badges */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
               
               {/* Badge 1 */}
               <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ea580c] to-[#c2410c] border-2 border-white/30 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-white transition-all">
                   <Waves className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-[10px] font-extrabold uppercase tracking-tight text-white mt-1.5 leading-tight">
+                <span className="text-[10px] font-extrabold uppercase tracking-tight text-neutral-300 mt-1.5 leading-tight">
                   SAND &<br />WATERPROOF
                 </span>
               </div>
 
               {/* Badge 2 */}
               <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ea580c] to-[#c2410c] border-2 border-white/30 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-white transition-all">
                   <Snowflake className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-[10px] font-extrabold uppercase tracking-tight text-white mt-1.5 leading-tight">
+                <span className="text-[10px] font-extrabold uppercase tracking-tight text-neutral-300 mt-1.5 leading-tight">
                   SNOW & MUD<br />PROOF
                 </span>
               </div>
 
               {/* Badge 3 */}
               <div className="flex flex-col items-center text-center group">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ea580c] to-[#c2410c] border-2 border-white/30 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-white transition-all">
                   <RotateCcw className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-[10px] font-extrabold uppercase tracking-tight text-white mt-1.5 leading-tight">
+                <span className="text-[10px] font-extrabold uppercase tracking-tight text-neutral-300 mt-1.5 leading-tight">
                   EASY 2-MIN<br />RINSE & FIT
                 </span>
               </div>
 
             </div>
 
-            {/* Primary Orange Call-To-Action Button (Matching Reference) */}
+            {/* Primary Call-To-Action Button */}
             <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
               <button
                 onClick={scrollToFinder}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-xl shadow-orange-950/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-neutral-200 text-black font-black text-sm sm:text-base uppercase tracking-wider shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
               >
                 <span>SHOP ALL-WEATHER COVERS</span>
                 <ArrowRight className="w-4 h-4" />
@@ -117,38 +117,53 @@ export default function Hero({ onFindCoverClick }) {
 
               <Link
                 to="/products"
-                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm text-center border border-white/20 transition-all"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-sm text-center border border-neutral-700 transition-all"
               >
-                Explore Full Catalogue
+                Explore Specifications
               </Link>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Visual Product Photography */}
+          {/* Right Column: High-Impact Vehicle Visual Showcase */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-[#0a0f2b]">
-              <img
-                src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80"
-                alt="Hi-Life All-Weather Automotive Protective Car Cover"
-                className="w-full h-[320px] sm:h-[400px] object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f2b]/80 via-transparent to-transparent" />
+            <div className="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-neutral-900 to-black border border-neutral-800 shadow-2xl overflow-hidden group">
+              
+              {/* Product Cover Visual Preview */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-950 flex items-center justify-center border border-neutral-800 p-6">
+                <img
+                  src="/logo.png"
+                  alt="Hi-Life All-Weather Automotive Protective Car Cover"
+                  className="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                />
 
-              {/* Float Tag inside visual */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-xl border border-slate-200 text-slate-900 flex items-center justify-between shadow-lg">
-                <div>
-                  <p className="text-xs font-black uppercase text-[#19277c]">
-                    3-Layer Waterproof Technology
-                  </p>
-                  <p className="text-[11px] text-slate-600">
-                    Engineered for 120+ Indian Car Models
-                  </p>
+                {/* Floating Assurance Badges */}
+                <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-neutral-700 text-[11px] font-bold text-white flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                  <span>3-Year Warranty</span>
                 </div>
-                <span className="bg-[#19277c] text-white text-[10px] font-extrabold px-2.5 py-1 rounded">
-                  UPF 50+
-                </span>
+
+                <div className="absolute bottom-3 right-3 bg-white text-black px-3 py-1 rounded-lg font-black text-[11px] uppercase tracking-wider shadow">
+                  Laser Cut 3D Fit
+                </div>
               </div>
+
+              {/* 3 Quick Features underneath visual */}
+              <div className="grid grid-cols-3 gap-2 mt-4 text-center">
+                <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800">
+                  <p className="text-white text-xs font-black">100%</p>
+                  <p className="text-[10px] text-neutral-400 font-medium">Waterproof</p>
+                </div>
+                <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800">
+                  <p className="text-white text-xs font-black">UPF 50+</p>
+                  <p className="text-[10px] text-neutral-400 font-medium">UV Deflect</p>
+                </div>
+                <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800">
+                  <p className="text-white text-xs font-black">Spun Fleece</p>
+                  <p className="text-[10px] text-neutral-400 font-medium">No Scratches</p>
+                </div>
+              </div>
+
             </div>
           </div>
 

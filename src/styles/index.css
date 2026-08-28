@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    @apply bg-[#f4f6f8] text-slate-800 font-sans antialiased overflow-x-hidden;
+    @apply bg-[#f8fafc] text-neutral-800 font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-slate-900;
+    @apply font-display tracking-tight text-black;
   }
 }
 
@@ -23,12 +23,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #94a3b8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #19277c;
+  background: #000000;
 }
 
 /* Animation utilities */
@@ -49,13 +49,13 @@
 
 /* Clean light card styles */
 .light-card {
-  @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200;
+  @apply bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md hover:border-neutral-400 transition-all duration-200;
 }
 
 .navy-gradient {
-  background: linear-gradient(135deg, #101744 0%, #19277c 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #171717 100%);
 }
 
 .cyan-gradient {
-  background: linear-gradient(135deg, #00b4d8 0%, #47c7f1 100%);
+  background: linear-gradient(135deg, #262626 0%, #000000 100%);
 }

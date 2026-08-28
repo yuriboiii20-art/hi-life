@@ -35,17 +35,17 @@ export default function LightboxModal({ items, activeIndex, onClose, onNavigate 
       {/* Top action bar */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
         <div className="text-white">
-          <span className="text-xs font-semibold text-brand-400 uppercase tracking-wider">
+          <span className="text-xs font-black text-neutral-400 uppercase tracking-wider">
             Hi-Life Real Fitment Gallery
           </span>
-          <p className="text-sm font-bold text-slate-200">
+          <p className="text-sm font-bold text-white">
             {activeIndex + 1} / {items.length}
           </p>
         </div>
 
         <button
           onClick={onClose}
-          className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500"
+          className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
           aria-label="Close modal"
         >
           <X className="w-6 h-6" />
@@ -68,7 +68,7 @@ export default function LightboxModal({ items, activeIndex, onClose, onNavigate 
         className="relative max-w-5xl w-full max-h-[80vh] flex flex-col items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-charcoal-950 shadow-2xl">
+        <div className="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 shadow-2xl">
           <img
             src={currentItem.image}
             alt={currentItem.title}
@@ -78,15 +78,15 @@ export default function LightboxModal({ items, activeIndex, onClose, onNavigate 
 
         {/* Caption Card */}
         <div className="mt-4 text-center max-w-2xl px-4">
-          <h3 className="text-lg sm:text-xl font-bold text-white">
+          <h3 className="text-lg sm:text-xl font-black text-white">
             {currentItem.title}
           </h3>
-          <p className="text-sm text-slate-300 mt-1">
+          <p className="text-sm text-neutral-300 mt-1">
             {currentItem.caption}
           </p>
           <div className="flex items-center justify-center gap-2 mt-2">
             {currentItem.tags && currentItem.tags.map((tag, idx) => (
-              <span key={idx} className="text-[11px] font-semibold text-brand-400 bg-brand-500/10 border border-brand-500/20 px-2 py-0.5 rounded-full">
+              <span key={idx} className="text-[11px] font-semibold text-neutral-300 bg-white/10 border border-white/20 px-2 py-0.5 rounded-full">
                 #{tag}
               </span>
             ))}

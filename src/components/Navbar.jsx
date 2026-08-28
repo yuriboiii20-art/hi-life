@@ -13,7 +13,8 @@ import {
   Percent, 
   Car, 
   HelpCircle,
-  Truck
+  Truck,
+  ArrowRight
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { CAR_BRANDS } from '../data/vehicles';
@@ -54,44 +55,34 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 shadow-md font-sans">
       
-      {/* 1. Main Header (Deep Navy Blue #19277c matching Reference Screenshot) */}
-      <div className="bg-[#19277c] text-white py-3.5 px-4 sm:px-6 lg:px-8 border-b border-[#243599]">
+      {/* 1. Main Header (Luxury Pitch Black) */}
+      <div className="bg-[#000000] text-white py-3.5 px-4 sm:px-6 lg:px-8 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
-          {/* Brand Logo / Wordmark with Official Hi-Life Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0 focus:outline-none">
-            <div className="bg-white/95 rounded-lg p-1 sm:p-1.5 shadow-sm border border-white/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
-              <img 
-                src="/logo.png" 
-                alt="Hi-Life Car Covers Logo" 
-                className="h-8 sm:h-10 w-auto object-contain"
-              />
-            </div>
-            <div className="hidden min-[400px]:flex flex-col">
-              <span className="font-display text-xl sm:text-2xl font-black italic tracking-tighter text-white uppercase leading-none">
-                HI<span className="text-[#47c7f1]">-</span>LIFE
-              </span>
-              <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 -mt-0.5">
-                Car Covers
-              </span>
-            </div>
+          {/* Brand Logo / Wordmark with Official Hi-Life Logo (No white box) */}
+          <Link to="/" className="flex items-center group shrink-0 focus:outline-none py-0.5">
+            <img 
+              src="/logo.png" 
+              alt="Hi-Life Automotive Car Covers" 
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            />
           </Link>
 
-          {/* Central Search Bar (White Bar + Cyan Search Button) */}
+          {/* Central Search Bar (White Bar + Black Search Button) */}
           <form 
             onSubmit={handleSearchSubmit} 
-            className="hidden md:flex flex-1 max-w-2xl mx-4 items-center rounded-lg overflow-hidden bg-white shadow-sm"
+            className="hidden md:flex flex-1 max-w-2xl mx-4 items-center rounded-xl overflow-hidden bg-white shadow-sm border border-neutral-700"
           >
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by car model (e.g. Swift, Nexon, Creta) or cover type..."
-              className="w-full px-4 py-2.5 text-sm text-slate-800 focus:outline-none placeholder:text-slate-400"
+              className="w-full px-4 py-2.5 text-sm text-neutral-900 focus:outline-none placeholder:text-neutral-400"
             />
             <button
               type="submit"
-              className="bg-[#47c7f1] hover:bg-[#38b9e4] text-[#0f174a] px-5 py-2.5 flex items-center justify-center transition-colors shrink-0"
+              className="bg-black hover:bg-neutral-800 text-white px-5 py-2.5 flex items-center justify-center transition-colors shrink-0 border-l border-neutral-200"
               aria-label="Search"
             >
               <Search className="w-5 h-5 stroke-[2.5]" />
@@ -104,11 +95,13 @@ export default function Navbar() {
             {/* Account / Support */}
             <Link
               to="/contact"
-              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-slate-200 hover:text-white transition-colors"
+              className="hidden lg:flex items-center gap-2 text-xs font-semibold text-neutral-300 hover:text-white transition-colors"
             >
-              <User className="w-5 h-5 text-[#47c7f1]" />
+              <div className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white">
+                <User className="w-4 h-4" />
+              </div>
               <div className="text-left leading-tight hidden xl:block">
-                <p className="text-[10px] text-slate-300">Support</p>
+                <p className="text-[10px] text-neutral-400">Support</p>
                 <p className="font-bold text-white">Help Desk</p>
               </div>
             </Link>
@@ -116,12 +109,12 @@ export default function Navbar() {
             {/* Shopping Cart Pill */}
             <button
               onClick={handleFinderScroll}
-              className="flex items-center gap-2 text-white hover:text-[#47c7f1] transition-colors p-1.5 focus:outline-none"
+              className="flex items-center gap-2 text-white hover:text-neutral-300 transition-colors p-1.5 focus:outline-none"
               title="Cart & Vehicle Matcher"
             >
               <div className="relative">
                 <ShoppingBag className="w-6 h-6 text-white" />
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#f97316] text-white text-[10px] font-black flex items-center justify-center">
+                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white text-black text-[10px] font-black flex items-center justify-center border border-black shadow">
                   0
                 </span>
               </div>
@@ -131,7 +124,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 focus:outline-none"
+              className="md:hidden p-2 rounded-lg bg-neutral-900 text-white hover:bg-neutral-800 border border-neutral-800 focus:outline-none"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -142,17 +135,17 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Search Bar */}
-        <form onSubmit={handleSearchSubmit} className="mt-3 flex md:hidden w-full rounded-lg overflow-hidden bg-white shadow-sm">
+        <form onSubmit={handleSearchSubmit} className="mt-3 flex md:hidden w-full rounded-lg overflow-hidden bg-white shadow-sm border border-neutral-700">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search car model (e.g. Swift, Nexon, Creta)..."
-            className="w-full px-3 py-2 text-xs text-slate-800 focus:outline-none"
+            className="w-full px-3 py-2 text-xs text-neutral-900 focus:outline-none"
           />
           <button
             type="submit"
-            className="bg-[#47c7f1] text-[#0f174a] px-3.5 py-2 flex items-center justify-center"
+            className="bg-black text-white px-3.5 py-2 flex items-center justify-center"
           >
             <Search className="w-4 h-4 stroke-[2.5]" />
           </button>
@@ -160,116 +153,260 @@ export default function Navbar() {
 
       </div>
 
-      {/* 2. Sub-Navigation Bar (Pure White Background matching Reference Screenshot) */}
-      <div className="bg-white text-slate-700 border-b border-slate-200 hidden md:block">
+      {/* 2. Sub-Navigation Bar (Crisp White Background with Black Typography) */}
+      <div className="bg-white text-neutral-900 border-b border-neutral-200 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between text-xs font-semibold tracking-wide">
             
             {/* Left Nav Links */}
             <nav className="flex items-center space-x-1 lg:space-x-2 py-2.5">
               
-              <Link to="/" className="px-3 py-1.5 rounded hover:text-[#19277c] hover:bg-slate-50 transition-colors">
-                Home
-              </Link>
-
-              {/* Shop by Category Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('category')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors">
-                  <span>Shop by Category</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-                </button>
-
-                {activeDropdown === 'category' && (
-                  <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-fadeIn">
-                    {COVER_TYPES.map((cov) => (
-                      <Link
-                        key={cov.id}
-                        to={`/products?category=${cov.id}`}
-                        className="block px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 hover:text-[#19277c]"
-                      >
-                        <p className="font-bold">{cov.name}</p>
-                        <p className="text-[10px] text-slate-400">{cov.tagline}</p>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Shop by Brand Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('brand')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors">
-                  <span>Shop by Brand</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-                </button>
-
-                {activeDropdown === 'brand' && (
-                  <div className="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-200 p-3 grid grid-cols-2 gap-1 z-50 animate-fadeIn">
-                    {CAR_BRANDS.slice(0, 10).map((b) => (
-                      <Link
-                        key={b.id}
-                        to={`/products?brand=${b.id}`}
-                        className="p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-50 hover:text-[#19277c] font-medium"
-                      >
-                        {b.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Shop by Vehicle Selector */}
-              <button
-                onClick={handleFinderScroll}
-                className="px-3 py-1.5 rounded hover:text-[#19277c] flex items-center gap-1 transition-colors"
-              >
-                <Car className="w-3.5 h-3.5 text-[#19277c]" />
-                <span>Shop by Vehicle</span>
-              </button>
-
-              {/* Best Sellers (Orange / Coral Pill Badge) */}
+              {/* HOME */}
               <Link 
-                to="/products?filter=bestsellers" 
-                className="px-3 py-1 rounded-md bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold flex items-center gap-1 shadow-sm transition-colors"
+                to="/" 
+                className={`px-3.5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors ${
+                  location.pathname === '/' 
+                    ? 'text-white bg-black font-extrabold shadow-sm' 
+                    : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
+                }`}
               >
-                <Flame className="w-3.5 h-3.5" />
-                <span>Best Sellers</span>
+                HOME
               </Link>
 
-              <Link to="/about" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
-                Information
+              {/* About Us */}
+              <Link 
+                to="/about" 
+                className={`px-3.5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors ${
+                  location.pathname === '/about' 
+                    ? 'text-white bg-black font-extrabold shadow-sm' 
+                    : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
+                }`}
+              >
+                About Us
               </Link>
 
-              <Link to="/gallery" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
+              {/* Products (Hover Dropdown with interactive steps) */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('products')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  to="/products"
+                  className={`px-3.5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
+                    location.pathname.startsWith('/products') 
+                      ? 'text-white bg-black font-extrabold shadow-sm' 
+                      : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
+                  }`}
+                >
+                  <span>Products</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-black' : 'text-neutral-400'}`} />
+                </Link>
+
+                {/* Hover Mega-Dropdown */}
+                {activeDropdown === 'products' && (
+                  <div className="absolute top-full left-0 w-[540px] lg:w-[620px] bg-white rounded-2xl shadow-2xl border border-neutral-200 p-5 z-50 animate-fadeIn">
+                    
+                    {/* Header bar */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-100">
+                      <div>
+                        <p className="text-xs font-black uppercase tracking-wider text-black flex items-center gap-1.5">
+                          <span>Custom Fitment Journey</span>
+                        </p>
+                        <p className="text-[11px] text-neutral-500 font-normal">
+                          Step-by-step tailor-made vehicle cover builder
+                        </p>
+                      </div>
+                      <Link 
+                        to="/products" 
+                        onClick={() => setActiveDropdown(null)}
+                        className="text-[11px] font-bold text-black hover:underline flex items-center gap-1"
+                      >
+                        <span>Browse All Covers</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+
+                    {/* Step-by-Step Selection Flow: ➡️ Brand ➡️ Model ➡️ Year ➡️ Cover Types ➡️ Offers */}
+                    <div className="space-y-2">
+                      
+                      {/* Step 1: Select Car Brand */}
+                      <div 
+                        onClick={handleFinderScroll}
+                        className="p-2.5 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-black cursor-pointer transition-all flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-base">➡️</span>
+                          <div className="p-1.5 rounded-lg bg-black text-white group-hover:scale-105 transition-transform">
+                            <Car className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-extrabold text-black">
+                              Select Car Brand
+                            </p>
+                            <p className="text-[11px] text-neutral-500 font-normal">
+                              Maruti Suzuki, Hyundai, Tata, Mahindra, Kia, Toyota, Honda & more
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded border border-neutral-300 text-black">
+                          Step 1
+                        </span>
+                      </div>
+
+                      {/* Step 2: Select Car Model */}
+                      <div 
+                        onClick={handleFinderScroll}
+                        className="p-2.5 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-black cursor-pointer transition-all flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-base">➡️</span>
+                          <div className="p-1.5 rounded-lg bg-black text-white group-hover:scale-105 transition-transform">
+                            <Car className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-extrabold text-black">
+                              Select Car Model
+                            </p>
+                            <p className="text-[11px] text-neutral-500 font-normal">
+                              Swift, Creta, Nexon, Thar, Brezza, Scorpio-N, City, Baleno & 50+
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded border border-neutral-300 text-black">
+                          Step 2
+                        </span>
+                      </div>
+
+                      {/* Step 3: Select Manufacturing Year */}
+                      <div 
+                        onClick={handleFinderScroll}
+                        className="p-2.5 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-black cursor-pointer transition-all flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-base">➡️</span>
+                          <div className="p-1.5 rounded-lg bg-black text-white group-hover:scale-105 transition-transform">
+                            <Truck className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-extrabold text-black">
+                              Select Manufacturing Year
+                            </p>
+                            <p className="text-[11px] text-neutral-500 font-normal">
+                              Exact laser-cut patterns calibrated for 2005 – 2026 vehicle generations
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded border border-neutral-300 text-black">
+                          Step 3
+                        </span>
+                      </div>
+
+                      {/* Step 4: Select Cover Types */}
+                      <div className="p-2.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <span className="text-base">➡️</span>
+                            <div className="p-1.5 rounded-lg bg-black text-white">
+                              <Shield className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <p className="text-xs font-extrabold text-black">
+                                Select Cover Types
+                              </p>
+                              <p className="text-[11px] text-neutral-500 font-normal">
+                                Choose the fabric grade designed for your parking conditions
+                              </p>
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded border border-neutral-300 text-black">
+                            Step 4
+                          </span>
+                        </div>
+
+                        {/* Quick pick cover type pills */}
+                        <div className="grid grid-cols-2 gap-1.5 pt-1 pl-9">
+                          {COVER_TYPES.map((cov) => (
+                            <Link
+                              key={cov.id}
+                              to={`/products?category=${cov.id}`}
+                              onClick={() => setActiveDropdown(null)}
+                              className="p-2 rounded-lg bg-white hover:bg-black hover:text-white border border-neutral-200 text-[11px] text-neutral-800 font-bold flex items-center justify-between transition-all"
+                            >
+                              <span className="truncate">{cov.name}</span>
+                              <span className="text-[10px] font-extrabold ml-1">₹{cov.basePrice}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Step 5: Offers */}
+                      <a 
+                        href="#offers-section"
+                        onClick={(e) => {
+                          setActiveDropdown(null);
+                          if (location.pathname === '/') {
+                            e.preventDefault();
+                            document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
+                          } else {
+                            navigate('/#offers-section');
+                          }
+                        }}
+                        className="p-2.5 rounded-xl bg-neutral-900 text-white hover:bg-black border border-neutral-800 cursor-pointer transition-all flex items-center justify-between group shadow-sm"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-base">➡️</span>
+                          <div className="p-1.5 rounded-lg bg-white text-black shadow-sm">
+                            <Flame className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <p className="text-xs font-black text-white uppercase tracking-wide">
+                                Offers & Discount Deals
+                              </p>
+                              <span className="px-1.5 py-0.5 rounded-full bg-red-600 text-white text-[9px] font-black uppercase">
+                                Active
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-neutral-300 font-medium">
+                              Instant coupon savings: Use FESTIVE500 & HILIFE300 at checkout
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded text-black">
+                          Step 5
+                        </span>
+                      </a>
+
+                    </div>
+
+                  </div>
+                )}
+              </div>
+
+              {/* Gallery */}
+              <Link 
+                to="/gallery" 
+                className={`px-3.5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors ${
+                  location.pathname === '/gallery' 
+                    ? 'text-white bg-black font-extrabold shadow-sm' 
+                    : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
+                }`}
+              >
                 Gallery
               </Link>
 
-              <Link to="/contact" className="px-3 py-1.5 rounded hover:text-[#19277c] transition-colors">
-                Contact Us
-              </Link>
-
-              {/* Deals (Red Pill Badge) */}
-              <a
-                href="#offers-section"
-                onClick={(e) => {
-                  if (location.pathname === '/') {
-                    e.preventDefault();
-                    document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="px-3 py-1 rounded-md bg-[#dc2626] hover:bg-[#b91c1c] text-white font-bold flex items-center gap-1 shadow-sm transition-colors"
+              {/* Contact */}
+              <Link 
+                to="/contact" 
+                className={`px-3.5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors ${
+                  location.pathname === '/contact' 
+                    ? 'text-white bg-black font-extrabold shadow-sm' 
+                    : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
+                }`}
               >
-                <Percent className="w-3 h-3" />
-                <span>Deals</span>
-                <ChevronDown className="w-3 h-3" />
-              </a>
+                contact
+              </Link>
 
             </nav>
 
@@ -278,10 +415,10 @@ export default function Navbar() {
               href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#25d366] hover:text-[#1ebd59] font-bold py-1 px-2 rounded hover:bg-emerald-50 transition-colors"
+              className="flex items-center gap-2 text-black hover:bg-black hover:text-white border border-neutral-300 hover:border-black font-bold py-1 px-3 rounded-lg transition-all"
             >
-              <MessageCircle className="w-4 h-4 fill-[#25d366] text-white" />
-              <span>WhatsApp Chat</span>
+              <MessageCircle className="w-4 h-4 fill-emerald-600 text-white" />
+              <span>WhatsApp Support</span>
             </a>
 
           </div>
@@ -292,34 +429,75 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 text-sm shadow-xl font-medium">
           <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-            <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain bg-slate-50 p-1 rounded-lg border border-slate-200" />
-            <div>
-              <span className="font-display text-lg font-black italic text-[#19277c] block leading-none">
-                HI-LIFE
-              </span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                Automotive Covers
-              </span>
+            <img src="/logo.png" alt="Hi-Life Logo" className="h-11 w-auto object-contain" />
+          </div>
+
+          {/* Mobile Links */}
+          <Link to="/" className="block py-2 text-slate-800 font-bold uppercase tracking-wide border-b border-slate-100">
+            HOME
+          </Link>
+          <Link to="/about" className="block py-2 text-slate-800 font-bold uppercase tracking-wide border-b border-slate-100">
+            About Us
+          </Link>
+
+          {/* Mobile Products Accordion */}
+          <div className="py-2 border-b border-slate-100 space-y-2">
+            <Link to="/products" className="block font-bold text-[#19277c] uppercase tracking-wide">
+              Products
+            </Link>
+            <div className="pl-2 space-y-1.5 text-xs text-slate-700">
+              <button 
+                onClick={handleFinderScroll} 
+                className="w-full text-left py-1.5 px-2 rounded-lg bg-slate-50 hover:bg-blue-50 font-semibold flex items-center gap-2"
+              >
+                <span>➡️</span>
+                <span>Select Car Brand</span>
+              </button>
+              <button 
+                onClick={handleFinderScroll} 
+                className="w-full text-left py-1.5 px-2 rounded-lg bg-slate-50 hover:bg-blue-50 font-semibold flex items-center gap-2"
+              >
+                <span>➡️</span>
+                <span>Select Car Model</span>
+              </button>
+              <button 
+                onClick={handleFinderScroll} 
+                className="w-full text-left py-1.5 px-2 rounded-lg bg-slate-50 hover:bg-blue-50 font-semibold flex items-center gap-2"
+              >
+                <span>➡️</span>
+                <span>Select Manufacturing year</span>
+              </button>
+              <Link 
+                to="/products" 
+                className="block py-1.5 px-2 rounded-lg bg-slate-50 hover:bg-blue-50 font-semibold flex items-center gap-2"
+              >
+                <span>➡️</span>
+                <span>select cover types</span>
+              </Link>
+              <a 
+                href="#offers-section"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  if (location.pathname === '/') {
+                    e.preventDefault();
+                    document.getElementById('offers-section')?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    navigate('/#offers-section');
+                  }
+                }}
+                className="block py-1.5 px-2 rounded-lg bg-orange-50 text-[#c2410c] font-bold flex items-center gap-2"
+              >
+                <span>➡️</span>
+                <span>offers</span>
+              </a>
             </div>
           </div>
-          <Link to="/" className="block py-2 text-slate-800 border-b border-slate-100">
-            Home
+
+          <Link to="/gallery" className="block py-2 text-slate-800 font-bold uppercase tracking-wide border-b border-slate-100">
+            Gallery
           </Link>
-          <button onClick={handleFinderScroll} className="w-full text-left py-2 text-[#19277c] font-bold flex items-center justify-between border-b border-slate-100">
-            <span>Find by Car Model</span>
-            <Car className="w-4 h-4" />
-          </button>
-          <Link to="/products" className="block py-2 text-slate-800 border-b border-slate-100">
-            Shop All Covers
-          </Link>
-          <Link to="/about" className="block py-2 text-slate-800 border-b border-slate-100">
-            About Hi-Life
-          </Link>
-          <Link to="/gallery" className="block py-2 text-slate-800 border-b border-slate-100">
-            Fitment Gallery
-          </Link>
-          <Link to="/contact" className="block py-2 text-slate-800 border-b border-slate-100">
-            Contact & Support
+          <Link to="/contact" className="block py-2 text-slate-800 font-bold uppercase tracking-wide border-b border-slate-100">
+            contact
           </Link>
 
           <div className="pt-2 flex flex-col gap-2">

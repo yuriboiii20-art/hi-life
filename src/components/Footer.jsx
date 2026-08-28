@@ -20,49 +20,49 @@ import { CAR_BRANDS } from '../data/vehicles';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#101744] text-slate-300 font-sans border-t border-[#1d2b78]">
+    <footer className="bg-[#0a0a0a] text-neutral-300 font-sans border-t border-neutral-800">
       
       {/* Top Value Assurance Ribbon */}
-      <div className="border-b border-[#1d2b78] bg-[#0c1236] py-6">
+      <div className="border-b border-neutral-800 bg-black py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white/10 text-[#47c7f1]">
+              <div className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-white">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
                 <p className="font-bold text-white">100% Fitment Guarantee</p>
-                <p className="text-slate-400 text-[11px]">Vehicle-specific laser cut</p>
+                <p className="text-neutral-400 text-[11px]">Vehicle-specific laser cut</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white/10 text-emerald-400">
+              <div className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-white">
                 <Truck className="w-5 h-5" />
               </div>
               <div>
                 <p className="font-bold text-white">Free All-India Delivery</p>
-                <p className="text-slate-400 text-[11px]">Doorstep express dispatch</p>
+                <p className="text-neutral-400 text-[11px]">Doorstep express dispatch</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white/10 text-amber-400">
+              <div className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-white">
                 <Lock className="w-5 h-5" />
               </div>
               <div>
                 <p className="font-bold text-white">Direct WhatsApp Support</p>
-                <p className="text-slate-400 text-[11px]">Instant fitment assistance</p>
+                <p className="text-neutral-400 text-[11px]">Instant fitment assistance</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white/10 text-[#47c7f1]">
+              <div className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-white">
                 <Shield className="w-5 h-5" />
               </div>
               <div>
                 <p className="font-bold text-white">7-Day Return Policy</p>
-                <p className="text-slate-400 text-[11px]">Hassle-free replacement</p>
+                <p className="text-neutral-400 text-[11px]">Hassle-free replacement</p>
               </div>
             </div>
           </div>
@@ -75,29 +75,19 @@ export default function Footer() {
           
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="bg-white/95 p-1.5 rounded-xl shadow-md border border-white/20 flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
-                <img 
-                  src="/logo.png" 
-                  alt="Hi-Life Logo" 
-                  className="h-10 sm:h-12 w-auto object-contain"
-                />
-              </div>
-              <div>
-                <span className="font-display text-2xl font-black italic tracking-tighter text-white uppercase block leading-none">
-                  HI<span className="text-[#47c7f1]">-</span>LIFE
-                </span>
-                <span className="text-[9px] font-bold tracking-widest uppercase text-slate-300 block mt-1">
-                  Protective Car Covers
-                </span>
-              </div>
+            <Link to="/" className="inline-block group focus:outline-none">
+              <img 
+                src="/logo.png" 
+                alt="Hi-Life Protective Car Covers" 
+                className="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105"
+              />
             </Link>
 
-            <p className="text-xs text-[#47c7f1] font-bold tracking-wide uppercase">
+            <p className="text-xs text-white font-bold tracking-wide uppercase">
               “{BUSINESS_CONFIG.tagline}”
             </p>
 
-            <p className="text-xs text-slate-300 leading-relaxed max-w-sm font-normal">
+            <p className="text-xs text-neutral-400 leading-relaxed max-w-sm font-normal">
               {BUSINESS_CONFIG.shortDescription}
             </p>
 
@@ -107,7 +97,7 @@ export default function Footer() {
                 href={BUSINESS_CONFIG.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-white transition-colors"
                 aria-label="Hi-Life on Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -116,7 +106,7 @@ export default function Footer() {
                 href={BUSINESS_CONFIG.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-white transition-colors"
                 aria-label="Hi-Life on Facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -125,7 +115,7 @@ export default function Footer() {
                 href={BUSINESS_CONFIG.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-white transition-colors"
                 aria-label="Hi-Life on YouTube"
               >
                 <Youtube className="w-4 h-4" />
@@ -134,7 +124,7 @@ export default function Footer() {
                 href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-[#25d366]/20 hover:bg-[#25d366]/30 text-[#25d366] transition-colors"
+                className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-emerald-400 transition-colors"
                 aria-label="Chat on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -147,7 +137,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
               Quick Navigation
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs text-neutral-400">
               <li>
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
               </li>
@@ -164,7 +154,7 @@ export default function Footer() {
                 <Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link>
               </li>
               <li>
-                <a href="#vehicle-finder" className="text-[#47c7f1] hover:underline font-bold">
+                <a href="#vehicle-finder" className="text-white hover:underline font-bold">
                   Vehicle Finder →
                 </a>
               </li>
@@ -176,7 +166,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
               Supported Car Brands
             </h4>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-xs">
+            <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-xs text-neutral-400">
               {CAR_BRANDS.slice(0, 8).map((brand) => (
                 <Link
                   key={brand.id}
@@ -189,7 +179,7 @@ export default function Footer() {
             </div>
             <Link
               to="/products"
-              className="text-[11px] text-[#47c7f1] hover:underline block pt-1 font-semibold"
+              className="text-[11px] text-white hover:underline block pt-1 font-semibold"
             >
               + View all 12+ Indian manufacturers
             </Link>
@@ -201,27 +191,27 @@ export default function Footer() {
               Contact & Support
             </h4>
             
-            <ul className="space-y-2.5 text-xs text-slate-300">
+            <ul className="space-y-2.5 text-xs text-neutral-400">
               <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#47c7f1] shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <div>
-                  <a href={`tel:${BUSINESS_CONFIG.phone}`} className="hover:text-white transition-colors font-bold">
+                  <a href={`tel:${BUSINESS_CONFIG.phone}`} className="hover:text-white transition-colors font-bold text-white">
                     {BUSINESS_CONFIG.displayPhone}
                   </a>
-                  <p className="text-[10px] text-slate-400 font-normal">{BUSINESS_CONFIG.businessHours}</p>
+                  <p className="text-[10px] text-neutral-500 font-normal">{BUSINESS_CONFIG.businessHours}</p>
                 </div>
               </li>
 
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#47c7f1] shrink-0" />
+                <Mail className="w-4 h-4 text-white shrink-0" />
                 <a href={`mailto:${BUSINESS_CONFIG.email}`} className="hover:text-white transition-colors">
                   {BUSINESS_CONFIG.email}
                 </a>
               </li>
 
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#47c7f1] shrink-0 mt-0.5" />
-                <span className="text-[11px] leading-relaxed text-slate-300 font-normal">
+                <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                <span className="text-[11px] leading-relaxed text-neutral-400 font-normal">
                   {BUSINESS_CONFIG.address.fullAddress}
                 </span>
               </li>
@@ -232,7 +222,7 @@ export default function Footer() {
                 href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#0f174a] bg-[#47c7f1] hover:bg-[#3db9e4] px-3 py-2 rounded-lg w-full justify-center transition-colors shadow"
+                className="inline-flex items-center gap-2 text-xs font-black text-black bg-white hover:bg-neutral-200 px-3 py-2.5 rounded-xl w-full justify-center transition-colors shadow"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Instant WhatsApp Enquiry</span>
@@ -244,10 +234,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-[#1d2b78] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="mt-12 pt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <p>© {new Date().getFullYear()} {BUSINESS_CONFIG.brandName} Automotive. All Rights Reserved.</p>
           
-          <div className="flex items-center gap-4 text-slate-300">
+          <div className="flex items-center gap-4 text-neutral-400">
             <Link to="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span>•</span>
             <Link to="/about" className="hover:text-white transition-colors">Terms of Service</Link>

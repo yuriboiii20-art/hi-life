@@ -46,7 +46,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#f4f6f8] text-slate-800 font-sans">
+    <div className="bg-[#f8fafc] text-neutral-800 font-sans">
       {/* 1. Hero Section */}
       <Hero
         onFindCoverClick={() => {
@@ -56,7 +56,7 @@ export default function Home() {
       />
 
       {/* 2 & 3. Vehicle Cover Finder & Matching Product Result */}
-      <section className="py-10 sm:py-14 bg-[#f4f6f8] border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-[#f8fafc] border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <VehicleFinder
             onSelectResult={handleSelectResult}

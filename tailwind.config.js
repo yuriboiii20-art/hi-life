@@ -7,27 +7,35 @@ export default {
   theme: {
     extend: {
       colors: {
+        dark: {
+          950: '#000000',
+          900: '#0a0a0a',
+          800: '#121212',
+          700: '#1a1a1a',
+          600: '#262626',
+          500: '#404040',
+        },
         navy: {
-          950: '#0a0f29',
-          900: '#101744',
-          800: '#16215b',
-          700: '#19277c', // Primary reference navy
-          600: '#23369e',
-          500: '#354dbd',
+          950: '#000000',
+          900: '#0a0a0a',
+          800: '#121212',
+          700: '#000000', // Mapped to black
+          600: '#1a1a1a',
+          500: '#262626',
         },
         brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#19277c', // Primary Navy
-          700: '#16215b',
-          accent: '#47c7f1', // Vibrant Sky Cyan
-          orange: '#f97316', // Orange Button Accent
-          gold: '#ea580c',
-          red: '#dc2626', // Promo Red
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#0f172a',
+          700: '#000000',
+          accent: '#000000',
+          orange: '#111827',
+          gold: '#000000',
+          red: '#dc2626',
         },
       },
       fontFamily: {

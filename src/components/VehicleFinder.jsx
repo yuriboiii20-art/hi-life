@@ -143,16 +143,16 @@ export default function VehicleFinder({
       }`}>
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-neutral-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eef2ff] border border-[#c7d2fe] text-[#19277c] text-xs font-bold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#f97316]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider mb-2 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>Smart Vehicle Matcher</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#19277c] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-black tracking-tight">
               Find the Perfect Cover for Your Car
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl font-normal">
+            <p className="text-sm text-neutral-600 mt-1 max-w-xl font-normal">
               Select your vehicle details below to view guaranteed 3D laser dimensions, fabric specifications, and active offers.
             </p>
           </div>
@@ -161,7 +161,7 @@ export default function VehicleFinder({
             <button
               onClick={handleReset}
               type="button"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-red-600 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-red-50 border border-slate-200 transition-colors self-start md:self-auto"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 hover:text-black px-3 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 transition-colors self-start md:self-auto"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Selections</span>
@@ -174,70 +174,70 @@ export default function VehicleFinder({
           
           <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
             selectedBrandId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-              : 'bg-slate-50 border-slate-200 text-slate-700'
+              ? 'bg-black border-black text-white' 
+              : 'bg-neutral-50 border-neutral-200 text-neutral-700'
           }`}>
             <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedBrandId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
+              selectedBrandId ? 'bg-white text-black' : 'bg-neutral-200 text-neutral-600'
             }`}>
               {selectedBrandId ? '✓' : '1'}
             </span>
             <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 1</p>
+              <p className={`text-[10px] uppercase ${selectedBrandId ? 'text-neutral-400' : 'text-neutral-500'}`}>Step 1</p>
               <p className="font-bold truncate">{selectedBrand ? selectedBrand.name : 'Car Brand'}</p>
             </div>
           </div>
 
           <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
             selectedModelId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
+              ? 'bg-black border-black text-white' 
               : selectedBrandId 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
+                ? 'bg-neutral-100 border-neutral-400 text-black ring-1 ring-neutral-400' 
+                : 'bg-neutral-50 border-neutral-200 text-neutral-400 opacity-60'
           }`}>
             <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedModelId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
+              selectedModelId ? 'bg-white text-black' : 'bg-neutral-200 text-neutral-600'
             }`}>
               {selectedModelId ? '✓' : '2'}
             </span>
             <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 2</p>
+              <p className={`text-[10px] uppercase ${selectedModelId ? 'text-neutral-400' : 'text-neutral-500'}`}>Step 2</p>
               <p className="font-bold truncate">{selectedModel ? selectedModel.name : 'Car Model'}</p>
             </div>
           </div>
 
           <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
             selectedYear 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
+              ? 'bg-black border-black text-white' 
               : selectedModelId 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
+                ? 'bg-neutral-100 border-neutral-400 text-black ring-1 ring-neutral-400' 
+                : 'bg-neutral-50 border-neutral-200 text-neutral-400 opacity-60'
           }`}>
             <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedYear ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
+              selectedYear ? 'bg-white text-black' : 'bg-neutral-200 text-neutral-600'
             }`}>
               {selectedYear ? '✓' : '3'}
             </span>
             <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 3</p>
-              <p className="font-bold truncate">{selectedYear ? `Year ${selectedYear}` : 'Mfg. Year'}</p>
+              <p className={`text-[10px] uppercase ${selectedYear ? 'text-neutral-400' : 'text-neutral-500'}`}>Step 3</p>
+              <p className="font-bold truncate">{selectedYear ? `${selectedYear} Model` : 'Year'}</p>
             </div>
           </div>
 
           <div className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
             selectedCoverTypeId 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
+              ? 'bg-black border-black text-white' 
               : selectedYear 
-                ? 'bg-blue-50 border-blue-300 text-blue-900 ring-1 ring-blue-300' 
-                : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60'
+                ? 'bg-neutral-100 border-neutral-400 text-black ring-1 ring-neutral-400' 
+                : 'bg-neutral-50 border-neutral-200 text-neutral-400 opacity-60'
           }`}>
             <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-              selectedCoverTypeId ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'
+              selectedCoverTypeId ? 'bg-white text-black' : 'bg-neutral-200 text-neutral-600'
             }`}>
               {selectedCoverTypeId ? '✓' : '4'}
             </span>
             <div className="truncate">
-              <p className="text-[10px] text-slate-500 uppercase">Step 4</p>
+              <p className={`text-[10px] uppercase ${selectedCoverTypeId ? 'text-neutral-400' : 'text-neutral-500'}`}>Step 4</p>
               <p className="font-bold truncate">{selectedCoverType ? selectedCoverType.name : 'Cover Type'}</p>
             </div>
           </div>
@@ -396,42 +396,46 @@ export default function VehicleFinder({
                     onClick={() => handleCoverTypeChange(cover.id)}
                     className={`relative p-4 rounded-xl border text-left transition-all flex flex-col justify-between ${
                       isLocked
-                        ? 'bg-slate-100 border-slate-200 opacity-60 cursor-not-allowed'
+                        ? 'bg-neutral-100 border-neutral-200 opacity-60 cursor-not-allowed'
                         : isSelected
-                          ? 'bg-[#eff6ff] border-[#19277c] shadow-md ring-2 ring-[#19277c]'
-                          : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-slate-300'
+                          ? 'bg-black text-white border-black shadow-xl ring-2 ring-black'
+                          : 'bg-white hover:bg-neutral-50 border-neutral-200 hover:border-black'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${cover.badgeColor}`}>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
+                        isSelected ? 'bg-white text-black' : 'bg-neutral-100 text-neutral-800'
+                      }`}>
                         {cover.badge}
                       </span>
                       {isSelected && (
-                        <span className="w-5 h-5 rounded-full bg-[#19277c] text-white flex items-center justify-center">
+                        <span className="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center">
                           <CheckCircle2 className="w-3.5 h-3.5" />
                         </span>
                       )}
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                      <h4 className={`text-sm font-bold leading-snug ${isSelected ? 'text-white' : 'text-black'}`}>
                         {cover.name}
                       </h4>
-                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                      <p className={`text-[11px] mt-1 line-clamp-2 ${isSelected ? 'text-neutral-300' : 'text-neutral-500'}`}>
                         {cover.tagline}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
+                    <div className={`mt-4 pt-3 border-t flex items-center justify-between ${isSelected ? 'border-neutral-800' : 'border-neutral-200'}`}>
                       <div>
-                        <span className="text-xs text-slate-400 line-through mr-1.5">
+                        <span className={`text-xs line-through mr-1.5 ${isSelected ? 'text-neutral-400' : 'text-neutral-400'}`}>
                           ₹{dynamicP.originalPrice}
                         </span>
-                        <span className="text-base font-extrabold text-[#19277c]">
+                        <span className={`text-base font-black ${isSelected ? 'text-white' : 'text-black'}`}>
                           ₹{dynamicP.price}
                         </span>
                       </div>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
+                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                        isSelected ? 'text-black bg-white' : 'text-white bg-black'
+                      }`}>
                         Save {cover.discountPercent}%
                       </span>
                     </div>
@@ -450,21 +454,21 @@ export default function VehicleFinder({
           )}
 
           {/* Step 5: Summary & Submit */}
-          <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4">
             
-            <div className="text-xs text-slate-600 w-full sm:w-auto">
-              <span className="font-bold text-slate-700 uppercase tracking-wider mr-2">
+            <div className="text-xs text-neutral-600 w-full sm:w-auto">
+              <span className="font-bold text-black uppercase tracking-wider mr-2">
                 Your Selection:
               </span>
               {isFormComplete ? (
-                <span className="text-slate-900 font-bold bg-slate-100 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 border border-slate-300">
+                <span className="text-black font-bold bg-neutral-100 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 border border-neutral-300">
                   <span>{selectedBrand.name} {selectedModel.name}</span>
-                  <span className="text-[#19277c]">({selectedYear})</span>
+                  <span className="text-neutral-600">({selectedYear})</span>
                   <span>•</span>
-                  <span className="text-emerald-700">{selectedCoverType.name}</span>
+                  <span className="text-black font-extrabold">{selectedCoverType.name}</span>
                 </span>
               ) : (
-                <span className="text-slate-500 italic">
+                <span className="text-neutral-500 italic">
                   Select brand, model, year, and cover type above.
                 </span>
               )}
@@ -473,10 +477,10 @@ export default function VehicleFinder({
             <button
               type="submit"
               disabled={!isFormComplete}
-              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all shadow-md ${
+              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-all shadow-md ${
                 isFormComplete
-                  ? 'bg-[#19277c] hover:bg-[#16215b] text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer'
-                  : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
+                  ? 'bg-black hover:bg-neutral-800 text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer'
+                  : 'bg-neutral-200 text-neutral-400 border border-neutral-300 cursor-not-allowed'
               }`}
             >
               <span>View Cover & Available Offers</span>
