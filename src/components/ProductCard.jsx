@@ -72,7 +72,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
             <button
               type="button"
               onClick={() => onViewDetails && onViewDetails(cover)}
-              className="w-full py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold transition-colors cursor-pointer"
+              className="w-full py-2 sm:py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] sm:text-xs font-semibold transition-colors cursor-pointer"
             >
               Specs
             </button>
@@ -80,7 +80,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
             <button
               type="button"
               onClick={() => onSelectCover && onSelectCover(cover.id)}
-              className="w-full py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
+              className="w-full py-2 sm:py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-[11px] sm:text-xs font-semibold shadow-xs transition-all cursor-pointer"
             >
               Select Fit
             </button>

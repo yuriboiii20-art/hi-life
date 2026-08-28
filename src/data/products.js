@@ -18,11 +18,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Designed for daily covered parking and mild outdoor conditions. Lightweight yet tough high-density Oxford weave that prevents dust accumulation, minor scratches, bird droppings, and light drizzle.",
-    heroImage: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80",
     detailImages: [
-      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80"
     ],
     fabricSpecs: {
       material: "190T High-Density Polyester Taffeta",
@@ -60,11 +60,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Our signature all-season shield. Built with a dual-layer waterproof membrane and ultrasonic seam seals that withstand heavy torrential rain, dust storms, and blistering sun while pampering the car paint with ultra-soft cotton fleece.",
-    heroImage: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=80",
     detailImages: [
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
     ],
     fabricSpecs: {
       material: "300D Heavy Ripstop Oxford + TPU Hydro-Shield Film",
@@ -103,11 +103,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Engineered specifically for hot, sunny climates. Featuring a specialized silver aluminum-infused outer shield that bounces off 98% of solar radiation, reducing cabin temperature by up to 25°C and halting dashboard fade and paint oxidation.",
-    heroImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1200&q=80",
     detailImages: [
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
     ],
     fabricSpecs: {
       material: "Aluminized UV-Reflect Weave + Microfiber Composite",
@@ -146,11 +146,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "The ultimate fortress for cars parked long-term outdoors. Multi-layer matrix featuring ballistic Oxford exterior, puncture-resistant composite core, and thick fleece cushion to protect against falling twigs, hail, stray animals, and severe weather.",
-    heroImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
     detailImages: [
-      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
     ],
     fabricSpecs: {
       material: "600D Military-Grade Ballistic Oxford + 5-Ply Membrane",

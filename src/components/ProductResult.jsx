@@ -176,19 +176,19 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-3 border-t border-stone-100 flex flex-col sm:flex-row items-center gap-3">
+            <div className="pt-3 border-t border-stone-100 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:flex-1 py-3.5 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm text-center shadow-xs transition-all"
+                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm text-center shadow-xs transition-all"
               >
                 WhatsApp Query
               </a>
 
               <button
                 onClick={() => onBuyNow && onBuyNow(result)}
-                className="w-full sm:flex-1 py-3.5 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xs transition-all cursor-pointer"
+                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xs transition-all cursor-pointer"
               >
                 Order Custom Fit
               </button>

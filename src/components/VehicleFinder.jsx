@@ -135,21 +135,21 @@ export default function VehicleFinder({
           )}
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+        <form onSubmit={handleSubmit} className="mt-5 space-y-4 sm:space-y-6">
           
           {/* Inputs Grid - Clean Minimalist Design with NO Icons */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             
             {/* 1. Brand Selector */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-brand-select" className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+            <div className="space-y-1">
+              <label htmlFor="car-brand-select" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block">
                 Brand
               </label>
               <select
                 id="car-brand-select"
                 value={selectedBrandId}
                 onChange={handleBrandChange}
-                className="w-full bg-stone-50 hover:bg-stone-100/70 text-stone-900 text-sm font-medium rounded-xl px-4 py-3.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-stone-900 transition-all cursor-pointer"
+                className="w-full bg-stone-50 hover:bg-stone-100/70 text-stone-900 text-xs sm:text-sm font-medium rounded-xl px-3 py-2.5 sm:px-4 sm:py-3.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-stone-900 transition-all cursor-pointer"
                 required
               >
                 <option value="" disabled>Select Brand</option>
@@ -162,8 +162,8 @@ export default function VehicleFinder({
             </div>
 
             {/* 2. Model Selector */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-model-select" className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+            <div className="space-y-1">
+              <label htmlFor="car-model-select" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block">
                 Model
               </label>
               <select
@@ -171,7 +171,7 @@ export default function VehicleFinder({
                 value={selectedModelId}
                 onChange={handleModelChange}
                 disabled={!selectedBrandId}
-                className={`w-full text-sm font-medium rounded-xl px-4 py-3.5 border transition-all ${
+                className={`w-full text-xs sm:text-sm font-medium rounded-xl px-3 py-2.5 sm:px-4 sm:py-3.5 border transition-all ${
                   !selectedBrandId
                     ? 'bg-stone-100 border-stone-200 text-stone-400 cursor-not-allowed'
                     : 'bg-stone-50 hover:bg-stone-100/70 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-stone-900 cursor-pointer'
@@ -190,8 +190,8 @@ export default function VehicleFinder({
             </div>
 
             {/* 3. Year Selector */}
-            <div className="space-y-1.5">
-              <label htmlFor="car-year-select" className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+            <div className="space-y-1">
+              <label htmlFor="car-year-select" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block">
                 Year
               </label>
               <select
@@ -199,7 +199,7 @@ export default function VehicleFinder({
                 value={selectedYear}
                 onChange={handleYearChange}
                 disabled={!selectedModelId}
-                className={`w-full text-sm font-medium rounded-xl px-4 py-3.5 border transition-all ${
+                className={`w-full text-xs sm:text-sm font-medium rounded-xl px-3 py-2.5 sm:px-4 sm:py-3.5 border transition-all ${
                   !selectedModelId
                     ? 'bg-stone-100 border-stone-200 text-stone-400 cursor-not-allowed'
                     : 'bg-stone-50 hover:bg-stone-100/70 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-stone-900 cursor-pointer'
@@ -220,12 +220,12 @@ export default function VehicleFinder({
           </div>
 
           {/* 4. Cover Type Selection - Clean Typographic Cards (No Icons) */}
-          <div className="space-y-2.5 pt-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+          <div className="space-y-2 pt-1">
+            <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 block">
               Cover Grade
             </label>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
               {COVER_TYPES.map((cover) => {
                 const isSelected = selectedCoverTypeId === cover.id;
                 const isLocked = !selectedYear;
@@ -240,7 +240,7 @@ export default function VehicleFinder({
                     type="button"
                     disabled={isLocked}
                     onClick={() => handleCoverTypeChange(cover.id)}
-                    className={`p-4 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`p-3 sm:p-4 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                       isLocked
                         ? 'bg-stone-100 border-stone-200 opacity-60 cursor-not-allowed'
                         : isSelected
@@ -249,26 +249,26 @@ export default function VehicleFinder({
                     }`}
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-1.5">
-                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
                           isSelected ? 'bg-amber-400 text-stone-950 font-bold' : 'bg-stone-200 text-stone-700'
                         }`}>
                           {cover.badge}
                         </span>
                       </div>
-                      <h4 className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-stone-950'}`}>
+                      <h4 className={`text-xs sm:text-sm font-bold ${isSelected ? 'text-white' : 'text-stone-950'}`}>
                         {cover.name}
                       </h4>
-                      <p className={`text-xs mt-0.5 line-clamp-1 ${isSelected ? 'text-stone-300' : 'text-stone-500'}`}>
+                      <p className={`text-[11px] mt-0.5 line-clamp-1 ${isSelected ? 'text-stone-300' : 'text-stone-500'}`}>
                         {cover.tagline}
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-stone-200/40 flex items-center justify-between">
-                      <span className={`text-sm font-black ${isSelected ? 'text-white' : 'text-stone-950'}`}>
+                    <div className="mt-2.5 pt-2 border-t border-stone-200/40 flex items-center justify-between">
+                      <span className={`text-xs sm:text-sm font-black ${isSelected ? 'text-white' : 'text-stone-950'}`}>
                         ₹{dynamicP.price}
                       </span>
-                      <span className={`text-[10px] font-semibold ${isSelected ? 'text-amber-300' : 'text-stone-500'}`}>
+                      <span className={`text-[9px] sm:text-[10px] font-semibold ${isSelected ? 'text-amber-300' : 'text-stone-500'}`}>
                         Save {cover.discountPercent}%
                       </span>
                     </div>
@@ -280,14 +280,14 @@ export default function VehicleFinder({
 
           {/* Validation Message */}
           {validationError && (
-            <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
+            <div className="p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
               {validationError}
             </div>
           )}
 
           {/* Action Row */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs text-stone-600 w-full sm:w-auto">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <div className="text-[11px] sm:text-xs text-stone-600 w-full sm:w-auto">
               {isFormComplete ? (
                 <span className="text-stone-900 font-semibold">
                   Selected: {selectedBrand.name} {selectedModel.name} ({selectedYear}) — {selectedCoverType.name}
@@ -302,7 +302,7 @@ export default function VehicleFinder({
             <button
               type="submit"
               disabled={!isFormComplete}
-              className={`w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm ${
+              className={`w-full sm:w-auto px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm ${
                 isFormComplete
                   ? 'bg-stone-950 hover:bg-black text-white cursor-pointer active:scale-[0.99]'
                   : 'bg-stone-200 text-stone-400 cursor-not-allowed'
