@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
+import { getVehicleModelImage } from '../data/vehicles';
 
 export default function ProductResult({ result, onReset, onBuyNow }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -23,8 +24,11 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
 
   const {
     brand,
+    brandId,
     model,
+    modelId,
     bodyType,
+    modelImage,
     year,
     coverType,
     calculatedPrice,
@@ -32,11 +36,16 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
     discountPercent
   } = result;
 
-  const images = coverType.detailImages && coverType.detailImages.length > 0
-    ? coverType.detailImages
-    : [coverType.heroImage];
+  const primaryCarImage = modelImage || getVehicleModelImage(brandId, modelId, bodyType);
 
-  const currentImage = images[selectedImageIndex] || coverType.heroImage;
+  const images = [
+    primaryCarImage,
+    ...(coverType.detailImages && coverType.detailImages.length > 0
+      ? coverType.detailImages
+      : [coverType.heroImage])
+  ];
+
+  const currentImage = images[selectedImageIndex] || primaryCarImage;
 
   const whatsappUrl = BUSINESS_CONFIG.whatsapp.getEnquiryUrl(
     brand,

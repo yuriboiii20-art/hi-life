@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CAR_BRANDS, MANUFACTURING_YEARS } from '../data/vehicles';
+import { CAR_BRANDS, MANUFACTURING_YEARS, getVehicleModelImage } from '../data/vehicles';
 import { COVER_TYPES, calculateDynamicPrice } from '../data/products';
 
 export default function VehicleFinder({ 
@@ -78,12 +78,15 @@ export default function VehicleFinder({
       selectedModel?.bodyType
     );
 
+    const modelImg = selectedModel?.image || getVehicleModelImage(selectedBrand.id, selectedModel.id, selectedModel.bodyType);
+
     const resultPayload = {
       brand: selectedBrand.name,
       brandId: selectedBrand.id,
       model: selectedModel.name,
       modelId: selectedModel.id,
       bodyType: selectedModel.bodyType,
+      modelImage: modelImg,
       year: selectedYear,
       coverType: selectedCoverType,
       calculatedPrice: priceInfo.price,

@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  ShoppingBag, 
-  CheckCircle2, 
-  Truck, 
-  ShieldCheck, 
-  MessageCircle, 
-  ArrowRight,
-  CreditCard,
-  Banknote,
-  AlertCircle
-} from 'lucide-react';
+import { X, CheckCircle2 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
+import { getVehicleModelImage } from '../data/vehicles';
 
 export default function QuickOrderModal({ result, onClose }) {
   const [formData, setFormData] = useState({
@@ -31,13 +21,17 @@ export default function QuickOrderModal({ result, onClose }) {
 
   const {
     brand,
+    brandId,
     model,
+    modelId,
+    bodyType,
+    modelImage,
     year,
     coverType,
-    calculatedPrice,
-    calculatedOriginalPrice,
-    discountPercent
+    calculatedPrice
   } = result;
+
+  const carImage = modelImage || getVehicleModelImage(brandId, modelId, bodyType);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -55,7 +49,7 @@ export default function QuickOrderModal({ result, onClose }) {
       setOrderNumber(genId);
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 1000);
+    }, 800);
   };
 
   const getWhatsAppOrderConfirmationUrl = () => {
@@ -65,66 +59,66 @@ export default function QuickOrderModal({ result, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-sans"
+      className="fixed inset-0 z-50 bg-stone-950/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto font-sans"
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-2xl rounded-3xl bg-white border border-stone-200/90 shadow-2xl p-6 sm:p-8 my-8 text-left max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-lg rounded-2xl bg-white border border-stone-200 shadow-xl p-4 sm:p-6 my-6 text-left max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 transition-colors focus:outline-none cursor-pointer"
+          type="button"
+          className="absolute top-3.5 right-3.5 p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-950 transition-colors cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {!isSuccess ? (
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="p-2 rounded-xl bg-stone-900 text-amber-400 shadow-sm">
-                <ShoppingBag className="w-4 h-4" />
-              </span>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700">
-                Express Tailoring Order Request
-              </span>
+            {/* Header */}
+            <div className="pb-3 border-b border-stone-100">
+              <h2 className="text-lg sm:text-xl font-black text-stone-950 tracking-tight">
+                Order Custom-Fit Cover
+              </h2>
+              <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5">
+                Precision-tailored for your vehicle dimensions
+              </p>
             </div>
 
-            <h2 className="text-2xl font-black text-stone-950">
-              Order Custom-Fitted Car Cover
-            </h2>
-
-            {/* Vehicle & Cover Summary */}
-            <div className="mt-4 p-5 rounded-2xl bg-stone-50 border border-stone-200/90 flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="text-xs text-stone-500 uppercase font-semibold">Selected Vehicle</p>
-                <p className="text-base font-bold text-stone-950">
-                  {brand} {model} <span className="text-stone-600 font-normal">({year})</span>
+            {/* Selected Vehicle & Cover Summary with Vehicle Image */}
+            <div className="mt-3.5 p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-3.5">
+              <img
+                src={carImage}
+                alt={`${brand} ${model}`}
+                className="w-16 h-12 rounded-lg object-cover bg-stone-200 shrink-0 border border-stone-200"
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold text-stone-950 truncate">
+                  {brand} {model} ({year})
                 </p>
-                <p className="text-xs text-amber-700 font-bold mt-0.5">
+                <p className="text-[11px] text-stone-600 truncate">
                   {coverType.name}
                 </p>
               </div>
-
-              <div className="text-right">
-                <p className="text-xs text-stone-500 uppercase font-semibold">Total Payable</p>
-                <p className="text-2xl font-black text-stone-950">
+              <div className="text-right shrink-0">
+                <p className="text-sm font-black text-stone-950">
                   ₹{calculatedPrice}
                 </p>
-                <span className="text-[11px] text-emerald-700 font-bold">
-                  Free Express Shipping Included
+                <span className="text-[10px] text-emerald-700 font-semibold block">
+                  Free Delivery
                 </span>
               </div>
             </div>
 
-            {/* Order Form */}
-            <form onSubmit={handleSubmit} className="mt-5 space-y-4 text-xs">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
-                <div className="space-y-1.5">
-                  <label htmlFor="order-name" className="font-bold text-stone-900 uppercase tracking-wider block">
+            {/* Order Form without unnecessary icons */}
+            <form onSubmit={handleSubmit} className="mt-4 space-y-3">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="space-y-1">
+                  <label htmlFor="order-name" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
                     Full Name *
                   </label>
                   <input
@@ -133,15 +127,15 @@ export default function QuickOrderModal({ result, onClose }) {
                     name="customerName"
                     value={formData.customerName}
                     onChange={handleChange}
-                    placeholder="e.g. Ankit Sharma"
+                    placeholder="Enter your name"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="w-full text-xs font-medium rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
                   />
                 </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="order-phone" className="font-bold text-stone-900 uppercase tracking-wider block">
-                    Phone Number (for Courier & WhatsApp) *
+                <div className="space-y-1">
+                  <label htmlFor="order-phone" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
+                    Phone Number *
                   </label>
                   <input
                     id="order-phone"
@@ -149,18 +143,17 @@ export default function QuickOrderModal({ result, onClose }) {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="e.g. 9876543210"
+                    placeholder="10-digit mobile number"
                     pattern="[0-9]{10}"
                     title="Please enter 10 digit mobile number"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="w-full text-xs font-medium rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
                   />
                 </div>
-
               </div>
 
-              <div className="space-y-1.5">
-                <label htmlFor="order-address" className="font-bold text-stone-900 uppercase tracking-wider block">
+              <div className="space-y-1">
+                <label htmlFor="order-address" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
                   Delivery Address *
                 </label>
                 <textarea
@@ -171,13 +164,13 @@ export default function QuickOrderModal({ result, onClose }) {
                   rows={2}
                   placeholder="House/Flat No, Street, Landmark, Area"
                   required
-                  className="w-full text-xs sm:text-sm rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                  className="w-full text-xs font-medium rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label htmlFor="order-pincode" className="font-bold text-stone-900 uppercase tracking-wider block">
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="space-y-1">
+                  <label htmlFor="order-pincode" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
                     Pincode *
                   </label>
                   <input
@@ -189,12 +182,12 @@ export default function QuickOrderModal({ result, onClose }) {
                     placeholder="6-digit Pincode"
                     pattern="[0-9]{6}"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="w-full text-xs font-medium rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
                   />
                 </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="order-city" className="font-bold text-stone-900 uppercase tracking-wider block">
+                <div className="space-y-1">
+                  <label htmlFor="order-city" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
                     City / State *
                   </label>
                   <input
@@ -203,23 +196,23 @@ export default function QuickOrderModal({ result, onClose }) {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
-                    placeholder="e.g. Bengaluru, Karnataka"
+                    placeholder="e.g. Bengaluru"
                     required
-                    className="w-full text-xs sm:text-sm font-semibold rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="w-full text-xs font-medium rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
                   />
                 </div>
               </div>
 
-              {/* Payment Method */}
-              <div className="pt-2">
-                <label className="font-bold text-stone-900 uppercase tracking-wider block mb-2">
+              {/* Payment Method - Clean & Smooth */}
+              <div className="pt-1">
+                <label className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
                   Payment Mode
                 </label>
-                <div className="grid grid-cols-2 gap-3">
-                  <label className={`p-4 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
+                <div className="grid grid-cols-2 gap-2">
+                  <label className={`px-3 py-2 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     formData.paymentMethod === 'cod'
-                      ? 'bg-stone-950 text-white border-stone-950 shadow-md ring-1 ring-stone-950'
-                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:border-stone-300'
+                      ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
+                      : 'bg-stone-50 border-stone-200 text-stone-800 hover:border-stone-300'
                   }`}>
                     <input
                       type="radio"
@@ -227,21 +220,15 @@ export default function QuickOrderModal({ result, onClose }) {
                       value="cod"
                       checked={formData.paymentMethod === 'cod'}
                       onChange={handleChange}
-                      className="text-stone-950 focus:ring-stone-950"
+                      className="accent-amber-400 cursor-pointer"
                     />
-                    <div className="text-left">
-                      <p className={`text-xs font-bold flex items-center gap-1.5 ${formData.paymentMethod === 'cod' ? 'text-white' : 'text-stone-950'}`}>
-                        <Banknote className="w-3.5 h-3.5" />
-                        <span>Cash on Delivery</span>
-                      </p>
-                      <p className={`text-[10px] ${formData.paymentMethod === 'cod' ? 'text-stone-300' : 'text-stone-500'}`}>Pay upon delivery</p>
-                    </div>
+                    <span className="text-xs font-semibold">Cash on Delivery</span>
                   </label>
 
-                  <label className={`p-4 rounded-2xl border flex items-center gap-3 cursor-pointer transition-all ${
+                  <label className={`px-3 py-2 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     formData.paymentMethod === 'upi'
-                      ? 'bg-stone-950 text-white border-stone-950 shadow-md ring-1 ring-stone-950'
-                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:border-stone-300'
+                      ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
+                      : 'bg-stone-50 border-stone-200 text-stone-800 hover:border-stone-300'
                   }`}>
                     <input
                       type="radio"
@@ -249,91 +236,78 @@ export default function QuickOrderModal({ result, onClose }) {
                       value="upi"
                       checked={formData.paymentMethod === 'upi'}
                       onChange={handleChange}
-                      className="text-stone-950 focus:ring-stone-950"
+                      className="accent-amber-400 cursor-pointer"
                     />
-                    <div className="text-left">
-                      <p className={`text-xs font-bold flex items-center gap-1.5 ${formData.paymentMethod === 'upi' ? 'text-white' : 'text-stone-950'}`}>
-                        <CreditCard className="w-3.5 h-3.5" />
-                        <span>Prepaid UPI / Card</span>
-                      </p>
-                      <p className={`text-[10px] ${formData.paymentMethod === 'upi' ? 'text-stone-300' : 'text-stone-500'}`}>Fast-track dispatch</p>
-                    </div>
+                    <span className="text-xs font-semibold">UPI / Online</span>
                   </label>
                 </div>
               </div>
 
-              {/* Submit */}
-              <div className="pt-3">
+              {/* Submit Button */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xs cursor-pointer active:scale-[0.99]"
                 >
-                  {isSubmitting ? (
-                    <span>Submitting Order Request...</span>
-                  ) : (
-                    <>
-                      <span>Confirm Order Request (₹{calculatedPrice})</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
+                  {isSubmitting ? 'Submitting Order...' : `Confirm Order (₹${calculatedPrice})`}
                 </button>
               </div>
+
             </form>
           </div>
         ) : (
           /* Success Screen */
-          <div className="text-center py-6 space-y-5">
-            <div className="w-16 h-16 rounded-3xl bg-stone-900 text-white flex items-center justify-center mx-auto shadow-md">
-              <CheckCircle2 className="w-10 h-10 text-amber-400" />
+          <div className="text-center py-4 space-y-4">
+            <div className="w-12 h-12 rounded-full bg-stone-950 text-amber-400 flex items-center justify-center mx-auto shadow-sm">
+              <CheckCircle2 className="w-7 h-7" />
             </div>
 
             <div>
-              <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
-                Order Request Received
+              <span className="text-[10px] uppercase tracking-wider font-bold text-emerald-700">
+                Order Received
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-stone-950 mt-1">
+              <h3 className="text-lg sm:text-xl font-black text-stone-950 mt-0.5">
                 Thank You, {formData.customerName}!
               </h3>
-              <p className="text-sm text-stone-600 mt-1">
-                Your custom cover order reference is <span className="font-mono font-bold text-stone-950 bg-stone-100 px-2.5 py-0.5 rounded-lg border border-stone-300">{orderNumber}</span>.
+              <p className="text-xs text-stone-500 mt-0.5">
+                Order Ref: <span className="font-mono font-bold text-stone-900">{orderNumber}</span>
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/90 text-xs text-left text-stone-700 space-y-2 max-w-md mx-auto">
+            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs text-left text-stone-700 space-y-1.5 max-w-sm mx-auto">
               <div className="flex justify-between">
-                <span>Vehicle:</span>
+                <span className="text-stone-500">Vehicle:</span>
                 <span className="font-bold text-stone-950">{brand} {model} ({year})</span>
               </div>
               <div className="flex justify-between">
-                <span>Cover Type:</span>
+                <span className="text-stone-500">Cover:</span>
                 <span className="font-bold text-stone-950">{coverType.name}</span>
               </div>
               <div className="flex justify-between">
-                <span>Total Amount:</span>
-                <span className="font-bold text-stone-950">₹{calculatedPrice}</span>
+                <span className="text-stone-500">Amount:</span>
+                <span className="font-bold text-stone-950">₹{calculatedPrice} ({formData.paymentMethod.toUpperCase()})</span>
               </div>
               <div className="flex justify-between">
-                <span>Delivery:</span>
-                <span className="font-bold text-stone-950">{formData.city} - {formData.pincode}</span>
+                <span className="text-stone-500">Delivery:</span>
+                <span className="font-bold text-stone-950">{formData.city} ({formData.pincode})</span>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <div className="flex flex-row items-center justify-center gap-2 pt-1">
               <a
                 href={getWhatsAppOrderConfirmationUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs text-center shadow-xs cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 fill-white text-[#25d366]" />
-                <span>Confirm on WhatsApp</span>
+                Confirm on WhatsApp
               </a>
 
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs border border-stone-300 cursor-pointer"
+                className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs border border-stone-300 cursor-pointer"
               >
                 Done
               </button>
