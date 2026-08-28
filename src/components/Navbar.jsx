@@ -203,173 +203,54 @@ export default function Navbar() {
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-stone-950' : 'text-stone-400'}`} />
                 </Link>
 
-                {/* Hover Mega-Dropdown */}
+                {/* Sleek Minimalist Products Dropdown */}
                 {activeDropdown === 'products' && (
-                  <div className="absolute top-full left-0 w-[540px] lg:w-[620px] bg-white rounded-3xl shadow-2xl border border-stone-200/90 p-5 z-50 animate-fadeIn">
+                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-stone-200/90 p-3 z-50 animate-fadeIn">
                     
-                    {/* Header bar */}
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-100">
-                      <div>
-                        <p className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
-                          <span>Custom Fitment Journey</span>
-                        </p>
-                        <p className="text-[11px] text-stone-500 font-normal">
-                          Step-by-step tailor-made vehicle cover builder
-                        </p>
-                      </div>
-                      <Link 
-                        to="/products" 
-                        onClick={() => setActiveDropdown(null)}
-                        className="text-[11px] font-bold text-stone-900 hover:text-amber-700 flex items-center gap-1"
-                      >
-                        <span>Browse All Covers</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </Link>
-                    </div>
-
-                    {/* Step-by-Step Selection Flow */}
-                    <div className="space-y-2">
-                      
-                      {/* Step 1: Select Car Brand */}
-                      <div 
-                        onClick={handleFinderScroll}
-                        className="p-2.5 rounded-2xl bg-stone-50 hover:bg-stone-100/90 border border-stone-200 hover:border-stone-900 cursor-pointer transition-all flex items-center justify-between group"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-base">➡️</span>
-                          <div className="p-1.5 rounded-xl bg-stone-900 text-white group-hover:scale-105 transition-transform">
-                            <Car className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold text-stone-900">
-                              Select Car Brand
-                            </p>
-                            <p className="text-[11px] text-stone-500 font-normal">
-                              Maruti Suzuki, Hyundai, Tata, Mahindra, Kia, Toyota, Honda & more
-                            </p>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded-md border border-stone-200 text-stone-800">
-                          Step 1
-                        </span>
-                      </div>
-
-                      {/* Step 2: Select Car Model */}
-                      <div 
-                        onClick={handleFinderScroll}
-                        className="p-2.5 rounded-2xl bg-stone-50 hover:bg-stone-100/90 border border-stone-200 hover:border-stone-900 cursor-pointer transition-all flex items-center justify-between group"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-base">➡️</span>
-                          <div className="p-1.5 rounded-xl bg-stone-900 text-white group-hover:scale-105 transition-transform">
-                            <Car className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold text-stone-900">
-                              Select Car Model
-                            </p>
-                            <p className="text-[11px] text-stone-500 font-normal">
-                              Swift, Creta, Nexon, Thar, Brezza, Scorpio-N, City, Baleno & 50+
-                            </p>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded-md border border-stone-200 text-stone-800">
-                          Step 2
-                        </span>
-                      </div>
-
-                      {/* Step 3: Select Manufacturing Year */}
-                      <div 
-                        onClick={handleFinderScroll}
-                        className="p-2.5 rounded-2xl bg-stone-50 hover:bg-stone-100/90 border border-stone-200 hover:border-stone-900 cursor-pointer transition-all flex items-center justify-between group"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-base">➡️</span>
-                          <div className="p-1.5 rounded-xl bg-stone-900 text-white group-hover:scale-105 transition-transform">
-                            <Truck className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold text-stone-900">
-                              Select Manufacturing Year
-                            </p>
-                            <p className="text-[11px] text-stone-500 font-normal">
-                              Exact laser-cut patterns calibrated for 2005 – 2026 vehicle generations
-                            </p>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded-md border border-stone-200 text-stone-800">
-                          Step 3
-                        </span>
-                      </div>
-
-                      {/* Step 4: Select Cover Types */}
-                      <div className="p-2.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <span className="text-base">➡️</span>
-                            <div className="p-1.5 rounded-xl bg-stone-900 text-white">
-                              <Shield className="w-4 h-4" />
-                            </div>
-                            <div>
-                              <p className="text-xs font-bold text-stone-900">
-                                Select Cover Types
-                              </p>
-                              <p className="text-[11px] text-stone-500 font-normal">
-                                Choose the fabric grade designed for your parking conditions
-                              </p>
-                            </div>
-                          </div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-0.5 rounded-md border border-stone-200 text-stone-800">
-                            Step 4
-                          </span>
-                        </div>
-
-                        {/* Quick pick cover type pills */}
-                        <div className="grid grid-cols-2 gap-2 pt-1 pl-9">
-                          {COVER_TYPES.map((cov) => (
-                            <Link
-                              key={cov.id}
-                              to={`/products?category=${cov.id}`}
-                              onClick={() => setActiveDropdown(null)}
-                              className="p-2 rounded-xl bg-white hover:bg-stone-900 hover:text-white border border-stone-200 text-[11px] text-stone-800 font-bold flex items-center justify-between transition-all"
-                            >
-                              <span className="truncate">{cov.name}</span>
-                              <span className="text-[10px] font-extrabold ml-1">₹{cov.basePrice}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Step 5: Offers */}
+                    <div className="px-2 py-1.5 border-b border-stone-100 mb-1.5 flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                        Cover Grades
+                      </span>
                       <Link 
                         to="/products"
                         onClick={() => setActiveDropdown(null)}
-                        className="p-2.5 rounded-2xl bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 cursor-pointer transition-all flex items-center justify-between group shadow-sm"
+                        className="text-[11px] font-bold text-stone-900 hover:text-amber-700 underline"
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="text-base">➡️</span>
-                          <div className="p-1.5 rounded-xl bg-amber-500 text-stone-950 font-bold shadow-sm">
-                            <Flame className="w-4 h-4" />
-                          </div>
+                        All Covers
+                      </Link>
+                    </div>
+
+                    <div className="space-y-1">
+                      {COVER_TYPES.map((cov) => (
+                        <Link
+                          key={cov.id}
+                          to={`/products?category=${cov.id}`}
+                          onClick={() => setActiveDropdown(null)}
+                          className="flex items-center justify-between p-2 rounded-xl hover:bg-stone-100 transition-colors text-xs font-semibold text-stone-900 group"
+                        >
                           <div>
-                            <div className="flex items-center gap-2">
-                              <p className="text-xs font-bold text-stone-900 uppercase tracking-wide">
-                                Offers & Discount Deals
-                              </p>
-                              <span className="px-1.5 py-0.5 rounded-full bg-red-600 text-white text-[9px] font-black uppercase">
-                                Active
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-stone-600 font-medium">
-                              Instant coupon savings and seasonal discounts applied on all orders
+                            <p className="font-bold text-stone-950 group-hover:text-amber-800 transition-colors">
+                              {cov.name}
+                            </p>
+                            <p className="text-[10px] text-stone-500 font-normal">
+                              {cov.tagline.split('&')[0]}
                             </p>
                           </div>
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-200 text-amber-900 px-2 py-0.5 rounded-md font-black">
-                          Step 5
-                        </span>
-                      </Link>
+                          <span className="text-xs font-black text-stone-950 bg-stone-100 group-hover:bg-stone-200 px-2 py-0.5 rounded-lg shrink-0">
+                            ₹{cov.basePrice}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
 
+                    <div className="pt-2 mt-2 border-t border-stone-100">
+                      <button
+                        onClick={handleFinderScroll}
+                        type="button"
+                        className="w-full py-2 px-3 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold text-center transition-all cursor-pointer"
+                      >
+                        Match Your Car Model
+                      </button>
                     </div>
 
                   </div>
@@ -432,48 +313,33 @@ export default function Navbar() {
             About Us
           </Link>
 
-          {/* Mobile Products Accordion */}
-          <div className="py-2 border-b border-stone-100 space-y-2">
-            <Link to="/products" className="block font-bold text-stone-900 uppercase tracking-wide">
+          {/* Mobile Products Menu */}
+          <div className="py-2 border-b border-stone-100 space-y-1.5">
+            <Link 
+              to="/products" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-bold text-stone-900 uppercase tracking-wide py-1"
+            >
               Products
             </Link>
-            <div className="pl-2 space-y-1.5 text-xs text-stone-700">
-              <button 
-                onClick={handleFinderScroll} 
-                className="w-full text-left py-1.5 px-2.5 rounded-xl bg-stone-50 hover:bg-stone-100 font-semibold flex items-center gap-2"
+            <div className="pl-3 space-y-1 text-xs text-stone-700">
+              {COVER_TYPES.map((cov) => (
+                <Link
+                  key={cov.id}
+                  to={`/products?category=${cov.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between py-1.5 text-stone-700 hover:text-stone-950 font-medium"
+                >
+                  <span>{cov.name}</span>
+                  <span className="text-[11px] font-bold text-stone-900">₹{cov.basePrice}</span>
+                </Link>
+              ))}
+              <button
+                onClick={handleFinderScroll}
+                className="w-full text-left py-2 mt-1 text-xs font-bold text-stone-900 underline"
               >
-                <span>➡️</span>
-                <span>Select Car Brand</span>
+                Match Your Car Model →
               </button>
-              <button 
-                onClick={handleFinderScroll} 
-                className="w-full text-left py-1.5 px-2.5 rounded-xl bg-stone-50 hover:bg-stone-100 font-semibold flex items-center gap-2"
-              >
-                <span>➡️</span>
-                <span>Select Car Model</span>
-              </button>
-              <button 
-                onClick={handleFinderScroll} 
-                className="w-full text-left py-1.5 px-2.5 rounded-xl bg-stone-50 hover:bg-stone-100 font-semibold flex items-center gap-2"
-              >
-                <span>➡️</span>
-                <span>Select Manufacturing year</span>
-              </button>
-              <Link 
-                to="/products" 
-                className="block py-1.5 px-2.5 rounded-xl bg-stone-50 hover:bg-stone-100 font-semibold flex items-center gap-2"
-              >
-                <span>➡️</span>
-                <span>select cover types</span>
-              </Link>
-              <Link 
-                to="/products"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block py-1.5 px-2.5 rounded-xl bg-amber-50 text-amber-900 font-bold flex items-center gap-2"
-              >
-                <span>➡️</span>
-                <span>offers</span>
-              </Link>
             </div>
           </div>
 
