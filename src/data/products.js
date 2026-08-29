@@ -21,8 +21,9 @@ export const COVER_TYPES = [
     heroImage: "/products/camo-car-daylight.jpg",
     detailImages: [
       "/products/camo-car-daylight.jpg",
-      "/products/camo-car-rain-monsoon.jpg",
-      "/products/camo-car-night-view.jpg"
+      "/products/camo-car-full-sidefit.jpg",
+      "/products/camo-packaging-bag.jpg",
+      "/products/camo-car-rain-monsoon.jpg"
     ],
     fabricSpecs: {
       material: "190T High-Density Polyester Taffeta",
@@ -63,8 +64,9 @@ export const COVER_TYPES = [
     heroImage: "/products/camo-car-rain-monsoon.jpg",
     detailImages: [
       "/products/camo-car-rain-monsoon.jpg",
-      "/products/camo-car-daylight.jpg",
-      "/products/camo-car-night-view.jpg"
+      "/products/camo-car-shopfront.jpg",
+      "/products/camo-packaging-bag.jpg",
+      "/products/camo-packaging-full.jpg"
     ],
     fabricSpecs: {
       material: "300D Heavy Ripstop Oxford + TPU Hydro-Shield Film",
@@ -106,8 +108,9 @@ export const COVER_TYPES = [
     heroImage: "/products/camo-car-daylight.jpg",
     detailImages: [
       "/products/camo-car-daylight.jpg",
-      "/products/camo-bike-covered.jpg",
-      "/products/camo-car-night-view.jpg"
+      "/products/camo-car-street-profile.jpg",
+      "/products/camo-packaging-bag.jpg",
+      "/products/camo-bike-covered.jpg"
     ],
     fabricSpecs: {
       material: "Aluminized UV-Reflect Weave + Microfiber Composite",
@@ -149,8 +152,9 @@ export const COVER_TYPES = [
     heroImage: "/products/camo-car-night-view.jpg",
     detailImages: [
       "/products/camo-car-night-view.jpg",
-      "/products/camo-car-rain-monsoon.jpg",
-      "/products/camo-bike-fitting.jpg"
+      "/products/camo-car-shopfront.jpg",
+      "/products/camo-car-full-sidefit.jpg",
+      "/products/camo-packaging-full.jpg"
     ],
     fabricSpecs: {
       material: "600D Military-Grade Ballistic Oxford + 5-Ply Membrane",
@@ -193,6 +197,7 @@ export const COVER_TYPES = [
     detailImages: [
       "/products/camo-bike-covered.jpg",
       "/products/camo-bike-fitting.jpg",
+      "/products/camo-packaging-bag.jpg",
       "/products/camo-car-daylight.jpg"
     ],
     fabricSpecs: {

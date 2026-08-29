@@ -20,6 +20,30 @@ const SLIDE_DATA = [
   },
   {
     id: 3,
+    title: "Genuine Hi-Life Branded Packaging",
+    subtitle: "Includes original heavy-duty zippered tote storage and carry bag",
+    badge: "Official Packaging",
+    image: "/products/camo-packaging-bag.jpg",
+    tag: "Original Hi-Life"
+  },
+  {
+    id: 4,
+    title: "Evening Storefront Showcase",
+    subtitle: "Custom-fitted with amber glow front visibility and full bumper seal",
+    badge: "Precision Fit",
+    image: "/products/camo-car-shopfront.jpg",
+    tag: "Custom Tailoring"
+  },
+  {
+    id: 5,
+    title: "Full Profile SUV & Car Shield",
+    subtitle: "Extended contouring covering side panels, wheel arches, and mirrors",
+    badge: "Full Body Armor",
+    image: "/products/camo-car-full-sidefit.jpg",
+    tag: "Maximum Coverage"
+  },
+  {
+    id: 6,
     title: "Two-Wheeler & Motorcycle Shield",
     subtitle: "Full-body cover for bikes and scooters with tailored mirror accommodations",
     badge: "Bikes & Scooters",
@@ -27,7 +51,7 @@ const SLIDE_DATA = [
     tag: "Bike Protection"
   },
   {
-    id: 4,
+    id: 7,
     title: "24/7 Heavy-Duty Outdoor Night Armor",
     subtitle: "Reinforced center underbody belt and dual front-rear elastic hems",
     badge: "High-Wind Stability",
@@ -42,13 +66,13 @@ export default function AutoImageSlider() {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Auto-play interval every 3.5 seconds
+  // Auto-play interval every 1 second (1000ms)
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % SLIDE_DATA.length);
-    }, 3500);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isPaused]);
@@ -95,7 +119,7 @@ export default function AutoImageSlider() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
