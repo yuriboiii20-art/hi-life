@@ -62,20 +62,25 @@ const SLIDE_DATA = [
 
 export default function AutoImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Auto-play interval every 1 second (1000ms)
+  // Preload all slider images for instant transitions
   useEffect(() => {
-    if (isPaused) return;
+    SLIDE_DATA.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
 
+  // Continuous auto-play interval every 1 second (1000ms)
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % SLIDE_DATA.length);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + SLIDE_DATA.length) % SLIDE_DATA.length);
@@ -105,8 +110,6 @@ export default function AutoImageSlider() {
   return (
     <section 
       className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 sm:my-10"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -119,7 +122,7 @@ export default function AutoImageSlider() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
@@ -127,7 +130,7 @@ export default function AutoImageSlider() {
                 src={slide.image}
                 alt={slide.title}
                 className="w-full h-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
+                loading="eager"
               />
 
               {/* Gradient Overlay for Text Legibility */}
