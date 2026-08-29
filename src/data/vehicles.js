@@ -17,85 +17,85 @@ export const CAR_BRANDS = [
         id: "swift", 
         name: "Swift", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "baleno", 
         name: "Baleno", 
         bodyType: "Premium Hatchback", 
-        image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "brezza", 
         name: "Brezza / Vitara Brezza", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "grand-vitara", 
         name: "Grand Vitara", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "fronx", 
         name: "Fronx", 
         bodyType: "Crossover", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "dzire", 
         name: "Dzire", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "ertiga", 
         name: "Ertiga", 
         bodyType: "MUV", 
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "xl6", 
         name: "XL6", 
         bodyType: "Premium MPV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "jimny", 
         name: "Jimny", 
         bodyType: "4x4 SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "wagon-r", 
         name: "Wagon R", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "alto-k10", 
         name: "Alto / Alto K10", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "ciaz", 
         name: "Ciaz", 
         bodyType: "Executive Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "ignis", 
         name: "Ignis", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "invicto", 
         name: "Invicto", 
         bodyType: "Premium MPV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       }
     ]
   },
@@ -108,61 +108,61 @@ export const CAR_BRANDS = [
         id: "creta", 
         name: "Creta / Creta N Line", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "venue", 
         name: "Venue / Venue N Line", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "i20", 
         name: "i20 / i20 N Line", 
         bodyType: "Premium Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "verna", 
         name: "Verna", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "exter", 
         name: "Exter", 
         bodyType: "Micro SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "alcazar", 
         name: "Alcazar", 
         bodyType: "6/7-Seater SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "tucson", 
         name: "Tucson", 
         bodyType: "Premium SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "grand-i10-nios", 
         name: "Grand i10 Nios", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "aura", 
         name: "Aura", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "santro", 
         name: "Santro (2005-2022)", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       }
     ]
   },
@@ -175,49 +175,49 @@ export const CAR_BRANDS = [
         id: "nexon", 
         name: "Nexon / Nexon.ev", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "punch", 
         name: "Punch / Punch.ev", 
         bodyType: "Micro SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "harrier", 
         name: "Harrier / Harrier.ev", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "safari", 
         name: "Safari", 
         bodyType: "Full-Size SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "curvv", 
         name: "Curvv / Curvv.ev", 
         bodyType: "Coupe SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "altroz", 
         name: "Altroz", 
         bodyType: "Premium Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "tiago", 
         name: "Tiago / Tiago.ev", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "tigor", 
         name: "Tigor / Tigor.ev", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       }
     ]
   },
@@ -230,37 +230,37 @@ export const CAR_BRANDS = [
         id: "thar", 
         name: "Thar / Thar Roxx (5-Door)", 
         bodyType: "Off-Road SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "scorpio-n", 
         name: "Scorpio-N", 
         bodyType: "Full-Size SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "scorpio-classic", 
         name: "Scorpio Classic", 
         bodyType: "Rugged SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "xuv700", 
         name: "XUV700", 
         bodyType: "Premium SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "xuv-3xo", 
         name: "XUV 3XO / XUV300", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "bolero", 
         name: "Bolero / Bolero Neo", 
         bodyType: "Rugged MUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       }
     ]
   },
@@ -273,43 +273,43 @@ export const CAR_BRANDS = [
         id: "fortuner", 
         name: "Fortuner / Legender", 
         bodyType: "Full-Size SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "innova-crysta", 
         name: "Innova Crysta", 
         bodyType: "Premium MPV", 
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "innova-hycross", 
         name: "Innova Hycross", 
         bodyType: "Hybrid MPV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "urban-cruiser-hyryder", 
         name: "Urban Cruiser Hyryder", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "glanza", 
         name: "Glanza", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "rumion", 
         name: "Rumion", 
         bodyType: "MPV", 
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "camry", 
         name: "Camry Hybrid", 
         bodyType: "Luxury Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       }
     ]
   },
@@ -322,25 +322,25 @@ export const CAR_BRANDS = [
         id: "seltos", 
         name: "Seltos", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "sonet", 
         name: "Sonet", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "carens", 
         name: "Carens", 
         bodyType: "Family MPV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "carnival", 
         name: "Carnival", 
         bodyType: "Luxury MPV", 
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       }
     ]
   },
@@ -353,25 +353,25 @@ export const CAR_BRANDS = [
         id: "city", 
         name: "City", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "elevate", 
         name: "Elevate", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "amaze", 
         name: "Amaze", 
         bodyType: "Compact Sedan", 
-        image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "jazz", 
         name: "Jazz", 
         bodyType: "Premium Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       }
     ]
   },
@@ -384,25 +384,25 @@ export const CAR_BRANDS = [
         id: "virtus", 
         name: "Virtus", 
         bodyType: "Performance Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "taigun", 
         name: "Taigun", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "polo", 
         name: "Polo", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "tiguan", 
         name: "Tiguan", 
         bodyType: "Premium SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       }
     ]
   },
@@ -415,25 +415,25 @@ export const CAR_BRANDS = [
         id: "slavia", 
         name: "Slavia", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "kushaq", 
         name: "Kushaq", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "kodiaq", 
         name: "Kodiaq", 
         bodyType: "7-Seater Luxury SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "rapid", 
         name: "Rapid", 
         bodyType: "Sedan", 
-        image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       }
     ]
   },
@@ -446,25 +446,25 @@ export const CAR_BRANDS = [
         id: "hector", 
         name: "Hector / Hector Plus", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       },
       { 
         id: "astor", 
         name: "Astor", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "windsor-ev", 
         name: "Windsor EV", 
         bodyType: "EV Crossover", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "zs-ev", 
         name: "ZS EV", 
         bodyType: "Electric SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       }
     ]
   },
@@ -477,19 +477,19 @@ export const CAR_BRANDS = [
         id: "kiger", 
         name: "Kiger", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "triber", 
         name: "Triber", 
         bodyType: "Sub-4m 7-Seater MPV", 
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-night-view.jpg" 
       },
       { 
         id: "kwid", 
         name: "Kwid", 
         bodyType: "Hatchback", 
-        image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       }
     ]
   },
@@ -502,13 +502,13 @@ export const CAR_BRANDS = [
         id: "magnite", 
         name: "Magnite", 
         bodyType: "Compact SUV", 
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-daylight.jpg" 
       },
       { 
         id: "kicks", 
         name: "Kicks", 
         bodyType: "Mid SUV", 
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80" 
+        image: "/products/camo-car-rain-monsoon.jpg" 
       }
     ]
   }
@@ -529,15 +529,15 @@ export function getVehicleModelImage(brandId, modelId, bodyType = "") {
   // Fallback by bodyType
   const type = (bodyType || "").toLowerCase();
   if (type.includes("suv") || type.includes("4x4") || type.includes("off-road")) {
-    return "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80";
+    return "/products/camo-car-rain-monsoon.jpg";
   }
   if (type.includes("sedan")) {
-    return "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1000&q=80";
+    return "/products/camo-car-night-view.jpg";
   }
   if (type.includes("mpv") || type.includes("muv")) {
-    return "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80";
+    return "/products/camo-car-night-view.jpg";
   }
   
   // Default Hatchback / Crossover
-  return "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80";
+  return "/products/camo-car-daylight.jpg";
 }

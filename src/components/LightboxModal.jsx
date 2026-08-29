@@ -1,30 +1,31 @@
 import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
-export default function LightboxModal({ items, activeIndex, onClose, onNavigate }) {
-  if (activeIndex === null || !items || !items[activeIndex]) return null;
+export default function LightboxModal({ items, activeIndex, currentIndex, onClose, onNavigate }) {
+  const index = activeIndex !== undefined && activeIndex !== null ? activeIndex : currentIndex;
+  if (index === null || index === undefined || !items || !items[index]) return null;
 
-  const currentItem = items[activeIndex];
+  const currentItem = items[index];
 
   // Handle keyboard navigation (Escape, ArrowLeft, ArrowRight)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft') onNavigate((activeIndex - 1 + items.length) % items.length);
-      if (e.key === 'ArrowRight') onNavigate((activeIndex + 1) % items.length);
+      if (e.key === 'ArrowLeft') onNavigate((index - 1 + items.length) % items.length);
+      if (e.key === 'ArrowRight') onNavigate((index + 1) % items.length);
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, items, onClose, onNavigate]);
+  }, [index, items, onClose, onNavigate]);
 
   const handlePrev = (e) => {
     e.stopPropagation();
-    onNavigate((activeIndex - 1 + items.length) % items.length);
+    onNavigate((index - 1 + items.length) % items.length);
   };
 
   const handleNext = (e) => {
     e.stopPropagation();
-    onNavigate((activeIndex + 1) % items.length);
+    onNavigate((index + 1) % items.length);
   };
 
   return (
@@ -39,7 +40,7 @@ export default function LightboxModal({ items, activeIndex, onClose, onNavigate 
             Hi-Life Real Fitment Gallery
           </span>
           <p className="text-sm font-bold text-white">
-            {activeIndex + 1} / {items.length}
+            {index + 1} / {items.length}
           </p>
         </div>
 

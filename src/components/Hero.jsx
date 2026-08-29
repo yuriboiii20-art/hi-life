@@ -13,31 +13,31 @@ import {
 const HERO_SLIDES = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1800&q=85",
+    image: "/products/camo-car-daylight.jpg",
     tag: "100% Waterproof & Dustproof",
-    title: "ALL-WEATHER ARMOR",
-    subtitle: "Custom-fit protective car covers engineered with military-grade 300D Oxford fabric, scratch-free inner fleece, and storm-proof centre lock buckles."
+    title: "ALL-WEATHER CAMO ARMOR",
+    subtitle: "Custom-fit protective vehicle covers engineered with military-grade camouflage Oxford fabric, scratch-free inner fleece, and storm-proof centre lock buckles."
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1800&q=85",
-    tag: "Laser-Cut 3D Contoured Fit",
-    title: "PRECISION FIT FOR EVERY CAR",
-    subtitle: "Custom-tailored for 50+ Indian vehicle models (Swift, Creta, Nexon, Brezza, Baleno) with dedicated side-mirror pockets and elastic hems."
+    image: "/products/camo-car-rain-monsoon.jpg",
+    tag: "Monsoon Proof Tested",
+    title: "100% WATERPROOF MONSOON SHIELD",
+    subtitle: "Tested in heavy rainfall with zero moisture penetration, keeping your vehicle pristine, corrosion-free, and dust-resistant."
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1800&q=85",
-    tag: "UV & Solar Heat Defense",
-    title: "PAINT PROTECTION STANDARD",
-    subtitle: "Soft spun-cotton fleece lining prevents clear-coat scratches while high-density ULY coating reflects damaging ultraviolet radiation."
+    image: "/products/camo-bike-covered.jpg",
+    tag: "Cars & Two-Wheelers",
+    title: "PRECISION FIT FOR EVERY VEHICLE",
+    subtitle: "Custom-tailored for 50+ Indian vehicle models, motorcycles, and scooters with dedicated mirror pockets and elastic hems."
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1800&q=85",
-    tag: "Storm-Lock Wind Buckle",
-    title: "BUILT FOR EXTREME WEATHER",
-    subtitle: "Underbody centre locking strap and reinforced double-stitched seams ensure complete stability in turbulent monsoon winds."
+    image: "/products/camo-car-night-view.jpg",
+    tag: "Storm-Lock Wind Defense",
+    title: "BUILT FOR 24/7 OUTDOOR PARKING",
+    subtitle: "Underbody centre locking strap, ballistic camouflage weave, and reinforced dual-stitched seams ensure complete stability in extreme weather."
   }
 ];
 
