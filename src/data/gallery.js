@@ -5,92 +5,92 @@
 
 export const GALLERY_CATEGORIES = [
   { id: "all", name: "All Showcase" },
-  { id: "suv", name: "SUVs & MUVs" },
-  { id: "sedan", name: "Executive Sedans" },
-  { id: "hatchback", name: "Hatchbacks" },
-  { id: "details", name: "Material & Craft Details" }
+  { id: "cars", name: "Cars & SUVs" },
+  { id: "bikes", name: "Bikes & Two-Wheelers" },
+  { id: "monsoon", name: "Monsoon & Weather Shield" },
+  { id: "details", name: "Craftsmanship & Fitting" }
 ];
 
 export const GALLERY_ITEMS = [
   {
     id: "g1",
-    category: "suv",
-    title: "Precision SUV Contoured Fit",
-    subtitle: "Mahindra Scorpio-N / Creta / Nexon Class",
-    caption: "Custom 3D tailored cut hugging high ground-clearance wheel arches and roof rails.",
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
-    tags: ["SUV", "Heavy Duty", "Roof Rail Fit"]
+    category: "cars",
+    title: "Precision Camo Car Contoured Fit",
+    subtitle: "Daylight Outdoor Fitment",
+    caption: "Custom 3D tailored cut hugging hood contours, side mirrors, and bumper curves for aerodynamic hold.",
+    image: "/products/camo-car-daylight.jpg",
+    tags: ["Car Armor", "Camouflage", "Full Body Fit"]
   },
   {
     id: "g2",
-    category: "details",
-    title: "Hydro-Shield Waterproof Droplet Barrier",
-    subtitle: "High-density TPU membrane demo",
-    caption: "Water beads effortlessly off the 300D Oxford surface without any fabric penetration.",
-    image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Waterproof", "Fabric Detail", "Hydrophobic"]
+    category: "monsoon",
+    title: "100% Waterproof Monsoon Barrier",
+    subtitle: "Heavy Rain & Torrential Weather Test",
+    caption: "High hydrostatic TPU coated fabric with zero water penetration even during heavy monsoonal road conditions.",
+    image: "/products/camo-car-rain-monsoon.jpg",
+    tags: ["Monsoon Proof", "100% Waterproof", "Wet Weather"]
   },
   {
     id: "g3",
-    category: "sedan",
-    title: "Executive Sedan Tailored Silhouette",
-    subtitle: "Honda City / Hyundai Verna / Maruti Dzire",
-    caption: "Sleek low-drag aerodynamic profile with custom side-mirror pockets and trunk contour.",
-    image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Sedan", "All-Weather", "ORVM Pockets"]
+    category: "bikes",
+    title: "Universal Two-Wheeler Protective Cover",
+    subtitle: "Motorcycle & Scooter Armor",
+    caption: "Snug custom fit covering handlebars, rear mirrors, exhaust, and wheels against dust, rain, and UV damage.",
+    image: "/products/camo-bike-covered.jpg",
+    tags: ["Bike Cover", "Motorcycle", "Two-Wheeler"]
   },
   {
     id: "g4",
     category: "details",
-    title: "Reinforced Underbody Centre Buckle Belt",
-    subtitle: "Anti-Blowout Fastener System",
-    caption: "Industrial-grade quick-clip snap belt secures beneath the chassis against turbulent winds.",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Centre Belt", "Wind Lock", "Hardware"]
+    title: "Ergonomic Quick-Fit Installation",
+    subtitle: "Precision Fitment & Handle Cavities",
+    caption: "Demonstrating effortless single-person installation with mirror pockets and elastic edge wrapping.",
+    image: "/products/camo-bike-fitting.jpg",
+    tags: ["Easy Fit", "Craftsmanship", "Mirror Cavity"]
   },
   {
     id: "g5",
-    category: "hatchback",
-    title: "Compact Hatchback Snug Shield",
-    subtitle: "Maruti Swift / Baleno / Tata Altroz / i20",
-    caption: "Double-stitched elasticized hem grips bumper corners for a tight, secure hold.",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Hatchback", "Elastic Hem", "Daily Dust"]
+    category: "cars",
+    title: "Heavy-Duty Night Parking Shield",
+    subtitle: "24/7 Roadside & Street Protection",
+    caption: "Ballistic camouflage weave guarding against night-time dew, street dust, animal scratches, and external elements.",
+    image: "/products/camo-car-night-view.jpg",
+    tags: ["Night Parking", "Outdoor Armor", "Scratch Resistant"]
   },
   {
     id: "g6",
-    category: "details",
-    title: "Dedicated Mirror Pocket Engineering",
-    subtitle: "Precision ORVM Cavity",
-    caption: "Prevents mirror fold strain and keeps cover centered during breeze or installation.",
-    image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Mirror Pocket", "Fitment", "Detail"]
+    category: "monsoon",
+    title: "All-Weather Hydrophobic Defense",
+    subtitle: "Submersible-Grade Outer Membrane",
+    caption: "Continuous rain bead-off keeps the underlying paint finish clean, dry, and protected from acidic rain mist.",
+    image: "/products/camo-car-rain-monsoon.jpg",
+    tags: ["Hydrophobic", "Paint Guard", "All-Weather"]
   },
   {
     id: "g7",
-    category: "suv",
-    title: "All-Weather Outdoor SUV Shield",
-    subtitle: "Tata Nexon / Hyundai Creta / Kia Seltos / Brezza",
-    caption: "Full body multi-layer defense against tree sap, monsoonal torrents, and scorching sun.",
-    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Compact SUV", "Monsoon Proof", "UV Shield"]
+    category: "bikes",
+    title: "Tailored Mirror & Handlebar Contour",
+    subtitle: "Two-Wheeler Fitment Excellence",
+    caption: "Double-stitched stress relief pockets engineered specifically for tall handlebars and rear view mirrors.",
+    image: "/products/camo-bike-fitting.jpg",
+    tags: ["Bike Armor", "Mirror Pocket", "Snug Fit"]
   },
   {
     id: "g8",
     category: "details",
-    title: "Front & Rear Tension Elastic Grips",
-    subtitle: "Bumper-Hugging Perimeter Elastic",
-    caption: "Integrated dual-elastic banding prevents wind from lifting the cover from front or back.",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Elastic Hem", "Bumper Grip", "Snug Fit"]
+    title: "Front & Rear Bumper Tension Grip",
+    subtitle: "High-Tension Bottom Elastic Hem",
+    caption: "Embedded heavy-duty perimeter elastic grips beneath bumper corners preventing wind lift-off.",
+    image: "/products/camo-car-daylight.jpg",
+    tags: ["Elastic Hem", "Wind Grip", "Laser Fit"]
   },
   {
     id: "g9",
     category: "details",
-    title: "Antenna & Shark-Fin Pocket Accommodator",
-    subtitle: "Roof-Safe Protection",
-    caption: "Specialized reinforced pocket relieves pressure on roof antennas and shark-fin modules.",
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Antenna Pocket", "Roof Safe", "Smart Design"]
+    title: "Night Visibility & Storm Fasteners",
+    subtitle: "Industrial Centre Lock Buckles",
+    caption: "Engineered underbody chassis lock and high-strength fabric weave tested under extreme outdoor exposure.",
+    image: "/products/camo-car-night-view.jpg",
+    tags: ["Centre Buckle", "Storm Guard", "Durable"]
   }
 ];

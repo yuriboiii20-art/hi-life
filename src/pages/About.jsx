@@ -127,6 +127,14 @@ export default function About() {
               </div>
 
               <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/90 space-y-3">
+                <div className="rounded-xl overflow-hidden aspect-[16/9] border border-stone-200 shadow-xs">
+                  <img 
+                    src="/products/camo-car-daylight.jpg" 
+                    alt="Hi-Life Military Camouflage All-Weather Material" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
                 <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal">
                   ULY coated fabric is a high-performance textile treated with an advanced Ultra Laminated Polyurethane (ULY) resin coating on base materials like polyester or nylon. It offers exceptional waterproofing, tear strength, and abrasion resistance while remaining lighter and more flexible than standard PVC-coated materials.
                 </p>

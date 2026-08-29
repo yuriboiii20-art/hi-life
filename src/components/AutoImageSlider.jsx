@@ -4,34 +4,34 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const SLIDE_DATA = [
   {
     id: 1,
-    title: "100% Waterproof & Hydrostatic Shield",
-    subtitle: "Engineered for torrential monsoons with zero capillary leak",
-    badge: "All-Weather Defense",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1600&q=85",
+    title: "100% Waterproof Monsoon Defense",
+    subtitle: "Engineered for torrential rain and wet weather with zero capillary leak",
+    badge: "Monsoon Barrier",
+    image: "/products/camo-car-rain-monsoon.jpg",
     tag: "Monsoon Proof"
   },
   {
     id: 2,
-    title: "Custom 3D Laser-Cut Fitment",
-    subtitle: "Contoured for every Indian SUV, Sedan & Hatchback",
+    title: "Custom 3D Contoured Car Fitment",
+    subtitle: "Laser-cut contour for every Indian SUV, Sedan & Hatchback",
     badge: "100% Guaranteed Fit",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1600&q=85",
-    tag: "Laser Tailored"
+    image: "/products/camo-car-daylight.jpg",
+    tag: "Contoured Cut"
   },
   {
     id: 3,
-    title: "Executive Luxury Paint Protection",
-    subtitle: "Ultra-soft spun cotton fleece inner lining protects ceramic coat & clear coat",
-    badge: "Scratch-Free Inner Layer",
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=85",
-    tag: "Paint Safe"
+    title: "Two-Wheeler & Motorcycle Shield",
+    subtitle: "Full-body cover for bikes and scooters with tailored mirror accommodations",
+    badge: "Bikes & Scooters",
+    image: "/products/camo-bike-covered.jpg",
+    tag: "Bike Protection"
   },
   {
     id: 4,
-    title: "Heavy-Duty Storm Lock & Wind Defense",
+    title: "24/7 Heavy-Duty Outdoor Night Armor",
     subtitle: "Reinforced center underbody belt and dual front-rear elastic hems",
     badge: "High-Wind Stability",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85",
+    image: "/products/camo-car-night-view.jpg",
     tag: "Storm Guard"
   }
 ];

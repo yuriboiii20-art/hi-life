@@ -18,11 +18,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Designed for daily covered parking and mild outdoor conditions. Lightweight yet tough high-density Oxford weave that prevents dust accumulation, minor scratches, bird droppings, and light drizzle.",
-    heroImage: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/products/camo-car-daylight.jpg",
     detailImages: [
-      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80"
+      "/products/camo-car-daylight.jpg",
+      "/products/camo-car-rain-monsoon.jpg",
+      "/products/camo-car-night-view.jpg"
     ],
     fabricSpecs: {
       material: "190T High-Density Polyester Taffeta",
@@ -60,11 +60,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Our signature all-season shield. Built with a dual-layer waterproof membrane and ultrasonic seam seals that withstand heavy torrential rain, dust storms, and blistering sun while pampering the car paint with ultra-soft cotton fleece.",
-    heroImage: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/products/camo-car-rain-monsoon.jpg",
     detailImages: [
-      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
+      "/products/camo-car-rain-monsoon.jpg",
+      "/products/camo-car-daylight.jpg",
+      "/products/camo-car-night-view.jpg"
     ],
     fabricSpecs: {
       material: "300D Heavy Ripstop Oxford + TPU Hydro-Shield Film",
@@ -103,11 +103,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "Engineered specifically for hot, sunny climates. Featuring a specialized silver aluminum-infused outer shield that bounces off 98% of solar radiation, reducing cabin temperature by up to 25°C and halting dashboard fade and paint oxidation.",
-    heroImage: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/products/camo-car-daylight.jpg",
     detailImages: [
-      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
+      "/products/camo-car-daylight.jpg",
+      "/products/camo-bike-covered.jpg",
+      "/products/camo-car-night-view.jpg"
     ],
     fabricSpecs: {
       material: "Aluminized UV-Reflect Weave + Microfiber Composite",
@@ -134,8 +134,8 @@ export const COVER_TYPES = [
   },
   {
     id: "heavy-duty-outdoor",
-    name: "Heavy-Duty Outdoor Cover",
-    tagline: "Commercial-Grade 5-Layer Armor for Extreme Exposure",
+    name: "Heavy-Duty Outdoor Armor Cover",
+    tagline: "Commercial-Grade Military Camo Armor for Extreme Exposure",
     badge: "Maximum Armor",
     badgeColor: "bg-zinc-800 text-white border border-zinc-700",
     basePrice: 3199,
@@ -146,11 +146,11 @@ export const COVER_TYPES = [
     inStock: true,
     leadTime: "Dispatches in 24 Hrs",
     description: "The ultimate fortress for cars parked long-term outdoors. Multi-layer matrix featuring ballistic Oxford exterior, puncture-resistant composite core, and thick fleece cushion to protect against falling twigs, hail, stray animals, and severe weather.",
-    heroImage: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/products/camo-car-night-view.jpg",
     detailImages: [
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
+      "/products/camo-car-night-view.jpg",
+      "/products/camo-car-rain-monsoon.jpg",
+      "/products/camo-bike-fitting.jpg"
     ],
     fabricSpecs: {
       material: "600D Military-Grade Ballistic Oxford + 5-Ply Membrane",
@@ -173,6 +173,47 @@ export const COVER_TYPES = [
       "Reinforced Antenna Pocket",
       "Four-Corner Night Hazard Reflective Strips",
       "Heavy Oxford Carry & Storage Sack"
+    ]
+  },
+  {
+    id: "two-wheeler-camo",
+    name: "Two-Wheeler / Bike Camouflage Cover",
+    tagline: "Custom-Fit Defense for Motorcycles & Scooters",
+    badge: "Bikes & Scooters",
+    badgeColor: "bg-emerald-700 text-white",
+    basePrice: 899,
+    originalPrice: 1499,
+    discountPercent: 40,
+    rating: 4.9,
+    reviewsCount: 290,
+    inStock: true,
+    leadTime: "Dispatches in 24 Hrs",
+    description: "Tailored camouflage protection for all Indian motorcycles and scooters. Built with waterproof ballistic weave, mirror/handlebar contours, and snug bottom elastic to keep your bike protected in all weather.",
+    heroImage: "/products/camo-bike-covered.jpg",
+    detailImages: [
+      "/products/camo-bike-covered.jpg",
+      "/products/camo-bike-fitting.jpg",
+      "/products/camo-car-daylight.jpg"
+    ],
+    fabricSpecs: {
+      material: "300D Heavy Camo Oxford Fabric",
+      fabricWeight: "200 GSM",
+      waterproofing: "100% Waterproof & Dustproof",
+      lining: "Scratch-Safe Smooth Inner Shield",
+      uvProtection: "UPF 50+ UV & Heat Guard",
+      stitchType: "Double Interlock Bound Seams"
+    },
+    keyBenefits: [
+      "Tailored fit for motorcycles (Royal Enfield, Splendor, Pulsar, etc.) & scooters (Activa, Jupiter, EV)",
+      "Dedicated mirror and handlebar pockets for complete coverage",
+      "Bottom buckle strap locks under the stand to withstand turbulent winds",
+      "Protects seat leather, speedometer console, and paint from sun fade"
+    ],
+    includedFeatures: [
+      "Mirror & Handlebar Pockets",
+      "Underbody Lock Buckle",
+      "Full Elastic Bottom Hem",
+      "Compact Storage Bag"
     ]
   }
 ];
