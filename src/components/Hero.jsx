@@ -27,13 +27,34 @@ const HERO_SLIDES = [
   },
   {
     id: 3,
-    image: "/products/camo-bike-covered.jpg",
-    tag: "Cars & Two-Wheelers",
-    title: "PRECISION FIT FOR EVERY VEHICLE",
-    subtitle: "Custom-tailored for 50+ Indian vehicle models, motorcycles, and scooters with dedicated mirror pockets and elastic hems."
+    image: "/products/camo-car-shopfront.jpg",
+    tag: "Storefront Tested Fit",
+    title: "PREMIUM CUSTOM VEHICLE TAILORING",
+    subtitle: "Precision-engineered mirror pockets, sleek headlights contouring, and front-to-rear elastic tension."
   },
   {
     id: 4,
+    image: "/products/camo-packaging-bag.jpg",
+    tag: "Official Hi-Life Product",
+    title: "GENUINE BRANDED PACKAGING",
+    subtitle: "Includes premium zippered heavy-duty tote storage bag with high-density protective carry straps."
+  },
+  {
+    id: 5,
+    image: "/products/camo-car-full-sidefit.jpg",
+    tag: "Full Body SUV & Sedan Cut",
+    title: "UNMATCHED PROFILE COVERAGE",
+    subtitle: "Complete bumper-to-bumper vehicle coverage tailored to 50+ Indian hatchbacks, sedans, and SUVs."
+  },
+  {
+    id: 6,
+    image: "/products/camo-bike-covered.jpg",
+    tag: "Cars & Two-Wheelers",
+    title: "PRECISION FIT FOR EVERY VEHICLE",
+    subtitle: "Custom-tailored for Indian vehicle models, motorcycles, and scooters with dedicated mirror pockets and elastic hems."
+  },
+  {
+    id: 7,
     image: "/products/camo-car-night-view.jpg",
     tag: "Storm-Lock Wind Defense",
     title: "BUILT FOR 24/7 OUTDOOR PARKING",
@@ -47,13 +68,13 @@ export default function Hero({ onFindCoverClick }) {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Auto-slide every 3.5 seconds
+  // Auto-slide every 1 second (1000ms)
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 3500);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isPaused]);
@@ -113,7 +134,7 @@ export default function Hero({ onFindCoverClick }) {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                 isActive ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
               }`}
             >
