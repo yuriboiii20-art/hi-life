@@ -64,20 +64,25 @@ const HERO_SLIDES = [
 
 export default function Hero({ onFindCoverClick }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Auto-slide every 1 second (1000ms)
+  // Preload all hero slide images for instant, glitch-free transitions
   useEffect(() => {
-    if (isPaused) return;
+    HERO_SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
 
+  // Continuous auto-slide every 1 second (1000ms)
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
@@ -120,8 +125,6 @@ export default function Hero({ onFindCoverClick }) {
   return (
     <section 
       className="relative w-full overflow-hidden bg-stone-950 font-sans select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -134,15 +137,15 @@ export default function Hero({ onFindCoverClick }) {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                isActive ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
               <img
                 src={slide.image}
                 alt={slide.title}
                 className="w-full h-full object-cover object-center"
-                loading={idx === 0 ? 'eager' : 'lazy'}
+                loading="eager"
               />
               {/* Dark Gradient Overlay for Crisp Text Readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-stone-950/45 lg:bg-gradient-to-r lg:from-stone-950/95 lg:via-stone-950/75 lg:to-stone-950/20" />
