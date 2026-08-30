@@ -14,14 +14,14 @@ export const BUSINESS_CONFIG = {
   email: "support@hilifecovers.com",
   salesEmail: "orders@hilifecovers.com",
   
-  // Address placeholder
+  // Official Business Address
   address: {
-    street: "Plot No. 42, Industrial Area, Phase II",
-    city: "New Delhi",
-    state: "Delhi",
-    pincode: "110020",
+    street: "No.84/5 Manish Tower, J C Road",
+    city: "Bangalore",
+    state: "Karnataka",
+    pincode: "560002",
     country: "India",
-    fullAddress: "Plot No. 42, Industrial Area, Phase II, New Delhi, Delhi 110020, India"
+    fullAddress: "No.84/5 Manish Tower, J C Road, Bangalore - 560002"
   },
 
   // WhatsApp configuration for one-click enquiry
