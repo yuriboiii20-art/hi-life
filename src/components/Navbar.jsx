@@ -7,38 +7,15 @@ import {
   ChevronDown, 
   Menu, 
   X, 
-  MessageCircle, 
-  Shield, 
-  Car, 
-  Tag,
-  Percent,
-  Calendar,
-  Sparkles,
-  Layers,
-  ArrowRight,
-  Check,
-  CheckCircle2,
-  Gift,
-  Truck
+  MessageCircle 
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
-import { CAR_BRANDS, MANUFACTURING_YEARS } from '../data/vehicles';
 import { COVER_TYPES } from '../data/products';
-import { ACTIVE_OFFERS } from '../data/offers';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeDropdown, setActiveDropdown] = useState(null);
-  
-  // Interactive Vehicle Selector Dropdown States
-  const [selectedBrand, setSelectedBrand] = useState('maruti-suzuki');
-  const [selectedModel, setSelectedModel] = useState('swift');
-  const [selectedYear, setSelectedYear] = useState('2025');
-  const [selectedCover, setSelectedCover] = useState('military-camo');
-  const [appliedOffer, setAppliedOffer] = useState('HILIFE15');
-  const [mobileSelectorOpen, setMobileSelectorOpen] = useState(false);
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -59,7 +36,6 @@ export default function Navbar() {
 
   const handleFinderScroll = () => {
     setMobileMenuOpen(false);
-    setActiveDropdown(null);
     if (location.pathname === '/') {
       const el = document.getElementById('vehicle-finder');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -67,16 +43,6 @@ export default function Navbar() {
       navigate('/#vehicle-finder');
     }
   };
-
-  const handleApplyVehicleSelection = () => {
-    setActiveDropdown(null);
-    setMobileMenuOpen(false);
-    navigate(`/products?brand=${selectedBrand}&model=${selectedModel}&year=${selectedYear}&category=${selectedCover}`);
-  };
-
-  // Get active brand object and its models
-  const currentBrandObj = CAR_BRANDS.find(b => b.id === selectedBrand) || CAR_BRANDS[0];
-  const availableModels = currentBrandObj ? currentBrandObj.models : [];
 
   return (
     <header className="sticky top-0 z-50 shadow-sm font-sans bg-white">
@@ -108,7 +74,7 @@ export default function Navbar() {
             />
             <button
               type="submit"
-              className="bg-stone-900 hover:bg-black text-white px-5 py-2.5 flex items-center justify-center transition-colors shrink-0"
+              className="bg-stone-900 hover:bg-black text-white px-5 py-2.5 flex items-center justify-center transition-colors shrink-0 cursor-pointer"
               aria-label="Search"
             >
               <Search className="w-4 h-4 stroke-[2.5]" />
@@ -198,245 +164,6 @@ export default function Navbar() {
               >
                 HOME
               </Link>
-
-              {/* VEHICLE & OFFERS SELECTOR DROPDOWN BUTTON (Requirement 3) */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('vehicleSelector')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button
-                  type="button"
-                  className={`px-3.5 py-2 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                    activeDropdown === 'vehicleSelector'
-                      ? 'text-white bg-amber-600 shadow-sm'
-                      : 'text-amber-900 bg-amber-100/80 hover:bg-amber-200/80 border border-amber-300/60'
-                  }`}
-                >
-                  <Car className="w-3.5 h-3.5 text-amber-900" />
-                  <span>Select Car & Offers</span>
-                  <span className="px-1.5 py-0.2 bg-amber-500 text-stone-950 rounded text-[9px] font-black uppercase">
-                    Finder
-                  </span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'vehicleSelector' ? 'rotate-180 text-white' : 'text-amber-800'}`} />
-                </button>
-
-                {/* MEGA DROPDOWN POPUP ON HOVER */}
-                {activeDropdown === 'vehicleSelector' && (
-                  <div className="absolute top-full left-0 w-[840px] max-w-[92vw] bg-white rounded-3xl shadow-2xl border border-stone-200 p-5 z-50 animate-fadeIn">
-                    
-                    {/* Header summary strip */}
-                    <div className="pb-3 mb-4 border-b border-stone-100 flex items-center justify-between flex-wrap gap-2">
-                      <div className="flex items-center gap-2">
-                        <span className="p-1.5 rounded-lg bg-amber-100 text-amber-900">
-                          <Sparkles className="w-4 h-4" />
-                        </span>
-                        <div>
-                          <h4 className="text-xs font-black text-stone-950 uppercase tracking-wider">
-                            Interactive Vehicle Matcher & Offers
-                          </h4>
-                          <p className="text-[11px] text-stone-500 font-normal">
-                            Hover or click options below to configure exact fitment and apply deals
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 text-[11px] font-bold bg-stone-100 px-3 py-1 rounded-xl text-stone-800">
-                        <span>Selected:</span>
-                        <span className="text-amber-800 font-black capitalize">{currentBrandObj?.name} {selectedModel} ({selectedYear})</span>
-                      </div>
-                    </div>
-
-                    {/* 5-Section Configuration Grid */}
-                    <div className="grid grid-cols-12 gap-4 items-start">
-                      
-                      {/* Section 1: Select Car Brand (3 cols) */}
-                      <div className="col-span-3 border-r border-stone-100 pr-3 space-y-2">
-                        <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
-                          <Car className="w-3 h-3 text-amber-700" />
-                          <span>1. Select Brand</span>
-                        </div>
-                        <div className="max-h-56 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
-                          {CAR_BRANDS.slice(0, 10).map((brand) => (
-                            <button
-                              key={brand.id}
-                              type="button"
-                              onClick={() => {
-                                setSelectedBrand(brand.id);
-                                if (brand.models && brand.models.length > 0) {
-                                  setSelectedModel(brand.models[0].id);
-                                }
-                              }}
-                              onMouseEnter={() => {
-                                setSelectedBrand(brand.id);
-                                if (brand.models && brand.models.length > 0) {
-                                  setSelectedModel(brand.models[0].id);
-                                }
-                              }}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-xl text-[11px] font-bold flex items-center justify-between transition-all cursor-pointer ${
-                                selectedBrand === brand.id
-                                  ? 'bg-stone-950 text-white shadow-xs'
-                                  : 'text-stone-700 hover:bg-stone-100'
-                              }`}
-                            >
-                              <span className="truncate">{brand.name}</span>
-                              {selectedBrand === brand.id && <Check className="w-3 h-3 text-amber-400 shrink-0" />}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Section 2: Select Car Model (3 cols) */}
-                      <div className="col-span-3 border-r border-stone-100 pr-3 space-y-2">
-                        <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
-                          <Layers className="w-3 h-3 text-amber-700" />
-                          <span>2. Select Model</span>
-                        </div>
-                        <div className="max-h-56 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
-                          {availableModels.map((model) => (
-                            <button
-                              key={model.id}
-                              type="button"
-                              onClick={() => setSelectedModel(model.id)}
-                              onMouseEnter={() => setSelectedModel(model.id)}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-xl text-[11px] font-bold flex items-center justify-between transition-all cursor-pointer ${
-                                selectedModel === model.id
-                                  ? 'bg-stone-950 text-white shadow-xs'
-                                  : 'text-stone-700 hover:bg-stone-100'
-                              }`}
-                            >
-                              <div className="truncate">
-                                <p className="truncate leading-tight">{model.name}</p>
-                                <span className={`text-[9px] font-normal ${selectedModel === model.id ? 'text-stone-300' : 'text-stone-400'}`}>
-                                  {model.bodyType}
-                                </span>
-                              </div>
-                              {selectedModel === model.id && <Check className="w-3 h-3 text-amber-400 shrink-0" />}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Section 3: Select Manufacturing Year (2 cols) */}
-                      <div className="col-span-2 border-r border-stone-100 pr-3 space-y-2">
-                        <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
-                          <Calendar className="w-3 h-3 text-amber-700" />
-                          <span>3. Year</span>
-                        </div>
-                        <div className="max-h-56 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
-                          {MANUFACTURING_YEARS.slice(0, 10).map((year) => (
-                            <button
-                              key={year}
-                              type="button"
-                              onClick={() => setSelectedYear(year)}
-                              onMouseEnter={() => setSelectedYear(year)}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-xl text-[11px] font-bold flex items-center justify-between transition-all cursor-pointer ${
-                                selectedYear === year
-                                  ? 'bg-stone-950 text-white shadow-xs'
-                                  : 'text-stone-700 hover:bg-stone-100'
-                              }`}
-                            >
-                              <span>{year}</span>
-                              {selectedYear === year && <Check className="w-3 h-3 text-amber-400 shrink-0" />}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Section 4 & 5: Select Cover Types + Offers (4 cols) */}
-                      <div className="col-span-4 space-y-3">
-                        
-                        {/* 4. Select Cover Types */}
-                        <div className="space-y-1.5">
-                          <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
-                            <Shield className="w-3 h-3 text-amber-700" />
-                            <span>4. Select Cover Type</span>
-                          </div>
-                          <div className="space-y-1">
-                            {COVER_TYPES.map((cov) => (
-                              <button
-                                key={cov.id}
-                                type="button"
-                                onClick={() => setSelectedCover(cov.id)}
-                                onMouseEnter={() => setSelectedCover(cov.id)}
-                                className={`w-full text-left p-1.5 rounded-xl text-[11px] font-bold flex items-center justify-between transition-all border cursor-pointer ${
-                                  selectedCover === cov.id
-                                    ? 'bg-amber-50/80 border-amber-400 text-stone-950'
-                                    : 'bg-white border-stone-200 text-stone-700 hover:bg-stone-50'
-                                }`}
-                              >
-                                <span className="truncate pr-1">{cov.name}</span>
-                                <span className="text-[10px] font-black bg-stone-900 text-white px-1.5 py-0.5 rounded-md shrink-0">
-                                  ₹{cov.basePrice}
-                                </span>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* 5. Offers & Promo Deals */}
-                        <div className="space-y-1.5 pt-1 border-t border-stone-100">
-                          <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-stone-500">
-                            <span className="flex items-center gap-1">
-                              <Tag className="w-3 h-3 text-emerald-600" />
-                              <span>5. Active Offers</span>
-                            </span>
-                            <span className="text-emerald-700 font-bold">Auto-applied</span>
-                          </div>
-                          
-                          <div className="grid grid-cols-2 gap-1.5">
-                            {ACTIVE_OFFERS.slice(0, 4).map((off) => (
-                              <div
-                                key={off.id}
-                                onClick={() => setAppliedOffer(off.code)}
-                                className={`p-1.5 rounded-xl border text-[10px] cursor-pointer transition-all ${
-                                  appliedOffer === off.code
-                                    ? 'bg-emerald-50 border-emerald-400 text-emerald-950 font-bold'
-                                    : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
-                                }`}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <span className="font-mono font-black text-[9px] uppercase">{off.code}</span>
-                                  {appliedOffer === off.code && <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />}
-                                </div>
-                                <p className="truncate text-[10px] mt-0.5 text-stone-900 font-semibold">{off.discount}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                    {/* Bottom Action CTA */}
-                    <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between flex-wrap gap-2">
-                      <div className="text-[11px] text-stone-500">
-                        <span>Ready to protect your vehicle with guaranteed custom fitment?</span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={handleFinderScroll}
-                          className="px-3.5 py-2 rounded-xl text-stone-700 hover:bg-stone-100 text-xs font-bold transition-colors cursor-pointer"
-                        >
-                          Scroll to Matcher
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleApplyVehicleSelection}
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
-                        >
-                          <span>View Matched Covers</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
-                        </button>
-                      </div>
-                    </div>
-
-                  </div>
-                )}
-              </div>
 
               {/* About Us */}
               <Link 
@@ -576,7 +303,7 @@ export default function Navbar() {
 
           {/* Left-Side Partial Drawer (Covers ~75% screen on mobile) */}
           <div 
-            className="fixed inset-y-0 left-0 z-50 w-[80%] max-w-sm bg-white shadow-2xl flex flex-col justify-between p-4 overflow-y-auto transform transition-transform duration-300 animate-slideInLeft"
+            className="fixed inset-y-0 left-0 z-50 w-[75%] max-w-xs bg-white shadow-2xl flex flex-col justify-between p-4 overflow-y-auto transform transition-transform duration-300 animate-slideInLeft"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
@@ -605,89 +332,6 @@ export default function Navbar() {
                 >
                   Home
                 </Link>
-
-                {/* Mobile Vehicle Selector & Offers Accordion */}
-                <div className="p-2.5 rounded-2xl bg-amber-50 border border-amber-200 space-y-2 my-1">
-                  <div 
-                    onClick={() => setMobileSelectorOpen(!mobileSelectorOpen)}
-                    className="flex items-center justify-between cursor-pointer"
-                  >
-                    <span className="font-black text-xs text-amber-950 flex items-center gap-1.5 uppercase">
-                      <Car className="w-3.5 h-3.5 text-amber-800" />
-                      <span>Select Car & Offers</span>
-                    </span>
-                    <ChevronDown className={`w-3.5 h-3.5 text-amber-800 transition-transform ${mobileSelectorOpen ? 'rotate-180' : ''}`} />
-                  </div>
-
-                  {mobileSelectorOpen && (
-                    <div className="pt-2 border-t border-amber-200 space-y-2 text-[11px]">
-                      <div>
-                        <label className="text-[10px] font-bold text-stone-600 uppercase block mb-1">Brand</label>
-                        <select 
-                          value={selectedBrand} 
-                          onChange={(e) => {
-                            setSelectedBrand(e.target.value);
-                            const b = CAR_BRANDS.find(br => br.id === e.target.value);
-                            if (b && b.models.length > 0) setSelectedModel(b.models[0].id);
-                          }}
-                          className="w-full p-2 bg-white rounded-xl border border-stone-300 text-xs font-semibold"
-                        >
-                          {CAR_BRANDS.map(b => (
-                            <option key={b.id} value={b.id}>{b.name}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="text-[10px] font-bold text-stone-600 uppercase block mb-1">Model</label>
-                        <select 
-                          value={selectedModel} 
-                          onChange={(e) => setSelectedModel(e.target.value)}
-                          className="w-full p-2 bg-white rounded-xl border border-stone-300 text-xs font-semibold"
-                        >
-                          {availableModels.map(m => (
-                            <option key={m.id} value={m.id}>{m.name} ({m.bodyType})</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="text-[10px] font-bold text-stone-600 uppercase block mb-1">Year</label>
-                        <select 
-                          value={selectedYear} 
-                          onChange={(e) => setSelectedYear(e.target.value)}
-                          className="w-full p-2 bg-white rounded-xl border border-stone-300 text-xs font-semibold"
-                        >
-                          {MANUFACTURING_YEARS.slice(0, 15).map(y => (
-                            <option key={y} value={y}>{y}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="text-[10px] font-bold text-stone-600 uppercase block mb-1">Cover Type</label>
-                        <select 
-                          value={selectedCover} 
-                          onChange={(e) => setSelectedCover(e.target.value)}
-                          className="w-full p-2 bg-white rounded-xl border border-stone-300 text-xs font-semibold"
-                        >
-                          {COVER_TYPES.map(c => (
-                            <option key={c.id} value={c.id}>{c.name} - ₹{c.basePrice}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={handleApplyVehicleSelection}
-                        className="w-full py-2.5 rounded-xl bg-stone-950 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm"
-                      >
-                        <span>Match Cover Now</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
-                      </button>
-                    </div>
-                  )}
-                </div>
 
                 <Link 
                   to="/about" 
