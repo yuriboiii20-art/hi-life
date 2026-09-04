@@ -75,6 +75,80 @@ export class PaymentController {
   }
 
   /**
+   * POST /api/payments/otp/send
+   * Generates and returns/simulates 6-digit OTP
+   */
+  static async sendOtp(req, res) {
+    try {
+      const { phone } = req.body;
+      const cleanPhone = String(phone || '').replace(/\D/g, '');
+
+      if (cleanPhone.length < 10) {
+        return res.status(400).json({
+          success: false,
+          error: 'Please enter a valid 10-digit mobile number.'
+        });
+      }
+
+      // Demo OTP generation (fixed or deterministic for demo testing)
+      const demoOtp = '123456';
+
+      return res.status(200).json({
+        success: true,
+        phone: cleanPhone,
+        demoOtp,
+        message: `OTP sent successfully to +91 ${cleanPhone}. Demo OTP is ${demoOtp}`
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to send OTP.'
+      });
+    }
+  }
+
+  /**
+   * POST /api/payments/otp/verify
+   * Verifies 6-digit OTP
+   */
+  static async verifyOtp(req, res) {
+    try {
+      const { phone, otp } = req.body;
+      const cleanPhone = String(phone || '').replace(/\D/g, '');
+      const cleanOtp = String(otp || '').trim();
+
+      if (!cleanOtp) {
+        return res.status(400).json({
+          success: false,
+          error: 'OTP is required.'
+        });
+      }
+
+      // Allow '123456' or any 6-digit number in demo mode
+      if (cleanOtp === '123456' || cleanOtp.length === 6) {
+        const userToken = `usr_${Date.now()}_${cleanPhone.slice(-4)}`;
+        return res.status(200).json({
+          success: true,
+          verified: true,
+          phone: cleanPhone,
+          userToken,
+          message: 'Mobile number verified successfully.'
+        });
+      }
+
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid OTP entered. (Demo OTP is 123456)'
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        error: 'OTP verification failed.'
+      });
+    }
+  }
+
+  /**
    * GET /api/payments/config
    * Returns safe provider client config
    */

@@ -3,8 +3,7 @@ import crypto from 'crypto';
 
 /**
  * DemoPaymentProvider
- * Handles simulated Indian payment gateway flow (UPI, Card, NetBanking, COD)
- * Completely isolated from real banks / Razorpay API.
+ * Handles simulated Indian payment gateway flow (UPI QR/Barcode, Cards, Wallets, NetBanking, COD)
  */
 export class DemoPaymentProvider extends PaymentProvider {
   constructor() {
@@ -17,7 +16,8 @@ export class DemoPaymentProvider extends PaymentProvider {
    */
   async createPaymentOrder(order) {
     const demoTransactionId = `demo_txn_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
-    
+    const dummyUpiString = `upi://pay?pa=hilife.covers@okdemo&pn=HiLife%20Covers&am=${order.totalAmount}&cu=INR&tn=Order%20${order.id}`;
+
     return {
       provider: 'demo',
       isDemo: true,
@@ -28,18 +28,31 @@ export class DemoPaymentProvider extends PaymentProvider {
       currency: 'INR',
       merchantName: 'Hi-Life Premium Car Covers',
       demoNotice: 'DEMO PAYMENT — NO REAL MONEY WILL BE CHARGED',
+      upiQrString: dummyUpiString,
       supportedMethods: [
         {
           id: 'upi',
           name: 'UPI / QR Code',
-          description: 'Instant demo UPI intent simulation',
-          dummyPresets: ['user@okaxis', 'customer@okhdfcbank', 'hilife@upi']
+          description: 'Scan demo QR code or enter demo VPA',
+          qrString: dummyUpiString,
+          dummyPresets: ['customer@okaxis', 'hilife@okhdfcbank', 'demo@paytm']
         },
         {
           id: 'card',
           name: 'Credit / Debit Card',
-          description: 'Simulated Card Payment (No real card required)',
-          dummyCard: '•••• •••• •••• 4242'
+          description: 'Simulated Card Payment with safe dummy presets',
+          dummyCard: '4242 •••• •••• 4242'
+        },
+        {
+          id: 'wallet',
+          name: 'Digital Wallets',
+          description: 'Popular Indian Wallets (Simulated)',
+          demoWallets: [
+            { id: 'paytm', name: 'Paytm Wallet', balance: 5000 },
+            { id: 'phonepe', name: 'PhonePe Wallet', balance: 3500 },
+            { id: 'amazonpay', name: 'Amazon Pay', balance: 8200 },
+            { id: 'mobikwik', name: 'MobiKwik', balance: 2500 }
+          ]
         },
         {
           id: 'netbanking',
@@ -62,24 +75,17 @@ export class DemoPaymentProvider extends PaymentProvider {
     };
   }
 
-  /**
-   * Generates a realistic demo payment ID e.g. demo_pay_a1b2c3d4e5f6
-   */
   generateDemoPaymentId() {
     return `demo_pay_${crypto.randomBytes(6).toString('hex')}`;
   }
 
-  /**
-   * Process simulated payment actions: 'success', 'failure', 'cancel'
-   * @param {Object} params
-   */
   async verifyPayment({ simulationAction, paymentMethod, orderId }) {
     if (simulationAction === 'success') {
       const paymentId = this.generateDemoPaymentId();
       return {
         isValid: true,
         paymentId,
-        paymentMethod: paymentMethod || 'upi_demo',
+        paymentMethod: paymentMethod || 'upi_qr_demo',
         status: 'paid',
         simulated: true,
         paidAt: new Date().toISOString()
