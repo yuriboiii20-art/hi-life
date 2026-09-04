@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck, AlertCircle, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { BUSINESS_CONFIG } from '../config/business';
 import { getVehicleModelImage } from '../data/vehicles';
+import { useCart } from '../context/CartContext';
+import DemoPaymentModal from './DemoPaymentModal';
 
-export default function QuickOrderModal({ result, onClose }) {
+export default function QuickOrderModal({ result, cartItems, onClose }) {
+  const navigate = useNavigate();
+  const { clearCart, guestSessionId } = useCart();
+
   const [formData, setFormData] = useState({
     customerName: '',
     phone: '',
@@ -11,27 +17,54 @@ export default function QuickOrderModal({ result, onClose }) {
     address: '',
     pincode: '',
     city: '',
-    paymentMethod: 'cod'
+    paymentMethod: 'upi' // default to UPI/Online demo gateway
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [orderNumber, setOrderNumber] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [paymentModalData, setPaymentModalData] = useState(null);
 
-  if (!result) return null;
+  // Normalize order items whether called with single `result` or `cartItems`
+  const isCartCheckout = !result && cartItems && cartItems.length > 0;
 
-  const {
-    brand,
-    brandId,
-    model,
-    modelId,
-    bodyType,
-    modelImage,
-    year,
-    coverType,
-    calculatedPrice
-  } = result;
+  let orderItemsToDisplay = [];
+  let displayPrice = 0;
+  let summaryTitle = 'Order Custom-Fit Cover';
 
-  const carImage = modelImage || getVehicleModelImage(brandId, modelId, bodyType);
+  if (result) {
+    displayPrice = result.calculatedPrice;
+    summaryTitle = `Order for ${result.brand} ${result.model}`;
+    const carImg = result.modelImage || getVehicleModelImage(result.brandId, result.modelId, result.bodyType);
+    orderItemsToDisplay = [
+      {
+        coverId: result.coverType?.id || result.coverId,
+        name: result.coverType?.name || 'Custom Cover',
+        brand: result.brand,
+        model: result.model,
+        year: result.year,
+        bodyType: result.bodyType,
+        image: carImg,
+        price: result.calculatedPrice,
+        quantity: 1
+      }
+    ];
+  } else if (isCartCheckout) {
+    displayPrice = cartItems.reduce((sum, item) => sum + (item.calculatedPrice || item.basePrice || 0) * (item.quantity || 1), 0);
+    summaryTitle = `Checkout (${cartItems.length} ${cartItems.length === 1 ? 'Item' : 'Items'})`;
+    orderItemsToDisplay = cartItems.map((item) => ({
+      coverId: item.coverId || item.id,
+      name: item.coverType?.name || item.name || 'Custom Cover',
+      brand: item.brand || 'Vehicle',
+      model: item.model || 'Model',
+      year: item.year || '',
+      bodyType: item.bodyType || 'Standard',
+      image: item.modelImage || item.heroImage || '/products/camo-car-daylight.jpg',
+      price: item.calculatedPrice || item.basePrice,
+      quantity: item.quantity || 1
+    }));
+  }
+
+  if (orderItemsToDisplay.length === 0) return null;
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -40,80 +73,156 @@ export default function QuickOrderModal({ result, onClose }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
 
-    setTimeout(() => {
-      const genId = 'HL-' + Math.floor(100000 + Math.random() * 900000);
-      setOrderNumber(genId);
+    try {
+      const itemsPayload = orderItemsToDisplay.map((item) => ({
+        coverId: item.coverId,
+        brand: item.brand,
+        model: item.model,
+        year: item.year,
+        bodyType: item.bodyType,
+        quantity: item.quantity
+      }));
+
+      // Step 1: Validate cart & create order on backend with tamper-proof prices
+      const createRes = await fetch('/api/orders/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-guest-session-id': guestSessionId
+        },
+        body: JSON.stringify({
+          items: itemsPayload,
+          customerDetails: formData,
+          guestSessionId
+        })
+      });
+
+      const createData = await createRes.json();
+
+      if (!createData.success) {
+        throw new Error(createData.error || 'Failed to initialize order on server.');
+      }
+
+      const createdOrder = createData.order;
+      const accessToken = createData.accessToken;
+
+      // Step 2: If Online / UPI payment is selected, open DemoPaymentGatewayModal
+      if (formData.paymentMethod === 'upi') {
+        setIsSubmitting(false);
+        setPaymentModalData({
+          order: createdOrder,
+          accessToken
+        });
+      } else {
+        // Cash on Delivery flow
+        const codRes = await fetch('/api/payments/demo/process', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-order-token': accessToken
+          },
+          body: JSON.stringify({
+            orderId: createdOrder.id,
+            accessToken,
+            simulationAction: 'cod',
+            paymentMethod: 'Cash on Delivery'
+          })
+        });
+
+        const codData = await codRes.json();
+        if (codData.success) {
+          clearCart();
+          setIsSubmitting(false);
+          onClose();
+          navigate(`/order-confirmation/${createdOrder.id}?token=${accessToken}`);
+        } else {
+          throw new Error(codData.error || 'Failed to confirm Cash on Delivery order.');
+        }
+      }
+    } catch (err) {
+      console.error('Order Submission Error:', err);
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 800);
-  };
-
-  const getWhatsAppOrderConfirmationUrl = () => {
-    const text = `Hello Hi-Life! 🎉 I have placed an order request on your website:%0A%0A📦 *Order ID:* ${orderNumber}%0A🚗 *Car:* ${brand} ${model} (${year})%0A🛡️ *Cover:* ${coverType.name}%0A💰 *Amount:* ₹${calculatedPrice}%0A💳 *Payment Mode:* ${formData.paymentMethod.toUpperCase()}%0A👤 *Name:* ${formData.customerName}%0A📞 *Phone:* ${formData.phone}%0A📍 *Pincode:* ${formData.pincode}%0A%0APlease confirm tailoring and dispatch schedule!`;
-    return `https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${text}`;
+      setErrorMessage(err.message || 'Something went wrong while placing your order.');
+    }
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 bg-stone-950/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto font-sans"
-      onClick={onClose}
-    >
+    <>
       <div 
-        className="relative w-full max-w-lg rounded-2xl bg-white border border-stone-200 shadow-xl p-4 sm:p-6 my-6 text-left max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto font-sans"
+        onClick={onClose}
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          type="button"
-          className="absolute top-3.5 right-3.5 p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-950 transition-colors cursor-pointer"
-          aria-label="Close modal"
+        <div 
+          className="relative w-full max-w-lg rounded-2xl sm:rounded-3xl bg-white border border-stone-200 shadow-2xl p-4 sm:p-6 my-6 text-left max-h-[90vh] overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
         >
-          <X className="w-4 h-4" />
-        </button>
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            type="button"
+            className="absolute top-4 right-4 p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-950 transition-colors cursor-pointer"
+            aria-label="Close modal"
+          >
+            <X className="w-4 h-4" />
+          </button>
 
-        {!isSuccess ? (
           <div>
             {/* Header */}
             <div className="pb-3 border-b border-stone-100">
+              <span className="text-[10px] uppercase font-bold text-amber-600 tracking-wider">
+                Fast & Secure Checkout
+              </span>
               <h2 className="text-lg sm:text-xl font-black text-stone-950 tracking-tight">
-                Order Custom-Fit Cover
+                {summaryTitle}
               </h2>
               <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5">
-                Precision-tailored for your vehicle dimensions
+                Precision-tailored for your vehicle with Free Express Pan-India Delivery
               </p>
             </div>
 
-            {/* Selected Vehicle & Cover Summary with Vehicle Image */}
-            <div className="mt-3.5 p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-3.5">
-              <img
-                src={carImage}
-                alt={`${brand} ${model}`}
-                className="w-16 h-12 rounded-lg object-cover bg-stone-200 shrink-0 border border-stone-200"
-              />
-              <div className="flex-1 min-w-0">
-                <p className="text-xs font-bold text-stone-950 truncate">
-                  {brand} {model} ({year})
-                </p>
-                <p className="text-[11px] text-stone-600 truncate">
-                  {coverType.name}
-                </p>
+            {/* Error banner if any */}
+            {errorMessage && (
+              <div className="mt-3 p-3 rounded-xl bg-red-50 border border-red-200 flex items-center gap-2 text-red-800 text-xs font-medium">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <span>{errorMessage}</span>
               </div>
-              <div className="text-right shrink-0">
-                <p className="text-sm font-black text-stone-950">
-                  ₹{calculatedPrice}
-                </p>
-                <span className="text-[10px] text-emerald-700 font-semibold block">
-                  Free Delivery
-                </span>
-              </div>
+            )}
+
+            {/* Order Items Preview */}
+            <div className="mt-3.5 space-y-2">
+              {orderItemsToDisplay.map((item, idx) => (
+                <div key={idx} className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-3.5">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-16 h-12 rounded-lg object-cover bg-stone-200 shrink-0 border border-stone-200"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-bold text-stone-950 truncate">
+                      {item.brand} {item.model} {item.year ? `(${item.year})` : ''}
+                    </p>
+                    <p className="text-[11px] text-stone-600 truncate">
+                      {item.name} {item.quantity > 1 ? `× ${item.quantity}` : ''}
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="text-sm font-black text-stone-950">
+                      ₹{item.price * item.quantity}
+                    </p>
+                    <span className="text-[10px] text-emerald-700 font-semibold block">
+                      Free Delivery
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Order Form without unnecessary icons */}
+            {/* Order Form */}
             <form onSubmit={handleSubmit} className="mt-4 space-y-3">
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -203,29 +312,13 @@ export default function QuickOrderModal({ result, onClose }) {
                 </div>
               </div>
 
-              {/* Payment Method - Clean & Smooth */}
+              {/* Payment Method Selector */}
               <div className="pt-1">
                 <label className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
-                  Payment Mode
+                  Choose Payment Method
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  <label className={`px-3 py-2 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
-                    formData.paymentMethod === 'cod'
-                      ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                      : 'bg-stone-50 border-stone-200 text-stone-800 hover:border-stone-300'
-                  }`}>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="cod"
-                      checked={formData.paymentMethod === 'cod'}
-                      onChange={handleChange}
-                      className="accent-amber-400 cursor-pointer"
-                    />
-                    <span className="text-xs font-semibold">Cash on Delivery</span>
-                  </label>
-
-                  <label className={`px-3 py-2 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`px-3 py-2.5 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     formData.paymentMethod === 'upi'
                       ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
                       : 'bg-stone-50 border-stone-200 text-stone-800 hover:border-stone-300'
@@ -238,7 +331,29 @@ export default function QuickOrderModal({ result, onClose }) {
                       onChange={handleChange}
                       className="accent-amber-400 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold">UPI / Online</span>
+                    <div>
+                      <span className="text-xs font-bold block">Online / Gateway</span>
+                      <span className="text-[10px] text-amber-400 font-semibold">Demo Gateway</span>
+                    </div>
+                  </label>
+
+                  <label className={`px-3 py-2.5 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                    formData.paymentMethod === 'cod'
+                      ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
+                      : 'bg-stone-50 border-stone-200 text-stone-800 hover:border-stone-300'
+                  }`}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="cod"
+                      checked={formData.paymentMethod === 'cod'}
+                      onChange={handleChange}
+                      className="accent-amber-400 cursor-pointer"
+                    />
+                    <div>
+                      <span className="text-xs font-bold block">Cash on Delivery</span>
+                      <span className="text-[10px] text-stone-400 font-medium">Pay at Doorstep</span>
+                    </div>
                   </label>
                 </div>
               </div>
@@ -248,74 +363,37 @@ export default function QuickOrderModal({ result, onClose }) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xs cursor-pointer active:scale-[0.99]"
+                  className="w-full py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md cursor-pointer active:scale-[0.99] flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? 'Submitting Order...' : `Confirm Order (₹${calculatedPrice})`}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Validating Order with Server...</span>
+                    </>
+                  ) : formData.paymentMethod === 'upi' ? (
+                    `Proceed to Demo Payment (₹${displayPrice})`
+                  ) : (
+                    `Confirm Order (₹${displayPrice})`
+                  )}
                 </button>
               </div>
 
             </form>
           </div>
-        ) : (
-          /* Success Screen */
-          <div className="text-center py-4 space-y-4">
-            <div className="w-12 h-12 rounded-full bg-stone-950 text-amber-400 flex items-center justify-center mx-auto shadow-sm">
-              <CheckCircle2 className="w-7 h-7" />
-            </div>
-
-            <div>
-              <span className="text-[10px] uppercase tracking-wider font-bold text-emerald-700">
-                Order Received
-              </span>
-              <h3 className="text-lg sm:text-xl font-black text-stone-950 mt-0.5">
-                Thank You, {formData.customerName}!
-              </h3>
-              <p className="text-xs text-stone-500 mt-0.5">
-                Order Ref: <span className="font-mono font-bold text-stone-900">{orderNumber}</span>
-              </p>
-            </div>
-
-            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs text-left text-stone-700 space-y-1.5 max-w-sm mx-auto">
-              <div className="flex justify-between">
-                <span className="text-stone-500">Vehicle:</span>
-                <span className="font-bold text-stone-950">{brand} {model} ({year})</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Cover:</span>
-                <span className="font-bold text-stone-950">{coverType.name}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Amount:</span>
-                <span className="font-bold text-stone-950">₹{calculatedPrice} ({formData.paymentMethod.toUpperCase()})</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Delivery:</span>
-                <span className="font-bold text-stone-950">{formData.city} ({formData.pincode})</span>
-              </div>
-            </div>
-
-            <div className="flex flex-row items-center justify-center gap-2 pt-1">
-              <a
-                href={getWhatsAppOrderConfirmationUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs text-center shadow-xs cursor-pointer"
-              >
-                Confirm on WhatsApp
-              </a>
-
-              <button
-                type="button"
-                onClick={onClose}
-                className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs border border-stone-300 cursor-pointer"
-              >
-                Done
-              </button>
-            </div>
-          </div>
-        )}
-
+        </div>
       </div>
-    </div>
+
+      {/* Demo Payment Gateway Modal */}
+      {paymentModalData && (
+        <DemoPaymentModal
+          orderData={paymentModalData}
+          onClose={() => setPaymentModalData(null)}
+          onPaymentSuccess={() => {
+            setPaymentModalData(null);
+            onClose();
+          }}
+        />
+      )}
+    </>
   );
 }
