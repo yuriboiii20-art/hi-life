@@ -16,8 +16,10 @@ import {
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { getVehicleModelImage } from '../data/vehicles';
+import { useCart } from '../context/CartContext';
 
 export default function ProductResult({ result, onReset, onBuyNow }) {
+  const { addToCart } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   if (!result) return null;
@@ -186,14 +188,28 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
 
             {/* Action Buttons */}
             <div className="pt-3 border-t border-stone-100 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-[#25d366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm text-center shadow-xs transition-all"
+              <button
+                type="button"
+                onClick={() => {
+                  addToCart({
+                    coverId: coverType.id,
+                    name: coverType.name,
+                    brand,
+                    brandId,
+                    model,
+                    modelId,
+                    bodyType,
+                    year,
+                    calculatedPrice,
+                    modelImage: primaryCarImage,
+                    coverType
+                  });
+                }}
+                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs sm:text-sm text-center border border-stone-300 transition-all cursor-pointer flex items-center justify-center gap-1.5"
               >
-                WhatsApp Query
-              </a>
+                <ShoppingBag className="w-4 h-4" />
+                <span>Add to Cart</span>
+              </button>
 
               <button
                 onClick={() => onBuyNow && onBuyNow(result)}

@@ -11,8 +11,10 @@ import {
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { COVER_TYPES } from '../data/products';
+import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
+  const { totalItemsCount, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -100,14 +102,16 @@ export default function Navbar() {
 
             {/* Shopping Cart Button */}
             <button
-              onClick={handleFinderScroll}
+              onClick={() => setIsCartOpen(true)}
               className="flex items-center gap-2 text-stone-800 hover:text-stone-950 transition-colors p-2 rounded-xl hover:bg-stone-100 focus:outline-none cursor-pointer"
-              title="Cart & Vehicle Matcher"
+              title="View Shopping Cart"
             >
               <div className="relative">
                 <ShoppingBag className="w-5 h-5 text-stone-800" />
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-amber-500 text-stone-950 text-[10px] font-black flex items-center justify-center shadow-sm">
-                  0
+                <span className={`absolute -top-1.5 -right-1.5 min-w-4 h-4 px-1 rounded-full text-[10px] font-black flex items-center justify-center shadow-xs transition-all ${
+                  totalItemsCount > 0 ? 'bg-amber-500 text-stone-950 scale-100' : 'bg-stone-200 text-stone-600'
+                }`}>
+                  {totalItemsCount}
                 </span>
               </div>
               <span className="text-xs font-bold hidden sm:inline text-stone-800">Cart</span>
