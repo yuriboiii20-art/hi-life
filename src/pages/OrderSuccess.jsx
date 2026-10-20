@@ -90,7 +90,7 @@ export default function OrderSuccess() {
 
   const getWhatsAppConfirmationUrl = () => {
     const itemNames = order.items.map((i) => `${i.quantity}x ${i.name} (${i.brand} ${i.model})`).join(', ');
-    const text = `Hello Hi-Life! 🎉 I have successfully confirmed my order on your website:%0A%0A📦 *Order ID:* ${order.id}%0A💳 *Payment ID:* ${order.paymentId || 'N/A (COD)'}%0A🛡️ *Items:* ${itemNames}%0A💰 *Amount:* ₹${order.totalAmount}%0A💳 *Payment Mode:* ${order.paymentMethod || 'Demo Gateway'}%0A👤 *Name:* ${order.customerDetails?.customerName}%0A📞 *Phone:* ${order.customerDetails?.phone}%0A📍 *City:* ${order.customerDetails?.city} (${order.customerDetails?.pincode})%0A%0APlease confirm tailoring and dispatch schedule!`;
+    const text = `Hello Hanuman Tarpaulins! 🎉 I have successfully confirmed my order on your website:%0A%0A📦 *Order ID:* ${order.id}%0A💳 *Payment ID:* ${order.paymentId || 'N/A (COD)'}%0A🛡️ *Items:* ${itemNames}%0A💰 *Amount:* ₹${order.totalAmount}%0A💳 *Payment Mode:* ${order.paymentMethod || 'Demo Gateway'}%0A👤 *Name:* ${order.customerDetails?.customerName}%0A📞 *Phone:* ${order.customerDetails?.phone}%0A📍 *City:* ${order.customerDetails?.city} (${order.customerDetails?.pincode})%0A%0APlease confirm tailoring at JC Road Bangalore and dispatch schedule!`;
     return `https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${text}`;
   };
 
