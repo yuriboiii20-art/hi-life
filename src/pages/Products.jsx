@@ -85,15 +85,15 @@ export default function Products() {
       <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">
-            Hi-Life Catalogue
+            Hanuman Tarpaulins Catalogue • 20 Years Experience
           </span>
 
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Protective Car Covers
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">
+            Protective Vehicle Covers
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 mt-2 font-normal">
-            Choose your cover tier or enter your vehicle details below for custom dimensions.
+            Choose your cover tier or enter your vehicle details below for custom-tailored dimensions & dynamic pricing.
           </p>
         </div>
       </section>

@@ -38,7 +38,7 @@ export default function App() {
     <CartProvider>
       <Router>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-[#0a0c12] text-slate-100 selection:bg-brand-600 selection:text-white">
+        <div className="flex flex-col min-h-screen bg-[#fafaf9] text-stone-900 selection:bg-stone-900 selection:text-white font-sans">
           
           {/* Top Announcement Strip */}
           <AnnouncementBar />
@@ -70,12 +70,12 @@ export default function App() {
             href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-40 p-3.5 sm:p-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl shadow-emerald-600/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center group focus:outline-none focus:ring-4 focus:ring-emerald-500/40"
-            aria-label="Chat with Hi-Life on WhatsApp"
+            className="fixed bottom-6 right-6 z-40 p-3.5 sm:p-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl shadow-emerald-600/40 hover:scale-110 active:scale-95 transition-all flex items-center justify-center group focus:outline-none focus:ring-4 focus:ring-emerald-500/30"
+            aria-label="Chat with Hanuman Tarpaulins on WhatsApp"
           >
             <MessageCircle className="w-6 h-6" />
             <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-bold text-xs pl-0 group-hover:pl-2">
-              Chat on WhatsApp
+              JC Road Support
             </span>
           </a>
 

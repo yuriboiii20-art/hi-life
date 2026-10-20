@@ -44,12 +44,12 @@ export default function Contact() {
             <span>Customer Assistance</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Contact Hi-Life Support
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">
+            Contact Hanuman Tarpaulins
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 mt-2 max-w-xl mx-auto leading-relaxed font-normal">
-            Need custom fitting advice, delivery assistance, or order status? Reach out via form or instant WhatsApp.
+            Need custom fitting advice, JC Road Bangalore store directions, or delivery assistance? Reach out via form or instant WhatsApp.
           </p>
         </div>
       </section>

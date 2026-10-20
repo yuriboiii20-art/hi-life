@@ -1,304 +1,411 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
-  Shield, 
+  ShieldCheck, 
+  MapPin, 
+  Clock, 
+  Car, 
+  Bike, 
   Layers, 
-  Target, 
-  HeartHandshake, 
-  CheckCircle2,
-  ChevronDown,
-  ChevronUp,
+  Wrench, 
+  CheckCircle2, 
+  Award, 
+  Phone, 
+  MessageCircle, 
+  ArrowRight,
   Sparkles,
-  MapPin,
-  Award,
-  Factory
+  Building2
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 
 export default function About() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const productsAndServices = [
+    {
+      id: "car-covers",
+      title: "Car Covers",
+      badge: "Precision Fit",
+      description: "Protect your car from dust, sunlight, dirt, and everyday environmental exposure with our range of car covers. Designed for convenience and protection, our covers are suitable for different car models and requirements.",
+      icon: Car,
+      image: "/products/camo-car-daylight.jpg"
+    },
+    {
+      id: "scooter-covers",
+      title: "Scooter & Two-Wheeler Covers",
+      badge: "Everyday Defense",
+      description: "Keep your scooter or two-wheeler protected when parked indoors or outdoors. Our scooter covers offer a practical solution to help keep your vehicle clean and shielded from dust and sunlight.",
+      icon: Bike,
+      image: "/products/camo-bike-covered.jpg"
+    },
+    {
+      id: "tarpaulins",
+      title: "Tarpaulin Products",
+      badge: "Heavy-Duty Utility",
+      description: "We offer tarpaulin products for a variety of covering and protection requirements, with solutions suitable for different industrial, commercial, transport, and domestic applications.",
+      icon: Layers,
+      image: "/products/camo-packaging-full.jpg"
+    },
+    {
+      id: "manufacturing",
+      title: "Manufacturing & Customised Solutions",
+      badge: "Direct Factory",
+      description: "At Hanuman Tarpaulins, we are directly involved in manufacturing, enabling us to cater to varied customer requirements. We focus on practical, durable products and aim to provide suitable solutions based on individual needs.",
+      icon: Wrench,
+      image: "/products/camo-car-shopfront.jpg"
+    }
+  ];
+
+  const whyChooseUs = [
+    {
+      number: "01",
+      title: "Over 20 Years of Industry Experience",
+      desc: "Two decades of hands-on expertise in vehicle protection, tailoring, and fabric durability."
+    },
+    {
+      number: "02",
+      title: "Convenient Location at JC Road, Bangalore",
+      desc: "Situated right in Bangalore's premier automotive hub for easy access, fitting, and consultations."
+    },
+    {
+      number: "03",
+      title: "Specialisation in Car and Scooter Covers",
+      desc: "Laser-focused craftsmanship ensuring precise mirror contours, elastic grips, and wind locks."
+    },
+    {
+      number: "04",
+      title: "Manufacturing Expertise",
+      desc: "In-house production capabilities that allow custom sizing, reinforced seams, and quality control."
+    },
+    {
+      number: "05",
+      title: "Products for Different Covering Requirements",
+      desc: "From lightweight indoor dust sheets to 100% waterproof monsoon barriers and commercial tarpaulins."
+    },
+    {
+      number: "06",
+      title: "Focus on Quality, Durability & Satisfaction",
+      desc: "Carefully selected raw materials that resist tearing, sun fading, and harsh Indian weather."
+    },
+    {
+      number: "07",
+      title: "Friendly Service and Value for Money",
+      desc: "Direct, honest guidance to help you choose the right cover without paying inflated retail markups."
+    }
+  ];
 
   return (
     <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
       
-      {/* Compact Hero Banner */}
-      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-stone-200 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
-            <Shield className="w-3.5 h-3.5 text-amber-400" />
-            <span>Hi-Life Brand Standard</span>
+      {/* 1. Hero Banner - Oenum Clean Luxury Aesthetic */}
+      <section className="relative py-16 sm:py-24 bg-stone-950 text-white overflow-hidden border-b border-stone-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-stone-200 text-xs font-semibold uppercase tracking-widest">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+            <span>ESTABLISHED IN BANGALORE • 20 YEARS OF EXCELLENCE</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Engineered for Indian Climate & Road Conditions
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight">
+            Hanuman Tarpaulins
           </h1>
 
-          <p className="text-xs sm:text-sm text-stone-300 mt-2 max-w-2xl leading-relaxed font-normal">
-            Custom-fit automotive covers crafted with military-grade coatings, paint-safe fleece, and storm-proof underbody anchors.
+          <p className="text-base sm:text-xl font-medium text-amber-400 max-w-2xl mx-auto tracking-tight">
+            Quality Covers. Trusted Protection. 20 Years of Experience.
+          </p>
+
+          <p className="text-xs sm:text-sm text-stone-300 max-w-3xl mx-auto leading-relaxed font-normal pt-2">
+            Your Trusted Destination for Car Covers, Scooter Covers & Tarpaulin Products in Bangalore. Located at JC Road.
+          </p>
+
+          {/* Quick Metrics Strip */}
+          <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
+              <span className="text-2xl sm:text-3xl font-black text-white block">20+</span>
+              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Years Experience</span>
+            </div>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
+              <span className="text-2xl sm:text-3xl font-black text-white block">JC Road</span>
+              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Bangalore Hub</span>
+            </div>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
+              <span className="text-2xl sm:text-3xl font-black text-white block">Custom</span>
+              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Manufacturing</span>
+            </div>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
+              <span className="text-2xl sm:text-3xl font-black text-white block">100%</span>
+              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Quality Focus</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 2. Welcome Story & Heritage */}
+      <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 text-[11px] font-bold uppercase tracking-wider">
+                <Building2 className="w-3.5 h-3.5 text-amber-600" />
+                <span>Our Heritage</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight leading-tight">
+                Welcome to Hanuman Tarpaulins
+              </h2>
+
+              <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-normal">
+                Welcome to <strong className="text-stone-950">Hanuman Tarpaulins</strong>, located at <strong className="text-stone-950">JC Road, Bangalore</strong>. With over 20 years of experience in the industry, we specialize in supplying and manufacturing quality car covers, scooter covers, and a wide range of protective covering solutions.
+              </p>
+
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+                Our commitment to quality, durability, and customer satisfaction has helped us build lasting relationships with our customers. Whether you are looking for reliable protection for your vehicle or require customized covering solutions, we strive to deliver products that meet your needs.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/products"
+                  className="px-6 py-3 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-xs"
+                >
+                  <span>Explore Our Covers</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+
+                <a
+                  href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent('Hello Hanuman Tarpaulins, I would like to enquire about your covers and tarpaulin products.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs font-bold transition-all inline-flex items-center gap-1.5"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Chat with JC Road Store</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden bg-stone-100 border border-stone-200 shadow-md aspect-[4/3]">
+                <img
+                  src="/products/camo-car-full-sidefit.jpg"
+                  alt="Hanuman Tarpaulins Custom Car Cover Fitment"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <p className="text-xs uppercase tracking-wider text-amber-400 font-bold">Bangalore Workshop</p>
+                  <p className="text-sm font-bold text-white">Precision Tailored for Every Vehicle Curve</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Products & Services Section */}
+      <section className="py-14 sm:py-20 bg-[#fafaf9] border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
+              Complete Protection Solutions
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight">
+              Our Products & Services
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 font-normal">
+              Specialized covering solutions manufactured and tailored for diverse automotive and industrial requirements.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {productsAndServices.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={item.id}
+                  className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-stone-400 hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-stone-950 text-white flex items-center justify-center shadow-xs">
+                        <IconComponent className="w-6 h-6 text-amber-400" />
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200">
+                        {item.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-stone-950 tracking-tight">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-5 mt-5 border-t border-stone-100 flex items-center justify-between">
+                    <Link
+                      to="/products"
+                      className="text-xs font-bold text-stone-900 hover:text-amber-700 inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>Explore Options</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. Why Choose Hanuman Tarpaulins? (7 Key Points) */}
+      <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
+              The Benchmark of Reliability
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight">
+              Why Choose Hanuman Tarpaulins?
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 font-normal">
+              Built on 20 years of craftsmanship, honest advice, and proven durability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {whyChooseUs.map((pillar) => (
+              <div
+                key={pillar.number}
+                className="p-6 rounded-3xl bg-stone-50 border border-stone-200/90 hover:border-stone-400 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono font-black text-stone-400">
+                      {pillar.number}
+                    </span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+
+                  <h3 className="text-sm sm:text-base font-bold text-stone-950">
+                    {pillar.title}
+                  </h3>
+
+                  <p className="text-xs text-stone-600 mt-2 leading-relaxed font-normal">
+                    {pillar.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+
+            {/* Extra Trust Highlight Box */}
+            <div className="p-6 rounded-3xl bg-stone-950 text-white flex flex-col justify-between shadow-md">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block mb-2">
+                  OUR PROMISE
+                </span>
+                <h3 className="text-base sm:text-lg font-black text-white">
+                  “Protecting Your Vehicles, Delivering Quality for Over 20 Years.”
+                </h3>
+                <p className="text-xs text-stone-300 mt-2 font-normal leading-relaxed">
+                  We believe in building trust through quality products, reliable service, and a commitment to customer satisfaction.
+                </p>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-stone-800 text-[11px] text-amber-400 font-semibold">
+                Serving Bangalore since 2005
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. Serving Bangalore for Over 20 Years narrative */}
+      <section className="py-14 sm:py-20 bg-[#fafaf9] border-b border-stone-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+          <div className="w-14 h-14 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto shadow-xs">
+            <Award className="w-7 h-7" />
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight">
+            Serving Bangalore for Over 20 Years
+          </h2>
+
+          <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-normal">
+            Over the past two decades, <strong className="text-stone-950">Hanuman Tarpaulins</strong> has continued to serve customers looking for dependable vehicle covers and tarpaulin products. Our experience helps us understand customer needs and recommend suitable products for everyday use.
+          </p>
+
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+            We believe in building trust through quality products, reliable service, and a commitment to customer satisfaction.
           </p>
         </div>
       </section>
 
-      {/* Core Features of Our Product */}
-      <section className="py-8 sm:py-12 bg-white border-b border-stone-200/90">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* 6. Visit Hanuman Tarpaulins Today (Store Location Card) */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="rounded-3xl bg-stone-950 text-white p-6 sm:p-10 shadow-2xl border border-stone-800 space-y-6">
             
-            {/* Left 6 Cols: Core Features */}
-            <div className="lg:col-span-6 space-y-4">
-              <div>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700">
-                  Standard Specifications
-                </span>
-                <h2 className="text-xl sm:text-2xl font-black text-stone-950 leading-tight mt-0.5">
-                  Core Features of Our Product
-                </h2>
-                <p className="text-xs text-stone-500 mt-1 font-normal">
-                  Six foundational engineering standards in every Hi-Life cover:
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    1
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">UV resistant</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">Halts ultraviolet radiation and shields car paint from solar degradation.</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">100% waterproof and leakproof</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">High hydrostatic barrier blocks torrential monsoonal downpours.</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Side mirror pockets</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">Custom-tailored ORVM pockets ensure a glove-like fit without seam stress.</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Center belt below the car to lock it safe</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">Underbody quick-release lock buckle secures against strong windstorms.</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    5
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Front and back elastic</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">High-tension elastic hem hugs bumper curves tightly.</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/90 flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
-                    6
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-stone-950">Covers antina</h3>
-                    <p className="text-[11px] text-stone-500 font-normal">Dedicated contour accommodation for whip and shark-fin antennas.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right 6 Cols: ULY Coated Fabric Specification */}
-            <div className="lg:col-span-6 space-y-4">
-              <div>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700">
-                  Material Science
-                </span>
-                <h2 className="text-xl sm:text-2xl font-black text-stone-950 leading-tight mt-0.5">
-                  ULY Coated Textile Technology
-                </h2>
-                <p className="text-xs text-stone-500 mt-1 font-normal">
-                  Advanced polymer lamination engineered for maximum durability:
-                </p>
-              </div>
-
-              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/90 space-y-3">
-                <div className="rounded-xl overflow-hidden aspect-[16/9] border border-stone-200 shadow-xs">
-                  <img 
-                    src="/products/camo-car-daylight.jpg" 
-                    alt="Hi-Life Military Camouflage All-Weather Material" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal">
-                  ULY coated fabric is a high-performance textile treated with an advanced Ultra Laminated Polyurethane (ULY) resin coating on base materials like polyester or nylon. It offers exceptional waterproofing, tear strength, and abrasion resistance while remaining lighter and more flexible than standard PVC-coated materials.
-                </p>
-
-                <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium">
-                  <span className="font-bold text-amber-900 uppercase tracking-wider text-[10px] block mb-0.5">Base Material Note</span>
-                  The base fabric is 100% heavy-gauge polyester, ensuring zero fabric stiffness in low temperatures and total tear resilience against outdoor scratches.
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
-                  <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                    <p className="text-[10px] text-stone-400 font-semibold uppercase">Tear Resistance</p>
-                    <p className="font-bold text-stone-950 mt-0.5">Ripstop Oxford</p>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                    <p className="text-[10px] text-stone-400 font-semibold uppercase">Inner Lining</p>
-                    <p className="font-bold text-stone-950 mt-0.5">Soft Cotton Fleece</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* READ MORE Action Button & Expandable Section */}
-          <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col items-center">
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              type="button"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
-            >
-              <span>{isExpanded ? 'Show Less' : 'READ MORE'}</span>
-              {isExpanded ? (
-                <ChevronUp className="w-4 h-4 text-amber-400 group-hover:-translate-y-0.5 transition-transform" />
-              ) : (
-                <ChevronDown className="w-4 h-4 text-amber-400 group-hover:translate-y-0.5 transition-transform" />
-              )}
-            </button>
-
-            {/* Expandable Story and Gallery Information */}
-            {isExpanded && (
-              <div className="mt-6 w-full max-w-5xl rounded-3xl bg-stone-50 border border-stone-200/90 p-5 sm:p-8 space-y-6 animate-fadeIn transition-all">
-                
-                <div className="text-center max-w-2xl mx-auto space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-[10px] font-bold uppercase tracking-wider">
-                    <Factory className="w-3 h-3 text-amber-700" />
-                    <span>Craftsmanship & Bangalore Hub</span>
-                  </div>
-                  <h3 className="text-lg sm:text-2xl font-black text-stone-950">
-                    Precision Tailored For Every Curve
-                  </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 font-normal leading-relaxed">
-                    Dispatched directly from our Bangalore facility at Manish Tower, J C Road, each Hi-Life cover undergoes multi-point quality audits before reaching your doorstep.
-                  </p>
-                </div>
-
-                {/* 2 Showcase Pictures with Captions */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-2">
-                  
-                  {/* Pic 1 */}
-                  <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
-                    <div className="aspect-[16/10] overflow-hidden">
-                      <img 
-                        src="/products/camo-car-full-sidefit.jpg" 
-                        alt="Hi-Life Custom Full Side Fit" 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-3.5 bg-white border-t border-stone-100">
-                      <p className="font-bold text-xs text-stone-950">Zero-Flap Custom Silhouette</p>
-                      <p className="text-[11px] text-stone-500 mt-0.5 font-normal">
-                        Designed with model-specific laser cut patterns for snug fitment around bumpers, mirrors, and spoiler lines.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Pic 2 */}
-                  <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
-                    <div className="aspect-[16/10] overflow-hidden">
-                      <img 
-                        src="/products/camo-car-shopfront.jpg" 
-                        alt="Hi-Life Quality Checked Vehicle Fitting" 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-3.5 bg-white border-t border-stone-100">
-                      <p className="font-bold text-xs text-stone-950">Multi-Layer All-Weather Defense</p>
-                      <p className="text-[11px] text-stone-500 mt-0.5 font-normal">
-                        Combines heavy-gauge weatherproofing with heat-sealed seams to resist extreme monsoon rains and scorching sun.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Highlights Strip */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                  <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-2.5">
-                    <Award className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold text-stone-950">Triple-Stitched Seams</h4>
-                      <p className="text-[11px] text-stone-500 font-normal mt-0.5">High-tensile nylon thread prevents tearing under wind load.</p>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-2.5">
-                    <Shield className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold text-stone-950">Paint Safe Interior</h4>
-                      <p className="text-[11px] text-stone-500 font-normal mt-0.5">Soft fleece backing protects gloss and ceramic coatings.</p>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold text-stone-950">Bangalore Logistics Hub</h4>
-                      <p className="text-[11px] text-stone-500 font-normal mt-0.5">Direct Pan-India courier dispatches with active live tracking.</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Values Grid */}
-      <section className="py-8 sm:py-12 bg-[#fafaf9]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
-              <Target className="w-5 h-5 text-stone-900" />
-              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Zero Compromise Sizing</h3>
-              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
-                Calibrated to exact vehicle dimensions for 50+ models across hatchbacks, sedans, and SUVs.
+            <div className="space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
+                JC Road, Bangalore Store
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Visit Hanuman Tarpaulins Today
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-300 font-normal leading-relaxed">
+                Looking for car covers, scooter covers, or tarpaulin products in Bangalore? Visit Hanuman Tarpaulins at JC Road, Bangalore, and explore our range of products and manufacturing solutions.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
-              <Shield className="w-5 h-5 text-stone-900" />
-              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Storm-Proof Hardware</h3>
-              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
-                Heavy-duty underbody snap buckle belts and reinforced dual-end elastics resist high winds.
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-bold text-white text-sm">Store Address</p>
+                  <p className="text-stone-300 mt-1">{BUSINESS_CONFIG.address.fullAddress}</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+                <Clock className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-bold text-white text-sm">Working Hours</p>
+                  <p className="text-stone-300 mt-1">{BUSINESS_CONFIG.businessHours}</p>
+                </div>
+              </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1.5">
-              <HeartHandshake className="w-5 h-5 text-stone-900" />
-              <h3 className="text-xs sm:text-sm font-bold text-stone-950">Direct Consultation</h3>
-              <p className="text-[11px] text-stone-500 font-normal leading-relaxed">
-                Direct WhatsApp consultation with automotive fitting specialists before dispatch.
+            <div className="pt-4 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs text-stone-400 italic font-medium">
+                “Hanuman Tarpaulins — Protecting Your Vehicles, Delivering Quality for Over 20 Years.”
               </p>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href={`tel:${BUSINESS_CONFIG.phone}`}
+                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-white hover:bg-stone-100 text-stone-950 font-bold text-xs uppercase tracking-wider text-center transition-all shadow-xs"
+                >
+                  Call Store
+                </a>
+                <a
+                  href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent('Hello Hanuman Tarpaulins, I am visiting your JC Road store for custom covers.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider text-center transition-all shadow-xs flex items-center justify-center gap-1.5"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
+
           </div>
         </div>
       </section>

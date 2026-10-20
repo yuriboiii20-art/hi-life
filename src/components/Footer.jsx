@@ -1,252 +1,223 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Shield, 
+  ShieldCheck, 
+  Truck, 
+  Lock, 
+  MapPin, 
   Phone, 
   Mail, 
-  MapPin, 
   MessageCircle, 
-  Instagram, 
-  Facebook, 
-  Youtube, 
-  Twitter, 
-  ShieldCheck,
-  CheckCircle2,
-  Lock,
-  Truck
+  Award,
+  Clock,
+  ArrowRight
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
-import { CAR_BRANDS } from '../data/vehicles';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#18181b] text-stone-300 font-sans border-t border-stone-800">
+    <footer className="bg-[#111111] text-stone-300 font-sans border-t border-stone-800">
       
-      {/* Top Value Assurance Ribbon */}
-      <div className="border-b border-stone-800/80 bg-[#141211] py-6">
+      {/* 1. Value Ribbon (Oenum Clean High-Trust Banner) */}
+      <div className="border-b border-stone-800 bg-[#0d0d0d] py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
+            
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-stone-900 border border-stone-800 text-amber-400">
+              <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-amber-400">
+                <Award className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="font-bold text-white text-xs">20+ Years Experience</p>
+                <p className="text-stone-400 text-[11px]">Bangalore's trusted hub</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-amber-400">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <p className="font-bold text-white">100% Fitment Guarantee</p>
-                <p className="text-stone-400 text-[11px]">Vehicle-specific laser cut</p>
+                <p className="font-bold text-white text-xs">100% Custom Tailored</p>
+                <p className="text-stone-400 text-[11px]">250+ vehicle contours</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-stone-900 border border-stone-800 text-amber-400">
+              <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-amber-400">
                 <Truck className="w-5 h-5" />
               </div>
               <div>
-                <p className="font-bold text-white">Free All-India Delivery</p>
-                <p className="text-stone-400 text-[11px]">Doorstep express dispatch</p>
+                <p className="font-bold text-white text-xs">Free Pan-India Delivery</p>
+                <p className="text-stone-400 text-[11px]">Direct express dispatch</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-stone-900 border border-stone-800 text-amber-400">
-                <Lock className="w-5 h-5" />
+              <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-amber-400">
+                <MessageCircle className="w-5 h-5" />
               </div>
               <div>
-                <p className="font-bold text-white">Direct WhatsApp Support</p>
-                <p className="text-stone-400 text-[11px]">Instant fitment assistance</p>
+                <p className="font-bold text-white text-xs">JC Road Direct Support</p>
+                <p className="text-stone-400 text-[11px]">Instant fitting guidance</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-stone-900 border border-stone-800 text-amber-400">
-                <Shield className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="font-bold text-white">7-Day Return Policy</p>
-                <p className="text-stone-400 text-[11px]">Hassle-free replacement</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Content */}
+      {/* 2. Main Footer Navigation Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           
-          {/* Brand Col */}
+          {/* Column 1: Brand Info */}
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="inline-block group focus:outline-none">
-              <img 
-                src="/logo.png" 
-                alt="Hi-Life Protective Car Covers" 
-                className="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105"
-              />
+              <div className="flex items-center gap-3">
+                <img 
+                  src="/logo.png" 
+                  alt="Hanuman Tarpaulins Logo" 
+                  className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                />
+                <div>
+                  <h3 className="text-base font-black text-white uppercase tracking-tight">
+                    Hanuman Tarpaulins
+                  </h3>
+                  <p className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">
+                    JC Road, Bangalore • 20 Years
+                  </p>
+                </div>
+              </div>
             </Link>
-
-            <p className="text-xs text-amber-400 font-bold tracking-wide uppercase">
-              “{BUSINESS_CONFIG.tagline}”
-            </p>
 
             <p className="text-xs text-stone-400 leading-relaxed max-w-sm font-normal">
-              {BUSINESS_CONFIG.shortDescription}
+              Your Trusted Destination for Car Covers, Scooter Covers & Tarpaulin Products in Bangalore. Quality Covers. Trusted Protection.
             </p>
-
-            {/* Social Channels */}
-            <div className="flex items-center gap-2 pt-2">
-              <a
-                href={BUSINESS_CONFIG.socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:bg-stone-800 text-white transition-colors"
-                aria-label="Hi-Life on Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href={BUSINESS_CONFIG.socials.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:bg-stone-800 text-white transition-colors"
-                aria-label="Hi-Life on Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href={BUSINESS_CONFIG.socials.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:bg-stone-800 text-white transition-colors"
-                aria-label="Hi-Life on YouTube"
-              >
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a
-                href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:bg-stone-800 text-emerald-400 transition-colors"
-                aria-label="Chat on WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Quick Navigation
-            </h4>
-            <ul className="space-y-2 text-xs text-stone-400">
-              <li>
-                <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/products" className="hover:text-white transition-colors">Products Catalogue</Link>
-              </li>
-              <li>
-                <Link to="/gallery" className="hover:text-white transition-colors">Fitment Gallery</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-              </li>
-              <li>
-                <a href="#vehicle-finder" className="text-amber-400 hover:underline font-bold">
-                  Vehicle Finder →
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Popular Brands */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Supported Car Brands
-            </h4>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-xs text-stone-400">
-              {CAR_BRANDS.slice(0, 8).map((brand) => (
-                <Link
-                  key={brand.id}
-                  to={`/products?brand=${brand.id}`}
-                  className="hover:text-white transition-colors truncate"
-                >
-                  {brand.name}
-                </Link>
-              ))}
-            </div>
-            <Link
-              to="/products"
-              className="text-[11px] text-amber-400 hover:underline block pt-1 font-semibold"
-            >
-              + View all 12+ Indian manufacturers
-            </Link>
-          </div>
-
-          {/* Contact Details */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Contact & Support
-            </h4>
-            
-            <ul className="space-y-2.5 text-xs text-stone-400">
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <a href={`tel:${BUSINESS_CONFIG.phone}`} className="hover:text-white transition-colors font-bold text-white">
-                    {BUSINESS_CONFIG.displayPhone}
-                  </a>
-                  <p className="text-[10px] text-stone-500 font-normal">{BUSINESS_CONFIG.businessHours}</p>
-                </div>
-              </li>
-
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href={`mailto:${BUSINESS_CONFIG.email}`} className="hover:text-white transition-colors">
-                  {BUSINESS_CONFIG.email}
-                </a>
-              </li>
-
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span className="text-[11px] leading-relaxed text-stone-400 font-normal">
-                  {BUSINESS_CONFIG.address.fullAddress}
-                </span>
-              </li>
-            </ul>
 
             <div className="pt-2">
               <a
-                href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
+                href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent('Hello Hanuman Tarpaulins, I have an enquiry regarding covers.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-bold text-stone-950 bg-amber-500 hover:bg-amber-400 px-3 py-3 rounded-2xl w-full justify-center transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-xs"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Instant WhatsApp Enquiry</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
+          </div>
 
+          {/* Column 2: Products */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Cover Categories
+            </h4>
+            <ul className="space-y-2 text-xs text-stone-400">
+              <li>
+                <Link to="/products" className="hover:text-white transition-colors">
+                  Standard All-Weather Cover
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="hover:text-white transition-colors">
+                  Premium Waterproof Monsoonal Cover
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="hover:text-white transition-colors">
+                  UV Shield Solar Deflector Cover
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="hover:text-white transition-colors">
+                  Heavy-Duty Military Outdoor Armor
+                </Link>
+              </li>
+              <li>
+                <Link to="/products?category=two-wheeler-camo" className="hover:text-white transition-colors">
+                  Two-Wheeler & Scooter Covers
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-white transition-colors">
+                  Custom Tarpaulin Manufacturing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Trust & Company */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Company
+            </h4>
+            <ul className="space-y-2 text-xs text-stone-400">
+              <li>
+                <Link to="/about" className="hover:text-white transition-colors">
+                  Why Hanuman Tarpaulins
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="hover:text-white transition-colors">
+                  Fitment Showcase
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-white transition-colors">
+                  Support & Inquiries
+                </Link>
+              </li>
+              <li>
+                <a href="#vehicle-finder" className="hover:text-white transition-colors">
+                  Vehicle Finder
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Bangalore Store Details */}
+          <div className="lg:col-span-3 space-y-3 text-xs">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Bangalore Hub
+            </h4>
+            
+            <div className="space-y-2 text-stone-400">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <span>{BUSINESS_CONFIG.address.fullAddress}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                <a href={`tel:${BUSINESS_CONFIG.phone}`} className="hover:text-white font-medium">
+                  {BUSINESS_CONFIG.displayPhone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>{BUSINESS_CONFIG.businessHours}</span>
+              </div>
+            </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <p>© {new Date().getFullYear()} {BUSINESS_CONFIG.brandName} Automotive. All Rights Reserved.</p>
-          
+        <div className="pt-8 mt-12 border-t border-stone-800 text-[11px] text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p>
+            © 2026 Hanuman Tarpaulins. All Rights Reserved. JC Road, Bangalore.
+          </p>
           <div className="flex items-center gap-4 text-stone-400">
-            <Link to="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span>Free All-India Shipping</span>
             <span>•</span>
-            <Link to="/about" className="hover:text-white transition-colors">Terms of Service</Link>
+            <span>7-Day Return Policy</span>
             <span>•</span>
-            <Link to="/contact" className="hover:text-white transition-colors">Shipping & Returns</Link>
+            <span>Secure Checkout</span>
           </div>
         </div>
 
       </div>
+
     </footer>
   );
 }

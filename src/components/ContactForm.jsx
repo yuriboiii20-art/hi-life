@@ -80,10 +80,10 @@ export default function ContactForm() {
               Get in Touch
             </span>
             <h3 className="text-2xl font-black text-stone-950 mt-1">
-              Hi-Life Customer Support
+              Hanuman Tarpaulins Support
             </h3>
             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed font-normal">
-              Have questions about vehicle sizing, custom measurements, or bulk orders? Our team is available 6 days a week.
+              Have questions about vehicle sizing, custom measurements, or bulk orders? Visit our JC Road store or message our team 6 days a week.
             </p>
           </div>
 
