@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import CustomDropdown from './CustomDropdown';
 
 export default function DemoPaymentModal({
   orderData,
@@ -360,22 +361,24 @@ export default function DemoPaymentModal({
         className="relative w-full max-w-xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-stone-200 overflow-hidden text-left my-4 max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Gateway Brand Header (Razorpay / Hi-Life Style) */}
-        <div className="bg-gradient-to-r from-stone-900 via-stone-950 to-stone-900 text-white p-4 sm:p-5 border-b border-stone-800 flex items-center justify-between shrink-0">
+        {/* Gateway Brand Header (Hi-Life Official Style) */}
+        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white p-4 sm:p-5 border-b border-orange-400 flex items-center justify-between shrink-0 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center font-black text-sm shadow-sm">
-              HL
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Hi-Life Logo" 
+              className="h-10 w-auto object-contain bg-white rounded-xl p-1 shadow-sm" 
+            />
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-black tracking-tight text-white">
                   Hi-Life Checkout
                 </h3>
-                <span className="px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] font-bold uppercase tracking-wider">
+                <span className="px-2 py-0.5 rounded-md bg-white/20 text-white border border-white/30 text-[10px] font-bold uppercase tracking-wider">
                   Demo Mode
                 </span>
               </div>
-              <p className="text-[11px] text-stone-400 mt-0.5">
+              <p className="text-[11px] text-orange-100 mt-0.5 font-medium">
                 {step === 'phone' && 'Step 1: Enter Mobile Number'}
                 {step === 'otp' && 'Step 2: Enter 6-digit OTP'}
                 {step === 'checkout' && 'Step 3: Address & Payment Methods'}
@@ -385,14 +388,14 @@ export default function DemoPaymentModal({
 
           <div className="text-right flex items-center gap-3">
             <div>
-              <span className="text-[10px] text-stone-400 block uppercase font-semibold">Payable</span>
-              <span className="text-base sm:text-lg font-black text-amber-400">₹{totalPayable}</span>
+              <span className="text-[10px] text-orange-100 block uppercase font-semibold">Payable</span>
+              <span className="text-base sm:text-lg font-black text-white">₹{totalPayable}</span>
             </div>
 
             {!isProcessing && (
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition-colors cursor-pointer"
+                className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
@@ -402,8 +405,8 @@ export default function DemoPaymentModal({
         </div>
 
         {/* Demo Warning Strip */}
-        <div className="bg-amber-50 border-b border-amber-200/80 px-4 py-2 flex items-center gap-2 text-amber-900 shrink-0">
-          <AlertTriangle className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+        <div className="bg-orange-50 border-b border-orange-200 px-4 py-2 flex items-center gap-2 text-orange-950 shrink-0">
+          <AlertTriangle className="w-3.5 h-3.5 text-orange-600 shrink-0" />
           <p className="text-[11px] font-semibold truncate">
             <strong>DEMO PAYMENT SIMULATOR:</strong> No real bank details or real money charged.
           </p>
@@ -443,7 +446,7 @@ export default function DemoPaymentModal({
                   <label className="text-[11px] font-bold text-stone-700 uppercase tracking-wider block">
                     Phone Number
                   </label>
-                  <div className="flex items-center rounded-xl border border-stone-300 bg-stone-50 overflow-hidden focus-within:ring-2 focus-within:ring-stone-900 focus-within:border-transparent">
+                  <div className="flex items-center rounded-xl border border-stone-300 bg-stone-50 overflow-hidden focus-within:ring-2 focus-within:ring-orange-500 focus-within:border-transparent">
                     <span className="px-3 text-xs font-bold text-stone-600 bg-stone-200/70 py-2.5 border-r border-stone-300">
                       🇮🇳 +91
                     </span>
@@ -463,7 +466,7 @@ export default function DemoPaymentModal({
                 <button
                   type="submit"
                   disabled={isOtpSending}
-                  className="w-full py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-orange-500/25 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isOtpSending ? (
                     <>
@@ -491,8 +494,8 @@ export default function DemoPaymentModal({
           {/* ============================================================ */}
           {step === 'otp' && (
             <div className="py-4 space-y-5 max-w-sm mx-auto text-center">
-              <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-900 flex items-center justify-center mx-auto shadow-xs">
-                <Lock className="w-6 h-6 text-stone-800" />
+              <div className="w-12 h-12 rounded-full bg-orange-50 text-orange-600 border border-orange-200 flex items-center justify-center mx-auto shadow-xs">
+                <Lock className="w-6 h-6 text-orange-600" />
               </div>
 
               <div>
@@ -505,12 +508,12 @@ export default function DemoPaymentModal({
               </div>
 
               {/* Demo Helper Pill */}
-              <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200/90 text-amber-900 flex items-center justify-between text-xs">
-                <span className="font-semibold">Demo OTP: <strong className="font-mono">{demoOtpHint}</strong></span>
+              <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-950 flex items-center justify-between text-xs">
+                <span className="font-semibold">Demo OTP: <strong className="font-mono text-orange-600">{demoOtpHint}</strong></span>
                 <button
                   type="button"
                   onClick={handleAutoFillOtp}
-                  className="px-2.5 py-1 rounded-lg bg-stone-950 text-white font-bold text-[10px] uppercase hover:bg-black transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg bg-orange-600 text-white font-bold text-[10px] uppercase hover:bg-orange-700 transition-colors cursor-pointer shadow-xs"
                 >
                   Auto-fill
                 </button>
@@ -529,14 +532,14 @@ export default function DemoPaymentModal({
                     maxLength={6}
                     autoFocus
                     required
-                    className="w-full text-center tracking-widest text-lg font-mono font-bold rounded-xl px-3 py-2.5 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                    className="w-full text-center tracking-widest text-lg font-mono font-bold rounded-xl px-3 py-2.5 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isOtpVerifying}
-                  className="w-full py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-orange-500/25 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isOtpVerifying ? (
                     <>
@@ -638,7 +641,7 @@ export default function DemoPaymentModal({
                     value={addressData.customerName}
                     onChange={(e) => setAddressData({ ...addressData, customerName: e.target.value })}
                     required
-                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                   />
                   <input
                     type="text"
@@ -646,7 +649,7 @@ export default function DemoPaymentModal({
                     value={addressData.city}
                     onChange={(e) => setAddressData({ ...addressData, city: e.target.value })}
                     required
-                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                   />
                 </div>
 
@@ -657,7 +660,7 @@ export default function DemoPaymentModal({
                     value={addressData.address}
                     onChange={(e) => setAddressData({ ...addressData, address: e.target.value })}
                     required
-                    className="sm:col-span-2 text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="sm:col-span-2 text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                   />
                   <input
                     type="text"
@@ -666,7 +669,7 @@ export default function DemoPaymentModal({
                     onChange={(e) => setAddressData({ ...addressData, pincode: e.target.value })}
                     maxLength={6}
                     required
-                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                    className="text-xs rounded-xl px-3 py-2 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                   />
                 </div>
               </div>
@@ -683,8 +686,8 @@ export default function DemoPaymentModal({
                     onClick={() => setActiveMethod('upi')}
                     className={`p-2 rounded-xl border flex flex-col items-center gap-1 text-center transition-all cursor-pointer ${
                       activeMethod === 'upi'
-                        ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                        : 'bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-300'
+                        ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                        : 'bg-orange-50/50 text-stone-800 border-orange-100 hover:border-orange-300'
                     }`}
                   >
                     <QrCode className="w-4 h-4" />
@@ -696,8 +699,8 @@ export default function DemoPaymentModal({
                     onClick={() => setActiveMethod('card')}
                     className={`p-2 rounded-xl border flex flex-col items-center gap-1 text-center transition-all cursor-pointer ${
                       activeMethod === 'card'
-                        ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                        : 'bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-300'
+                        ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                        : 'bg-orange-50/50 text-stone-800 border-orange-100 hover:border-orange-300'
                     }`}
                   >
                     <CreditCard className="w-4 h-4" />
@@ -709,8 +712,8 @@ export default function DemoPaymentModal({
                     onClick={() => setActiveMethod('wallet')}
                     className={`p-2 rounded-xl border flex flex-col items-center gap-1 text-center transition-all cursor-pointer ${
                       activeMethod === 'wallet'
-                        ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                        : 'bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-300'
+                        ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                        : 'bg-orange-50/50 text-stone-800 border-orange-100 hover:border-orange-300'
                     }`}
                   >
                     <Wallet className="w-4 h-4" />
@@ -722,8 +725,8 @@ export default function DemoPaymentModal({
                     onClick={() => setActiveMethod('netbanking')}
                     className={`p-2 rounded-xl border flex flex-col items-center gap-1 text-center transition-all cursor-pointer ${
                       activeMethod === 'netbanking'
-                        ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                        : 'bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-300'
+                        ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                        : 'bg-orange-50/50 text-stone-800 border-orange-100 hover:border-orange-300'
                     }`}
                   >
                     <Building2 className="w-4 h-4" />
@@ -735,8 +738,8 @@ export default function DemoPaymentModal({
                     onClick={() => setActiveMethod('cod')}
                     className={`p-2 rounded-xl border flex flex-col items-center gap-1 text-center transition-all cursor-pointer ${
                       activeMethod === 'cod'
-                        ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                        : 'bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-300'
+                        ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                        : 'bg-orange-50/50 text-stone-800 border-orange-100 hover:border-orange-300'
                     }`}
                   >
                     <Banknote className="w-4 h-4" />
@@ -800,7 +803,7 @@ export default function DemoPaymentModal({
                       </div>
 
                       <div className="flex-1 min-w-0 space-y-1.5 text-xs text-left">
-                        <span className="text-[10px] uppercase font-bold text-amber-600 block">
+                        <span className="text-[10px] uppercase font-bold text-orange-600 block">
                           Instant UPI QR Barcode
                         </span>
                         <h5 className="font-bold text-stone-900 text-sm">
@@ -813,7 +816,7 @@ export default function DemoPaymentModal({
                           <button
                             type="button"
                             onClick={() => setQrCodeScanned(true)}
-                            className="text-[11px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200 transition-colors cursor-pointer"
+                            className="text-[11px] font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 px-2.5 py-1 rounded-lg border border-orange-200 transition-colors cursor-pointer"
                           >
                             {qrCodeScanned ? '✓ QR Simulated as Scanned' : '⚡ Click to Simulate App Scan'}
                           </button>
@@ -830,7 +833,7 @@ export default function DemoPaymentModal({
                         value={upiId}
                         onChange={(e) => setUpiId(e.target.value)}
                         placeholder="customer@okaxis"
-                        className="w-full text-xs font-mono font-semibold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                        className="w-full text-xs font-mono font-semibold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                       />
                       <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
                         <span className="text-[10px] text-stone-500">Presets:</span>
@@ -839,7 +842,7 @@ export default function DemoPaymentModal({
                             key={preset}
                             type="button"
                             onClick={() => setUpiId(preset)}
-                            className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-stone-200 hover:bg-stone-300 text-stone-800 transition-colors cursor-pointer"
+                            className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 transition-colors cursor-pointer"
                           >
                             {preset}
                           </button>
@@ -862,7 +865,7 @@ export default function DemoPaymentModal({
                           expiry: '12/28',
                           cvv: '888'
                         })}
-                        className="text-[10px] font-bold text-stone-900 bg-stone-200 hover:bg-stone-300 px-2.5 py-0.5 rounded-lg cursor-pointer"
+                        className="text-[10px] font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200 px-2.5 py-0.5 rounded-lg cursor-pointer"
                       >
                         ⚡ Fill Demo Card
                       </button>
@@ -878,7 +881,7 @@ export default function DemoPaymentModal({
                           value={cardData.cardNumber}
                           onChange={(e) => setCardData({ ...cardData, cardNumber: e.target.value })}
                           placeholder="4242 4242 4242 4242"
-                          className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                          className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                         />
                       </div>
 
@@ -893,7 +896,7 @@ export default function DemoPaymentModal({
                             onChange={(e) => setCardData({ ...cardData, expiry: e.target.value })}
                             placeholder="MM/YY"
                             maxLength={5}
-                            className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                            className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                           />
                         </div>
 
@@ -907,7 +910,7 @@ export default function DemoPaymentModal({
                             onChange={(e) => setCardData({ ...cardData, cvv: e.target.value })}
                             placeholder="•••"
                             maxLength={4}
-                            className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                            className="w-full text-xs font-mono font-bold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                           />
                         </div>
 
@@ -920,7 +923,7 @@ export default function DemoPaymentModal({
                             value={cardData.cardHolder}
                             onChange={(e) => setCardData({ ...cardData, cardHolder: e.target.value })}
                             placeholder="Name"
-                            className="w-full text-xs font-semibold uppercase rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900"
+                            className="w-full text-xs font-semibold uppercase rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                           />
                         </div>
                       </div>
@@ -945,8 +948,8 @@ export default function DemoPaymentModal({
                           key={w.id}
                           className={`p-3 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                             selectedWallet === w.id
-                              ? 'bg-stone-950 text-white border-stone-950 shadow-xs'
-                              : 'bg-white text-stone-900 border-stone-200 hover:border-stone-300'
+                              ? 'bg-orange-600 text-white border-orange-600 shadow-sm'
+                              : 'bg-white text-stone-900 border-stone-200 hover:border-orange-300'
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
@@ -956,11 +959,11 @@ export default function DemoPaymentModal({
                               value={w.id}
                               checked={selectedWallet === w.id}
                               onChange={() => setSelectedWallet(w.id)}
-                              className="accent-amber-400 cursor-pointer"
+                              className="accent-orange-500 cursor-pointer"
                             />
                             <div>
                               <span className="text-xs font-bold block">{w.name}</span>
-                              <span className={`text-[10px] ${selectedWallet === w.id ? 'text-stone-300' : 'text-stone-500'}`}>
+                              <span className={`text-[10px] ${selectedWallet === w.id ? 'text-orange-100' : 'text-stone-500'}`}>
                                 Avail: ₹{w.balance}
                               </span>
                             </div>
@@ -976,15 +979,16 @@ export default function DemoPaymentModal({
                 {activeMethod === 'netbanking' && (
                   <div className="space-y-2.5">
                     <span className="text-xs font-bold text-stone-900 block">Select Fictional Demo Bank</span>
-                    <select
+                    <CustomDropdown
                       value={selectedBank}
-                      onChange={(e) => setSelectedBank(e.target.value)}
-                      className="w-full text-xs font-semibold rounded-xl px-3 py-2 bg-white text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
-                    >
-                      {demoBanks.map((b) => (
-                        <option key={b.id} value={b.id}>{b.name}</option>
-                      ))}
-                    </select>
+                      onChange={(e) => setSelectedBank(e.value || e.target.value)}
+                      placeholder="Select Bank"
+                      title="Select Net Banking Provider"
+                      options={demoBanks.map((b) => ({
+                        value: b.id,
+                        label: b.name,
+                      }))}
+                    />
                     <p className="text-[10px] text-stone-500">
                       ℹ️ Simulated bank redirect environment.
                     </p>
@@ -1044,8 +1048,8 @@ export default function DemoPaymentModal({
           {/* Processing State */}
           {isProcessing && (
             <div className="py-16 px-6 text-center space-y-4">
-              <div className="w-14 h-14 rounded-full bg-stone-100 flex items-center justify-center mx-auto text-stone-900">
-                <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+              <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center mx-auto text-orange-600 border border-orange-200">
+                <Loader2 className="w-8 h-8 animate-spin text-orange-600" />
               </div>
               <div>
                 <h4 className="text-base font-black text-stone-950">Processing Demo Payment...</h4>

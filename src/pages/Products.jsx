@@ -1,251 +1,203 @@
 import React, { useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { 
-  Shield, 
-  Search, 
-  Filter, 
-  Sparkles, 
-  Car, 
-  Check, 
-  MessageCircle, 
-  Eye, 
-  ShoppingBag,
-  Layers,
-  ArrowUpDown
-} from 'lucide-react';
-import { COVER_TYPES } from '../data/products';
-import { CAR_BRANDS } from '../data/vehicles';
-import VehicleFinder from '../components/VehicleFinder';
-import ProductResult from '../components/ProductResult';
-import ProductDetailModal from '../components/ProductDetailModal';
-import QuickOrderModal from '../components/QuickOrderModal';
-import ProductCard from '../components/ProductCard';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Search, RotateCcw } from 'lucide-react';
+import { CATALOG_PRODUCTS } from '../data/catalogProducts';
+import CustomDropdown from '../components/CustomDropdown';
 
 export default function Products() {
   const [searchParams] = useSearchParams();
-  const initialBrandParam = searchParams.get('brand') || '';
-  const initialCategoryParam = searchParams.get('category') || '';
-  const initialQueryParam = searchParams.get('q') || '';
+  const initialQuery = searchParams.get('q') || '';
 
-  const [selectedFilter, setSelectedFilter] = useState(initialCategoryParam || 'all');
-  const [searchQuery, setSearchQuery] = useState(initialQueryParam || '');
+  const [selectedBrand, setSelectedBrand] = useState('all');
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [sortBy, setSortBy] = useState('featured');
-  const [selectedModalCover, setSelectedModalCover] = useState(null);
-  const [matchingResult, setMatchingResult] = useState(null);
-  const [orderModalResult, setOrderModalResult] = useState(null);
-  const [finderCoverTypeId, setFinderCoverTypeId] = useState(null);
 
-  // Filter & sort logic
+  // Extract unique brands from catalogue
+  const uniqueBrands = useMemo(() => {
+    const brands = [...new Set(CATALOG_PRODUCTS.map((p) => p.brand))];
+    return brands.sort();
+  }, []);
+
+  // Filter & sort products
   const filteredProducts = useMemo(() => {
-    return COVER_TYPES.filter((product) => {
-      if (selectedFilter !== 'all' && product.id !== selectedFilter) {
+    return CATALOG_PRODUCTS.filter((prod) => {
+      if (selectedBrand !== 'all' && prod.brand !== selectedBrand) {
         return false;
       }
-
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
-        const matchesName = product.name.toLowerCase().includes(q);
-        const matchesTagline = product.tagline.toLowerCase().includes(q);
-        const matchesMaterial = product.fabricSpecs.material.toLowerCase().includes(q);
-        const matchesDesc = product.description.toLowerCase().includes(q);
-        if (!matchesName && !matchesTagline && !matchesMaterial && !matchesDesc) {
+        const matchesName = prod.name.toLowerCase().includes(q);
+        const matchesBrand = prod.brand.toLowerCase().includes(q);
+        const matchesModel = prod.model.toLowerCase().includes(q);
+        if (!matchesName && !matchesBrand && !matchesModel) {
           return false;
         }
       }
-
       return true;
     }).sort((a, b) => {
-      if (sortBy === 'price-low') return a.basePrice - b.basePrice;
-      if (sortBy === 'price-high') return b.basePrice - a.basePrice;
+      if (sortBy === 'price-low') return a.price - b.price;
+      if (sortBy === 'price-high') return b.price - a.price;
       if (sortBy === 'rating') return b.rating - a.rating;
       return 0;
     });
-  }, [selectedFilter, searchQuery, sortBy]);
-
-  const handleSelectCoverForFinder = (coverId) => {
-    setFinderCoverTypeId(coverId);
-    const finderEl = document.getElementById('products-finder-widget');
-    if (finderEl) {
-      finderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const handleSelectResult = (res) => {
-    setMatchingResult(res);
-    setTimeout(() => {
-      const el = document.getElementById('products-match-result');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-  };
+  }, [selectedBrand, searchQuery, sortBy]);
 
   return (
-    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
-      
-      {/* Header Banner - Clean & Minimal */}
-      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">
-            Hanuman Tarpaulins Catalogue • 20 Years Experience
+    <div className="bg-white text-stone-900 font-sans select-none min-h-screen py-10 sm:py-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-14">
+        
+        {/* Main Title */}
+        <div className="mb-8 sm:mb-12">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-orange-600 block mb-2">
+            TAILORED COLLECTION
           </span>
-
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">
-            Protective Vehicle Covers
+          <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-stone-950 tracking-tight">
+            Products
           </h1>
-
-          <p className="text-xs sm:text-sm text-stone-300 mt-2 font-normal">
-            Choose your cover tier or enter your vehicle details below for custom-tailored dimensions & dynamic pricing.
+          <p className="text-xs sm:text-sm text-stone-600 mt-2 font-normal">
+            Custom-measured car and vehicle covers engineered for Indian weather conditions.
           </p>
         </div>
-      </section>
 
-      {/* Embedded Vehicle Matcher Section */}
-      <section id="products-finder-widget" className="py-6 sm:py-10 bg-[#fafaf9] border-b border-stone-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <VehicleFinder
-            onSelectResult={handleSelectResult}
-            initialCoverTypeId={finderCoverTypeId}
-            compactMode={true}
-          />
-
-          {matchingResult && (
-            <div id="products-match-result" className="mt-6">
-              <ProductResult
-                result={matchingResult}
-                onReset={() => setMatchingResult(null)}
-                onBuyNow={(res) => setOrderModalResult(res)}
+        {/* Filter and Sorting Header Bar */}
+        <div className="py-4 border-y border-orange-100 mb-8 sm:mb-10 flex flex-wrap items-center justify-between gap-4 text-xs">
+          
+          {/* Left: Filters */}
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 flex-1">
+            {/* Brand Filter */}
+            <div className="w-36 sm:w-44">
+              <CustomDropdown
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.value || e.target.value)}
+                size="compact"
+                options={[
+                  { value: 'all', label: 'All Brands' },
+                  ...uniqueBrands.map((b) => ({ value: b, label: b }))
+                ]}
+                placeholder="Brand"
+                title="Filter by Brand"
               />
             </div>
-          )}
-        </div>
-      </section>
 
-      {/* Catalogue Filter & Grid Section */}
-      <section className="py-10 sm:py-14 bg-white border-b border-stone-200/90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Controls Bar - Pure Typography, No Icons */}
-          <div className="space-y-4 pb-6 border-b border-stone-200">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-              
-              {/* Search input (No icons) */}
-              <div className="relative w-full sm:max-w-md">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search covers by name, waterproof, fabric..."
-                  className="w-full bg-stone-50 text-stone-900 text-xs sm:text-sm rounded-xl px-4 py-3 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-500 hover:text-stone-950 font-bold cursor-pointer"
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-
-              {/* Sorting Selector (No icons) */}
-              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                <span className="text-xs text-stone-600 font-semibold">
-                  Sort:
-                </span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-stone-50 text-stone-900 text-xs font-semibold rounded-xl px-3.5 py-2.5 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
-                >
-                  <option value="featured">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Highest Rated</option>
-                </select>
-              </div>
-
+            {/* Quick Search */}
+            <div className="relative w-48 sm:w-72">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search vehicle model (e.g. Creta, Thar, Fortuner)..."
+                className="w-full bg-stone-50 px-3.5 py-2 text-xs rounded-xl border border-stone-200 text-stone-900 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 font-medium"
+              />
             </div>
 
-            {/* Category Filter Pills (No icons) */}
-            <div className="flex flex-wrap items-center gap-2 pt-1">
+            {(selectedBrand !== 'all' || searchQuery) && (
               <button
                 type="button"
-                onClick={() => setSelectedFilter('all')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  selectedFilter === 'all'
-                    ? 'bg-stone-950 text-white'
-                    : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
-                }`}
+                onClick={() => {
+                  setSelectedBrand('all');
+                  setSearchQuery('');
+                }}
+                className="inline-flex items-center gap-1 text-[11px] text-orange-600 hover:text-orange-700 underline ml-1 cursor-pointer font-medium"
               >
-                All Covers ({COVER_TYPES.length})
+                <RotateCcw className="w-3 h-3" />
+                <span>Reset</span>
               </button>
-
-              {COVER_TYPES.map((cov) => (
-                <button
-                  key={cov.id}
-                  type="button"
-                  onClick={() => setSelectedFilter(cov.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    selectedFilter === cov.id
-                      ? 'bg-stone-950 text-white'
-                      : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
-                  }`}
-                >
-                  {cov.name}
-                </button>
-              ))}
-            </div>
-
-          </div>
-
-          {/* Product Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-8">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((cover) => (
-                <ProductCard
-                  key={cover.id}
-                  cover={cover}
-                  onSelectCover={handleSelectCoverForFinder}
-                  onViewDetails={(c) => setSelectedModalCover(c)}
-                />
-              ))
-            ) : (
-              <div className="col-span-full py-12 text-center text-stone-500 space-y-3">
-                <p className="text-sm">No cover types match "{searchQuery}"</p>
-                <button
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedFilter('all');
-                  }}
-                  className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs font-bold border border-stone-300 cursor-pointer"
-                >
-                  Reset Filters
-                </button>
-              </div>
             )}
           </div>
 
+          {/* Right: Item Count & Sort Selector */}
+          <div className="flex items-center gap-3 shrink-0 ml-auto">
+            <span className="text-stone-500 font-medium">
+              {filteredProducts.length} items
+            </span>
+
+            <div className="flex items-center gap-1.5">
+              <span className="text-stone-500">Sort:</span>
+              <div className="w-36">
+                <CustomDropdown
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.value || e.target.value)}
+                  size="compact"
+                  options={[
+                    { value: 'featured', label: 'Featured' },
+                    { value: 'price-low', label: 'Price: Low to High' },
+                    { value: 'price-high', label: 'Price: High to Low' },
+                    { value: 'rating', label: 'Highest Rated' }
+                  ]}
+                  title="Sort Products"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
-      </section>
 
-      {/* Modals */}
-      {selectedModalCover && (
-        <ProductDetailModal
-          cover={selectedModalCover}
-          onClose={() => setSelectedModalCover(null)}
-          onSelectForFinder={(coverId) => {
-            setSelectedModalCover(null);
-            handleSelectCoverForFinder(coverId);
-          }}
-        />
-      )}
+        {/* 4-Column Product Grid */}
+        {filteredProducts.length === 0 ? (
+          <div className="py-24 text-center space-y-3">
+            <h3 className="font-editorial text-2xl text-stone-900">No matching covers found</h3>
+            <p className="text-xs text-stone-500 max-w-sm mx-auto">
+              Try searching for a different car make or model, or reset the filters.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedBrand('all');
+                setSelectedSeries('all');
+                setSearchQuery('');
+              }}
+              className="mt-3 px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-md shadow-orange-600/30 cursor-pointer"
+            >
+              Show All Covers
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {filteredProducts.map((prod) => (
+              <Link
+                key={prod.id}
+                to={`/products/${prod.slug}`}
+                className="group flex flex-col justify-between bg-white rounded-2xl p-2 sm:p-2.5 border border-transparent hover:border-orange-200 hover:shadow-lg transition-all"
+              >
+                {/* Product Card Image */}
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-50 border border-stone-200/90 shadow-2xs group-hover:shadow-md transition-shadow">
+                  <img
+                    src={prod.image}
+                    alt={prod.name}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
 
-      {orderModalResult && (
-        <QuickOrderModal
-          result={orderModalResult}
-          onClose={() => setOrderModalResult(null)}
-        />
-      )}
+                  {prod.sale && (
+                    <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3">
+                      <span className="px-2.5 py-0.5 rounded-full bg-orange-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
+                        Sale
+                      </span>
+                    </div>
+                  )}
+                </div>
 
+                {/* Product Info */}
+                <div className="pt-3 pb-2 space-y-1">
+                  <h3 className="text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-orange-600 transition-colors line-clamp-2">
+                    {prod.name}
+                  </h3>
+
+                  <div className="flex items-baseline gap-2 pt-0.5">
+                    <span className="font-editorial text-base sm:text-lg font-bold text-stone-950">
+                      Rs. {prod.price.toLocaleString('en-IN')}.00
+                    </span>
+                    <span className="text-xs text-stone-400 line-through">
+                      Rs. {prod.originalPrice.toLocaleString('en-IN')}.00
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }

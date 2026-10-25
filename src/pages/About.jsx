@@ -93,22 +93,34 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
+    <div className="bg-white text-stone-900 font-sans min-h-screen">
       
-      {/* 1. Hero Banner - Oenum Clean Luxury Aesthetic */}
-      <section className="relative py-16 sm:py-24 bg-stone-950 text-white overflow-hidden border-b border-stone-800">
+      {/* 1. Hero Banner - White and Orange Editorial Heritage */}
+      <section className="relative py-16 sm:py-24 bg-stone-950 text-white overflow-hidden border-b border-orange-500/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-stone-200 text-xs font-semibold uppercase tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+          {/* Official Hi-Life Logo */}
+          <div className="flex flex-col items-center justify-center pb-2">
+            <img 
+              src="/logo.png" 
+              alt="Hanuman Tarpaulins (Hi-Life) Logo" 
+              className="h-16 sm:h-20 w-auto object-contain bg-white/95 rounded-2xl p-2 shadow-xl ring-2 ring-orange-500/40" 
+            />
+            <span className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+              Hi-Life
+            </span>
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-orange-200 text-xs font-semibold uppercase tracking-widest">
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             <span>ESTABLISHED IN BANGALORE • 20 YEARS OF EXCELLENCE</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight">
+          <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-white tracking-tight leading-tight">
             Hanuman Tarpaulins
           </h1>
 
-          <p className="text-base sm:text-xl font-medium text-amber-400 max-w-2xl mx-auto tracking-tight">
+          <p className="font-editorial text-xl sm:text-2xl font-normal text-orange-400 max-w-2xl mx-auto tracking-normal italic">
             Quality Covers. Trusted Protection. 20 Years of Experience.
           </p>
 
@@ -118,21 +130,21 @@ export default function About() {
 
           {/* Quick Metrics Strip */}
           <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
-              <span className="text-2xl sm:text-3xl font-black text-white block">20+</span>
-              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Years Experience</span>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-orange-500/50 transition-colors">
+              <span className="text-2xl sm:text-3xl font-black text-orange-400 block">20+</span>
+              <span className="text-[11px] font-medium text-stone-300 uppercase tracking-wider">Years Experience</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
-              <span className="text-2xl sm:text-3xl font-black text-white block">JC Road</span>
-              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Bangalore Hub</span>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-orange-500/50 transition-colors">
+              <span className="text-2xl sm:text-3xl font-black text-orange-400 block">JC Road</span>
+              <span className="text-[11px] font-medium text-stone-300 uppercase tracking-wider">Bangalore Hub</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
-              <span className="text-2xl sm:text-3xl font-black text-white block">Custom</span>
-              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Manufacturing</span>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-orange-500/50 transition-colors">
+              <span className="text-2xl sm:text-3xl font-black text-orange-400 block">Custom</span>
+              <span className="text-[11px] font-medium text-stone-300 uppercase tracking-wider">Manufacturing</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center">
-              <span className="text-2xl sm:text-3xl font-black text-white block">100%</span>
-              <span className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Quality Focus</span>
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-orange-500/50 transition-colors">
+              <span className="text-2xl sm:text-3xl font-black text-orange-400 block">100%</span>
+              <span className="text-[11px] font-medium text-stone-300 uppercase tracking-wider">Quality Focus</span>
             </div>
           </div>
 
@@ -140,13 +152,13 @@ export default function About() {
       </section>
 
       {/* 2. Welcome Story & Heritage */}
-      <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
+      <section className="py-14 sm:py-20 bg-white border-b border-orange-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 text-[11px] font-bold uppercase tracking-wider">
-                <Building2 className="w-3.5 h-3.5 text-amber-600" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-800 text-[11px] font-bold uppercase tracking-wider">
+                <Building2 className="w-3.5 h-3.5 text-orange-600" />
                 <span>Our Heritage</span>
               </div>
 
@@ -165,7 +177,7 @@ export default function About() {
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <Link
                   to="/products"
-                  className="px-6 py-3 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-xs"
+                  className="px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-md shadow-orange-600/30"
                 >
                   <span>Explore Our Covers</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -192,7 +204,7 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="text-xs uppercase tracking-wider text-amber-400 font-bold">Bangalore Workshop</p>
+                  <p className="text-xs uppercase tracking-wider text-orange-400 font-bold">Bangalore Workshop</p>
                   <p className="text-sm font-bold text-white">Precision Tailored for Every Vehicle Curve</p>
                 </div>
               </div>
@@ -203,11 +215,11 @@ export default function About() {
       </section>
 
       {/* 3. Products & Services Section */}
-      <section className="py-14 sm:py-20 bg-[#fafaf9] border-b border-stone-200">
+      <section className="py-14 sm:py-20 bg-white border-b border-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-orange-600">
               Complete Protection Solutions
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight">
@@ -224,14 +236,14 @@ export default function About() {
               return (
                 <div
                   key={item.id}
-                  className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-stone-400 hover:shadow-md transition-all flex flex-col justify-between"
+                  className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-orange-400 hover:shadow-md transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-stone-950 text-white flex items-center justify-center shadow-xs">
-                        <IconComponent className="w-6 h-6 text-amber-400" />
+                      <div className="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center shadow-xs">
+                        <IconComponent className="w-6 h-6 text-orange-600" />
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-orange-50 text-orange-800 border border-orange-200">
                         {item.badge}
                       </span>
                     </div>
@@ -248,10 +260,10 @@ export default function About() {
                   <div className="pt-5 mt-5 border-t border-stone-100 flex items-center justify-between">
                     <Link
                       to="/products"
-                      className="text-xs font-bold text-stone-900 hover:text-amber-700 inline-flex items-center gap-1 transition-colors"
+                      className="text-xs font-bold text-stone-900 hover:text-orange-600 inline-flex items-center gap-1 transition-colors"
                     >
                       <span>Explore Options</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 text-orange-600" />
                     </Link>
                   </div>
                 </div>
@@ -263,11 +275,11 @@ export default function About() {
       </section>
 
       {/* 4. Why Choose Hanuman Tarpaulins? (7 Key Points) */}
-      <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
+      <section className="py-14 sm:py-20 bg-white border-b border-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-orange-600">
               The Benchmark of Reliability
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-stone-950 tracking-tight">
@@ -304,20 +316,20 @@ export default function About() {
             ))}
 
             {/* Extra Trust Highlight Box */}
-            <div className="p-6 rounded-3xl bg-stone-950 text-white flex flex-col justify-between shadow-md">
+            <div className="p-6 rounded-3xl bg-gradient-to-br from-orange-600 to-amber-600 text-white flex flex-col justify-between shadow-xl shadow-orange-500/20 border border-orange-500">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block mb-2">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-orange-100 font-bold block mb-2">
                   OUR PROMISE
                 </span>
                 <h3 className="text-base sm:text-lg font-black text-white">
                   “Protecting Your Vehicles, Delivering Quality for Over 20 Years.”
                 </h3>
-                <p className="text-xs text-stone-300 mt-2 font-normal leading-relaxed">
+                <p className="text-xs text-orange-50 mt-2 font-normal leading-relaxed">
                   We believe in building trust through quality products, reliable service, and a commitment to customer satisfaction.
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-stone-800 text-[11px] text-amber-400 font-semibold">
+              <div className="pt-4 mt-4 border-t border-orange-500/40 text-[11px] text-orange-100 font-semibold">
                 Serving Bangalore since 2005
               </div>
             </div>
@@ -327,9 +339,9 @@ export default function About() {
       </section>
 
       {/* 5. Serving Bangalore for Over 20 Years narrative */}
-      <section className="py-14 sm:py-20 bg-[#fafaf9] border-b border-stone-200">
+      <section className="py-14 sm:py-20 bg-white border-b border-orange-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
-          <div className="w-14 h-14 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto shadow-xs">
+          <div className="w-14 h-14 rounded-full bg-orange-50 text-orange-600 border border-orange-200 flex items-center justify-center mx-auto shadow-xs">
             <Award className="w-7 h-7" />
           </div>
 
@@ -353,7 +365,7 @@ export default function About() {
           <div className="rounded-3xl bg-stone-950 text-white p-6 sm:p-10 shadow-2xl border border-stone-800 space-y-6">
             
             <div className="space-y-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-orange-400 block">
                 JC Road, Bangalore Store
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
@@ -366,7 +378,7 @@ export default function About() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2">
               <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-orange-400 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-white text-sm">Store Address</p>
                   <p className="text-stone-300 mt-1">{BUSINESS_CONFIG.address.fullAddress}</p>
@@ -374,7 +386,7 @@ export default function About() {
               </div>
 
               <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
-                <Clock className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <Clock className="w-5 h-5 text-orange-400 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-white text-sm">Working Hours</p>
                   <p className="text-stone-300 mt-1">{BUSINESS_CONFIG.businessHours}</p>

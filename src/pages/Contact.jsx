@@ -34,13 +34,13 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen">
+    <div className="bg-white text-stone-900 font-sans min-h-screen">
       
       {/* Compact Header Banner */}
-      <section className="relative py-8 sm:py-12 bg-stone-950 text-white border-b border-stone-800 text-center">
+      <section className="relative py-8 sm:py-12 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white border-b border-orange-400 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-stone-200 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
-            <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+            <PhoneCall className="w-3.5 h-3.5 text-white" />
             <span>Customer Assistance</span>
           </div>
 
@@ -48,14 +48,14 @@ export default function Contact() {
             Contact Hanuman Tarpaulins
           </h1>
 
-          <p className="text-xs sm:text-sm text-stone-300 mt-2 max-w-xl mx-auto leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm text-orange-50 mt-2 max-w-xl mx-auto leading-relaxed font-normal">
             Need custom fitting advice, JC Road Bangalore store directions, or delivery assistance? Reach out via form or instant WhatsApp.
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-6 sm:py-10 bg-[#fafaf9] border-b border-stone-200/90">
+      <section className="py-6 sm:py-10 bg-white border-b border-orange-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <ContactForm />
         </div>
@@ -66,8 +66,8 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           
           <div className="text-center space-y-1 mb-6">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center justify-center gap-1">
-              <HelpCircle className="w-3.5 h-3.5 text-amber-600" />
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-orange-600 flex items-center justify-center gap-1">
+              <HelpCircle className="w-3.5 h-3.5 text-orange-600" />
               <span>Common Inquiries</span>
             </span>
             <h2 className="text-xl sm:text-2xl font-black text-stone-950">
@@ -81,16 +81,16 @@ export default function Contact() {
               return (
                 <div
                   key={idx}
-                  className="rounded-xl bg-stone-50 border border-stone-200/90 overflow-hidden transition-all"
+                  className="rounded-xl bg-orange-50/20 border border-orange-100 overflow-hidden transition-all"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-3.5 text-left flex items-center justify-between gap-3 font-bold text-stone-900 hover:text-stone-950 transition-colors cursor-pointer text-xs sm:text-sm"
+                    className="w-full p-3.5 text-left flex items-center justify-between gap-3 font-bold text-stone-900 hover:text-orange-600 transition-colors cursor-pointer text-xs sm:text-sm"
                   >
                     <span>{faq.question}</span>
                     <ChevronDown className={`w-4 h-4 text-stone-600 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-stone-950' : ''
+                      isOpen ? 'rotate-180 text-orange-600' : ''
                     }`} />
                   </button>
 

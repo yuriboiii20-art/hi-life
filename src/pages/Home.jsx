@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import HeroHotspotExperience from '../components/HeroHotspotExperience';
-import OurEcosystem from '../components/OurEcosystem';
+import VehicleFinder from '../components/VehicleFinder';
+import ProductResult from '../components/ProductResult';
 import WhyCoversFail from '../components/WhyCoversFail';
 import ProtectionSolution from '../components/ProtectionSolution';
 import ProtectionSystem from '../components/ProtectionSystem';
-import VehicleFinder from '../components/VehicleFinder';
-import ProductResult from '../components/ProductResult';
-import AboutPreviewOenum from '../components/AboutPreviewOenum';
+import AboutPreviewHiLife from '../components/AboutPreviewHiLife';
 import Testimonials from '../components/Testimonials';
 import ProductDetailModal from '../components/ProductDetailModal';
 import QuickOrderModal from '../components/QuickOrderModal';
@@ -51,9 +50,9 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#fafaf9] text-stone-900 font-sans overflow-x-hidden">
+    <div className="bg-white text-stone-900 font-sans overflow-x-hidden">
       
-      {/* 1. Oenum Signature Hero: Interactive Vehicle Hotspot Experience */}
+      {/* 1. Hi-Life Hero Experience: Interactive Hotspots on Car Cover */}
       <HeroHotspotExperience
         onFinderClick={scrollToFinder}
         onShopClick={() => {
@@ -62,57 +61,39 @@ export default function Home() {
         }}
       />
 
-      {/* 2. Oenum Feature: Our Ecosystem (Car Covers, Bike Covers, Tarpaulin Products) */}
-      <OurEcosystem />
+      {/* 2. Hi-Life Signature Inline Dropdown: 'Your vehicle. Its cover.' */}
+      <VehicleFinder
+        onSelectResult={handleSelectResult}
+        initialCoverTypeId={preselectedCoverId}
+      />
 
-      {/* 3. Oenum Feature: Why Most Covers Fail (Heat, Scratches, Poor Fit, Fabric Decay) */}
+      {/* Matching Vehicle Result Card (Appears dynamically below finder) */}
+      {matchingResult && (
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-12">
+          <ProductResult
+            result={matchingResult}
+            onReset={handleResetResult}
+            onBuyNow={(res) => setOrderModalResult(res)}
+          />
+        </div>
+      )}
+
+      {/* 3. Hi-Life Feature: Why Most Covers Fail */}
       <WhyCoversFail />
 
-      {/* 4. Oenum Feature: The Solution (Premium Protection. Effortlessly.) */}
+      {/* 4. Hi-Life Feature: The Solution (Interactive Before / After Comparison Slider) */}
       <ProtectionSolution onFinderClick={scrollToFinder} />
 
-      {/* 5. Oenum Feature: The Protection System (Cover Grades Matrix) */}
+      {/* 5. Hi-Life Feature: Cover Grades & Protection System */}
       <ProtectionSystem
         onSelectCover={handleSelectCoverFromMatrix}
         onViewDetails={(cover) => setDetailModalCover(cover)}
       />
 
-      {/* 6. Vehicle Cover Finder & Matching Product Result */}
-      <section className="py-14 sm:py-20 bg-[#fafaf9] border-b border-stone-200/90 scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-2 mb-8">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700 block mb-1">
-              CUSTOM 3D FITMENT
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">
-              Measured for Your Vehicle. Not Vehicles in General.
-            </h2>
-            <p className="text-xs sm:text-sm text-stone-600 font-normal">
-              Select your vehicle make, model, and year to get custom-tailored dimensions and authoritative dynamic pricing.
-            </p>
-          </div>
+      {/* 6. Hi-Life Feature: Workshop Craftsmanship / Why We Do What We Do */}
+      <AboutPreviewHiLife />
 
-          <VehicleFinder
-            onSelectResult={handleSelectResult}
-            initialCoverTypeId={preselectedCoverId}
-          />
-
-          {matchingResult && (
-            <ProductResult
-              result={matchingResult}
-              onReset={handleResetResult}
-              onBuyNow={(res) => setOrderModalResult(res)}
-            />
-          )}
-
-        </div>
-      </section>
-
-      {/* 7. Oenum Feature: About Hanuman Tarpaulins (20 Years Experience Story) */}
-      <AboutPreviewOenum />
-
-      {/* 8. Verified Customer Reviews */}
+      {/* 7. Verified Customer Reviews Carousel: 'What owners say!' */}
       <Testimonials />
 
       {/* Modal 1: Product Technical Detail Modal */}

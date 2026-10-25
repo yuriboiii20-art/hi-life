@@ -53,8 +53,8 @@ export default function OrderSuccess() {
 
   if (loading) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-4 bg-[#fafaf9] text-stone-900 font-sans">
-        <Loader2 className="w-10 h-10 animate-spin text-stone-900" />
+      <div className="min-h-[70vh] flex flex-col items-center justify-center p-4 bg-white text-stone-900 font-sans">
+        <Loader2 className="w-10 h-10 animate-spin text-orange-600" />
         <p className="text-xs font-semibold text-stone-600 mt-3">Loading order details...</p>
       </div>
     );
@@ -62,7 +62,7 @@ export default function OrderSuccess() {
 
   if (error || !order) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-4 bg-[#fafaf9] text-stone-900 font-sans text-center">
+      <div className="min-h-[70vh] flex flex-col items-center justify-center p-4 bg-white text-stone-900 font-sans text-center">
         <div className="w-14 h-14 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto border border-red-200">
           <AlertCircle className="w-7 h-7" />
         </div>
@@ -70,7 +70,7 @@ export default function OrderSuccess() {
         <p className="text-xs text-stone-600 mt-1 max-w-sm">{error || 'Order record could not be found.'}</p>
         <Link
           to="/"
-          className="mt-6 px-5 py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold transition-all"
+          className="mt-6 px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-all shadow-sm"
         >
           Return to Homepage
         </Link>
@@ -95,25 +95,30 @@ export default function OrderSuccess() {
   };
 
   return (
-    <div className="bg-[#fafaf9] text-stone-900 font-sans min-h-screen py-10 sm:py-16">
+    <div className="bg-white text-stone-900 font-sans min-h-screen py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         
         {/* Main Success Container */}
-        <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xl overflow-hidden">
+        <div className="bg-white rounded-3xl border border-orange-100 shadow-xl overflow-hidden">
           
           {/* Top Status Header */}
-          <div className="bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 text-white p-6 sm:p-8 text-center relative overflow-hidden">
+          <div className="bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 text-white p-6 sm:p-8 text-center relative overflow-hidden">
             <div className="absolute top-3 right-3">
-              <span className="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-white/20 text-white border border-white/30 text-[10px] font-bold uppercase tracking-wider backdrop-blur-xs">
                 Demo Mode
               </span>
             </div>
 
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 shadow-inner">
-              <CheckCircle2 className="w-9 h-9 stroke-[2.5]" />
+            <div className="flex flex-col items-center justify-center mb-4">
+              <img src="/logo.png" alt="Hi-Life" className="h-11 w-auto object-contain bg-white/95 px-3 py-1.5 rounded-xl shadow-md" />
+              <span className="font-editorial text-lg font-bold text-white mt-1">Hi-Life</span>
             </div>
 
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">
+            <div className="w-14 h-14 rounded-full bg-white/20 text-white border border-white/30 flex items-center justify-center mx-auto mb-3 shadow-inner">
+              <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
+            </div>
+
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-orange-100 block mb-1">
               {isPaid ? 'Payment Confirmed' : 'Order Placed Successfully'}
             </span>
 
@@ -121,13 +126,13 @@ export default function OrderSuccess() {
               Thank You for Your Order!
             </h1>
 
-            <p className="text-xs sm:text-sm text-stone-300 mt-1 max-w-md mx-auto">
+            <p className="text-xs sm:text-sm text-orange-50 mt-1 max-w-md mx-auto">
               Your custom protective cover tailoring request has been received and confirmed.
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-stone-800/80 border border-stone-700 text-xs font-mono text-stone-200">
-              <span className="text-stone-400 font-normal">Order Ref:</span>
-              <span className="font-bold text-amber-400">{order.id}</span>
+            <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-black/20 border border-white/20 text-xs font-mono text-white">
+              <span className="text-orange-200 font-normal">Order Ref:</span>
+              <span className="font-bold text-white">{order.id}</span>
             </div>
           </div>
 
@@ -260,7 +265,7 @@ export default function OrderSuccess() {
 
               <Link
                 to="/products"
-                className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm text-center uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm text-center uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm shadow-orange-500/25"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>Continue Shopping</span>

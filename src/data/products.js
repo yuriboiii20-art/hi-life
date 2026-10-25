@@ -96,7 +96,7 @@ export const COVER_TYPES = [
     name: "UV Shield Cover",
     tagline: "Thermal Heat Reflective & Paint Preservation Guard",
     badge: "Summer Essential",
-    badgeColor: "bg-amber-600 text-white",
+    badgeColor: "bg-orange-600 text-white",
     basePrice: 2199,
     originalPrice: 3299,
     discountPercent: 33,

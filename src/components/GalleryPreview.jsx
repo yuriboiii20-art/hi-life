@@ -38,7 +38,7 @@ export default function GalleryPreview({ limit = 6, showViewAll = true }) {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   activeCategory === cat.id
-                    ? 'bg-stone-950 text-white'
+                    ? 'bg-orange-600 text-white shadow-sm'
                     : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
                 }`}
               >
@@ -54,7 +54,7 @@ export default function GalleryPreview({ limit = 6, showViewAll = true }) {
             <div
               key={item.id}
               onClick={() => setLightboxIndex(index)}
-              className="group relative rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 hover:border-stone-400 cursor-pointer transition-all duration-200"
+              className="group relative rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 hover:border-orange-400 cursor-pointer transition-all duration-200"
             >
               {/* Image */}
               <div className="aspect-[4/3] overflow-hidden">
@@ -71,7 +71,7 @@ export default function GalleryPreview({ limit = 6, showViewAll = true }) {
 
               {/* Details Content */}
               <div className="absolute bottom-0 inset-x-0 p-4 space-y-0.5 text-left text-white">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
                   {item.subtitle}
                 </span>
                 <h3 className="text-sm sm:text-base font-bold leading-snug">
@@ -88,7 +88,7 @@ export default function GalleryPreview({ limit = 6, showViewAll = true }) {
           <div className="mt-8 text-center">
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-1.5 px-6 py-3 rounded-xl bg-stone-950 hover:bg-black text-white font-semibold text-xs uppercase tracking-wider shadow-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs uppercase tracking-wider shadow-sm transition-all shadow-orange-500/20"
             >
               <span>View All Photos</span>
               <ArrowRight className="w-4 h-4" />

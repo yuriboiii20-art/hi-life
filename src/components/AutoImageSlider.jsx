@@ -139,7 +139,7 @@ export default function AutoImageSlider() {
               {/* Slide Content */}
               <div className="absolute inset-0 flex flex-col justify-end sm:justify-center p-5 sm:p-8 lg:p-12 text-white max-w-2xl">
                 <div className="space-y-2 sm:space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-stone-950 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm w-fit">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm w-fit">
                     <span>{slide.badge}</span>
                   </div>
 
@@ -185,7 +185,7 @@ export default function AutoImageSlider() {
               aria-label={`Go to slide ${dotIdx + 1}`}
               className={`transition-all rounded-full h-1.5 sm:h-2 cursor-pointer ${
                 dotIdx === currentIndex
-                  ? 'w-6 sm:w-8 bg-amber-400'
+                  ? 'w-6 sm:w-8 bg-orange-500'
                   : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/70'
               }`}
             />

@@ -5,23 +5,34 @@ import {
   ShoppingBag, 
   Menu, 
   X, 
-  MessageCircle
+  User, 
+  ChevronDown, 
+  ChevronRight,
+  ShieldCheck,
+  Phone,
+  MessageCircle,
+  Car,
+  Compass
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const { totalItemsCount, setIsCartOpen } = useCart();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
+  const [coversSubmenuOpen, setCoversSubmenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [coversDropdownHover, setCoversDropdownHover] = useState(false);
+  
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Close mobile menu on route change
+  // Close menus on route navigation
   useEffect(() => {
-    setMobileMenuOpen(false);
+    setMenuDrawerOpen(false);
     setSearchOpen(false);
+    setCoversDropdownHover(false);
   }, [location.pathname]);
 
   const handleSearchSubmit = (e) => {
@@ -34,214 +45,392 @@ export default function Navbar() {
     }
   };
 
-  const handleFinderScroll = () => {
-    setMobileMenuOpen(false);
-    if (location.pathname === '/') {
-      const el = document.getElementById('vehicle-finder');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      navigate('/#vehicle-finder');
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-50 font-sans bg-white border-b border-[#E5E5E5] shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-2 md:gap-4">
-          
-          {/* Brand Logo & Title */}
-          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 focus:outline-none">
-            <img 
-              src="/logo.png" 
-              alt="Hanuman Tarpaulins Logo" 
-              className="h-9 sm:h-11 w-auto object-contain transition-transform hover:scale-105"
-            />
-            <div className="leading-tight text-left">
-              <span className="text-xs sm:text-sm font-black text-stone-950 uppercase tracking-tight block whitespace-nowrap">
-                Hanuman Tarpaulins
-              </span>
-              <span className="text-[9px] sm:text-[10px] text-amber-700 font-bold uppercase tracking-wider block whitespace-nowrap">
-                20 Years • JC Road
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation Links — Strictly Single Line / In Line */}
-          <nav className="hidden lg:flex items-center flex-nowrap space-x-1 xl:space-x-2 shrink-0">
-            {/* HOME */}
-            <Link 
-              to="/" 
-              className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-bold ${
-                location.pathname === '/' 
-                  ? 'bg-[#f0f0f0] text-stone-950 shadow-xs' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
-              }`}
-            >
-              HOME
-            </Link>
-
-            {/* CAR COVERS */}
-            <Link 
-              to="/products" 
-              className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-bold ${
-                location.pathname === '/products' && !location.search.includes('category=two-wheeler-camo')
-                  ? 'bg-[#f0f0f0] text-stone-950 shadow-xs' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
-              }`}
-            >
-              CAR COVERS
-            </Link>
-
-            {/* BIKE COVERS */}
-            <Link 
-              to="/products?category=two-wheeler-camo" 
-              className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-bold ${
-                location.search.includes('category=two-wheeler-camo')
-                  ? 'bg-[#f0f0f0] text-stone-950 shadow-xs' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
-              }`}
-            >
-              BIKE COVERS
-            </Link>
-
-            {/* WHY HANUMAN */}
-            <Link 
-              to="/about" 
-              className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-bold ${
-                location.pathname === '/about' 
-                  ? 'bg-[#f0f0f0] text-stone-950 shadow-xs' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
-              }`}
-            >
-              WHY HANUMAN
-            </Link>
-
-            {/* SUPPORT */}
-            <Link 
-              to="/contact" 
-              className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-bold ${
-                location.pathname === '/contact' 
-                  ? 'bg-[#f0f0f0] text-stone-950 shadow-xs' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
-              }`}
-            >
-              SUPPORT
-            </Link>
-
-            {/* VEHICLE FINDER */}
-            <button
-              type="button"
-              onClick={handleFinderScroll}
-              className="whitespace-nowrap px-3 py-1.5 rounded-full text-xs uppercase tracking-wider font-extrabold text-[#b45309] hover:text-[#78350f] hover:bg-amber-50/80 transition-all cursor-pointer"
-            >
-              VEHICLE FINDER
-            </button>
-          </nav>
-
-          {/* Right Action Items: Search, WhatsApp & Cart */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+    <>
+      {/* Sticky Main Navigation Bar */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200/90 transition-all font-sans select-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             
-            {/* Search Toggle Icon */}
-            <div className="relative">
+            {/* Left: Mobile Menu Trigger + Search Icon */}
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 type="button"
-                onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 rounded-full hover:bg-stone-100 text-stone-700 hover:text-stone-950 transition-colors cursor-pointer"
-                aria-label="Search covers"
+                onClick={() => setMenuDrawerOpen(true)}
+                className="p-2 -ml-2 rounded-full hover:bg-stone-100 text-stone-900 transition-colors cursor-pointer"
+                aria-label="Open Navigation Menu"
               >
-                <Search className="w-4 h-4" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
-              {searchOpen && (
-                <div className="absolute right-0 top-12 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-stone-200 p-2 z-50 animate-fadeIn">
-                  <form onSubmit={handleSearchSubmit} className="flex items-center bg-stone-50 rounded-xl px-3 py-2 border border-stone-300">
-                    <Search className="w-4 h-4 text-stone-400 mr-2 shrink-0" />
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search car / bike model..."
-                      className="w-full text-xs bg-transparent text-stone-900 focus:outline-none placeholder:text-stone-400"
-                      autoFocus
-                    />
-                    <button type="submit" className="text-xs font-bold text-stone-950 hover:underline shrink-0 ml-1">
-                      Go
-                    </button>
-                  </form>
-                </div>
-              )}
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                className="p-2 rounded-full hover:bg-stone-100 text-stone-900 transition-colors cursor-pointer"
+                aria-label="Search Vehicle Covers"
+              >
+                <Search className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* WhatsApp Direct Store Link */}
-            <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition-all border border-emerald-200"
-              title="Chat with JC Road Store"
-            >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="hidden xl:inline">JC Road Store</span>
-            </a>
+            {/* Center: Brand Logo / Wordmark with Official Hi-Life Logo */}
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 focus:outline-none group">
+              <img 
+                src="/logo.png" 
+                alt="Hi-Life Automotive Covers" 
+                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-sm" 
+              />
+              <div className="flex flex-col items-start justify-center">
+                <span className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-stone-950 group-hover:text-orange-600 transition-colors">
+                  Hi-Life
+                </span>
+                <span className="text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.22em] text-orange-600 uppercase -mt-1">
+                  HANUMAN TARPAULINS
+                </span>
+              </div>
+            </Link>
 
-            {/* Shopping Cart Button */}
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-950 hover:bg-black text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
-              title="View Shopping Cart"
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Cart</span>
-              <span className="min-w-4 h-4 px-1 rounded-full bg-amber-400 text-stone-950 text-[10px] font-black flex items-center justify-center">
-                {totalItemsCount}
-              </span>
-            </button>
+            {/* Center-Right: Desktop Nav Links (Home, Covers, Why Hi-Life, Support) */}
+            <nav className="hidden md:flex items-center space-x-6 text-xs sm:text-sm font-medium text-stone-700">
+              <Link
+                to="/"
+                className={`transition-colors py-1 ${
+                  location.pathname === '/' 
+                    ? 'text-orange-600 font-bold border-b-2 border-orange-600' 
+                    : 'hover:text-orange-600'
+                }`}
+              >
+                Home
+              </Link>
 
-            {/* Mobile Hamburger Menu */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-stone-100 text-stone-900 hover:bg-stone-200 focus:outline-none cursor-pointer"
-              aria-label="Toggle navigation"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+              {/* Covers Dropdown Menu on Desktop */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setCoversDropdownHover(true)}
+                onMouseLeave={() => setCoversDropdownHover(false)}
+              >
+                <Link
+                  to="/products"
+                  className={`flex items-center gap-1 transition-colors py-2 ${
+                    location.pathname.startsWith('/products') || location.pathname.startsWith('/pages/nexus') || location.pathname.startsWith('/pages/plasma')
+                      ? 'text-orange-600 font-bold' 
+                      : 'hover:text-orange-600'
+                  }`}
+                >
+                  <span>Covers</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-stone-400 transition-transform duration-200 group-hover:rotate-180" />
+                </Link>
+
+                {coversDropdownHover && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-64 bg-white border border-orange-100 rounded-2xl shadow-xl py-2 px-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ring-1 ring-black/5">
+                    <Link
+                      to="/products"
+                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors font-semibold"
+                    >
+                      All Covers Catalog
+                    </Link>
+                    <Link
+                      to="/products?category=car"
+                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                    >
+                      <span className="font-semibold block text-stone-950">Car & SUV Covers</span>
+                      <span className="text-[10px] text-stone-500">Tailored Fit for 250+ Models</span>
+                    </Link>
+                    <Link
+                      to="/products?category=two-wheeler-camo"
+                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                    >
+                      <span className="font-semibold block text-stone-950">Bike & Scooter Covers</span>
+                      <span className="text-[10px] text-stone-500">Custom Handlebar & Mirror Fit</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                to="/about"
+                className={`transition-colors py-1 ${
+                  location.pathname === '/about' 
+                    ? 'text-orange-600 font-bold border-b-2 border-orange-600' 
+                    : 'hover:text-orange-600'
+                }`}
+              >
+                Why Hi-Life
+              </Link>
+
+              <Link
+                to="/pages/who-it-is-for"
+                className={`transition-colors py-1 ${
+                  location.pathname === '/pages/who-it-is-for' 
+                    ? 'text-orange-600 font-bold border-b-2 border-orange-600' 
+                    : 'hover:text-orange-600'
+                }`}
+              >
+                Who It's For
+              </Link>
+
+              <Link
+                to="/contact"
+                className={`transition-colors py-1 ${
+                  location.pathname === '/contact' 
+                    ? 'text-orange-600 font-bold border-b-2 border-orange-600' 
+                    : 'hover:text-orange-600'
+                }`}
+              >
+                Support
+              </Link>
+            </nav>
+
+            {/* Right: Account & Cart Bag */}
+            <div className="flex items-center gap-1 sm:gap-2">
+              <Link
+                to="/contact"
+                className="p-2 rounded-full hover:bg-orange-50 hover:text-orange-600 text-stone-900 transition-colors cursor-pointer"
+                title="Customer Support & Account"
+                aria-label="Customer Account"
+              >
+                <User className="w-5 h-5" />
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 rounded-full hover:bg-orange-50 hover:text-orange-600 text-stone-900 transition-colors cursor-pointer"
+                title="View Cart"
+                aria-label="View Shopping Cart"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {totalItemsCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-orange-600 text-white text-[10px] font-bold flex items-center justify-center animate-in zoom-in-50 duration-150 shadow-sm shadow-orange-500/40">
+                    {totalItemsCount}
+                  </span>
+                )}
+              </button>
+            </div>
 
           </div>
-
         </div>
+      </header>
 
-        {/* Mobile Dropdown Menu Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-stone-200 space-y-3 animate-fadeIn">
-            <form onSubmit={handleSearchSubmit} className="flex rounded-xl bg-stone-50 p-2.5 border border-stone-300">
-              <Search className="w-4 h-4 text-stone-400 mr-2 shrink-0" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search car or bike model..."
-                className="w-full text-xs bg-transparent text-stone-900 focus:outline-none font-medium"
-              />
+      {/* Slide-out Navigation Drawer */}
+      {menuDrawerOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-stone-950/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+            onClick={() => setMenuDrawerOpen(false)}
+          />
+
+          {/* Drawer Menu Panel */}
+          <div className="relative w-full max-w-sm sm:max-w-md bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto animate-in slide-in-from-left duration-300 z-10 p-6 sm:p-8">
+            
+            {/* Drawer Header */}
+            <div>
+              <div className="flex items-center justify-between pb-6 border-b border-orange-100">
+                <div className="flex items-center gap-3">
+                  <img src="/logo.png" alt="Hi-Life" className="h-9 w-auto object-contain" />
+                  <div className="flex flex-col">
+                    <span className="font-editorial text-2xl font-bold text-stone-950">
+                      Hi-Life
+                    </span>
+                    <span className="text-[8px] font-extrabold tracking-[0.2em] text-orange-600 uppercase -mt-1">
+                      HANUMAN TARPAULINS
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="p-2 rounded-full text-stone-500 hover:text-stone-900 hover:bg-orange-50 transition-colors cursor-pointer"
+                  aria-label="Close Navigation Menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Main Drawer Links */}
+              <nav className="mt-8 space-y-4">
+                <Link
+                  to="/"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="block text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1"
+                >
+                  Home
+                </Link>
+
+                {/* Expandable Covers Section */}
+                <div className="border-b border-stone-200/60 pb-3">
+                  <button
+                    type="button"
+                    onClick={() => setCoversSubmenuOpen(!coversSubmenuOpen)}
+                    className="w-full flex items-center justify-between text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1 text-left"
+                  >
+                    <span>Covers</span>
+                    <span className="text-xl font-light text-orange-600">
+                      {coversSubmenuOpen ? '−' : '+'}
+                    </span>
+                  </button>
+
+                  {coversSubmenuOpen && (
+                    <div className="pl-4 mt-2 space-y-3 pt-2 text-sm text-stone-600 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <Link
+                        to="/products"
+                        onClick={() => setMenuDrawerOpen(false)}
+                        className="block hover:text-orange-600 font-medium"
+                      >
+                        All Covers Catalog
+                      </Link>
+                      <Link
+                        to="/products?category=car"
+                        onClick={() => setMenuDrawerOpen(false)}
+                        className="block hover:text-orange-600 font-medium"
+                      >
+                        Car & SUV Covers
+                      </Link>
+                      <Link
+                        to="/products?category=two-wheeler-camo"
+                        onClick={() => setMenuDrawerOpen(false)}
+                        className="block hover:text-orange-600 font-medium"
+                      >
+                        Two-Wheeler & Scooter Covers
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                <Link
+                  to="/about"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="block text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1"
+                >
+                  Why Hi-Life
+                </Link>
+
+                <Link
+                  to="/pages/who-it-is-for"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="block text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1"
+                >
+                  Who Hi-Life Is For
+                </Link>
+
+                <Link
+                  to="/faq"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="block text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1"
+                >
+                  FAQs
+                </Link>
+
+                <Link
+                  to="/contact"
+                  onClick={() => setMenuDrawerOpen(false)}
+                  className="block text-2xl font-editorial text-stone-950 hover:text-orange-600 transition-colors py-1"
+                >
+                  Support
+                </Link>
+              </nav>
+            </div>
+
+            {/* Drawer Footer & Direct Help */}
+            <div className="pt-6 border-t border-stone-200 space-y-4">
+              <div className="bg-white rounded-2xl p-4 border border-orange-100 text-xs space-y-2 shadow-xs">
+                <span className="font-bold text-stone-900 block">
+                  Hanuman Tarpaulins • Bangalore
+                </span>
+                <p className="text-stone-500 text-[11px] leading-relaxed">
+                  {BUSINESS_CONFIG.address.street}, {BUSINESS_CONFIG.address.city} - {BUSINESS_CONFIG.address.pincode}
+                </p>
+                <div className="pt-2 flex items-center gap-3">
+                  <a
+                    href={`https://wa.me/${BUSINESS_CONFIG.whatsapp.number}?text=${encodeURIComponent(BUSINESS_CONFIG.whatsapp.defaultMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xs"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href={`tel:${BUSINESS_CONFIG.phone}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 font-bold text-xs"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-orange-600" />
+                    <span>Call Store</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="text-[11px] text-stone-400 text-center">
+                © 2026 Hanuman Tarpaulins. 20+ Years Trusted Quality.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* Global Search Overlay Modal */}
+      {searchOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
+          <div 
+            className="fixed inset-0 bg-stone-950/70 backdrop-blur-xs transition-opacity animate-in fade-in"
+            onClick={() => setSearchOpen(false)}
+          />
+
+          <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-orange-100 p-6 z-10 animate-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between pb-4 border-b border-stone-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
+                Search Hi-Life Covers
+              </span>
+              <button
+                type="button"
+                onClick={() => setSearchOpen(false)}
+                className="p-1 rounded-full text-stone-400 hover:text-stone-900"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSearchSubmit} className="mt-4">
+              <div className="flex items-center bg-stone-50 rounded-2xl px-4 py-3 border border-stone-200 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20">
+                <Search className="w-5 h-5 text-orange-500 mr-3 shrink-0" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Type car brand, model (e.g. Creta, Fortuner, Thar)..."
+                  className="w-full text-sm bg-transparent text-stone-900 focus:outline-none placeholder:text-stone-400 font-medium"
+                  autoFocus
+                />
+                <button
+                  type="submit"
+                  className="ml-2 px-5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition-all shrink-0 cursor-pointer shadow-sm shadow-orange-600/30"
+                >
+                  Search
+                </button>
+              </div>
             </form>
 
-            <nav className="flex flex-col space-y-1 text-xs font-bold uppercase tracking-wider text-stone-800">
-              <Link to="/" className="p-2.5 rounded-lg hover:bg-stone-100">HOME</Link>
-              <Link to="/products" className="p-2.5 rounded-lg hover:bg-stone-100">CAR COVERS</Link>
-              <Link to="/products?category=two-wheeler-camo" className="p-2.5 rounded-lg hover:bg-stone-100">BIKE COVERS</Link>
-              <Link to="/about" className="p-2.5 rounded-lg hover:bg-stone-100">WHY HANUMAN</Link>
-              <Link to="/gallery" className="p-2.5 rounded-lg hover:bg-stone-100">FITMENT SHOWCASE</Link>
-              <Link to="/contact" className="p-2.5 rounded-lg hover:bg-stone-100">SUPPORT</Link>
-              <button 
-                onClick={handleFinderScroll} 
-                className="p-2.5 text-left rounded-lg text-[#b45309] font-black hover:bg-amber-50"
-              >
-                VEHICLE FINDER
-              </button>
-            </nav>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-stone-400 text-[11px]">Popular:</span>
+              {['Creta', 'Fortuner', 'Thar', 'Swift', 'Nexon', 'Innova', 'Scorpio', 'City'].map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => {
+                    navigate(`/products?q=${tag}`);
+                    setSearchOpen(false);
+                  }}
+                  className="px-2.5 py-1 rounded-full bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 text-[11px] font-medium transition-colors cursor-pointer"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
-        )}
-
-      </div>
-    </header>
+        </div>
+      )}
+    </>
   );
 }

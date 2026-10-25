@@ -1,50 +1,66 @@
-import React from 'react';
-import { Truck, ShieldCheck, Zap } from 'lucide-react';
-import { BUSINESS_CONFIG } from '../config/business';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const ANNOUNCEMENTS = [
+  "Exclusive prepaid discounts on checkout!",
+  "Free all-India express shipping on all orders!",
+  "Quality Covers • Trusted Protection • 20 Years at JC Road, Bangalore",
+  "Use code HILIFE10 for an extra 10% instant discount!"
+];
 
 export default function AnnouncementBar() {
-  const marqueeText = "Free All-India Express Shipping on All Orders   •   🛡️ Quality Covers. Trusted Protection. 20 Years of Experience in Bangalore   •   🏷️ Use Code 'HILIFE15' for 15% OFF + Free Duffle Bag   •   📍 Visit Hanuman Tarpaulins at JC Road, Bangalore   •   📦 Dispatches in 24 Hours Across India   •   ";
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + ANNOUNCEMENTS.length) % ANNOUNCEMENTS.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+  };
 
   return (
-    <div className="w-full relative z-40 font-sans">
-      
-      {/* 1. Slim Top Bar (Oenum Clean High-Contrast Dark Strip) */}
-      <div className="bg-[#111111] text-stone-200 py-2 px-4 text-xs font-semibold border-b border-stone-800">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] sm:text-xs">
-          
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            <span className="font-bold text-white uppercase tracking-wider">
-              HANUMAN TARPAULINS
-            </span>
-            <span className="hidden sm:inline text-stone-400 font-normal">
-              — Quality Covers & Trusted Protection for 20 Years
-            </span>
-          </div>
+    <div className="w-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white font-sans select-none relative z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 py-2 sm:py-2.5 flex items-center justify-between text-xs sm:text-[13px] font-medium tracking-wide">
+        
+        {/* Left Arrow Button */}
+        <button
+          onClick={handlePrev}
+          type="button"
+          aria-label="Previous announcement"
+          className="p-1 hover:opacity-80 transition-opacity cursor-pointer shrink-0"
+        >
+          <ChevronLeft className="w-4 h-4 text-white" />
+        </button>
 
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-300">
-              <Truck className="w-3.5 h-3.5 text-amber-400" />
-              <span>Free Pan-India Delivery</span>
-            </span>
-
-            <span className="inline-flex items-center gap-1 bg-amber-500 text-stone-950 text-[10px] uppercase font-black px-2 py-0.5 rounded-full shadow-xs">
-              <Zap className="w-2.5 h-2.5 fill-stone-950" />
-              <span>CODE: HILIFE15</span>
-            </span>
-          </div>
-
+        {/* Announcement Text (Animated Fade) */}
+        <div className="flex-1 text-center truncate px-2">
+          <span 
+            key={currentIndex} 
+            className="inline-block animate-in fade-in duration-300 font-semibold text-white tracking-wide drop-shadow-sm"
+          >
+            {ANNOUNCEMENTS[currentIndex]}
+          </span>
         </div>
-      </div>
 
-      {/* 2. Marquee Notice */}
-      <div className="bg-[#f5f5f4] text-stone-800 py-1.5 text-xs font-semibold overflow-hidden relative border-b border-stone-200">
-        <div className="animate-marquee-infinite text-[11px] sm:text-xs tracking-wide font-medium text-stone-800">
-          <span className="mx-4">{marqueeText}</span>
-          <span className="mx-4">{marqueeText}</span>
-        </div>
-      </div>
+        {/* Right Arrow Button */}
+        <button
+          onClick={handleNext}
+          type="button"
+          aria-label="Next announcement"
+          className="p-1 hover:opacity-80 transition-opacity cursor-pointer shrink-0"
+        >
+          <ChevronRight className="w-4 h-4 text-white" />
+        </button>
 
+      </div>
     </div>
   );
 }
