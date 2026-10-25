@@ -5,25 +5,25 @@ const FAIL_CARDS = [
     id: 1,
     title: "They Trap Heat",
     description: "Heat trapped beneath poor covers accelerates clear-coat oxidation, rubber drying, and interior cabin aging.",
-    image: "/hi-life-assets/website_-_why_covers_fail_1.webp"
+    image: "/hi-life-assets/why-fail-heat.jpg"
   },
   {
     id: 2,
     title: "They Scratch Paint",
     description: "Rough unlined inner fabric grinds ambient dust particles into the clear coat, leaving permanent micro-swirls.",
-    image: "/hi-life-assets/website_-_why_covers_fail_2.webp"
+    image: "/hi-life-assets/why-fail-scratch.jpg"
   },
   {
     id: 3,
     title: "They Seep Water",
     description: "Inferior single stitching and non-breathable plastic trap humidity and allow rainwater capillary seepage.",
-    image: "/hi-life-assets/website_-_why_covers_fail_3.webp"
+    image: "/hi-life-assets/why-fail-water.jpg"
   },
   {
     id: 4,
     title: "They Blow Away in Winds",
     description: "Loose universal fits without heavy-duty underbody anchors balloon and rip off during stormy monsoon weather.",
-    image: "/hi-life-assets/website_-_why_covers_fail_4.webp"
+    image: "/hi-life-assets/why-fail-wind.jpg"
   }
 ];
 
