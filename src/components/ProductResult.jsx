@@ -64,7 +64,7 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
         {/* Top Match Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-stone-200/80">
           <div>
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-amber-700 font-bold block">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-orange-600 font-bold block">
               Verified Fitment
             </span>
             <h3 className="text-xl sm:text-2xl font-black text-stone-950">
@@ -139,7 +139,7 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
             </div>
 
             {/* Price Box */}
-            <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 flex items-baseline justify-between gap-4">
+            <div className="p-4 rounded-xl bg-orange-50/40 border border-orange-100 flex items-baseline justify-between gap-4">
               <div>
                 <div className="flex items-baseline gap-3">
                   <span className="text-2xl sm:text-3xl font-black text-stone-950">
@@ -148,7 +148,7 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
                   <span className="text-sm text-stone-400 line-through">
                     ₹{calculatedOriginalPrice}
                   </span>
-                  <span className="text-xs font-bold text-stone-900 bg-amber-100 px-2 py-0.5 rounded">
+                  <span className="text-xs font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-md">
                     Save {discountPercent}%
                   </span>
                 </div>
@@ -205,15 +205,15 @@ export default function ProductResult({ result, onReset, onBuyNow }) {
                     coverType
                   });
                 }}
-                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-xs sm:text-sm text-center border border-stone-300 transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-950 font-bold text-xs sm:text-sm text-center border border-orange-200 transition-all cursor-pointer flex items-center justify-center gap-1.5"
               >
-                <ShoppingBag className="w-4 h-4" />
+                <ShoppingBag className="w-4 h-4 text-orange-600" />
                 <span>Add to Cart</span>
               </button>
 
               <button
                 onClick={() => onBuyNow && onBuyNow(result)}
-                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xs transition-all cursor-pointer"
+                className="w-full sm:flex-1 py-2.5 sm:py-3.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-orange-600/30 transition-all cursor-pointer"
               >
                 Order Custom Fit
               </button>

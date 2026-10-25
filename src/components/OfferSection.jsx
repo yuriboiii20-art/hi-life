@@ -14,7 +14,7 @@ export default function OfferSection() {
   };
 
   return (
-    <section id="offers-section" className="py-12 sm:py-16 bg-[#fafaf9] border-b border-stone-200/90 font-sans scroll-mt-20">
+    <section id="offers-section" className="py-12 sm:py-16 bg-white border-b border-orange-100 font-sans scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -35,14 +35,14 @@ export default function OfferSection() {
             return (
               <div
                 key={offer.id}
-                className="rounded-2xl p-5 bg-white border border-stone-200/90 hover:border-stone-400 transition-all flex flex-col justify-between"
+                className="rounded-2xl p-5 bg-white border border-stone-200 hover:border-orange-400 shadow-sm transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500 text-stone-950">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-orange-600 text-white">
                       {offer.badge}
                     </span>
-                    <span className="text-base font-black text-stone-950">
+                    <span className="text-base font-black text-orange-600">
                       {offer.discount}
                     </span>
                   </div>
@@ -58,7 +58,7 @@ export default function OfferSection() {
 
                 {/* Promo Code Copy Bar */}
                 <div className="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-stone-900 bg-stone-100 px-2.5 py-1 rounded">
+                  <span className="font-mono text-xs font-bold text-orange-700 bg-orange-50 border border-orange-200 px-2.5 py-1 rounded">
                     {offer.code}
                   </span>
 
@@ -67,8 +67,8 @@ export default function OfferSection() {
                     onClick={() => handleCopyCode(offer.code)}
                     className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                       isCopied
-                        ? 'bg-stone-950 text-white'
-                        : 'bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200'
+                        ? 'bg-orange-600 text-white'
+                        : 'bg-orange-50 hover:bg-orange-100 text-orange-700 border border-orange-200'
                     }`}
                   >
                     {isCopied ? 'Copied' : 'Copy'}

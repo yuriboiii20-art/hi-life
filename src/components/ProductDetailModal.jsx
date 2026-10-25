@@ -36,7 +36,7 @@ export default function ProductDetailModal({ cover, onClose, onSelectForFinder }
 
         {/* Modal Header */}
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500 text-stone-950">
+          <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-orange-600 text-white">
             {cover.badge}
           </span>
           <span className="text-xs text-stone-600 font-bold uppercase tracking-wider">
@@ -64,7 +64,7 @@ export default function ProductDetailModal({ cover, onClose, onSelectForFinder }
             <span className="bg-stone-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-stone-200 font-medium">
               Material: {cover.fabricSpecs.material}
             </span>
-            <span className="bg-amber-500 text-stone-950 px-3 py-1 rounded-xl font-bold">
+            <span className="bg-orange-600 text-white px-3 py-1 rounded-xl font-bold">
               {cover.fabricSpecs.waterproofing}
             </span>
           </div>
@@ -77,9 +77,9 @@ export default function ProductDetailModal({ cover, onClose, onSelectForFinder }
           </p>
 
           {/* Technical Specs Grid */}
-          <div className="rounded-2xl bg-stone-50 p-4 sm:p-5 border border-stone-200/90 space-y-3">
+          <div className="rounded-2xl bg-orange-50/20 p-4 sm:p-5 border border-orange-100 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-stone-950 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-amber-600" />
+              <Layers className="w-4 h-4 text-orange-600" />
               <span>Full Fabric & Fitment Profile</span>
             </h4>
             
@@ -135,7 +135,7 @@ export default function ProductDetailModal({ cover, onClose, onSelectForFinder }
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-black text-stone-950">₹{cover.basePrice}</span>
               <span className="text-sm text-stone-400 line-through">₹{cover.originalPrice}</span>
-              <span className="text-xs font-bold text-stone-900 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+              <span className="text-xs font-bold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-full border border-orange-200">
                 Save {cover.discountPercent}%
               </span>
             </div>
@@ -158,7 +158,7 @@ export default function ProductDetailModal({ cover, onClose, onSelectForFinder }
                 onClose();
                 if (onSelectForFinder) onSelectForFinder(cover.id);
               }}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-950 hover:bg-black text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-[1.01] cursor-pointer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md shadow-orange-500/25 transition-all hover:scale-[1.01] cursor-pointer"
             >
               <span>Find Fit for My Car</span>
               <ArrowRight className="w-4 h-4" />

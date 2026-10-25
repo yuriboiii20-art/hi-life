@@ -12,29 +12,29 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
     : COVER_TYPES.filter(c => c.id === 'two-wheeler-camo');
 
   return (
-    <section id="protection-system" className="py-14 sm:py-20 bg-white border-b border-stone-200/90 font-sans">
+    <section id="protection-system" className="py-14 sm:py-20 bg-white border-b border-orange-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header (Oenum Clean Architectural Format) */}
+        {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-10">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700 block mb-1">
-              THE PROTECTION MATRIX
+            <span className="text-[11px] font-bold uppercase tracking-widest text-orange-600 block mb-1">
+              THE PROTECTION BENCHMARK
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">
-              The Cover Protection System
+              Signature Vehicle Cover Protection
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 font-normal mt-1">
-              Engineered fabric tiers designed for different exposure environments.
+              Our signature all-weather military camouflage cover, precision-tailored for your exact vehicle.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xl">
+          <div className="flex items-center gap-1.5 bg-orange-50/60 p-1 rounded-xl border border-orange-100">
             <button
               onClick={() => setActiveTab('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'all' ? 'bg-stone-950 text-white shadow-xs' : 'text-stone-600 hover:text-stone-950'
+                activeTab === 'all' ? 'bg-orange-600 text-white shadow-xs' : 'text-stone-600 hover:text-orange-600'
               }`}
             >
               All Covers
@@ -42,7 +42,7 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
             <button
               onClick={() => setActiveTab('cars')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'cars' ? 'bg-stone-950 text-white shadow-xs' : 'text-stone-600 hover:text-stone-950'
+                activeTab === 'cars' ? 'bg-orange-600 text-white shadow-xs' : 'text-stone-600 hover:text-orange-600'
               }`}
             >
               Cars & SUVs
@@ -50,7 +50,7 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
             <button
               onClick={() => setActiveTab('bikes')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'bikes' ? 'bg-stone-950 text-white shadow-xs' : 'text-stone-600 hover:text-stone-950'
+                activeTab === 'bikes' ? 'bg-orange-600 text-white shadow-xs' : 'text-stone-600 hover:text-orange-600'
               }`}
             >
               Two-Wheelers
@@ -58,7 +58,7 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
           </div>
         </div>
 
-        {/* Cover Tier Cards (Clean Minimalist Oenum Aesthetic) */}
+        {/* Cover Tier Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {displayedCovers.map((cover) => (
             <div
@@ -85,7 +85,7 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   <div className="flex items-center justify-between gap-1 text-[11px] font-semibold text-stone-500">
-                    <span className="uppercase text-amber-700 font-bold tracking-wider">
+                    <span className="uppercase text-orange-600 font-bold tracking-wider">
                       {cover.fabricSpecs.material.split('+')[0]}
                     </span>
                     <span className="text-stone-800">★ {cover.rating}</span>
@@ -130,7 +130,7 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
                         </span>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold text-stone-900 bg-amber-100 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
                       Save {cover.discountPercent}%
                     </span>
                   </div>
@@ -139,14 +139,14 @@ export default function ProtectionSystem({ onSelectCover, onViewDetails }) {
                     <button
                       type="button"
                       onClick={() => onViewDetails && onViewDetails(cover)}
-                      className="w-full py-2.5 rounded-xl bg-white hover:bg-stone-200 text-stone-900 text-xs font-semibold border border-stone-300 transition-colors cursor-pointer"
+                      className="w-full py-2.5 rounded-xl bg-white hover:bg-stone-100 text-stone-900 text-xs font-semibold border border-stone-300 transition-colors cursor-pointer"
                     >
                       Specs
                     </button>
                     <button
                       type="button"
                       onClick={() => onSelectCover && onSelectCover(cover.id)}
-                      className="w-full py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs"
+                      className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs shadow-orange-500/25"
                     >
                       Select Fit
                     </button>

@@ -14,6 +14,7 @@ import {
 import { BUSINESS_CONFIG } from '../config/business';
 import { CAR_BRANDS, MANUFACTURING_YEARS } from '../data/vehicles';
 import { COVER_TYPES } from '../data/products';
+import CustomDropdown from './CustomDropdown';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -76,7 +77,7 @@ export default function ContactForm() {
         
         <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] space-y-6">
           <div>
-            <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
+            <span className="text-xs uppercase tracking-wider font-bold text-orange-600">
               Get in Touch
             </span>
             <h3 className="text-2xl font-black text-stone-950 mt-1">
@@ -89,34 +90,34 @@ export default function ContactForm() {
 
           <div className="space-y-3 text-xs text-stone-700">
             {/* Phone */}
-            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-orange-50/40 border border-orange-100">
+              <div className="p-2.5 rounded-xl bg-orange-600 text-white shrink-0">
                 <Phone className="w-4 h-4" />
               </div>
               <div>
                 <p className="font-bold text-stone-950">Call Support</p>
-                <a href={`tel:${BUSINESS_CONFIG.phone}`} className="text-stone-600 hover:text-stone-950 font-semibold">
+                <a href={`tel:${BUSINESS_CONFIG.phone}`} className="text-stone-600 hover:text-orange-600 font-semibold">
                   {BUSINESS_CONFIG.displayPhone}
                 </a>
               </div>
             </div>
 
             {/* Email */}
-            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-orange-50/40 border border-orange-100">
+              <div className="p-2.5 rounded-xl bg-orange-600 text-white shrink-0">
                 <Mail className="w-4 h-4" />
               </div>
               <div>
                 <p className="font-bold text-stone-950">Email Enquiries</p>
-                <a href={`mailto:${BUSINESS_CONFIG.email}`} className="text-stone-600 hover:text-stone-950 font-semibold">
+                <a href={`mailto:${BUSINESS_CONFIG.email}`} className="text-stone-600 hover:text-orange-600 font-semibold">
                   {BUSINESS_CONFIG.email}
                 </a>
               </div>
             </div>
 
             {/* Address */}
-            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-orange-50/40 border border-orange-100">
+              <div className="p-2.5 rounded-xl bg-orange-600 text-white shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
               <div>
@@ -128,8 +129,8 @@ export default function ContactForm() {
             </div>
 
             {/* Hours */}
-            <div className="flex items-start gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-              <div className="p-2.5 rounded-xl bg-stone-900 text-amber-400 shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-orange-50/40 border border-orange-100">
+              <div className="p-2.5 rounded-xl bg-orange-600 text-white shrink-0">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
@@ -154,17 +155,17 @@ export default function ContactForm() {
         </div>
 
         {/* Map Placeholder Card */}
-        <div className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] space-y-3">
+        <div className="p-6 rounded-3xl bg-white border border-orange-100 shadow-sm space-y-3">
           <div className="flex items-center justify-between text-xs">
             <span className="font-bold text-stone-950 flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-stone-900" />
+              <MapPin className="w-4 h-4 text-orange-600" />
               <span>Location Map</span>
             </span>
-            <span className="text-[10px] text-stone-500 uppercase font-semibold">Dispatch Center</span>
+            <span className="text-[10px] text-orange-600 uppercase font-semibold">Dispatch Center</span>
           </div>
 
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-stone-50 border border-stone-200 flex flex-col items-center justify-center p-4 text-center">
-            <div className="w-10 h-10 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center mb-1.5 animate-pulse shadow-sm">
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-orange-50/30 border border-orange-100 flex flex-col items-center justify-center p-4 text-center">
+            <div className="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center mb-1.5 animate-pulse shadow-sm">
               <MapPin className="w-5 h-5" />
             </div>
             <p className="text-xs font-bold text-stone-950">{BUSINESS_CONFIG.address.city}, {BUSINESS_CONFIG.address.country}</p>
@@ -176,9 +177,9 @@ export default function ContactForm() {
 
       {/* Right 7 Cols: Enquiry Form */}
       <div className="lg:col-span-7">
-        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] relative">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-white border border-orange-100 shadow-sm relative">
           
-          <span className="text-xs uppercase tracking-wider font-bold text-amber-700">
+          <span className="text-xs uppercase tracking-wider font-bold text-orange-600">
             Enquiry & Custom Sizing Form
           </span>
           <h3 className="text-2xl font-black text-stone-950 mt-1">
@@ -190,8 +191,8 @@ export default function ContactForm() {
 
           {isSuccess ? (
             <div className="text-center py-10 space-y-4">
-              <div className="w-16 h-16 rounded-3xl bg-stone-900 text-white flex items-center justify-center mx-auto shadow-md">
-                <CheckCircle2 className="w-8 h-8 text-amber-400" />
+              <div className="w-16 h-16 rounded-3xl bg-orange-600 text-white flex items-center justify-center mx-auto shadow-md">
+                <CheckCircle2 className="w-8 h-8 text-white" />
               </div>
               <h4 className="text-2xl font-black text-stone-950">Message Received!</h4>
               <p className="text-sm text-stone-600 max-w-md mx-auto font-normal">
@@ -213,7 +214,7 @@ export default function ContactForm() {
                       message: ''
                     });
                   }}
-                  className="px-6 py-3.5 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs shadow-sm cursor-pointer"
+                  className="px-6 py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-sm cursor-pointer"
                 >
                   Send Another Enquiry
                 </button>
@@ -289,57 +290,58 @@ export default function ContactForm() {
                     <label htmlFor="contact-brand" className="text-[11px] font-semibold text-stone-600 block mb-1">
                       Car Brand
                     </label>
-                    <select
+                    <CustomDropdown
                       id="contact-brand"
                       name="brand"
                       value={formData.brand}
                       onChange={handleChange}
-                      className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
-                    >
-                      <option value="">-- Select Brand --</option>
-                      {CAR_BRANDS.map((b) => (
-                        <option key={b.id} value={b.name}>{b.name}</option>
-                      ))}
-                    </select>
+                      placeholder="Select Brand"
+                      title="Select Car Brand"
+                      options={CAR_BRANDS.map((b) => ({
+                        value: b.name,
+                        label: b.name,
+                        sublabel: b.country,
+                      }))}
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="contact-model" className="text-[11px] font-semibold text-stone-600 block mb-1">
                       Model
                     </label>
-                    <select
+                    <CustomDropdown
                       id="contact-model"
                       name="model"
                       value={formData.model}
                       onChange={handleChange}
                       disabled={!formData.brand}
-                      className={`w-full text-xs font-semibold rounded-2xl px-3.5 py-3 border transition-all ${
-                        !formData.brand ? 'bg-stone-100 text-stone-400 border-stone-200 cursor-not-allowed' : 'bg-stone-50 text-stone-900 border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer'
-                      }`}
-                    >
-                      <option value="">{!formData.brand ? 'Select Brand first' : '-- Select Model --'}</option>
-                      {availableModels.map((m) => (
-                        <option key={m.id} value={m.name}>{m.name}</option>
-                      ))}
-                    </select>
+                      placeholder="Select Model"
+                      disabledPlaceholder="Select Brand first"
+                      title="Select Vehicle Model"
+                      options={availableModels.map((m) => ({
+                        value: m.name,
+                        label: m.name,
+                        sublabel: m.bodyType,
+                      }))}
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="contact-year" className="text-[11px] font-semibold text-stone-600 block mb-1">
                       Year
                     </label>
-                    <select
+                    <CustomDropdown
                       id="contact-year"
                       name="year"
                       value={formData.year}
                       onChange={handleChange}
-                      className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
-                    >
-                      <option value="">-- Select Year --</option>
-                      {MANUFACTURING_YEARS.map((yr) => (
-                        <option key={yr} value={yr}>{yr}</option>
-                      ))}
-                    </select>
+                      placeholder="Select Year"
+                      title="Select Year"
+                      options={MANUFACTURING_YEARS.map((yr) => ({
+                        value: String(yr),
+                        label: String(yr),
+                      }))}
+                    />
                   </div>
                 </div>
               </div>
@@ -348,18 +350,23 @@ export default function ContactForm() {
                 <label htmlFor="contact-cover-type" className="text-[11px] font-semibold text-stone-600 block">
                   Preferred Cover Grade
                 </label>
-                <select
+                <CustomDropdown
                   id="contact-cover-type"
                   name="coverType"
                   value={formData.coverType}
                   onChange={handleChange}
-                  className="w-full text-xs font-semibold rounded-2xl px-3.5 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 cursor-pointer"
-                >
-                  <option value="">-- Not Sure / Recommend Best Option --</option>
-                  {COVER_TYPES.map((c) => (
-                    <option key={c.id} value={c.name}>{c.name} (from ₹{c.basePrice})</option>
-                  ))}
-                </select>
+                  placeholder="Recommend Best Option"
+                  title="Select Cover Grade"
+                  options={[
+                    { value: '', label: 'Not Sure / Recommend Best Option' },
+                    ...COVER_TYPES.map((c) => ({
+                      value: c.name,
+                      label: c.name,
+                      sublabel: `from ₹${c.basePrice}`,
+                      badge: c.popular ? 'Popular' : undefined,
+                    })),
+                  ]}
+                />
               </div>
 
               <div className="space-y-1.5">
@@ -373,7 +380,7 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Ask about custom fitting, bulk discounts, color options, or accessories..."
-                  className="w-full text-xs sm:text-sm rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-900 font-medium"
+                  className="w-full text-xs sm:text-sm rounded-2xl px-4 py-3 bg-stone-50 text-stone-900 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                 />
               </div>
 
@@ -381,7 +388,7 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-2xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-orange-500/25 flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Submitting Enquiry...</span>

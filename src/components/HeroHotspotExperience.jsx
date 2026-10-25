@@ -1,242 +1,293 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, Volume2, VolumeX, Eye } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, X, Sparkles } from 'lucide-react';
 
 const HOTSPOT_POINTS = [
   {
     id: 1,
     number: "01 / 05",
-    title: "Tailored fit",
-    description: "A car cover cut to your car's own lines, so it sits close instead of hanging loose.",
+    title: "Tailored 3D Fit",
+    shortTitle: "Front Bumper & Hood Contour",
+    description: "Every cover is cut to your car's exact CAD dimensions, sitting flush along the front fascia and hood lines instead of hanging loose or ballooning in crosswinds.",
     image: "/products/camo-car-daylight.jpg",
-    // Position percentage on vehicle image [x, y]
-    x: 32, // hood / front contour
-    y: 52
+    xDesktop: 22,
+    yDesktop: 68,
+    xMobile: 24,
+    yMobile: 68,
   },
   {
     id: 2,
     number: "02 / 05",
-    title: "Water repellence",
-    description: "A water-repellent outer coating. Rain gathers into beads and rolls away, keeping your car dry.",
+    title: "Water Repellence & Monsoon Armor",
+    shortTitle: "Heavy-Duty Camo Shield",
+    description: "Engineered multi-layer weather shield. Rain gathers into tight beads and rolls off immediately without capillary seepage through fabric or stitching holes.",
     image: "/products/camo-car-rain-monsoon.jpg",
-    x: 54, // windshield / roof
-    y: 35
+    xDesktop: 38,
+    yDesktop: 52,
+    xMobile: 38,
+    yMobile: 52,
   },
   {
     id: 3,
     number: "03 / 05",
-    title: "Mirror pocket",
-    description: "A pocket shaped to each mirror, so the cover follows the car exactly without tension.",
+    title: "Molded Mirror Enclosure",
+    shortTitle: "Zero-Tension Mirror Pocket",
+    description: "Custom-formed pocket sculpted to each side mirror, allowing natural fold geometry without pulling stress across the A-pillar fabric.",
     image: "/products/camo-car-shopfront.jpg",
-    x: 48, // side mirror
-    y: 48
+    xDesktop: 66,
+    yDesktop: 46,
+    xMobile: 64,
+    yMobile: 46,
   },
   {
     id: 4,
     number: "04 / 05",
-    title: "Contrast piping & bound seams",
-    description: "A clean line that traces the roof contour and double-lock bound finishes every seam.",
+    title: "Double-Bound Piping & Seams",
+    shortTitle: "Reinforced Bound Stitching",
+    description: "Industrial double-lock bound stitching traces the roofline, ensuring long-lasting seam integrity against torrential rains and high UV exposure.",
     image: "/products/camo-car-full-sidefit.jpg",
-    x: 70, // roofline & side curve
-    y: 36
+    xDesktop: 52,
+    yDesktop: 34,
+    xMobile: 52,
+    yMobile: 34,
   },
   {
     id: 5,
     number: "05 / 05",
-    title: "Elastic hem & centre lock belt",
-    description: "An elastic hem draws in beneath the bumpers with heavy underbody strap so wind cannot lift the cover.",
+    title: "Elastic Hem & Centre Storm Lock",
+    shortTitle: "Underbody Chassis Anchor",
+    description: "Heavy-gauge elastic cords hug both bumpers underneath, reinforced by a central belly buckle belt that prevents turbulent winds from lifting the cover.",
     image: "/products/camo-car-street-profile.jpg",
-    x: 82, // rear bumper / bottom edge
-    y: 72
+    xDesktop: 84,
+    yDesktop: 62,
+    xMobile: 82,
+    yMobile: 62,
   }
 ];
 
 export default function HeroHotspotExperience({ onShopClick, onFinderClick }) {
-  const [activePointIndex, setActivePointIndex] = useState(0);
-  const [isAutoTour, setIsAutoTour] = useState(false);
+  const [activePointIndex, setActivePointIndex] = useState(null);
+  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [modalCurrentIndex, setModalCurrentIndex] = useState(0);
 
-  // Auto-tour timer when user clicks "View all details" or starts auto tour
-  useEffect(() => {
-    if (!isAutoTour) return;
-    const interval = setInterval(() => {
-      setActivePointIndex((prev) => (prev + 1) % HOTSPOT_POINTS.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isAutoTour]);
-
-  const activePoint = HOTSPOT_POINTS[activePointIndex];
-
-  const handleNext = () => {
-    setActivePointIndex((prev) => (prev + 1) % HOTSPOT_POINTS.length);
+  const handleOpenDetailModal = (index = 0) => {
+    setModalCurrentIndex(index);
+    setDetailsModalOpen(true);
   };
 
-  const handlePrev = () => {
-    setActivePointIndex((prev) => (prev - 1 + HOTSPOT_POINTS.length) % HOTSPOT_POINTS.length);
+  const handleNextModal = () => {
+    setModalCurrentIndex((prev) => (prev + 1) % HOTSPOT_POINTS.length);
   };
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const handlePrevModal = () => {
+    setModalCurrentIndex((prev) => (prev - 1 + HOTSPOT_POINTS.length) % HOTSPOT_POINTS.length);
   };
 
   return (
-    <section className="relative w-full bg-stone-950 text-white font-sans overflow-hidden select-none">
+    <section className="relative w-full bg-[#111111] text-white font-sans select-none overflow-hidden">
       
-      {/* Background Image Stage */}
-      <div className="relative w-full min-h-[540px] sm:min-h-[620px] lg:min-h-[700px] flex items-center justify-center">
+      {/* Hero Visual Container */}
+      <div className="relative w-full min-h-[580px] sm:min-h-[660px] lg:min-h-[760px] flex flex-col justify-between overflow-hidden">
         
-        {HOTSPOT_POINTS.map((pt, idx) => {
-          const isActive = idx === activePointIndex;
-          return (
-            <div
-              key={pt.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-              }`}
-            >
-              <img
-                src={pt.image}
-                alt={pt.title}
-                className="w-full h-full object-cover object-center filter brightness-[0.88]"
-                loading="eager"
-              />
-              {/* Oenum-style cinematic vignetting */}
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-stone-950/70 lg:bg-gradient-to-r lg:from-stone-950/90 lg:via-stone-950/40 lg:to-stone-950/30" />
-            </div>
-          );
-        })}
+        {/* Background Image: Tailored Military Camo Car Cover */}
+        <picture className="absolute inset-0 z-0">
+          <img
+            src="/hi-life-assets/hero-camo-car.jpg"
+            alt="Hi-Life Military Camouflage Tailored Car Cover"
+            className="w-full h-full object-cover object-center filter brightness-[0.94]"
+            loading="eager"
+          />
+        </picture>
 
-        {/* Hotspot Interactive Pins on Vehicle Stage */}
-        <div className="absolute inset-0 z-20 pointer-events-none">
-          <div className="relative w-full h-full max-w-7xl mx-auto">
-            {HOTSPOT_POINTS.map((pt, idx) => {
-              const isSelected = idx === activePointIndex;
-              return (
-                <button
-                  key={pt.id}
-                  type="button"
-                  onClick={() => {
-                    setActivePointIndex(idx);
-                    setIsAutoTour(false);
-                  }}
-                  style={{ left: `${pt.x}%`, top: `${pt.y}%` }}
-                  aria-label={`Hotspot ${pt.number}: ${pt.title}`}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto group p-2 focus:outline-none cursor-pointer"
-                >
-                  <span className="relative flex items-center justify-center">
-                    {/* Pulsing ring */}
-                    <span className={`absolute inline-flex h-9 w-9 rounded-full transition-all duration-300 ${
-                      isSelected 
-                        ? 'bg-white/40 animate-ping opacity-75' 
-                        : 'bg-white/10 group-hover:bg-white/30'
-                    }`} />
-                    
-                    {/* Outer border ring */}
-                    <span className={`relative inline-flex items-center justify-center rounded-full h-6 w-6 border transition-all duration-300 shadow-md ${
-                      isSelected
-                        ? 'bg-white border-amber-400 text-stone-950 scale-125'
-                        : 'bg-stone-900/80 border-white/60 text-white group-hover:scale-110 group-hover:border-white'
-                    }`}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                    </span>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        {/* Ambient Top Vignette to ensure Navbar & Headline Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none z-10" />
 
-        {/* Top Floating Intro Box (Oenum Header Placement) */}
-        <div className="absolute top-6 sm:top-10 left-4 sm:left-8 lg:left-12 z-30 max-w-lg space-y-2 pointer-events-auto">
-          <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-amber-400">
-            Premium Car Covers • Hanuman Tarpaulins
-          </p>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-[0.95] drop-shadow-md">
+        {/* Top Content: Luxury Editorial Headline */}
+        <div className="relative z-20 pt-10 sm:pt-14 lg:pt-18 px-5 sm:px-8 lg:px-14 max-w-4xl">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-stone-300 block mb-2 sm:mb-3">
+            PREMIUM CAR COVERS BY HI-LIFE
+          </span>
+
+          <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-white tracking-tight leading-[1.05] drop-shadow-md">
             Built for owners who care.
           </h1>
-          <p className="text-xs sm:text-sm text-stone-300 font-normal tracking-wide drop-shadow-xs">
-            Touch a point on the cover to see it up close.
+
+          <p className="text-xs sm:text-sm text-stone-300 mt-2.5 sm:mt-3.5 font-normal tracking-wide flex items-center gap-2 drop-shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span>Touch a point on the cover to see it up close.</span>
           </p>
         </div>
 
-        {/* Bottom Left Detail Card (Oenum Hotspot Card) */}
-        <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-8 lg:left-12 z-30 max-w-sm sm:max-w-md w-[calc(100%-2rem)] sm:w-auto pointer-events-auto">
-          <div className="p-5 sm:p-6 rounded-3xl bg-stone-900/90 backdrop-blur-xl border border-white/15 shadow-2xl space-y-2.5">
-            
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-mono text-xs font-black text-amber-400 tracking-wider">
-                {activePoint.number}
-              </span>
-              <div className="flex items-center gap-1">
-                {HOTSPOT_POINTS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      setActivePointIndex(i);
-                      setIsAutoTour(false);
-                    }}
-                    className={`h-1 rounded-full transition-all cursor-pointer ${
-                      i === activePointIndex ? 'w-5 bg-amber-400' : 'w-2 bg-white/30 hover:bg-white/60'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+        {/* Interactive Pulsing Hotspots Layer */}
+        <div className="absolute inset-0 z-20 pointer-events-none">
+          {HOTSPOT_POINTS.map((pt, idx) => {
+            const isHovered = activePointIndex === idx;
 
-            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              {activePoint.title}
-            </h2>
-
-            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-normal">
-              {activePoint.description}
-            </p>
-
-            {/* Actions Bar */}
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
-              <button
-                type="button"
-                onClick={() => {
-                  if (onFinderClick) onFinderClick();
-                  else scrollToSection('vehicle-finder');
+            return (
+              <div
+                key={pt.id}
+                style={{
+                  top: `${pt.yDesktop}%`,
+                  left: `${pt.xDesktop}%`,
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-stone-100 text-stone-950 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-xs"
+                className="absolute pointer-events-auto -translate-x-1/2 -translate-y-1/2"
               >
-                <span>Find Your Cover</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+                {/* Pulsing Hotspot Button in High-Performance Automotive Orange */}
+                <button
+                  type="button"
+                  onClick={() => handleOpenDetailModal(idx)}
+                  onMouseEnter={() => setActivePointIndex(idx)}
+                  onMouseLeave={() => setActivePointIndex(null)}
+                  className="relative group p-2.5 flex items-center justify-center focus:outline-none cursor-pointer"
+                  aria-label={`View feature: ${pt.title}`}
+                >
+                  {/* Outer Pulsing Wave */}
+                  <span className="absolute w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-orange-500/35 border border-orange-400 animate-ping opacity-75" />
 
-              <button
-                type="button"
-                onClick={() => setIsAutoTour(!isAutoTour)}
-                className="text-[11px] font-semibold text-stone-300 hover:text-white underline cursor-pointer"
-              >
-                {isAutoTour ? 'Pause Tour' : 'Auto Tour (5 Points)'}
-              </button>
-            </div>
+                  {/* Inner Halo */}
+                  <span className="absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-orange-500/50 backdrop-blur-xs transition-transform group-hover:scale-125 duration-200" />
 
-          </div>
+                  {/* Center Solid Dot */}
+                  <span className="relative w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-orange-500 ring-2 ring-white shadow-lg shadow-orange-600/50 transition-transform group-hover:scale-110" />
+                </button>
+
+                {/* Desktop Hover Tooltip Preview */}
+                {isHovered && (
+                  <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-64 p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-orange-200 text-stone-900 shadow-2xl z-30 animate-in fade-in slide-in-from-bottom-2 duration-150">
+                    <span className="text-[9px] font-mono font-bold text-orange-600 uppercase tracking-widest block">
+                      {pt.number} • {pt.shortTitle}
+                    </span>
+                    <h4 className="text-xs font-bold mt-0.5 text-stone-950">
+                      {pt.title}
+                    </h4>
+                    <p className="text-[11px] text-stone-600 mt-1 line-clamp-2 leading-relaxed">
+                      {pt.description}
+                    </p>
+                    <span className="text-[10px] text-orange-600 font-bold mt-1.5 block">
+                      Click to inspect details &rarr;
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Carousel Navigation Arrows */}
-        <div className="absolute bottom-6 sm:bottom-10 right-4 sm:right-8 lg:right-12 z-30 flex items-center gap-2 pointer-events-auto">
+        {/* Bottom Bar: Action Buttons */}
+        <div className="relative z-20 pb-8 sm:pb-12 px-5 sm:px-8 lg:px-14 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 max-w-xl">
+          {/* Vibrant Orange Primary CTA */}
           <button
             type="button"
-            onClick={handlePrev}
-            aria-label="Previous Feature Point"
-            className="w-10 h-10 rounded-full bg-stone-900/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md"
+            onClick={onShopClick}
+            className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-xl shadow-orange-600/30 active:scale-[0.98] cursor-pointer"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <span>Shop Covers</span>
+            <ArrowRight className="w-4 h-4" />
           </button>
+
+          {/* White Translucent Outline CTA */}
           <button
             type="button"
-            onClick={handleNext}
-            aria-label="Next Feature Point"
-            className="w-10 h-10 rounded-full bg-stone-900/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md"
+            onClick={() => handleOpenDetailModal(0)}
+            className="w-full sm:w-auto px-6 py-3.5 sm:py-4 rounded-xl bg-white/90 hover:bg-white text-stone-950 border border-white text-xs sm:text-sm font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg"
           >
-            <ChevronRight className="w-5 h-5" />
+            <span>View All Details</span>
           </button>
         </div>
 
       </div>
+
+      {/* Feature Detail Modal (When user clicks any hotspot point) */}
+      {detailsModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-stone-950/70 backdrop-blur-md transition-opacity animate-in fade-in"
+            onClick={() => setDetailsModalOpen(false)}
+          />
+
+          {/* Modal Card (Crisp White Card with Orange Accents) */}
+          <div className="relative w-full max-w-2xl bg-white text-stone-900 rounded-3xl border border-orange-100 shadow-2xl overflow-hidden z-10 animate-in zoom-in-95 duration-200">
+            
+            {/* Modal Header */}
+            <div className="p-4 sm:p-5 border-b border-orange-100 flex items-center justify-between bg-orange-50/50">
+              <span className="text-xs font-mono font-bold text-orange-600 tracking-wider">
+                {HOTSPOT_POINTS[modalCurrentIndex].number}
+              </span>
+              <button
+                type="button"
+                onClick={() => setDetailsModalOpen(false)}
+                className="p-1.5 rounded-full text-stone-500 hover:text-stone-950 hover:bg-orange-100 transition-colors cursor-pointer"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              {/* Photo */}
+              <div className="relative aspect-4/3 sm:aspect-auto bg-stone-100 overflow-hidden">
+                <img
+                  src={HOTSPOT_POINTS[modalCurrentIndex].image}
+                  alt={HOTSPOT_POINTS[modalCurrentIndex].title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Text Info */}
+              <div className="p-6 sm:p-7 flex flex-col justify-between space-y-4">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-orange-600 block mb-1">
+                    {HOTSPOT_POINTS[modalCurrentIndex].shortTitle}
+                  </span>
+                  <h3 className="font-editorial text-2xl sm:text-3xl font-normal text-stone-950">
+                    {HOTSPOT_POINTS[modalCurrentIndex].title}
+                  </h3>
+                  <p className="text-xs text-stone-600 mt-3 leading-relaxed">
+                    {HOTSPOT_POINTS[modalCurrentIndex].description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-orange-100 flex items-center justify-between">
+                  {/* Prev / Next stepper */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handlePrevModal}
+                      className="p-2 rounded-xl bg-stone-100 hover:bg-orange-50 text-stone-700 hover:text-orange-600 transition-colors cursor-pointer"
+                      aria-label="Previous Feature"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextModal}
+                      className="p-2 rounded-xl bg-stone-100 hover:bg-orange-50 text-stone-700 hover:text-orange-600 transition-colors cursor-pointer"
+                      aria-label="Next Feature"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Find My Cover button */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDetailsModalOpen(false);
+                      if (onFinderClick) onFinderClick();
+                    }}
+                    className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-orange-600/25 cursor-pointer"
+                  >
+                    Find My Cover &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }

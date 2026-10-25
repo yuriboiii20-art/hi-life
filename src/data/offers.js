@@ -33,7 +33,7 @@ export const ACTIVE_OFFERS = [
     discount: "Extra ₹300 OFF",
     description: "Upgrade to Premium Waterproof or Heavy-Duty Outdoor cover and save an extra ₹300 instantly.",
     badge: "Seasonal Deal",
-    badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
+    badgeColor: "bg-orange-50 text-orange-700 border border-orange-200",
     terms: "Automatically applied when selecting Waterproof / Heavy-Duty models.",
     iconName: "Umbrella"
   },

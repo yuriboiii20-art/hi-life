@@ -35,14 +35,14 @@ export default function CartDrawer() {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+          <div className="p-4 sm:p-5 border-b border-orange-100 flex items-center justify-between bg-orange-50/40">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-stone-950 text-white flex items-center justify-center shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center shadow-xs">
                 <ShoppingBag className="w-4 h-4" />
               </div>
               <div>
                 <h3 className="text-base font-black text-stone-950">Your Cart</h3>
-                <p className="text-[11px] text-stone-500 font-medium">
+                <p className="text-[11px] text-orange-700 font-semibold">
                   {totalItemsCount} {totalItemsCount === 1 ? 'item' : 'items'} selected
                 </p>
               </div>
@@ -50,7 +50,7 @@ export default function CartDrawer() {
 
             <button
               onClick={() => setIsCartOpen(false)}
-              className="p-1.5 rounded-full hover:bg-stone-200 text-stone-600 transition-colors cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-orange-100 text-stone-600 transition-colors cursor-pointer"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -61,7 +61,7 @@ export default function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3.5 divide-y divide-stone-100">
             {cart.length === 0 ? (
               <div className="py-16 text-center space-y-3">
-                <div className="w-14 h-14 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center mx-auto">
+                <div className="w-14 h-14 rounded-full bg-orange-50 text-orange-400 flex items-center justify-center mx-auto border border-orange-200">
                   <ShoppingBag className="w-7 h-7 stroke-[1.5]" />
                 </div>
                 <h4 className="text-sm font-bold text-stone-900">Your cart is empty</h4>
@@ -70,7 +70,7 @@ export default function CartDrawer() {
                 </p>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="mt-2 px-4 py-2 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-bold transition-all cursor-pointer"
+                  className="mt-2 px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition-all shadow-md shadow-orange-600/25 cursor-pointer"
                 >
                   Explore Catalogue
                 </button>
@@ -130,7 +130,7 @@ export default function CartDrawer() {
 
                         {/* Price */}
                         <div className="text-right">
-                          <span className="text-xs font-black text-stone-950">
+                          <span className="text-xs font-black text-orange-600">
                             ₹{lineTotal}
                           </span>
                         </div>
@@ -144,7 +144,7 @@ export default function CartDrawer() {
 
           {/* Footer & Checkout Action */}
           {cart.length > 0 && (
-            <div className="p-4 sm:p-5 border-t border-stone-200 bg-stone-50 space-y-3">
+            <div className="p-4 sm:p-5 border-t border-orange-100 bg-white space-y-3">
               <div className="space-y-1.5 text-xs">
                 <div className="flex justify-between text-stone-600">
                   <span>Subtotal</span>
@@ -152,26 +152,26 @@ export default function CartDrawer() {
                 </div>
                 <div className="flex justify-between text-stone-600">
                   <span>Express Delivery</span>
-                  <span className="font-semibold text-emerald-700">FREE</span>
+                  <span className="font-bold text-orange-600">FREE</span>
                 </div>
                 <div className="flex justify-between text-stone-600">
                   <span>GST (18% Included)</span>
                   <span className="font-semibold text-stone-900">₹{Math.round(subtotal - subtotal / 1.18)}</span>
                 </div>
-                <div className="pt-2 border-t border-stone-200 flex justify-between text-sm font-black text-stone-950">
+                <div className="pt-2 border-t border-stone-100 flex justify-between text-sm font-black text-stone-950">
                   <span>Total Amount</span>
-                  <span>₹{subtotal}</span>
+                  <span className="text-orange-600">₹{subtotal}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-1.5 text-[10px] text-stone-500 font-medium justify-center pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-orange-600" />
                 <span>Simulated demo payment gateway • 100% Secure</span>
               </div>
 
               <button
                 onClick={handleOpenCheckout}
-                className="w-full py-3 px-4 rounded-xl bg-stone-950 hover:bg-black text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer active:scale-[0.99]"
+                className="w-full py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-orange-600/30 transition-all cursor-pointer active:scale-[0.99]"
               >
                 <span>Proceed to Checkout</span>
                 <ArrowRight className="w-4 h-4" />

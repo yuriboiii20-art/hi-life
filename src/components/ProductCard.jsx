@@ -16,7 +16,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
 
         {/* Badge */}
         <div className="absolute top-3 left-3">
-          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm bg-stone-900 text-white">
+          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm bg-orange-600 text-white">
             {cover.badge}
           </span>
         </div>
@@ -32,7 +32,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
         
         <div>
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider">
+            <span className="text-[10px] font-bold text-orange-600 uppercase tracking-wider">
               {cover.fabricSpecs.material.split('+')[0]}
             </span>
             <span className="text-xs font-semibold text-stone-900">
@@ -62,7 +62,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
               </span>
             </div>
 
-            <span className="text-[10px] font-bold text-stone-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+            <span className="text-[10px] font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded border border-orange-200">
               Save {cover.discountPercent}%
             </span>
           </div>
@@ -72,7 +72,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
             <button
               type="button"
               onClick={() => onViewDetails && onViewDetails(cover)}
-              className="w-full py-2 sm:py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] sm:text-xs font-semibold transition-colors cursor-pointer"
+              className="w-full py-2 sm:py-2.5 rounded-xl bg-orange-50/60 hover:bg-orange-100/80 text-orange-800 text-[11px] sm:text-xs font-semibold border border-orange-200 transition-colors cursor-pointer"
             >
               Specs
             </button>
@@ -80,7 +80,7 @@ export default function ProductCard({ cover, onSelectCover, onViewDetails }) {
             <button
               type="button"
               onClick={() => onSelectCover && onSelectCover(cover.id)}
-              className="w-full py-2 sm:py-2.5 rounded-xl bg-stone-950 hover:bg-black text-white text-[11px] sm:text-xs font-semibold shadow-xs transition-all cursor-pointer"
+              className="w-full py-2 sm:py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-[11px] sm:text-xs font-semibold shadow-xs shadow-orange-500/25 transition-all cursor-pointer"
             >
               Select Fit
             </button>

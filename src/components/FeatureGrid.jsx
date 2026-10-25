@@ -6,9 +6,7 @@ import {
   ShieldAlert, 
   Anchor, 
   Radio, 
-  Sparkles,
-  Layers,
-  CheckCircle2
+  Sparkles
 } from 'lucide-react';
 import { CORE_FEATURES } from '../data/features';
 
@@ -16,24 +14,24 @@ export default function FeatureGrid() {
   const renderFeatureIcon = (iconName) => {
     switch (iconName) {
       case 'Sun':
-        return <Sun className="w-5 h-5 text-amber-500" />;
+        return <Sun className="w-5 h-5 text-orange-500" />;
       case 'Droplets':
-        return <Droplets className="w-5 h-5 text-amber-500" />;
+        return <Droplets className="w-5 h-5 text-orange-500" />;
       case 'Maximize2':
-        return <Maximize2 className="w-5 h-5 text-amber-500" />;
+        return <Maximize2 className="w-5 h-5 text-orange-500" />;
       case 'ShieldAlert':
-        return <ShieldAlert className="w-5 h-5 text-amber-500" />;
+        return <ShieldAlert className="w-5 h-5 text-orange-500" />;
       case 'Anchor':
-        return <Anchor className="w-5 h-5 text-amber-500" />;
+        return <Anchor className="w-5 h-5 text-orange-500" />;
       case 'Radio':
-        return <Radio className="w-5 h-5 text-amber-500" />;
+        return <Radio className="w-5 h-5 text-orange-500" />;
       default:
-        return <Sparkles className="w-5 h-5 text-amber-500" />;
+        return <Sparkles className="w-5 h-5 text-orange-500" />;
     }
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-white border-b border-stone-200/90 font-sans">
+    <section className="py-12 sm:py-16 bg-white border-b border-orange-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -51,9 +49,9 @@ export default function FeatureGrid() {
           {CORE_FEATURES.map((feature) => (
             <div
               key={feature.id}
-              className="rounded-2xl p-5 sm:p-6 bg-stone-50 border border-stone-200/90 hover:border-stone-400 transition-all flex items-start gap-4"
+              className="rounded-2xl p-5 sm:p-6 bg-white border border-stone-200 hover:border-orange-400 shadow-sm transition-all flex items-start gap-4"
             >
-              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0 shadow-xs">
                 {renderFeatureIcon(feature.iconName)}
               </div>
 

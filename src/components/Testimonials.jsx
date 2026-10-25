@@ -48,7 +48,7 @@ export default function Testimonials() {
 
   return (
     <section 
-      className="py-6 sm:py-8 bg-[#fafaf9] border-t border-stone-200/90 font-sans select-none"
+      className="py-6 sm:py-8 bg-white border-t border-orange-100 font-sans select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -58,13 +58,13 @@ export default function Testimonials() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         
         {/* Compact Carousel Card */}
-        <div className="relative rounded-2xl bg-white border border-stone-200/90 p-4 sm:p-5 shadow-xs transition-all">
+        <div className="relative rounded-2xl bg-white border border-orange-100 p-4 sm:p-5 shadow-sm transition-all">
           
           <div className="flex items-center justify-between gap-3 pb-2 border-b border-stone-100">
             <div className="flex items-center gap-1.5">
               <div className="flex items-center gap-0.5">
                 {[...Array(activeReview.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-orange-400 text-orange-400" />
                 ))}
               </div>
               <span className="text-[11px] font-bold text-stone-900 ml-1">
@@ -103,7 +103,7 @@ export default function Testimonials() {
                     onClick={() => setCurrentIndex(idx)}
                     aria-label={`Go to review ${idx + 1}`}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      idx === currentIndex ? 'w-4 bg-stone-950' : 'w-1.5 bg-stone-300 hover:bg-stone-400'
+                      idx === currentIndex ? 'w-4 bg-orange-600' : 'w-1.5 bg-stone-300 hover:bg-stone-400'
                     }`}
                   />
                 ))}

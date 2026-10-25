@@ -40,7 +40,7 @@ export default function OurEcosystem({ onSelectCategory }) {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-10">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-700 block mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-orange-600 block mb-1">
               THE PRODUCT SPECTRUM
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-stone-950 tracking-tight">
@@ -53,20 +53,20 @@ export default function OurEcosystem({ onSelectCategory }) {
 
           <Link
             to="/products"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-stone-900 hover:text-black uppercase tracking-wider underline cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-stone-900 hover:text-orange-600 uppercase tracking-wider underline cursor-pointer"
           >
             <span>View Full Catalogue</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 text-orange-600" />
           </Link>
         </div>
 
-        {/* 3 Large Cards Grid (Oenum Style) */}
+        {/* 3 Large Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((cat) => (
             <Link
               key={cat.id}
               to={cat.link}
-              className="group rounded-3xl overflow-hidden bg-stone-50 border border-stone-200/90 hover:border-stone-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group rounded-3xl overflow-hidden bg-white border border-stone-200/90 hover:border-orange-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
                 <img
@@ -79,14 +79,14 @@ export default function OurEcosystem({ onSelectCategory }) {
                 <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-stone-900/90 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">
                   {cat.badge}
                 </span>
-                <span className="absolute bottom-3.5 left-3.5 text-xs font-bold uppercase tracking-wider text-amber-400">
+                <span className="absolute bottom-3.5 left-3.5 text-xs font-bold uppercase tracking-wider text-orange-400">
                   {cat.subtitle}
                 </span>
               </div>
 
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <h3 className="text-xl font-black text-stone-950 tracking-tight group-hover:text-amber-700 transition-colors">
+                  <h3 className="text-xl font-black text-stone-950 tracking-tight group-hover:text-orange-600 transition-colors">
                     {cat.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 font-normal leading-relaxed mt-2">
@@ -96,7 +96,7 @@ export default function OurEcosystem({ onSelectCategory }) {
 
                 <div className="pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-bold text-stone-900">
                   <span className="uppercase tracking-wider">Explore Category</span>
-                  <span className="w-8 h-8 rounded-full bg-stone-900 group-hover:bg-black text-white flex items-center justify-center transition-all group-hover:translate-x-1">
+                  <span className="w-8 h-8 rounded-full bg-orange-600 group-hover:bg-orange-700 text-white flex items-center justify-center transition-all group-hover:translate-x-1 shadow-sm">
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>

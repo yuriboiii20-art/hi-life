@@ -11,8 +11,8 @@ export default function AboutPreview() {
           
           {/* Left Column: Brand Story & Philosophy */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-stone-100 border border-stone-200 text-stone-800 text-xs font-bold uppercase tracking-wider shadow-sm">
-              <Shield className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-800 text-xs font-bold uppercase tracking-wider shadow-sm">
+              <Shield className="w-3.5 h-3.5 text-orange-600" />
               <span>About Hi-Life</span>
             </div>
 
@@ -51,7 +51,7 @@ export default function AboutPreview() {
             <div className="pt-3 flex flex-wrap items-center gap-4">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-stone-950 hover:bg-black text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md transition-all hover:scale-[1.01]"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md shadow-orange-500/25 transition-all hover:scale-[1.01]"
               >
                 <span>Read Our Full Philosophy</span>
                 <ArrowRight className="w-4 h-4" />
@@ -62,11 +62,11 @@ export default function AboutPreview() {
 
           {/* Right Column: Visual Philosophy Card */}
           <div className="lg:col-span-5">
-            <div className="rounded-3xl p-7 bg-stone-50 border border-stone-200/90 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.05)] space-y-6">
+            <div className="rounded-3xl p-7 bg-orange-50/20 border border-orange-100 shadow-sm space-y-6">
               
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-stone-900 text-white flex items-center justify-center shadow-sm">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
+                <div className="w-10 h-10 rounded-2xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center shadow-sm">
+                  <Sparkles className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-stone-950">Our Driving Standard</h4>
@@ -74,12 +74,12 @@ export default function AboutPreview() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-3xl bg-stone-900 text-white shadow-lg border border-stone-800">
+              <div className="p-6 rounded-3xl bg-gradient-to-br from-orange-600 to-amber-600 text-white shadow-xl shadow-orange-500/20 border border-orange-500">
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="text-[10px] uppercase tracking-widest text-amber-400 font-bold">
+                  <span className="text-[10px] uppercase tracking-widest text-orange-100 font-bold">
                     Brand Creed
                   </span>
-                  <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain" />
+                  <img src="/logo.png" alt="Hi-Life Logo" className="h-9 w-auto object-contain bg-white/90 p-1 rounded-lg" />
                 </div>
                 <p className="text-xl font-black text-white">
                   “{BUSINESS_CONFIG.tagline}”
