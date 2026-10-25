@@ -61,9 +61,6 @@ export default function WhyCoversFail() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-orange-600 text-white text-[10px] font-bold tracking-wider">
-                  FAILURE 0{card.id}
-                </div>
               </div>
 
               {/* Card Text Content */}
