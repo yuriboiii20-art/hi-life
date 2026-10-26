@@ -13,6 +13,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { CATALOG_PRODUCTS } from '../data/catalogProducts';
+import { findProductBySlugOrModel } from '../data/carBrandsData';
 import { useCart } from '../context/CartContext';
 import QuickOrderModal from '../components/QuickOrderModal';
 
@@ -21,8 +22,8 @@ export default function ProductDetail() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
-  // Find product by slug or id, fallback to first product
-  const product = CATALOG_PRODUCTS.find((p) => p.slug === productSlug || p.id === productSlug) || CATALOG_PRODUCTS[0];
+  // Find product by slug or id, or dynamically from vehicle brands
+  const product = findProductBySlugOrModel(productSlug, CATALOG_PRODUCTS);
 
   const [activeImage, setActiveImage] = useState(product.gallery[0] || product.image);
   const [selectedGrade, setSelectedGrade] = useState(product.series || 'Nexus');

@@ -12,7 +12,9 @@ import {
   Phone,
   MessageCircle,
   Car,
-  Compass
+  Compass,
+  Grid,
+  Bike
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { useCart } from '../context/CartContext';
@@ -109,40 +111,103 @@ export default function Navbar() {
                 onMouseEnter={() => setCoversDropdownHover(true)}
                 onMouseLeave={() => setCoversDropdownHover(false)}
               >
-                <Link
-                  to="/products"
-                  className={`flex items-center gap-1 transition-colors py-2 ${
-                    location.pathname.startsWith('/products') || location.pathname.startsWith('/pages/nexus') || location.pathname.startsWith('/pages/plasma')
+                <button
+                  type="button"
+                  onClick={() => setCoversDropdownHover(prev => !prev)}
+                  className={`flex items-center gap-1 transition-colors py-2 cursor-pointer bg-transparent border-0 font-medium ${
+                    location.pathname.startsWith('/products') || 
+                    location.pathname.startsWith('/pages/car-brand-page') || 
+                    location.pathname.startsWith('/shop-by-model') ||
+                    location.pathname.startsWith('/pages/nexus') || 
+                    location.pathname.startsWith('/pages/plasma')
                       ? 'text-orange-600 font-bold' 
                       : 'hover:text-orange-600'
                   }`}
                 >
                   <span>Covers</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-stone-400 transition-transform duration-200 group-hover:rotate-180" />
-                </Link>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${coversDropdownHover ? 'rotate-180 text-orange-600' : 'text-stone-400'}`} />
+                </button>
 
                 {coversDropdownHover && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-64 bg-white border border-orange-100 rounded-2xl shadow-xl py-2 px-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ring-1 ring-black/5">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-[360px] bg-white border border-stone-200/90 rounded-2xl shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ring-1 ring-black/5 space-y-1">
+                    
+                    {/* All Covers Catalog */}
                     <Link
                       to="/products"
-                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors font-semibold"
+                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-orange-50/70 transition-colors group"
                     >
-                      All Covers Catalog
+                      <div className="w-8 h-8 rounded-lg bg-stone-100 group-hover:bg-orange-100 text-stone-600 group-hover:text-orange-600 flex items-center justify-center shrink-0 transition-colors">
+                        <Grid className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-xs font-semibold text-stone-900 group-hover:text-orange-600 block transition-colors">
+                          All Covers Catalog
+                        </span>
+                        <span className="text-[11px] text-stone-500 block truncate">
+                          Explore full vehicle protection range
+                        </span>
+                      </div>
                     </Link>
+
+                    {/* Shop by Model - Featured Item */}
+                    <Link
+                      to="/pages/car-brand-page"
+                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-orange-50/70 hover:bg-orange-100/80 border border-orange-200/70 transition-colors group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Car className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="text-xs font-bold text-stone-950 group-hover:text-orange-700 uppercase tracking-wide">
+                            SHOP BY MODEL
+                          </span>
+                          <span className="text-[9px] bg-orange-600 text-white font-extrabold px-1.5 py-0.5 rounded-full tracking-wider">
+                            NEW
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-stone-600 block truncate">
+                          Select car brand logo & tailored model
+                        </span>
+                      </div>
+                    </Link>
+
+                    {/* Car & SUV Covers */}
                     <Link
                       to="/products?category=car"
-                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-orange-50/70 transition-colors group"
                     >
-                      <span className="font-semibold block text-stone-950">Car & SUV Covers</span>
-                      <span className="text-[10px] text-stone-500">Tailored Fit for 250+ Models</span>
+                      <div className="w-8 h-8 rounded-lg bg-stone-100 group-hover:bg-orange-100 text-stone-600 group-hover:text-orange-600 flex items-center justify-center shrink-0 transition-colors">
+                        <ShieldCheck className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-xs font-semibold text-stone-900 group-hover:text-orange-600 block transition-colors">
+                          Car & SUV Covers
+                        </span>
+                        <span className="text-[11px] text-stone-500 block truncate">
+                          Tailored fit for 250+ car & SUV models
+                        </span>
+                      </div>
                     </Link>
+
+                    {/* Bike & Scooter Covers */}
                     <Link
                       to="/products?category=two-wheeler-camo"
-                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-orange-50/70 transition-colors group"
                     >
-                      <span className="font-semibold block text-stone-950">Bike & Scooter Covers</span>
-                      <span className="text-[10px] text-stone-500">Custom Handlebar & Mirror Fit</span>
+                      <div className="w-8 h-8 rounded-lg bg-stone-100 group-hover:bg-orange-100 text-stone-600 group-hover:text-orange-600 flex items-center justify-center shrink-0 transition-colors">
+                        <Bike className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-xs font-semibold text-stone-900 group-hover:text-orange-600 block transition-colors">
+                          Bike & Scooter Covers
+                        </span>
+                        <span className="text-[11px] text-stone-500 block truncate">
+                          Custom handlebar & mirror contours
+                        </span>
+                      </div>
                     </Link>
+
                   </div>
                 )}
               </div>
@@ -279,6 +344,14 @@ export default function Navbar() {
                         className="block hover:text-orange-600 font-medium"
                       >
                         All Covers Catalog
+                      </Link>
+                      <Link
+                        to="/pages/car-brand-page"
+                        onClick={() => setMenuDrawerOpen(false)}
+                        className="flex items-center justify-between text-orange-600 font-bold py-1"
+                      >
+                        <span className="uppercase tracking-wide text-xs">SHOP BY MODEL</span>
+                        <span className="text-[9px] bg-orange-600 text-white font-extrabold px-1.5 py-0.5 rounded-md">NEW</span>
                       </Link>
                       <Link
                         to="/products?category=car"
