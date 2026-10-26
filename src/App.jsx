@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
+import ShopByModel from './pages/ShopByModel';
 import NexusFabric from './pages/NexusFabric';
 import PlasmaFabric from './pages/PlasmaFabric';
 import WhoItIsFor from './pages/WhoItIsFor';
@@ -65,6 +66,11 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:productSlug" element={<ProductDetail />} />
+              <Route path="/pages/car-brand-page" element={<ShopByModel />} />
+              <Route path="/pages/car-brand-page/:brandSlug" element={<ShopByModel />} />
+              <Route path="/shop-by-model" element={<ShopByModel />} />
+              <Route path="/shop-by-model/:brandSlug" element={<ShopByModel />} />
+              <Route path="/collections/:brandSlug" element={<ShopByModel />} />
               <Route path="/pages/nexus" element={<Navigate to="/products" replace />} />
               <Route path="/pages/plasma" element={<Navigate to="/products" replace />} />
               <Route path="/pages/who-it-is-for" element={<WhoItIsFor />} />

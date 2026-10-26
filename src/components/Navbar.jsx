@@ -112,7 +112,11 @@ export default function Navbar() {
                 <Link
                   to="/products"
                   className={`flex items-center gap-1 transition-colors py-2 ${
-                    location.pathname.startsWith('/products') || location.pathname.startsWith('/pages/nexus') || location.pathname.startsWith('/pages/plasma')
+                    location.pathname.startsWith('/products') || 
+                    location.pathname.startsWith('/pages/car-brand-page') || 
+                    location.pathname.startsWith('/shop-by-model') ||
+                    location.pathname.startsWith('/pages/nexus') || 
+                    location.pathname.startsWith('/pages/plasma')
                       ? 'text-orange-600 font-bold' 
                       : 'hover:text-orange-600'
                   }`}
@@ -122,13 +126,25 @@ export default function Navbar() {
                 </Link>
 
                 {coversDropdownHover && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-64 bg-white border border-orange-100 rounded-2xl shadow-xl py-2 px-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ring-1 ring-black/5">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-68 bg-white border border-orange-100 rounded-2xl shadow-xl py-2 px-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ring-1 ring-black/5">
                     <Link
                       to="/products"
                       className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors font-semibold"
                     >
                       All Covers Catalog
                     </Link>
+
+                    <Link
+                      to="/pages/car-brand-page"
+                      className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors bg-orange-50/40 border border-orange-100/60 my-0.5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-stone-950 uppercase tracking-wide text-[11px]">SHOP BY MODEL</span>
+                        <span className="text-[9px] bg-orange-600 text-white font-extrabold px-1.5 py-0.5 rounded-md tracking-wider">NEW</span>
+                      </div>
+                      <span className="text-[10px] text-stone-500">Select Car Brand & Model Logo</span>
+                    </Link>
+
                     <Link
                       to="/products?category=car"
                       className="block px-3.5 py-2 rounded-xl text-xs text-stone-800 hover:bg-orange-50 hover:text-orange-700 transition-colors"
@@ -279,6 +295,14 @@ export default function Navbar() {
                         className="block hover:text-orange-600 font-medium"
                       >
                         All Covers Catalog
+                      </Link>
+                      <Link
+                        to="/pages/car-brand-page"
+                        onClick={() => setMenuDrawerOpen(false)}
+                        className="flex items-center justify-between text-orange-600 font-bold py-1"
+                      >
+                        <span className="uppercase tracking-wide text-xs">SHOP BY MODEL</span>
+                        <span className="text-[9px] bg-orange-600 text-white font-extrabold px-1.5 py-0.5 rounded-md">NEW</span>
                       </Link>
                       <Link
                         to="/products?category=car"
